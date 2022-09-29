@@ -4,22 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBContext {
-    //huy gâu gâu//
-    //huy nef
-    //cfdd
-    //dcmm
-    //hello
-    //allllloooooo
-    //allllloooooo
-    //allllloooooo
-    //allllloooooo
-    //allllloooooo
-    //dcmmmmmmmmmmm
-    //metvailoz
-//123123123
 
-//hehehehhehheehheS
-//alooooooo
     /*USE BELOW METHOD FOR YOUR DATABASE CONNECTION FOR BOTH SINGLE AND MULTILPE SQL SERVER INSTANCE(s)*/
     /*DO NOT EDIT THE BELOW METHOD, YOU MUST USE ONLY THIS ONE FOR YOUR DATABASE CONNECTION*/
     // cho binh
@@ -32,8 +17,9 @@ public class DBContext {
     }
     /*Insert your other code right after this comment*/
     /*Change/update information of your database connection, DO NOT change name of instance variables in this class*/
-    private final String serverName = "DESKTOP-RTOR6G3";
-    private final String dbName = "Web_Booking";
+    private final String serverName = "localhost";
+    private final String dbName = "Trividi_Booking";
+//    cac nè
     private final String portNumber = "1433";
     private final String instance="";//LEAVE THIS ONE EMPTY IF YOUR SQL IS A SINGLE INSTANCE
     private final String userID = "sa";
@@ -47,5 +33,4 @@ public class DBContext {
             System.out.println("Not found!");
         }
     }
-//    dsddd
 }
