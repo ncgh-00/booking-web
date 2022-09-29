@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-
+//cho binh gau gau
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -92,6 +92,7 @@
                 <a href="#" class="btn"> Book now</a>
             </div>
         </div>
+    </div>
 </section>
 <!-- Hot hotel section ends -->
 
@@ -108,108 +109,31 @@
     </h1>
 
     <div class="box-container">
-        <div class="box">
-            <img src="images/p-1.jpg" alt="">
-            <div class="content">
-                <h3><i class="fas fa-map-marker-alt"></i> mumbai </h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
+        <c:forEach items="${listH}" var="o">
+            <div class="box">
+                <img src="${o.image}" alt="">
+                <div class="content">
+                    <h3> <i class="fas fa-map-marker-alt"></i> ${o.city} </h3>
+                    <p>${o.name}</p>
+                    <div class="stars">
+                        <c:forEach begin="1" end="${o.star}">
+                            <i class="fas fa-star"></i>
+                        </c:forEach>
+                    </div>
+                    <div class="price"> ${Math.ceil(o.cost*(1-o.discount/100)/24000)} $ <span>${Math.ceil(o.cost/24000)} $</span> </div>
+                    <c:if test="${sessionScope.Account.username == null}">
+                        <a href="login.jsp" class="btn">book now</a>
+                    </c:if>
+                    <c:if test="${sessionScope.Account.username != null}">
+                        <a href="BookingControl?id=${o.id}" class="btn">book now</a>
+                    </c:if>
                 </div>
-                <div class="price"> $90.00 <span>$120.00</span></div>
-                <a href="#" class="btn">book now</a>
             </div>
-        </div>
+        </c:forEach>
 
-        <div class="box">
-            <img src="images/p-2.jpg" alt="">
-            <div class="content">
-                <h3><i class="fas fa-map-marker-alt"></i> sydney </h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <div class="price"> $90.00 <span>$120.00</span></div>
-                <a href="#" class="btn">book now</a>
-            </div>
-        </div>
 
-        <div class="box">
-            <img src="images/p-3.jpg" alt="">
-            <div class="content">
-                <h3><i class="fas fa-map-marker-alt"></i> hawaii </h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <div class="price"> $90.00 <span>$120.00</span></div>
-                <a href="#" class="btn">book now</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <img src="images/p-4.jpg" alt="">
-            <div class="content">
-                <h3><i class="fas fa-map-marker-alt"></i> paris </h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <div class="price"> $90.00 <span>$120.00</span></div>
-                <a href="#" class="btn">book now</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <img src="images/p-5.jpg" alt="">
-            <div class="content">
-                <h3><i class="fas fa-map-marker-alt"></i> tokyo </h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <div class="price"> $90.00 <span>$120.00</span></div>
-                <a href="#" class="btn">book now</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <img src="images/p-6.jpg" alt="">
-            <div class="content">
-                <h3><i class="fas fa-map-marker-alt"></i> eypt </h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <div class="price"> $90.00 <span>$120.00</span></div>
-                <a href="#" class="btn">book now</a>
-            </div>
-        </div>
     </div>
+
 </section>
 
 
@@ -226,79 +150,20 @@
     </h1>
 
     <div class="box-container">
-        <div class="box">
-            <img src="images/g-1.jpg" alt="">
-            <div class="content">
-                <h3>amazing places</h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.</p>
-                <a href="#" class="btn">see more</a>
+        <c:forEach items="${listC}" var="o">
+            <div class="box">
+                <img src="${o.link_images}" alt="">
+                <div class="content">
+                    <h3>${o.name}</h3>
+
+                    <a href="./SearchControl?action=city&search_content=${o.name}" class="btn">see more</a>
+                </div>
+
             </div>
-        </div>
-        <div class="box">
-            <img src="images/g-2.jpg" alt="">
-            <div class="content">
-                <h3>amazing places</h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.</p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="images/g-3.jpg" alt="">
-            <div class="content">
-                <h3>amazing places</h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.</p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="images/g-4.jpg" alt="">
-            <div class="content">
-                <h3>amazing places</h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.</p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="images/g-5.jpg" alt="">
-            <div class="content">
-                <h3>amazing places</h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.</p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="images/g-6.jpg" alt="">
-            <div class="content">
-                <h3>amazing places</h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.</p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="images/g-7.jpg" alt="">
-            <div class="content">
-                <h3>amazing places</h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.</p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="images/g-8.jpg" alt="">
-            <div class="content">
-                <h3>amazing places</h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.</p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="images/g-9.jpg" alt="">
-            <div class="content">
-                <h3>amazing places</h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.</p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
+        </c:forEach>
+
     </div>
+
 </section>
 
 <!-- city section ends -->
