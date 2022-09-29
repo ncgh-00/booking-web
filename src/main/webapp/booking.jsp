@@ -42,32 +42,33 @@
 
     <div class="row">
         <div class="img">
-            <img src="images/book-img.svg" alt="">
+            <img src="${hotel.image}" alt="">
         </div>
 
         <div class="hot-hotel-content">
             <div class="hotel-info">
-                <h2>where to</h2>
+                <h2>${hotel.name}</h2>
+
                 <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
+                    <c:forEach begin="1" end="${hotel.star}">
+                        <i class="fas fa-star"></i>
+                    </c:forEach>
                 </div>
-                <h3>how many</h3>
+
+                <h3>${hotel.des}</h3>
                 <h3>
                     <i class="fa-solid fa-phone"></i>
-                    Phone: <a href="tel:+0000"></a> 0000
+                    Phone: <a href="tel:+${hotel.phone}"></a> ${hotel.phone}
                 </h3>
                 <h3>
                     <i class="fa-sharp fa-solid fa-location-dot"></i>
-                    Address: 0000
+                    Address: ${hotel.address}
                 </h3>
 
                 <a href="#" class="btn"> Book now</a>
             </div>
         </div>
+    </div>
 </section>
 
 
@@ -86,80 +87,29 @@
         <span>m</span>
         <span>s</span>
     </h1>
+
     <div class="swiper mySwiper review-slider">
         <div class="swiper-wrapper wrapper">
-            <div class="swiper-slide">
-                <div class="box">
-                    <img src="images/pic1.png" alt="">
-                    <h3>Lalisa Bey</h3>
-                    <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.
-                        Lorem Ipsum is simply dummy text of the farhan and typesetting industry
-                        Lorem Ipsum is simply dummy text of the farhan and typesetting industry
-                        farhan and typesetting industry.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
+            <c:forEach items="${listR}" var="o">
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="${o.images}" alt="room image">
+                        <h3>${o.name}</h3>
+                        <p>${o.des}</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <p>${Math.ceil(o.cost*(1-o.discount/100)/24000)} $ <span class="dis">${Math.ceil(o.cost/24000)} $</span><span> <br> Per Night </span>
+                        </p>
                     </div>
                 </div>
-            </div>
-
-            <div class="swiper-slide">
-                <div class="box">
-                    <img src="images/pic2.png" alt="">
-                    <h3>Edward Bey</h3>
-                    <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.
-                        Lorem Ipsum is simply dummy text of the farhan and typesetting industry
-                        Lorem Ipsum is simply dummy text of the farhan and typesetting industry
-                        farhan and typesetting industry.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="swiper-slide">
-                <div class="box">
-                    <img src="images/pic3.png" alt="">
-                    <h3>Jenna Bey</h3>
-                    <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.
-                        Lorem Ipsum is simply dummy text of the farhan and typesetting industry
-                        Lorem Ipsum is simply dummy text of the farhan and typesetting industry
-                        farhan and typesetting industry.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="swiper-slide">
-                <div class="box">
-                    <img src="images/pic4.png" alt="">
-                    <h3>Edward Bey</h3>
-                    <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.
-                        Lorem Ipsum is simply dummy text of the farhan and typesetting industry
-                        Lorem Ipsum is simply dummy text of the farhan and typesetting industry
-                        farhan and typesetting industry.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </div>
-                </div>
-            </div>
+            </c:forEach>
         </div>
+    </div>
     </div>
 </section>
 

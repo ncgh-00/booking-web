@@ -2,6 +2,7 @@ package com.group3.trividi.control;
 
 import com.group3.trividi.dao.Hotel_DAO;
 import com.group3.trividi.model.Hotel_Details;
+import com.group3.trividi.model.Room_Details;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,9 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet(name = "BookingControl", urlPatterns = {"/BookingControl"})
-public class BookingControl extends HttpServlet {
+@WebServlet(name = "LoadBooking", urlPatterns = {"/LoadBooking"})
+public class LoadBooking extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -25,6 +27,14 @@ public class BookingControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String id = request.getParameter("id");
+        Hotel_DAO dao = new Hotel_DAO();
+
+        Hotel_Details hotel_details = dao.getHotel(id);
+        List<Room_Details> list_R = dao.getRoomDetails(id);
+        request.setAttribute("hotel_details", hotel_details);
+        request.setAttribute("listR", list_R);
+        request.getRequestDispatcher("booking.jsp").forward(request, response);
 
     }
 

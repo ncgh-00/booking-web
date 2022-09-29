@@ -2,6 +2,7 @@ package com.group3.trividi.dao;
 
 import com.group3.trividi.context.DBContext;
 import com.group3.trividi.model.Hotel_Details;
+import com.group3.trividi.model.Room_Details;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -124,6 +125,36 @@ public class Hotel_DAO {
         } catch (Exception e) {
             System.out.println("Fail, please contact to admin!!");
         }
+        return list;
+    }
+
+    public List<Room_Details> getRoomDetails(String id_hotel) {
+        List<Room_Details> list = new ArrayList<>();
+        String query = "select * from Room_Details where ID_Hotel = "+ id_hotel +" ";
+        try {
+            // Open connection with SQL Server
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            ps = conn.prepareStatement(query);
+            // Get the result of SQL Server ans store in rs
+            rs = ps.executeQuery();
+
+            // Add data in rs to ArrayList
+            while (rs.next()) {
+                //int id, id_hotel, String name, String image,String description, int cost, int discount
+                list.add(new Room_Details(rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getInt(6),
+                        rs.getInt(7)));
+
+            }
+        } catch (Exception e) {
+            System.out.println("Fail, please contact to admin!!");
+        }
+
         return list;
     }
 
