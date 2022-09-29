@@ -9,5 +9,8 @@
         <module name="Trividi_Project" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Trividi_Project" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
