@@ -70,6 +70,7 @@
         </div>
 </section>
 
+
 <!-- Hotel detail section ends -->
 
 <!-- Room section start -->

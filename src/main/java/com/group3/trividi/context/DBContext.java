@@ -18,10 +18,7 @@ public class DBContext {
     /*Change/update information of your database connection, DO NOT change name of instance variables in this class*/
     private final String serverName = "localhost";
     private final String dbName = "Trividi_Booking";
-    //loz que
-    private final String serverName = "localhost";
-    private final String dbName = "Web_Booking";
-//    trinh ne
+//cho binh
     private final String portNumber = "1433";
     private final String instance="";//LEAVE THIS ONE EMPTY IF YOUR SQL IS A SINGLE INSTANCE
     private final String userID = "sa";
