@@ -4,22 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBContext {
-    //huy gâu gâu//
-    //huy nef
-    //cfdd
-    //dcmm
-    //hello
-    //allllloooooo
-    //allllloooooo
-    //allllloooooo
-    //allllloooooo
-    //allllloooooo
-    //dcmmmmmmmmmmm
-    //metvailoz
-//123123123
-
-//hehehehhehheehheS
-//alooooooo
     /*USE BELOW METHOD FOR YOUR DATABASE CONNECTION FOR BOTH SINGLE AND MULTILPE SQL SERVER INSTANCE(s)*/
     /*DO NOT EDIT THE BELOW METHOD, YOU MUST USE ONLY THIS ONE FOR YOUR DATABASE CONNECTION*/
     // cho binh
@@ -51,5 +35,4 @@ public class DBContext {
             System.out.println("Not found!");
         }
     }
-//    dsddd
 }
