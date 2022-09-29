@@ -6,8 +6,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Login Page</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="./css/form.css">
-
     <!-- Boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 </head>
