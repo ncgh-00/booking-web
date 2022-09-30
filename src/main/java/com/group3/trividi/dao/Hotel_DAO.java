@@ -146,12 +146,7 @@ public class Hotel_DAO {
         return list;
     }
 
-    public static void main(String[] args) {
-        Hotel_DAO h = new Hotel_DAO();
-        Hotel_Details hd = h.getHotel("1");
-        System.out.println(hd.getName());
 
-    }
 
     }
 

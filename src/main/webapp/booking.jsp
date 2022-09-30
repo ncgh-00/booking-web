@@ -96,7 +96,9 @@
                         <img src="${o.images}" alt="room image">
                         <h3>${o.name}</h3>
                         <p>${o.des}</p>
-                        <div class="price">${Math.ceil(o.cost*(1-o.discount/100)/24000)} $ <span class="dis">${Math.ceil(o.cost/24000)} $</span><span class="text"> <br> Per Night </span>
+                        <div class="price">${Math.ceil(o.cost*(1-o.discount/100)/24000)} $ <span
+                                class="dis">${Math.ceil(o.cost/24000)} $</span><span
+                                class="text"> <br> Per Night </span>
                         </div>
                     </div>
                 </div>
@@ -128,19 +130,30 @@
 
         <form action="">
             <div class="inputBox">
-                <h3>where to</h3>
-                <input type="text" placeholder="place name">
+                <h3>Name</h3>
+                <input type="text" placeholder="full name">
             </div>
             <div class="inputBox">
-                <h3>how many</h3>
-                <input type="number" placeholder="number of guests">
+                <h3>Phone</h3>
+                <input type="tel" placeholder="phone number">
             </div>
             <div class="inputBox">
-                <h3>arrivals</h3>
+                <select name="room" id="room" style="width: 64px; height: 64px">
+                    <c:forEach items="${ListR}" var="o">
+                        <option value="${o.id}" required>${o.name}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div class="inputBox">
+                <h3>How many</h3>
+                <input type="number" min="1" placeholder="number of rooms">
+            </div>
+            <div class="inputBox">
+                <h3>Arrivals</h3>
                 <input type="date">
             </div>
             <div class="inputBox">
-                <h3>leaving</h3>
+                <h3>Leaving</h3>
                 <input type="date">
             </div>
             <input type="submit" class="btn" value="book now">
