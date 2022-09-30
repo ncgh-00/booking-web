@@ -42,30 +42,30 @@
 
     <div class="row">
         <div class="img">
-            <img src="${hotel.image}" alt="">
+            <img src="${hotel_details.image}" alt="">
         </div>
 
         <div class="hot-hotel-content">
             <div class="hotel-info">
-                <h2>${hotel.name}</h2>
+                <h2>${hotel_details.name}</h2>
 
                 <div class="stars">
-                    <c:forEach begin="1" end="${hotel.star}">
+                    <c:forEach begin="1" end="${hotel_details.star}">
                         <i class="fas fa-star"></i>
                     </c:forEach>
                 </div>
 
-                <h3>${hotel.des}</h3>
+                <h3 class="hotel-desc">${hotel_details.des}</h3>
                 <h3>
                     <i class="fa-solid fa-phone"></i>
-                    Phone: <a href="tel:+${hotel.phone}"></a> ${hotel.phone}
+                    Phone: <a href="tel:+${hotel_details.phone}"><span>${hotel_details.phone}</span></a>
                 </h3>
                 <h3>
                     <i class="fa-sharp fa-solid fa-location-dot"></i>
-                    Address: ${hotel.address}
+                    Address: <span>${hotel_details.address}</span>
                 </h3>
 
-                <a href="#" class="btn"> Book now</a>
+                <a href="#book" class="btn"> Book now</a>
             </div>
         </div>
     </div>
@@ -96,15 +96,8 @@
                         <img src="${o.images}" alt="room image">
                         <h3>${o.name}</h3>
                         <p>${o.des}</p>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                        <div class="price">${Math.ceil(o.cost*(1-o.discount/100)/24000)} $ <span class="dis">${Math.ceil(o.cost/24000)} $</span><span class="text"> <br> Per Night </span>
                         </div>
-                        <p>${Math.ceil(o.cost*(1-o.discount/100)/24000)} $ <span class="dis">${Math.ceil(o.cost/24000)} $</span><span> <br> Per Night </span>
-                        </p>
                     </div>
                 </div>
             </c:forEach>
@@ -116,7 +109,7 @@
 <!-- Room section ends -->
 
 <!-- book section starts -->
-<section class="book" id="book">
+<section class="book mb-body" id="book">
     <h1 class="heading">
         <span>b</span>
         <span>o</span>
@@ -130,7 +123,7 @@
 
     <div class="row">
         <div class="img">
-            <img src="./images/book-img.svg" alt="">
+            <img src="./images/travel-img.svg" alt="">
         </div>
 
         <form action="">

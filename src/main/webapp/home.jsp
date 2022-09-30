@@ -121,12 +121,12 @@
                         </c:forEach>
                     </div>
                     <div class="price"> ${Math.ceil(o.cost*(1-o.discount/100)/24000)} $ <span>${Math.ceil(o.cost/24000)} $</span> </div>
-                    <c:if test="${sessionScope.Account.username == null}">
-                        <a href="login.jsp" class="btn">book now</a>
-                    </c:if>
-                    <c:if test="${sessionScope.Account.username != null}">
-                        <a href="BookingControl?id=${o.id}" class="btn">book now</a>
-                    </c:if>
+<%--                    <c:if test="${sessionScope.Account.username == null}">--%>
+<%--                        <a href="login.jsp" class="btn">book now</a>--%>
+<%--                    </c:if>--%>
+<%--                    <c:if test="${sessionScope.Account.username != null}">--%>
+                        <a href="LoadBooking?id=${o.id}" class="btn">book now</a>
+<%--                    </c:if>--%>
                 </div>
             </div>
         </c:forEach>

@@ -21,16 +21,10 @@ public class Hotel_DAO {
         Hotel_Details hd = null;
         String query = "select * from Hotel_Details where ID_Hotel = "+ id + " ";
         try {
-            // Open connection with SQL Server
             conn = new DBContext().getConnection();
-            // Throw the query statement to SQL Server
             ps = conn.prepareStatement(query);
-            // Get the result of SQL Server ans store in rs
             rs = ps.executeQuery();
-
-            // Add data in rs to ArrayList
             while (rs.next()) {
-                //int id, String name, String image, double price, String title, String description
                 hd = new Hotel_Details(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
@@ -132,16 +126,10 @@ public class Hotel_DAO {
         List<Room_Details> list = new ArrayList<>();
         String query = "select * from Room_Details where ID_Hotel = "+ id_hotel +" ";
         try {
-            // Open connection with SQL Server
             conn = new DBContext().getConnection();
-            // Throw the query statement to SQL Server
             ps = conn.prepareStatement(query);
-            // Get the result of SQL Server ans store in rs
             rs = ps.executeQuery();
-
-            // Add data in rs to ArrayList
             while (rs.next()) {
-                //int id, id_hotel, String name, String image,String description, int cost, int discount
                 list.add(new Room_Details(rs.getInt(1),
                         rs.getInt(2),
                         rs.getString(3),
@@ -158,6 +146,12 @@ public class Hotel_DAO {
         return list;
     }
 
+    public static void main(String[] args) {
+        Hotel_DAO h = new Hotel_DAO();
+        Hotel_Details hd = h.getHotel("1");
+        System.out.println(hd.getName());
+
+    }
 
     }
 

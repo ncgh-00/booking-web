@@ -28,7 +28,7 @@
                             <option value="hotel" selected>[Search Hotel]</option>
                             <option value="city">[Search City]</option>
                         </select>
-                        <select name="search-by" id="x">
+                        <select name="search-by" id="x>
                             <option value="hotel" selected>[Search Hotel]</option>
                             <option value="city">[Search City]</option>
                         </select>

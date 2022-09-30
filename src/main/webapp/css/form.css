@@ -4,76 +4,69 @@
     --orange: #ffa500;
 }
 
-*{
+* {
+    font-family: 'Nunito', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Nunito', sans-serif;
+    text-transform: capitalize;
 }
 
-.container{
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+*::selection {
+    background: var(--orange);
+    color: #fff;
+}
+
+.layout {
     background-color: var(--orange);
-    column-gap: 30px;
-}
-.form{
-    position: absolute;
-    max-width: calc(100% - 32px)  ;
-    width: 430px;
-    padding: 20px 30px;
-    border-radius: 6px;
-    background: #FFF;
-}
-.form.signup{
-    opacity: 0;
-    pointer-events: none;
-}
-.forms.show-signup .form.signup{
-    opacity: 1;
-    pointer-events: auto;
-}
-.forms.show-signup .form.login{
-    opacity: 0;
-    pointer-events: none;
-}
-header{
-    font-size: 32px;
-    font-weight: 700;
-    color: #232836;
-    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-form{
-    margin-top: 30px;
+.container {
+    background-color: #fff;
+    width: 450px;
+    max-width: calc(100% - 32px);
+    border-radius: 5px;
+    text-align: center;
+    padding: 32px 32px;
 }
-.form .field{
-    position: relative;
-    height: 50px;
-    width: 100%;
+
+.heading {
+    font-size: 36px;
+}
+
+.form {
     margin-top: 20px;
-    border-radius: 6px;
+
 }
-.field input,
-.field button{
-    height: 100%;
+
+
+.input-box {
+    margin-top: 16px;
+    display: block;
     width: 100%;
-    border: none;
-    font-size: 16px;
-    font-weight: 400;
-    border-radius: 6px;
-}
-.field input{
+    padding: 14px 8px;
+    border-radius: 9px;
     outline: none;
-    padding: 0 15px;
-    border: 1px solid#CACACA;
+    border: 1px solid #333;
+    font-size: 16px;
+    font-weight: 600;
 }
-.field input:focus{
+
+.input-box:focus {
     border-bottom-width: 2px;
 }
+
+.input-pas {
+    position: relative;
+}
+
 .eye-icon{
     position: absolute;
     top: 50%;
@@ -84,39 +77,45 @@ form{
     cursor: pointer;
     padding: 5px;
 }
-.field button{
-    color: #000;
-    font-weight: 600;
-    background-color: var(--orange);
-    transition: all 0.3s ease;
+
+.form-link .forgot-pas-link,
+.form-link .signup-link {
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    color: rgb(7, 135, 220);
+    font-weight: 400;
+}
+
+.form-link .forgot-pas-link:hover,
+.form-link .signup-link:hover {
+    cursor: pointer;
+    color: rgb(255, 165, 0);
+}
+
+.btn {
+    border: 0;
+    width: 100%;
+    padding: 14px 8px;
+    border-radius: 6px;
+    background-color: #333;
+    color: aliceblue;
+    display: block;
+    font-size: 16px;
+}
+
+.btn:hover {
+    color: #333333;
+    background: rgba(255, 165, 0, .5);
     cursor: pointer;
 }
-.field button:hover{
-    color: #333333;
-    background: rgba(255, 165, 0, .6);
-}
-.form-link{
-    text-align: center;
-    margin-top: 10px;
-}
-.form-link span,
-.form-link a{
-    font-size: 14px;
-    font-weight: 400;
-    color: #232836;
-}
-.form a{
-    color: #0171d3;
-    text-decoration: none;
-}
-.form-content a:hover{
-    text-decoration: underline;
-}
+
 .line{
     position: relative;
     height: 1px;
     width: 100%;
-    margin: 36px 0;
+    margin: 32px 0px;
     background-color: #d4d4d4;
 }
 .line::before{
@@ -129,10 +128,17 @@ form{
     color: #8b8b8b;
     padding: 0 15px;
 }
+
 .media-options a{
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid #CACACA;
+    width: 100%;
+    padding: 13px 8px;
+    border-radius: 6px;
+    text-decoration: none;
+    position: relative;
 }
 
 img.google-img{
@@ -141,14 +147,13 @@ img.google-img{
     left: 15px;
     transform: translateY(-50%);
 }
+
 img.google-img{
     height: 20px;
     width: 20px;
     object-fit: cover;
 }
-a.google{
-    border: 1px solid #CACACA;
-}
+
 a.google span{
     font-weight: 600;
     opacity: 0.7;
@@ -157,15 +162,15 @@ a.google span{
 
 a.google:hover {
     background-color: #eeeeee;
-    text-decoration: none;
 }
 
-@media screen and (max-width: 400px) {
-    .form{
-        padding: 20px 10px;
-    }
-    header {
-        font-size: 28px;
+
+@media (max-width: 449px) {
+    body {
+        font-size: 15px;
     }
 
+    .heading {
+        font-size: 32px;
+    }
 }

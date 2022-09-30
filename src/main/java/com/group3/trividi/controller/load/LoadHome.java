@@ -1,4 +1,4 @@
-package com.group3.trividi.control;
+package com.group3.trividi.controller.load;
 
 
 import com.group3.trividi.dao.City_DAO;
@@ -16,17 +16,15 @@ import java.util.List;
 
 @WebServlet(name = "LoadHome", value = "/index.jsp")
 public class LoadHome extends HttpServlet {
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         Hotel_DAO hotel = new Hotel_DAO();
         List<Hotel_Details> listH = hotel.getHotelsInHome();
         request.setAttribute("listH", listH); // EL ${list}
         City_DAO city = new City_DAO();
         List<City> listC = city.getCitys();
         request.setAttribute("listC", listC); // EL ${list}
-//        request.setAttribute("page", "index.jsp");
+        request.setAttribute("page", "index.jsp");
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 

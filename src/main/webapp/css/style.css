@@ -29,7 +29,10 @@ html {
 }
 
 .mt-body {
-    margin-top: 6rem;
+    margin-top: 4rem;
+}
+.mb-body{
+    margin-bottom: 8rem;
 }
 
 section {
@@ -333,10 +336,17 @@ header .search-bar-container label:hover {
     justify-content: center;
 }
 
-.hot-hotel .row .img img {
-    width: 100%;
-    height: 500px;
+.hot-hotel .row .img {
+    text-align: center;
 }
+
+.hot-hotel .row .img img {
+    object-fit: cover;
+    width: 500px;
+    height: 500px;
+    max-width: calc(100% - 2rem);
+}
+
 
 .hot-hotel .row .hot-hotel-content {
     flex: 1 1 40rem;
@@ -347,7 +357,7 @@ header .search-bar-container label:hover {
 
 .hot-hotel .row .hot-hotel-content .hotel-info {
     padding: .5rem 0;
-
+    text-align: center;
 }
 
 .hot-hotel .row .hotel-info h3 i[class*="fa-"] {
@@ -363,7 +373,7 @@ header .search-bar-container label:hover {
 .hot-hotel .row .hot-hotel-content .hotel-info h2 {
     font-size: 4rem;
     padding: 1rem 0;
-    color: #555;
+    color: #444;
     text-align: center;
     text-transform: uppercase;
 }
@@ -371,10 +381,15 @@ header .search-bar-container label:hover {
 .hot-hotel .row .hot-hotel-content .hotel-info h3 {
     font-size: 2rem;
     padding: 1rem 0;
-    color: #666;
-
+    color: #444;
+    text-align: left;
 }
-
+.hot-hotel .row .hot-hotel-content .hotel-info span,
+.hot-hotel .row .hot-hotel-content .hotel-info .hotel-desc {
+    font-size: 1.8rem;
+    text-align: justify;
+    color: #666;
+}
 
 .hotel .box-container {
     display: flex;
@@ -518,13 +533,18 @@ header .search-bar-container label:hover {
 .review .review-slider {
     padding-bottom: 2rem;
 }
+.review .swiper-slide {
+    height: auto;
+}
 
 .review .box {
     padding: 2rem;
     text-align: center;
+    height: 100%;
+    width: 100%;
     box-shadow: 0 1rem 2rem rgb(0 0 0 / 15%);
-    border-radius: .5rem;
-    border: 1px solid #cccc;
+    border-radius: .6rem;
+    border: 1px solid #ccc;
 }
 
 .review .box img {
@@ -544,6 +564,7 @@ header .search-bar-container label:hover {
     color: #666;
     font-size: 1.5rem;
     padding: 1rem 0;
+    text-align: justify;
 }
 
 .review .box .stars i {
@@ -551,7 +572,23 @@ header .search-bar-container label:hover {
     font-size: 1.7rem;
 }
 
+.review .box .price,
+.review .box .price .text{
+    font-size: 2rem;
+    color: #333;
+    padding: 1rem;
+    font-weight: 600;
+}
 
+.review .box .price {
+    color: var(--orange);
+}
+
+.review .box .price .dis {
+    color: #666;
+    font-size: 1.5rem;
+    text-decoration: line-through;
+}
 
 .brand-container {
     text-align: center;
