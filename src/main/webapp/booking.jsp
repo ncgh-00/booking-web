@@ -91,7 +91,7 @@
     <div class="swiper mySwiper review-slider">
         <div class="swiper-wrapper wrapper">
             <c:forEach items="${listR}" var="o">
-                <div class="swiper-slide">
+                <div class="swiper-slide magrin-slide">
                     <div class="box">
                         <img src="${o.images}" alt="room image">
                         <h3>${o.name}</h3>

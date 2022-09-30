@@ -34,7 +34,7 @@
     max-width: calc(100% - 32px);
     border-radius: 5px;
     text-align: center;
-    padding: 32px 32px;
+    padding: 20px 28px;
 }
 
 .heading {
@@ -83,7 +83,6 @@
     display: inline-block;
     text-decoration: none;
     margin-top: 12px;
-    margin-bottom: 12px;
     color: rgb(7, 135, 220);
     font-weight: 400;
 }
@@ -92,6 +91,14 @@
 .form-link .signup-link:hover {
     cursor: pointer;
     color: rgb(255, 165, 0);
+    text-decoration: rgb(255, 165, 0);
+}
+
+.field-text-error {
+    padding: 16px;
+    background-color: red;
+    color: #000;
+    font-weight: 400;
 }
 
 .btn {
@@ -103,6 +110,7 @@
     color: aliceblue;
     display: block;
     font-size: 16px;
+    margin-top: 16px;
 }
 
 .btn:hover {
@@ -115,7 +123,7 @@
     position: relative;
     height: 1px;
     width: 100%;
-    margin: 32px 0px;
+    margin: 24px 0px;
     background-color: #d4d4d4;
 }
 .line::before{

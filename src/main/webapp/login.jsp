@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="./css/form.css">
+    <link rel="stylesheet" href="css/form-s.css">
 </head>
 <body>
 <div class="layout">
     <div class="container">
         <h3 class="heading">Login</h3>
-        <form action="" class="form">
+        <form action="" class="form" method="post">
             <div class="input">
                 <input type="text" class="input-box" placeholder="User name" required>
             </div>
@@ -22,13 +22,27 @@
                 <input type="password" class="input-box password" placeholder="Password" required>
                 <i class='bx bx-hide eye-icon'></i>
             </div>
+
+            <c:if test="${error != null}">
+                <div class="field__text__error">
+                    <p>${error}</p>
+                </div>
+            </c:if>
+            <c:if test="${success != null}">
+                <div class="field__text__signup">
+                    <p>${success}</p>
+                </div>
+            </c:if>
+
+
             <div class="form-link">
                 <a href="" class="forgot-pas-link">Forgot password?</a>
             </div>
             <input type="submit" value="Login" class="btn">
+            <input type="hidden" value="<%=request.getParameter("page")%>" name="page">
         </form>
         <div class="form-link">
-            <span>Don't have an account? <a href="register.jsp" class="signup-link">Signup</a></span>
+            <span>Don't have an account? <a href="signup.jsp" class="signup-link">Signup</a></span>
         </div>
         <div class="line"></div>
         <div class="media-options">
@@ -40,6 +54,6 @@
     </div>
 </div>
 
-<script src="./js/form.js"></script>
+<script src="js/form.js"></script>
 </body>
 </html>

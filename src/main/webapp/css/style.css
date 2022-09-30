@@ -35,6 +35,10 @@ html {
     margin-bottom: 8rem;
 }
 
+.magrin-slide {
+   margin-right: 24.5px !important;
+}
+
 section {
     padding: 2rem 9%;
 }
@@ -541,16 +545,17 @@ header .search-bar-container label:hover {
     padding: 2rem;
     text-align: center;
     height: 100%;
-    width: 100%;
+    width: 85%;
     box-shadow: 0 1rem 2rem rgb(0 0 0 / 15%);
-    border-radius: .6rem;
+    border-radius: 1rem;
     border: 1px solid #ccc;
+    cursor: pointer;
 }
 
 .review .box img {
     height: 20rem;
-    width: 25rem;
-    border-radius: .5rem;
+    width: 100%;
+    border-radius: .8rem;
     object-fit: cover;
     margin-bottom: 1rem;
 }
@@ -712,6 +717,10 @@ header .search-bar-container label:hover {
     header .search-bar-container {
         padding: 1.5rem 2rem;
     }
+
+    .magrin-slide {
+        margin-right: 26px !important;
+    }
 }
 
 @media (max-width:768px) {
@@ -754,6 +763,10 @@ header .search-bar-container label:hover {
         width: 100%;
     }
 
+    .magrin-slide {
+        margin-right: 33px !important;
+    }
+
 }
 
 @media (max-width:450px) {
@@ -767,5 +780,9 @@ header .search-bar-container label:hover {
 
     header .search-bar-container select {
         width: 40%;
+    }
+
+    .magrin-slide {
+        margin-right: 27px !important;
     }
 }

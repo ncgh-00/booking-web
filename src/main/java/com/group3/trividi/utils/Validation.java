@@ -23,6 +23,6 @@ public class Validation {
     }
 
     public static void main(String[] args) {
-        System.out.println(Validation.validEmail("huy123@gmail.com"));
+        System.out.println(Validation.validEmail("huy123@gmail"));
     }
 }
