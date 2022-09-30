@@ -1,5 +1,7 @@
 package com.group3.trividi.control;
 
+import com.group3.trividi.utils.DateProcessor;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +27,19 @@ public class Booking extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
 
+        String name = request.getParameter("name");
+        String phone = request.getParameter("phone");
+        String dateS = request.getParameter("dateStart");
+        String dateE = request.getParameter("dateEnd");
+
+        DateProcessor tool = new DateProcessor();
+        System.out.println(dateS);
+        System.out.println(tool.isLogicDate(dateS));
+        if (DateProcessor.duration(dateS, dateE) <= 0 || !tool.isLogicDate(dateS) ) {
+            request.setAttribute("error", "Date is not valid");
+            request.getRequestDispatcher("BookingControl?id=").forward(request, response);
+            return;
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
