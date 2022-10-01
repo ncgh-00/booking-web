@@ -37,7 +37,7 @@
             <input type="hidden" value="<%=request.getParameter("id_hotel")%>" name="id_hotel">
         </form>
         <div class="form-link">
-            <span>Don't have an account? <a href="signup.jsp?page=${requestScope.page}&&id_hotel=${requestScope.id_hotel}" class="signup-link">Signup</a></span>
+            <span>Don't have an account? <a href="signup.jsp?page=<%=request.getParameter("page")%>&&id_hotel=<%=request.getParameter("id_hotel")%>" class="signup-link">Signup</a></span>
         </div>
         <div class="line"></div>
         <div class="media-options">

@@ -51,7 +51,7 @@
             <input type="hidden" value="<%=request.getParameter("id_hotel")%>" name="id_hotel">
         </form>
         <div class="form-link">
-            <span>Already have an account? <a href="login.jsp" class="signup-link">Login</a></span>
+            <span>Already have an account? <a href="login.jsp?page=<%=request.getParameter("page")%>&&id_hotel=<%=request.getParameter("id_hotel")%>" class="signup-link">Login</a></span>
         </div>
         <div class="line"></div>
         <div class="media-options">
