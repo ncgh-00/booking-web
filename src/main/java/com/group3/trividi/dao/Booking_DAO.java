@@ -2,6 +2,7 @@ package com.group3.trividi.dao;
 
 import com.group3.trividi.context.DBContext;
 import com.group3.trividi.model.Booking;
+import com.group3.trividi.utils.DateProcessor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,7 +25,7 @@ public class Booking_DAO {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
-            System.out.println(query);
+//            System.out.println(query);
 //            int idBooking, String uid, String staffID, String hotelName, String roomName, int numOfRoom, Date dateStart, java.util.Date
 //            dateEnd, int totalCost, boolean confirm
             while (rs.next()) {
@@ -64,9 +65,50 @@ public class Booking_DAO {
         }
     }
 
-    public static void main(String[] args) {
-        Booking_DAO b = new Booking_DAO();
-        b.getBook("UCODE00000005");
+    public void insertBook(int id_room, String uid, String dateS, String dateE, int numOfRoom, int total) {
+        String query = "INSERT INTO [Booking]([ID_Room_Details], [UID], [Date_Start],[Date_End],[NumberOfRooms],[Total_Costs],[Confirm])\n"
+                + "values (?,?,?,?,?,?,0)";
+
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+
+            ps.setInt(1, id_room);
+            ps.setString(2, uid);
+            ps.setString(3, dateS);
+            ps.setString(4, dateE);
+            ps.setInt(5, numOfRoom);
+            ps.setLong(6, total * numOfRoom * DateProcessor.duration(dateS, dateE));
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    public int getCost(int idRoom) {
+        String query = "SELECT [Cost],[Discount] FROM [Room_Details]\n"
+                + "where ID_Room_Details = ? ";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+
+            ps.setInt(1, idRoom);
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                System.out.println(rs.getInt(1) + " " + rs.getInt(2));
+                return (int) Math.ceil(rs.getInt(1) * (1 - rs.getInt(2) / 100) / 24000);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
+//    public static void main(String[] args) {
+//        Booking_DAO b = new Booking_DAO();
+//        b.getBook("UCODE00000005");
+//    }
 
 }

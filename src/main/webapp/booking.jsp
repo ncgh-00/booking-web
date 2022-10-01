@@ -129,22 +129,27 @@
             <img src="./images/travel-img.svg" alt="">
         </div>
 
-        <form action="">
+        <form action="BookRoom?id=${hotel_details.id}" method="post">
+    <c:if test="${sessionScope.Account == null || sessionScope.role == 0}">
             <div class="form-row">
-                <div class="inputBox">
+                <div class="inputBox flex-1-6">
                     <h3>Name</h3>
-                    <input type="text" placeholder="Full name" required>
+                    <input type="text" placeholder="Full name" name="name" required>
                 </div>
                 <div class="inputBox">
                     <h3>Phone</h3>
-                    <input type="tel" placeholder="Phone number" required>
+                    <input type="tel" placeholder="Phone number" name="phone" required>
+                </div>
+                <div class="inputBox flex-2-1">
+                    <h3>Email</h3>
+                    <input type="email" placeholder="Email" name="email" required>
                 </div>
             </div>
-
+    </c:if>
             <div class="form-row">
                 <div class="inputBox">
                     <h3>Room Type</h3>
-                    <select name="room" id="room">
+                    <select name="roomtype" id="room">
                         <c:forEach items="${listR}" var="o">
                             <option value="${o.id}" >${o.name}</option>
                         </c:forEach>
@@ -152,21 +157,25 @@
                 </div>
                 <div class="inputBox">
                     <h3>How many</h3>
-                    <input type="number" min="1" placeholder="Number of rooms" required>
+                    <input type="number" min="1" placeholder="Number of rooms" name="numofroom" required>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="inputBox">
                     <h3>Arrivals</h3>
-                    <input type="date" required>
+                    <input type="date" required name="dateS">
                 </div>
                 <div class="inputBox">
                     <h3>Leaving</h3>
-                    <input type="date" required>
+                    <input type="date" required name="dateE">
                 </div>
             </div>
-
+            <c:if test="${error != null}">
+                <div class="field-text-error">
+                    <p>${error}</p>
+                </div>
+            </c:if>
             <input type="submit" class="btn" value="book now">
         </form>
     </div>

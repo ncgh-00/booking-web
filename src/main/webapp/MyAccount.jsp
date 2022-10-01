@@ -84,7 +84,7 @@
                 </c:if>
 
                 <div class="col col-8" data-label="">
-                    <a href="DeleteBooking?id=${o.idBooking}&&page=MyAccount" class="delete" data-toggle="modal">
+                    <a href="DeleteBooking?id=${o.idBooking}&&page=LoadMyAccount" class="delete" data-toggle="modal">
                         <i class="material-icons" data-toggle="tooltip" title="Delete">
                             &#xE872;
                         </i>

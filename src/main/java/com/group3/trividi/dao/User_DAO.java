@@ -58,7 +58,7 @@ public class User_DAO {
         String query = "select a.UID, a.ID_Hotel, a.Role_ID, a.Username, a.Hash_password, a.FullName, a.Email, a.Phone, a.Status \n" +
                 "from Account as a\n" +
                 "where a.Username = '"+ username +"' and a.Hash_password = '"+ pass +"'";
-        System.out.println(query);
+//        System.out.println(query);
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);

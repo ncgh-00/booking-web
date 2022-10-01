@@ -8,8 +8,9 @@ public class Room_Details {
     private String des;
     private int cost;
     private int discount;
+    private boolean status;
 
-    public Room_Details(int id, int id_hotel, String name, String images, String des, int cost, int discount) {
+    public Room_Details(int id, int id_hotel, String name, String images, String des, int cost, int discount, boolean status) {
         this.id = id;
         this.id_hotel = id_hotel;
         this.name = name;
@@ -17,6 +18,7 @@ public class Room_Details {
         this.des = des;
         this.cost = cost;
         this.discount = discount;
+        this.status = status;
     }
 
     public int getId() {
@@ -73,5 +75,13 @@ public class Room_Details {
 
     public void setDiscount(int discount) {
         this.discount = discount;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

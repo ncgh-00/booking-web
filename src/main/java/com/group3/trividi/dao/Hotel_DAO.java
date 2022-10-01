@@ -136,7 +136,8 @@ public class Hotel_DAO {
                         rs.getString(4),
                         rs.getString(5),
                         rs.getInt(6),
-                        rs.getInt(7)));
+                        rs.getInt(7),
+                        rs.getBoolean(8)));
 
             }
             System.out.println(list.size() + "rooms");
