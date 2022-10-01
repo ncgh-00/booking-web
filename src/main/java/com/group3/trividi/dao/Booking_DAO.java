@@ -49,7 +49,7 @@ public class Booking_DAO {
         return list;
     }
 
-    public List<Booking> getBooks() {
+    public List<Booking> getMyHotels() {
         List<Booking> list = new ArrayList<>();
         String query = "SELECT [ID_booking]\n"
                 + "      ,[UID]\n"

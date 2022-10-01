@@ -63,8 +63,8 @@
                  <a href="#city">Room</a>
                  <a href="#services">Book</a>
              </c:if>
-             <a href="#">My account</a>
-             <a href="#">My hotel</a>
+             <a href="LoadMyAccount">My account</a>
+             <a href="MyHotel">My hotel</a>
              <a href="#contact">contact</a>
          </nav>
 
