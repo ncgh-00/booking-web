@@ -87,6 +87,19 @@ public class Booking_DAO {
         return list;
     }
 
+    public void deleteBook(String id) {
+        String query = "DELETE FROM [dbo].[Booking]\n"
+                + "      WHERE ID_booking = " + id + " ";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         Booking_DAO b = new Booking_DAO();
         b.getBook("UCODE00000005");

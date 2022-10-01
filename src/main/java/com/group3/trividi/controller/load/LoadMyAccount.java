@@ -1,6 +1,7 @@
 package com.group3.trividi.controller.load;
 
 import com.group3.trividi.dao.Booking_DAO;
+import com.group3.trividi.dao.User_DAO;
 import com.group3.trividi.model.Account;
 import com.group3.trividi.model.Booking;
 
@@ -17,9 +18,10 @@ import java.util.List;
 public class LoadMyAccount extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         Account acc = (Account) session.getAttribute("Account");
+        User_DAO dao = new User_DAO();
+        request.setAttribute("o", dao.getUSer(acc.getUsername(), acc.getHashPassword()));
         Booking_DAO booking = new Booking_DAO();
         List<Booking> listB = booking.getBook(acc.getUID());
         request.setAttribute("listB", listB);
