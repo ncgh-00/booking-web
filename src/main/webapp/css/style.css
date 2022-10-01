@@ -87,7 +87,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 6%;
+    padding: 1.5rem 9%;
 }
 
 header .logo {
@@ -101,12 +101,23 @@ header .logo span {
     color: var(--orange);
 }
 
+header .navbar {
+    margin: auto;
+}
+
 header .navbar a {
     color: #fff;
     font-size: 2rem;
-    margin: .8rem;
+    margin: .8rem 2rem;
 }
 
+header .username a {
+    color: #fff;
+    font-size: 2rem;
+    margin: .8rem 5rem .8rem 0;
+}
+
+header .username a:hover,
 header .navbar a:hover {
     color: var(--orange);
 }
@@ -127,7 +138,7 @@ header .search-bar-container {
     top: 100%;
     left: 0;
     right: 0;
-    padding: 1.5rem 9%;
+    padding: 1.5rem 11%;
     background: #333;
     border-top: .1rem solid rgba(255, 255, 255, .2);
     display: flex;
@@ -393,6 +404,7 @@ header .search-bar-container label:hover {
     font-size: 1.8rem;
     text-align: justify;
     color: #666;
+    text-transform: initial;
 }
 
 .hotel .box-container {
@@ -570,6 +582,7 @@ header .search-bar-container label:hover {
     font-size: 1.5rem;
     padding: 1rem 0;
     text-align: justify;
+    text-transform: none;
 }
 
 .review .box .stars i {
@@ -659,6 +672,7 @@ header .search-bar-container label:hover {
     flex-wrap: wrap;
     gap: 1.5rem;
     align-items: center;
+    justify-content: center;
 }
 
 .book .row .img img {
@@ -671,13 +685,25 @@ header .search-bar-container label:hover {
     padding: 2rem;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
     border-radius: .5rem;
+    text-align: center;
 }
+
+.book .row .form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
 
 .book .row form .inputBox {
     padding: .5rem 0;
-
+    flex: 1;
 }
 
+.inputBox + .inputBox {
+    margin-left: 3rem;
+}
+
+.book .row form .inputBox select,
 .book .row form .inputBox input {
     width: 100%;
     padding: 1rem;
@@ -685,13 +711,14 @@ header .search-bar-container label:hover {
     font-size: 1.7rem;
     color: #333;
     text-transform: none;
+    border-radius: .5rem;
 }
 
 .book .row form .inputBox h3 {
     font-size: 2rem;
     padding: 1rem 0;
     color: #666;
-
+    text-align: left;
 }
 
 

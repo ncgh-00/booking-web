@@ -48,6 +48,7 @@
             </c:if>
             <input type="submit" value="Sign Up" class="btn">
             <input type="hidden" value="<%=request.getParameter("page")%>" name="page">
+            <input type="hidden" value="<%=request.getParameter("id_hotel")%>" name="id_hotel">
         </form>
         <div class="form-link">
             <span>Already have an account? <a href="login.jsp" class="signup-link">Login</a></span>

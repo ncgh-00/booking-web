@@ -9,7 +9,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-transform: capitalize;
 }
 
 *::selection {
@@ -30,11 +29,11 @@
 
 .container {
     background-color: #fff;
-    width: 450px;
+    width: 432px;
     max-width: calc(100% - 32px);
-    border-radius: 5px;
+    border-radius: 7px;
     text-align: center;
-    padding: 24px 28px;
+    padding: 32px 28px;
 }
 
 .heading {
@@ -78,6 +77,15 @@
     padding: 5px;
 }
 
+.field-text-error {
+    margin-top: 8px;
+    padding: 8px;
+    background-color: #ff8b8b;
+    color: #222222;
+    font-weight: 400;
+    border-radius: 9px;
+}
+
 .form-link .forgot-pas-link,
 .form-link .signup-link {
     display: inline-block;
@@ -93,6 +101,7 @@
     color: rgb(255, 165, 0);
     text-decoration: rgb(255, 165, 0);
 }
+
 
 .btn {
     border: 0;
@@ -116,7 +125,7 @@
     position: relative;
     height: 1px;
     width: 100%;
-    margin: 32px 0px;
+    margin: 28px 0;
     background-color: #d4d4d4;
 }
 .line::before{

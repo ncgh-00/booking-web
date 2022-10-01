@@ -139,6 +139,7 @@ public class Hotel_DAO {
                         rs.getInt(7)));
 
             }
+            System.out.println(list.size() + "rooms");
         } catch (Exception e) {
             System.out.println("Fail, please contact to admin!!");
         }

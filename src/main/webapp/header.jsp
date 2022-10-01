@@ -1,22 +1,111 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <header>
             <div id="menu-bar" class="fas fa-bars"></div>
 
             <a href="#" class="logo"><span>T</span>rividi</a>
+
+
+        <c:if test="${sessionScope.Account == null || sessionScope.role == 0}">
             <nav class="navbar">
-                <a href="#home">home</a>
-                <a href="#packages">Hotel</a>
-                <a href="#services">City</a>
-                <a href="#gallery">gallery</a>
-                <a href="#review">review</a>
+                <a href="index.jsp">home</a>
+                <c:if test="${requestScope.page == 'index.jsp' }">
+                <a href="#city">city</a>
+                <a href="#services">services</a>
+                </c:if>
+                <c:if test="${requestScope.page == 'LoadBooking' }">
+                    <a href="#city">Room</a>
+                    <a href="#services">Book</a>
+                </c:if>
                 <a href="#contact">contact</a>
-                <a href="#book">book</a>
             </nav>
 
             <div class="icons">
+                 <c:if test="${requestScope.page == 'index.jsp' }">
                 <i class="fas fa-search" id="search-btn"></i>
-                <a href="login.jsp"><i class="fas fa-user" id="login-btn"></i></a>
+                </c:if>
+                <a href="login.jsp?page=${requestScope.page}&&id_hotel=${requestScope.id_hotel}"><i class="fas fa-user" id="login-btn"></i></a>
             </div>
+        </c:if>
+
+         <c:if test="${sessionScope.role == 1  && sessionScope.Account.fullname != null}">
+             <nav class="navbar">
+                 <a href="index.jsp">home</a>
+                 <c:if test="${requestScope.page == 'index.jsp' }">
+                     <a href="#city">city</a>
+                     <a href="#services">services</a>
+                 </c:if>
+                 <c:if test="${requestScope.page == 'LoadBooking' }">
+                     <a href="#city">Room</a>
+                     <a href="#services">Book</a>
+                 </c:if>
+                 <a href="#">Dashboard</a>
+                 <a href="#">My account</a>
+                 <a href="#contact">contact</a>
+             </nav>
+
+             <div class="icons">
+                 <c:if test="${requestScope.page == 'index.jsp' }">
+                     <i class="fas fa-search" id="search-btn"></i>
+                 </c:if>
+                 <a href="Logout?page=${requestScope.page}&&id_hotel=${requestScope.id_hotel}"><i class="fas fa-sign-out-alt"></i></a>
+             </div>
+         </c:if>
+
+     <c:if test="${sessionScope.role == 2  && sessionScope.Account.fullname != null}">
+         <nav class="navbar">
+             <a href="index.jsp">home</a>
+             <c:if test="${requestScope.page == 'index.jsp' }">
+                 <a href="#city">city</a>
+                 <a href="#services">services</a>
+             </c:if>
+             <c:if test="${requestScope.page == 'LoadBooking' }">
+                 <a href="#city">Room</a>
+                 <a href="#services">Book</a>
+             </c:if>
+             <a href="#">My account</a>
+             <a href="#">My hotel</a>
+             <a href="#contact">contact</a>
+         </nav>
+
+         <div class="username">
+             <a href="#">${sessionScope.Account.fullname}</a>
+         </div>
+
+         <div class="icons">
+             <c:if test="${requestScope.page == 'index.jsp' }">
+                 <i class="fas fa-search" id="search-btn"></i>
+             </c:if>
+             <a href="Logout?page=${requestScope.page}&&id_hotel=${requestScope.id_hotel}"><i class="fas fa-sign-out-alt" ></i></a>
+         </div>
+     </c:if>
+
+     <c:if test="${sessionScope.role == 3  && sessionScope.Account.fullname != null}">
+         <nav class="navbar">
+             <a href="index.jsp">home</a>
+             <c:if test="${requestScope.page == 'index.jsp' }">
+                 <a href="#city">city</a>
+                 <a href="#services">services</a>
+             </c:if>
+             <c:if test="${requestScope.page == 'LoadBooking' }">
+                 <a href="#city">Room</a>
+                 <a href="#services">Book</a>
+             </c:if>
+             <a href="#">My account</a>
+             <a href="#contact">contact</a>
+         </nav>
+
+         <div class="username">
+             <a href="#">${sessionScope.Account.fullname}</a>
+         </div>
+
+         <div class="icons">
+             <c:if test="${requestScope.page == 'index.jsp' }">
+                 <i class="fas fa-search" id="search-btn"></i>
+             </c:if>
+             <a href="Logout?page=${requestScope.page}&&id_hotel=${requestScope.id_hotel}"><i class="fas fa-sign-out-alt" ></i></a>
+         </div>
+     </c:if>
 
             <form action="" class="search-bar-container">
                 <p>Search bar</p>
@@ -28,7 +117,7 @@
                             <option value="hotel" selected>[Search Hotel]</option>
                             <option value="city">[Search City]</option>
                         </select>
-                        <select name="search-by" id="x>
+                        <select name="search-by" id="x">
                             <option value="hotel" selected>[Search Hotel]</option>
                             <option value="city">[Search City]</option>
                         </select>

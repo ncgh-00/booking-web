@@ -129,33 +129,43 @@
         </div>
 
         <form action="">
-            <div class="inputBox">
-                <h3>Name</h3>
-                <input type="text" placeholder="full name">
+            <div class="form-row">
+                <div class="inputBox">
+                    <h3>Name</h3>
+                    <input type="text" placeholder="Full name" required>
+                </div>
+                <div class="inputBox">
+                    <h3>Phone</h3>
+                    <input type="tel" placeholder="Phone number" required>
+                </div>
             </div>
-            <div class="inputBox">
-                <h3>Phone</h3>
-                <input type="tel" placeholder="phone number">
+
+            <div class="form-row">
+                <div class="inputBox">
+                    <h3>Room Type</h3>
+                    <select name="room" id="room">
+                        <c:forEach items="${listR}" var="o">
+                            <option value="${o.id}" >${o.name}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="inputBox">
+                    <h3>How many</h3>
+                    <input type="number" min="1" placeholder="Number of rooms" required>
+                </div>
             </div>
-            <div class="inputBox">
-                <select name="room" id="room" style="width: 64px; height: 64px">
-                    <c:forEach items="${ListR}" var="o">
-                        <option value="${o.id}" required>${o.name}</option>
-                    </c:forEach>
-                </select>
+
+            <div class="form-row">
+                <div class="inputBox">
+                    <h3>Arrivals</h3>
+                    <input type="date" required>
+                </div>
+                <div class="inputBox">
+                    <h3>Leaving</h3>
+                    <input type="date" required>
+                </div>
             </div>
-            <div class="inputBox">
-                <h3>How many</h3>
-                <input type="number" min="1" placeholder="number of rooms">
-            </div>
-            <div class="inputBox">
-                <h3>Arrivals</h3>
-                <input type="date">
-            </div>
-            <div class="inputBox">
-                <h3>Leaving</h3>
-                <input type="date">
-            </div>
+
             <input type="submit" class="btn" value="book now">
         </form>
     </div>

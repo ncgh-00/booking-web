@@ -1,6 +1,8 @@
 package com.group3.trividi.controller.login;
 
 import com.group3.trividi.dao.User_DAO;
+import com.group3.trividi.model.Account;
+import com.group3.trividi.utils.HashPassword;
 import com.group3.trividi.utils.Validation;
 
 import javax.servlet.*;
@@ -23,6 +25,9 @@ public class SignUp extends HttpServlet {
         String password = request.getParameter("pass");
         String repass = request.getParameter("repass");
         String phone = request.getParameter("phone");
+        String page = request.getParameter("page");
+        String id_hotel = request.getParameter("id_hotel");
+        HttpSession session = request.getSession();
         User_DAO dao = new User_DAO();
         boolean check = dao.checkAccount(username, mail);
         if (check) {
@@ -42,9 +47,16 @@ public class SignUp extends HttpServlet {
             request.getRequestDispatcher("signup.jsp").forward(request, response);
         } else {
             request.removeAttribute("errorSignup");
-            request.setAttribute("success", "Sign up successfull! Please login your account!");
-            dao.insert(username, password, name, mail, phone);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            dao.insert(username, HashPassword.getHashedPassword(password), name, mail, phone);
+            Account acc = dao.getUSer(username, HashPassword.getHashedPassword(password));
+            session.setAttribute("Account", acc);
+            session.setAttribute("role", acc.getRoleID());
+            request.setAttribute("id_hotel",id_hotel);
+            if(page == null || page.equals("null")){
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+                return;
+            }
+            request.getRequestDispatcher(page).forward(request, response);
 
         }
     }

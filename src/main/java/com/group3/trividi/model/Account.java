@@ -10,7 +10,7 @@ public class Account {
     private String fullname;
     private String email;
     private String phone;
-    private boolean status = true;
+    private boolean status;
 
     public Account(String UID, int idHotel, int roleID, String username, String hashPassword, String fullname, String email, String phone, boolean status) {
         this.UID = UID;

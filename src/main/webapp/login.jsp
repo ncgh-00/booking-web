@@ -14,35 +14,30 @@
 <div class="layout">
     <div class="container">
         <h3 class="heading">Login</h3>
-        <form action="" class="form" method="post">
+        <form action="Login" class="form" method="post">
             <div class="input">
-                <input type="text" class="input-box" placeholder="User name" required>
+                <input type="text" class="input-box" placeholder="User name" name="username" required>
             </div>
             <div class="input-pas">
-                <input type="password" class="input-box password" placeholder="Password" required>
+                <input type="password" class="input-box password" placeholder="Password" name="password" required>
                 <i class='bx bx-hide eye-icon'></i>
             </div>
 
             <c:if test="${error != null}">
-                <div class="field__text__error">
+                <div class="field-text-error">
                     <p>${error}</p>
                 </div>
             </c:if>
-            <c:if test="${success != null}">
-                <div class="field__text__signup">
-                    <p>${success}</p>
-                </div>
-            </c:if>
-
 
             <div class="form-link">
                 <a href="" class="forgot-pas-link">Forgot password?</a>
             </div>
             <input type="submit" value="Login" class="btn">
             <input type="hidden" value="<%=request.getParameter("page")%>" name="page">
+            <input type="hidden" value="<%=request.getParameter("id_hotel")%>" name="id_hotel">
         </form>
         <div class="form-link">
-            <span>Don't have an account? <a href="signup.jsp" class="signup-link">Signup</a></span>
+            <span>Don't have an account? <a href="signup.jsp?page=${requestScope.page}&&id_hotel=${requestScope.id_hotel}" class="signup-link">Signup</a></span>
         </div>
         <div class="line"></div>
         <div class="media-options">
