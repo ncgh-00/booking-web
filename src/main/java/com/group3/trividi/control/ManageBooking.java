@@ -1,7 +1,7 @@
 package com.group3.trividi.control;
 
 import com.group3.trividi.dao.Booking_DAO;
-import com.group3.trividi.model.MyBooking;
+import com.group3.trividi.model.Booking;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -27,7 +27,7 @@ public class ManageBooking extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         Booking_DAO booking = new Booking_DAO();
-        List<MyBooking> listB = booking.getBooks();
+        List<Booking> listB = booking.getBooks();
         request.setAttribute("listB", listB);
         request.getRequestDispatcher("manageBooking.jsp").forward(request, response);
 

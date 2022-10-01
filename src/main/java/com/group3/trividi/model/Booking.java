@@ -3,42 +3,36 @@ package com.group3.trividi.model;
 import java.util.Date;
 
 public class Booking {
-    private int id;
-    private int id_room_details;
+    private int idBooking;
     private String uid;
-    private String id_staff;
+    private String staffID;
+    private String hotelName;
+    private String roomName;
+    private int numOfRoom;
     private Date dateStart;
     private Date dateEnd;
-    private int numOfRoom;
     private int totalCost;
     private boolean confirm;
 
-    public Booking(int id, int id_room_details, String uid, String id_staff, Date dateStart, Date dateEnd, int numOfRoom,int totalCost, boolean confirm) {
-        this.id = id;
-        this.id_room_details = id_room_details;
+    public Booking(int idBooking, String uid, String staffID, String hotelName, String roomName, int numOfRoom, Date dateStart, Date dateEnd, int totalCost, boolean confirm) {
+        this.idBooking = idBooking;
         this.uid = uid;
-        this.id_staff = id_staff;
+        this.staffID = staffID;
+        this.hotelName = hotelName;
+        this.roomName = roomName;
+        this.numOfRoom = numOfRoom;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
-        this.numOfRoom = numOfRoom;
         this.totalCost = totalCost;
         this.confirm = confirm;
     }
 
-    public int getId() {
-        return id;
+    public int getIdBooking() {
+        return idBooking;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId_room_details() {
-        return id_room_details;
-    }
-
-    public void setId_room_details(int id_room_details) {
-        this.id_room_details = id_room_details;
+    public void setIdBooking(int idBooking) {
+        this.idBooking = idBooking;
     }
 
     public String getUid() {
@@ -49,12 +43,36 @@ public class Booking {
         this.uid = uid;
     }
 
-    public String getId_staff() {
-        return id_staff;
+    public String getStaffID() {
+        return staffID;
     }
 
-    public void setId_staff(String id_staff) {
-        this.id_staff = id_staff;
+    public void setStaffID(String staffID) {
+        this.staffID = staffID;
+    }
+
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
+    public int getNumOfRoom() {
+        return numOfRoom;
+    }
+
+    public void setNumOfRoom(int numOfRoom) {
+        this.numOfRoom = numOfRoom;
     }
 
     public Date getDateStart() {
@@ -71,14 +89,6 @@ public class Booking {
 
     public void setDateEnd(Date dateEnd) {
         this.dateEnd = dateEnd;
-    }
-
-    public int getNumOfRoom() {
-        return numOfRoom;
-    }
-
-    public void setNumOfRoom(int numOfRoom) {
-        this.numOfRoom = numOfRoom;
     }
 
     public int getTotalCost() {
