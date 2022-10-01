@@ -1,10 +1,9 @@
 package com.group3.trividi.dao;
 
 import com.group3.trividi.context.DBContext;
-import com.group3.trividi.control.Booking;
-import com.group3.trividi.utils.DateProcessor;
+import com.group3.trividi.model.Booking;
+import com.group3.trividi.model.MyBooking;
 
-import java.awt.print.Book;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -46,8 +45,8 @@ public class Booking_DAO {
         return list;
     }
 
-    public List<Booking> getBooks() {
-        List<Booking> list = new ArrayList<>();
+    public List<MyBooking> getBooks() {
+        List<MyBooking> list = new ArrayList<>();
         String query = "SELECT [ID_booking]\n"
                 + "      ,[UID]\n"
                 + "      ,[hotelName]\n"
@@ -58,29 +57,30 @@ public class Booking_DAO {
                 + "      ,[Date_End]\n"
                 + "      ,[Total_cost]\n"
                 + "      ,[Confirm]\n"
-                + "  FROM [dbo].[YourBooking]\n"
+                + "  FROM [dbo].[Manage_Booking]\n"
                 + "  order by [Confirm]";
 
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
-//            while (rs.next()) {
-//                list.add(new Book(rs.getInt(1),
-//                        rs.getInt(2),
-//                        rs.getString(3),
-//                        rs.getString(4),
-//                        rs.getInt(5),
-//                        rs.getInt(6),
-//                        rs.getDate(7),
-//                        rs.getDate(8),
-//                        rs.getInt(9),
-//                        rs.getBoolean(10)
-//                ));
-//            }
+            while (rs.next()) {
+                list.add(new MyBooking(rs.getInt(4),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getInt(10),
+                        rs.getDate(8),
+                        rs.getDate(9),
+                        rs.getInt(11),
+                        rs.getBoolean(12)
+                ));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return list;
     }
+
 }

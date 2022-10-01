@@ -9,9 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Date;
 
 @WebServlet(name = "Booking", urlPatterns = {"/Booking"})
 public class Booking extends HttpServlet {
+
+    public Booking(int anInt, int anInt1, String string, String string1, Date date, Date date1, int anInt2, int anInt3, boolean aBoolean) {
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
