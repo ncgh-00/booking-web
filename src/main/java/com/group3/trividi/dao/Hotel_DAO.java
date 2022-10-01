@@ -1,6 +1,7 @@
 package com.group3.trividi.dao;
 
 import com.group3.trividi.context.DBContext;
+import com.group3.trividi.model.Booking;
 import com.group3.trividi.model.Hotel_Details;
 import com.group3.trividi.model.Room_Details;
 
@@ -40,7 +41,6 @@ public class Hotel_DAO {
                 );
             }
             System.out.println(hd);
-
         } catch (Exception e) {
             System.out.println("Fail, please contact to admin!!");
         }
@@ -146,7 +146,6 @@ public class Hotel_DAO {
 
         return list;
     }
-
 
 
     }

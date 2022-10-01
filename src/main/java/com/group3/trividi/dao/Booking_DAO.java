@@ -49,43 +49,7 @@ public class Booking_DAO {
         return list;
     }
 
-    public List<Booking> getMyHotels() {
-        List<Booking> list = new ArrayList<>();
-        String query = "SELECT [ID_booking]\n"
-                + "      ,[UID]\n"
-                + "      ,[hotelName]\n"
-                + "      ,[roomName]\n"
-                + "      ,[Staff_id]\n"
-                + "      ,[NumberOfRoom]\n"
-                + "      ,[Date_Start]\n"
-                + "      ,[Date_End]\n"
-                + "      ,[Total_cost]\n"
-                + "      ,[Confirm]\n"
-                + "  FROM [dbo].[Manage_Booking]\n"
-                + "  order by [Confirm]";
 
-        try {
-            conn = new DBContext().getConnection();
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                list.add(new Booking(rs.getInt(4),
-                        rs.getString(6),
-                        rs.getString(7),
-                        rs.getString(1),
-                        rs.getString(2),
-                        rs.getInt(10),
-                        rs.getDate(8),
-                        rs.getDate(9),
-                        rs.getInt(11),
-                        rs.getBoolean(12)
-                ));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
 
     public void deleteBook(String id) {
         String query = "DELETE FROM [dbo].[Booking]\n"

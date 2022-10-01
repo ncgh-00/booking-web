@@ -78,7 +78,6 @@
                     <div class="col col-7" data-label="Status"><a class="badge badge-confirm">confirm</a></div>
 
                 </c:if>
-
                 <c:if test="${o.confirm == false}">
                     <div class="col col-7" data-label="Status"><a class="badge badge-updating">updating</a></div>
 
