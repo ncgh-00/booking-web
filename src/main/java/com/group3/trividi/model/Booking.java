@@ -18,7 +18,7 @@ public class Booking {
     private String userEmail;
     private int idHotel;
 
-    public Booking(int idBooking, String uid, String staffID, String hotelName, String roomName, int numOfRoom, Date dateStart, Date dateEnd, int totalCost, boolean confirm, String userName, String userPhone, String userEmail,int idHotel) {
+    public Booking(int idBooking, String uid, String staffID, String hotelName, String roomName, int numOfRoom, Date dateStart, Date dateEnd, int totalCost, boolean confirm, String userName, String userPhone, String userEmail, int idHotel) {
         this.idBooking = idBooking;
         this.uid = uid;
         this.staffID = staffID;

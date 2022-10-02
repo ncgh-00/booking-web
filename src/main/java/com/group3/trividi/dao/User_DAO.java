@@ -76,6 +76,57 @@ public class User_DAO {
         return null;
     }
 
+    public void editUser(String id, String password, String name, String phone, String email) {
+        String sql = "update [Account] set ";
+
+        if (!password.isEmpty()) {
+            sql += " [Hash_password] = '" + HashPassword.getHashedPassword(password) + "',";
+        }
+        if (!name.isEmpty()) {
+            sql += " [FullName] = '" + name + "',";
+        }
+        if (!email.isEmpty()) {
+            sql += " [Email] = '" + email + "',";
+        }
+        if (!phone.isEmpty()) {
+            sql += " [Phone] = '" + phone + "',";
+        }
+
+        sql = sql.substring(0, sql.length() - 1);
+        sql += " where [UID] = '" + id + "'";
+        System.out.println(sql);
+
+        try {
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            st = conn.createStatement();
+
+            st.executeUpdate(sql);
+            System.out.println("success");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean checkEmail(String mail) {
+        boolean check = false;
+        String query = "select * from Account\n"
+                + "where Email = '" + mail + "'";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                check = true;
+            }
+
+        } catch (Exception e) {
+            System.out.println("Fail, please contact to admin!!");
+        }
+        return check;
+    }
+
+
 
 //
 //    public static void main(String[] args) {

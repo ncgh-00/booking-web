@@ -31,19 +31,19 @@
         </div>
         <div class="user-detail">
             <div class="infor">
-                <span class="details">Fullname:  ${o.fullname}</span>
+                <span class="details">Fullname:  <p>${o.fullname}</p></span>
             </div>
             <div class="infor">
-                <span class="details">Username:  ${o.username}</span>
+                <span class="details">Username:  <p>${o.username}</p></span>
             </div>
             <div class="infor">
-                <span class="details">Email:  ${o.email}</span>
+                <span class="details">Email:  <p>${o.email}</p></span>
             </div>
             <div class="infor">
-                <span class="details">Phone:  ${o.phone}</span>
+                <span class="details">Phone:  <p>${o.phone}</p></span>
             </div>
             <div>
-                <a href="edit_user.jsp" class="btn">Edit Profile</a>
+                <a href="edituser.jsp" class="btn">Edit Profile</a>
             </div>
 
         </div>

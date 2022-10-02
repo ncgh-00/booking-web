@@ -103,7 +103,6 @@
             </li>
         </c:forEach>
     </ul>
-
     <h2>Manage Booking</h2>
     <ul class="responsive-table">
         <li class="table-header">
