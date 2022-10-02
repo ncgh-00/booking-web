@@ -1,7 +1,6 @@
 package com.group3.trividi.dao;
 
 import com.group3.trividi.context.DBContext;
-import com.group3.trividi.model.Booking;
 import com.group3.trividi.model.Hotel_Details;
 import com.group3.trividi.model.Room_Details;
 
@@ -26,6 +25,7 @@ public class Hotel_DAO {
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
+//                int id, String name, String des, String image, String phone, String address, int star,boolean status, String category, String city, int cost, int discount
                 hd = new Hotel_Details(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
@@ -146,6 +146,25 @@ public class Hotel_DAO {
         }
 
         return list;
+    }
+
+    public void activate(int id, boolean check) {
+        int ac;
+        if (check) {
+            ac = 0;
+        } else {
+            ac = 1;
+        }
+        String query = "update Hotel set [Status] = " + ac + " where [ID_Hotel] = " + id + " ";
+        try {
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            st = conn.createStatement();
+
+            st.executeUpdate(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

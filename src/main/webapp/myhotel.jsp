@@ -48,10 +48,12 @@
             <div class="col col-5" data-label="Number Of Star">${hotel.star}</div>
             <div class="col col-6" data-label="City">${hotel.city}</div>
             <c:if test="${hotel.status == true}">
-                <div class="col col-7" data-label="Status"><a class="badge badge-confirm">active</a></div>
+                <div class="col col-7" data-label="Status"><a href="ActivateHotel?id=${hotel.id}&check=${hotel.status}" class="badge badge-confirm">active</a></div>
+
             </c:if>
             <c:if test="${hotel.status == false}">
-                <div class="col col-7" data-label="Status"><a class="badge badge-updating">inactive</a></div>
+                <div class="col col-7" data-label="Status"><a href="ActivateHotel?id=${hotel.id}&check=${hotel.status}" class="badge badge-updating">inactive</a></div>
+
             </c:if>
             <i class="fas fa-edit col col-8"></i>
             <div class="col col-9" data-label="">
