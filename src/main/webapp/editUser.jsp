@@ -14,38 +14,38 @@
 <div class="layout">
   <div class="container">
     <h3 class="heading">Edit User</h3>
-    <form action="SignUp" class="form" method="post">
+    <form action="EditUser?id=${sessionScope.Account.UID}" class="form" method="post">
       <div class="input">
-        <input type="text" class="input-box" placeholder="Full Name" name="name" required>
+        <input type="text" class="input-box" placeholder="Full Name" name="name" >
       </div>
 
       <div class="input">
-        <input type="tel" class="input-box" placeholder="Phone Number" name="phone" required>
+        <input type="tel" class="input-box" placeholder="Phone Number" name="phone" >
+      </div>
+
+      <div class="input">
+        <input type="tel" class="input-box" placeholder="Phone Number" name="email" >
       </div>
 
       <div class="input-pas">
-        <input type="password" class="input-box password" placeholder="Password" name="pass" required>
-        <i class='bx bx-hide eye-icon'></i>
+        <input type="password" class="input-box password" placeholder="Password" name="pass" >
       </div>
 
       <div class="input-pas">
-        <input type="password" class="input-box password" placeholder="Repeat Password" name="repass" required>
+        <input type="password" class="input-box password" placeholder="Repeat Password" name="repass" >
         <i class='bx bx-hide eye-icon'></i>
       </div>
 
-      <c:if test="${errorSignup != null}">
+      <c:if test="${error != null}">
         <div class="field-text-error">
-          <p>${errorSignup}</p>
+          <p>${error}</p>
         </div>
       </c:if>
       <input type="submit" value="Edit" class="btn">
-      <input type="hidden" value="<%=request.getParameter("page")%>" name="page">
-      <input type="hidden" value="<%=request.getParameter("id_hotel")%>" name="id_hotel">
     </form>
-
   </div>
 </div>
-
+<%--hi--%>
 <script src="js/form.js"></script>
 </body>
 </html>
