@@ -49,14 +49,11 @@
             <div class="col col-6" data-label="City">${hotel.city}</div>
             <c:if test="${hotel.status == true}">
                 <div class="col col-7" data-label="Status"><a class="badge badge-confirm">active</a></div>
-
             </c:if>
-
             <c:if test="${hotel.status == false}">
                 <div class="col col-7" data-label="Status"><a class="badge badge-updating">inactive</a></div>
-
             </c:if>
-
+            <i class="fas fa-edit col col-8"></i>
             <div class="col col-9" data-label="">
                 <a href="#t" class="delete" data-toggle="modal">
                     <i class="material-icons" data-toggle="tooltip" title="Delete">
@@ -69,7 +66,7 @@
 
     </ul>
 
-    <h2>Manage Booking</h2>
+    <h2>Manage Room Details</h2>
     <ul class="responsive-table">
         <li class="table-header">
             <div class="col col-1">Name of room</div>
@@ -85,17 +82,17 @@
                 <div class="col col-1" data-label="Name of room">${o.name}</div>
                 <div class="col col-2" data-label="Cost">${o.cost}</div>
                 <div class="col col-3" data-label="Discount"> ${o.discount}</div>
+
                 <c:if test="${o.status == true}">
                     <div class="col col-4" data-label="Status"><a class="badge badge-confirm">active</a></div>
-
                 </c:if>
-
                 <c:if test="${o.status == false}">
                     <div class="col col-4" data-label="Status"><a class="badge badge-updating">inactive</a></div>
-
                 </c:if>
 
-                <div class="col col-8" data-label="">
+                <i class="fas fa-edit col col-5"></i>
+
+                <div class="col col-6" data-label="">
                     <a href="#t" class="delete" data-toggle="modal">
                         <i class="material-icons" data-toggle="tooltip" title="Delete">
                             &#xE872;
@@ -105,6 +102,53 @@
 
             </li>
         </c:forEach>
+    </ul>
+    <h2>Manage Booking</h2>
+    <ul class="responsive-table">
+        <li class="table-header">
+            <div class="col col-1">User name</div>
+            <div class="col col-2">Phone</div>
+            <div class="col col-3">Email</div>
+            <div class="col col-4">Location</div>
+            <div class="col col-5">Room name</div>
+            <div class="col col-6">Amount</div>
+            <div class="col col-7">Day Start</div>
+            <div class="col col-8">Day End</div>
+            <div class="col col-9">Total Cost</div>
+            <div class="col col-10">Status</div>
+            <div class="col col-11">Edit</div>
+            <div class="col col-12">Del</div>
+        </li>
+        <c:forEach items="${listMB}" var="o">
+            <li class="table-row">
+                <div class="col col-1" data-label="Location">${o.userName}</div>
+                <div class="col col-2" data-label="Location">${o.userPhone}</div>
+                <div class="col col-3" data-label="Location">${o.userEmail}</div>
+                <div class="col col-4" data-label="Location">${o.hotelName}</div>
+                <div class="col col-5" data-label="Room name">${o.roomName}</div>
+                <div class="col col-6" data-label="Amount"> ${o.numOfRoom}</div>
+                <div class="col col-7" data-label="Day Start">${o.dateStart}</div>
+                <div class="col col-8" data-label="Day End">${o.dateEnd}</div>
+                <div class="col col-9" data-label="Total Cost">${o.totalCost}</div>
+                <c:if test="${o.status == true}">
+                    <div class="col col-10" data-label="Status"><a class="badge badge-confirm">active</a></div>
+                </c:if>
+                <c:if test="${o.status == false}">
+                    <div class="col col-10" data-label="Status"><a class="badge badge-updating">inactive</a></div>
+                </c:if>
+                <i class="fas fa-edit col col-11"></i>
+                <div class="col col-12" data-label="">
+                    <a href="DeleteBooking?id=${o.idBooking}&&page=LoadMyAccount" class="delete" data-toggle="modal">
+                        <i class="material-icons" data-toggle="tooltip" title="Delete">
+                            &#xE872;
+                        </i>
+                    </a>
+                </div>
+
+            </li>
+        </c:forEach>
+
+
     </ul>
 </div>
 </body>

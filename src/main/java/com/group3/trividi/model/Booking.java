@@ -13,8 +13,12 @@ public class Booking {
     private Date dateEnd;
     private int totalCost;
     private boolean confirm;
+    private String userName;
+    private String userPhone;
+    private String userEmail;
+    private int idHotel;
 
-    public Booking(int idBooking, String uid, String staffID, String hotelName, String roomName, int numOfRoom, Date dateStart, Date dateEnd, int totalCost, boolean confirm) {
+    public Booking(int idBooking, String uid, String staffID, String hotelName, String roomName, int numOfRoom, Date dateStart, Date dateEnd, int totalCost, boolean confirm, String userName, String userPhone, String userEmail,int idHotel) {
         this.idBooking = idBooking;
         this.uid = uid;
         this.staffID = staffID;
@@ -25,6 +29,9 @@ public class Booking {
         this.dateEnd = dateEnd;
         this.totalCost = totalCost;
         this.confirm = confirm;
+        this.userName = userName;
+        this.userPhone = userPhone;
+        this.userEmail = userEmail;
     }
 
     public int getIdBooking() {
@@ -105,5 +112,29 @@ public class Booking {
 
     public void setConfirm(boolean confirm) {
         this.confirm = confirm;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

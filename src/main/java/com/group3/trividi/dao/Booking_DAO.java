@@ -38,7 +38,11 @@ public class Booking_DAO {
                         rs.getDate(8),
                         rs.getDate(9),
                         rs.getInt(11),
-                        rs.getBoolean(12)
+                        rs.getBoolean(12),
+                        rs.getString(13),
+                        rs.getString(14),
+                        rs.getString(15),
+                        rs.getInt(3)
 
                 ));
             }
@@ -50,6 +54,41 @@ public class Booking_DAO {
         return list;
     }
 
+    public List<Booking> getBooks(String idHotel) {
+        List<Booking> list = new ArrayList<>();
+        String query = "select * from Manage_Booking where ID_Hotel = '" + idHotel + "' order by ID_Booking desc";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+//            System.out.println(query);
+//            int idBooking, String uid, String staffID, String hotelName, String roomName, int numOfRoom, Date dateStart, java.util.Date
+//            dateEnd, int totalCost, boolean confirm
+            while (rs.next()) {
+                list.add(new Booking(rs.getInt(4),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getInt(10),
+                        rs.getDate(8),
+                        rs.getDate(9),
+                        rs.getInt(11),
+                        rs.getBoolean(12),
+                        rs.getString(13),
+                        rs.getString(14),
+                        rs.getString(15),
+                        rs.getInt(3)
+
+                ));
+            }
+
+            System.out.print(list.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 
 
     public void deleteBook(String id) {
@@ -108,7 +147,7 @@ public class Booking_DAO {
 
 //    public static void main(String[] args) {
 //        Booking_DAO b = new Booking_DAO();
-//        b.getBook("UCODE00000005");
+//        b.getBooks("1");
 //    }
 
 }

@@ -35,12 +35,18 @@ public class LoadMyHotel extends HttpServlet {
         Account acc = (Account) session.getAttribute("Account");
         System.out.println(acc.getIdHotel());
         Hotel_DAO hotel = new Hotel_DAO();
+
         String id = String.valueOf(acc.getIdHotel());
+
         Hotel_Details hotel_details = hotel.getHotel(id);
         request.setAttribute("hotel",hotel_details);
 
         List<Room_Details> listRD = hotel.getRoomDetails(id);
         request.setAttribute("listA", listRD);
+
+        Booking_DAO booking = new Booking_DAO();
+        List<Booking> listMB = booking.getBooks(id);
+        request.setAttribute("listMB", listMB);
 
         request.getRequestDispatcher("MyHotel.jsp").forward(request, response);
     }
