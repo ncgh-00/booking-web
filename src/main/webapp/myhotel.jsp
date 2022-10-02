@@ -120,38 +120,39 @@
             <div class="col col-11">Edit</div>
             <div class="col col-12">Del</div>
         </li>
-        <c:forEach items="${listMB}" var="o">
+
+        <c:forEach items="${listMB}" var="a">
             <li class="table-row">
-                <div class="col col-1" data-label="Location">${o.userName}</div>
-                <div class="col col-2" data-label="Location">${o.userPhone}</div>
-                <div class="col col-3" data-label="Location">${o.userEmail}</div>
-                <div class="col col-4" data-label="Location">${o.hotelName}</div>
-                <div class="col col-5" data-label="Room name">${o.roomName}</div>
-                <div class="col col-6" data-label="Amount"> ${o.numOfRoom}</div>
-                <div class="col col-7" data-label="Day Start">${o.dateStart}</div>
-                <div class="col col-8" data-label="Day End">${o.dateEnd}</div>
-                <div class="col col-9" data-label="Total Cost">${o.totalCost}</div>
-                <c:if test="${o.status == true}">
+                <div class="col col-1" data-label="username">${a.userName}</div>
+                <div class="col col-2" data-label="userphone">${a.userPhone}</div>
+                <div class="col col-3" data-label="useremail">${a.userEmail}</div>
+                <div class="col col-4" data-label="hotelname">${a.hotelName}</div>
+                <div class="col col-5" data-label="roomname">${a.roomName}</div>
+                <div class="col col-6" data-label="amount"> ${a.numOfRoom}</div>
+                <div class="col col-7" data-label="daystart">${a.dateStart}</div>
+                <div class="col col-8" data-label="dayend">${a.dateEnd}</div>
+                <div class="col col-9" data-label="totalcost">${a.totalCost}</div>
+
+                <c:if test="${a.confirm == true}">
                     <div class="col col-10" data-label="Status"><a class="badge badge-confirm">active</a></div>
                 </c:if>
-                <c:if test="${o.status == false}">
+                <c:if test="${a.confirm == false}">
                     <div class="col col-10" data-label="Status"><a class="badge badge-updating">inactive</a></div>
                 </c:if>
                 <i class="fas fa-edit col col-11"></i>
                 <div class="col col-12" data-label="">
-                    <a href="DeleteBooking?id=${o.idBooking}&&page=LoadMyAccount" class="delete" data-toggle="modal">
+                    <a href="#" class="delete" data-toggle="modal">
                         <i class="material-icons" data-toggle="tooltip" title="Delete">
                             &#xE872;
                         </i>
                     </a>
                 </div>
-
             </li>
+
         </c:forEach>
 
 
     </ul>
-
 </div>
 </body>
 </html>

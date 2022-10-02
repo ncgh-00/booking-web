@@ -32,6 +32,7 @@ public class Booking {
         this.userName = userName;
         this.userPhone = userPhone;
         this.userEmail = userEmail;
+        this.idHotel = idHotel;
     }
 
     public int getIdBooking() {
@@ -136,5 +137,13 @@ public class Booking {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
+    }
+
+    public int getIdHotel() {
+        return idHotel;
+    }
+
+    public void setIdHotel(int idHotel) {
+        this.idHotel = idHotel;
     }
 }
