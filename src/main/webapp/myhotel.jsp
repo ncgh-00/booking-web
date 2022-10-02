@@ -86,7 +86,7 @@
                 <div class="col col-3" data-label="Discount"> ${o.discount}</div>
 
                 <c:if test="${o.status == true}">
-                    <div class="col col-4" data-label="Status"><a class="badge badge-confirm">active</a></div>
+                    <div class="col col-4" data-label="Status"><a  class="badge badge-confirm">active</a></div>
                 </c:if>
                 <c:if test="${o.status == false}">
                     <div class="col col-4" data-label="Status"><a class="badge badge-updating">inactive</a></div>
@@ -133,12 +133,13 @@
                 <div class="col col-7" data-label="daystart">${a.dateStart}</div>
                 <div class="col col-8" data-label="dayend">${a.dateEnd}</div>
                 <div class="col col-9" data-label="totalcost">${a.totalCost}</div>
-
                 <c:if test="${a.confirm == true}">
-                    <div class="col col-10" data-label="Status"><a class="badge badge-confirm">active</a></div>
+                    <div class="col col-10" data-label="Status"><a href="ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel" class="badge badge-confirm">active</a></div>
+<%--                    ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel--%>
                 </c:if>
                 <c:if test="${a.confirm == false}">
-                    <div class="col col-10" data-label="Status"><a class="badge badge-updating">inactive</a></div>
+                    <div class="col col-10" data-label="Status"><a href="ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel" class="badge badge-updating">inactive</a></div>
+<%--                    ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel--%>
                 </c:if>
                 <i class="fas fa-edit col col-11"></i>
                 <div class="col col-12" data-label="">

@@ -145,6 +145,25 @@ public class Booking_DAO {
         return 0;
     }
 
+    public void activate(int id, boolean check, String id_staff) {
+        int ac;
+        if (check) {
+            ac = 0;
+        } else {
+            ac = 1;
+        }
+        String query = "update Booking set [Confirm] = " + ac + ", [Staff_Id] =  '" + id_staff + "' where [ID_booking] = " + id + " ";
+        try {
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            st = conn.createStatement();
+
+            st.executeUpdate(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 //    public static void main(String[] args) {
 //        Booking_DAO b = new Booking_DAO();
 //        b.getBooks("1");
