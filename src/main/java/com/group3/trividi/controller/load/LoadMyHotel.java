@@ -41,7 +41,7 @@ public class LoadMyHotel extends HttpServlet {
         Hotel_Details hotel_details = hotel.getHotel(id);
         request.setAttribute("hotel",hotel_details);
 
-        List<Room_Details> listRD = hotel.getRoomDetails(id);
+        List<Room_Details> listRD = hotel.getAllRoomDetails(id);
         request.setAttribute("listRD", listRD);
 
         Booking_DAO booking = new Booking_DAO();

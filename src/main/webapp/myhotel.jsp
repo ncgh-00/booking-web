@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your booking</title>
+    <title>My Hotel</title>
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <!-- font awesome cdn link  -->
@@ -35,8 +35,7 @@
             <div class="col col-5">Number Of Star</div>
             <div class="col col-6">City</div>
             <div class="col col-7">Status</div>
-            <div class="col col-8">edit</div>
-            <div class="col col-9">del</div>
+            <div class="col col-8">Action</div>
 
         </li>
 
@@ -48,21 +47,19 @@
             <div class="col col-5" data-label="Number Of Star">${hotel.star}</div>
             <div class="col col-6" data-label="City">${hotel.city}</div>
             <c:if test="${hotel.status == true}">
-                <div class="col col-7" data-label="Status"><a href="ActivateHotel?id=${hotel.id}&check=${hotel.status}" class="badge badge-confirm">active</a></div>
+                <div class="col col-7" data-label="Status"><a
+                        href="ActivateHotel?id=${hotel.id}&check=${hotel.status}&page=LoadMyHotel"
+                        class="badge badge-confirm">active</a></div>
 
             </c:if>
             <c:if test="${hotel.status == false}">
-                <div class="col col-7" data-label="Status"><a href="ActivateHotel?id=${hotel.id}&check=${hotel.status}" class="badge badge-updating">inactive</a></div>
+                <div class="col col-7" data-label="Status"><a
+                        href="ActivateHotel?id=${hotel.id}&check=${hotel.status}&page=LoadMyHotel"
+                        class="badge badge-updating">inactive</a></div>
 
             </c:if>
-            <i class="fas fa-edit col col-8"></i>
-            <div class="col col-9" data-label="">
-                <a href="#t" class="delete" data-toggle="modal">
-                    <i class="material-icons" data-toggle="tooltip" title="Delete">
-                        &#xE872;
-                    </i>
-                </a>
-            </div>
+            <a href="LoadEditHotel" ><i class="fas fa-edit col col-8"></i></a>
+
 
         </li>
 
@@ -75,8 +72,7 @@
             <div class="col col-2">Cost</div>
             <div class="col col-3">Discount</div>
             <div class="col col-4">Status</div>
-            <div class="col col-5">edit</div>
-            <div class="col col-6">del</div>
+            <div class="col col-5">Action</div>
 
         </li>
         <c:forEach items="${listRD}" var="o">
@@ -86,21 +82,17 @@
                 <div class="col col-3" data-label="Discount"> ${o.discount}</div>
 
                 <c:if test="${o.status == true}">
-                    <div class="col col-4" data-label="Status"><a  class="badge badge-confirm">active</a></div>
+                    <div class="col col-4" data-label="Status"><a
+                            href="ActivateRoom?id=${o.id}&check=${o.status}&page=LoadMyHotel"
+                            class="badge badge-confirm">active</a></div>
                 </c:if>
                 <c:if test="${o.status == false}">
-                    <div class="col col-4" data-label="Status"><a class="badge badge-updating">inactive</a></div>
+                    <div class="col col-4" data-label="Status"><a
+                            href="ActivateRoom?id=${o.id}&check=${o.status}&page=LoadMyHotel"
+                            class="badge badge-updating">inactive</a></div>
                 </c:if>
 
-                <i class="fas fa-edit col col-5"></i>
-
-                <div class="col col-6" data-label="">
-                    <a href="#t" class="delete" data-toggle="modal">
-                        <i class="material-icons" data-toggle="tooltip" title="Delete">
-                            &#xE872;
-                        </i>
-                    </a>
-                </div>
+                <a href="editroom.jsp"><i class="fas fa-edit col col-5"></i></a>
 
             </li>
         </c:forEach>
@@ -111,6 +103,7 @@
             <div class="col col-1">User name</div>
             <div class="col col-2">Phone</div>
             <div class="col col-3">Email</div>
+
             <div class="col col-4">Location</div>
             <div class="col col-5">Room name</div>
             <div class="col col-6">Amount</div>
@@ -118,15 +111,20 @@
             <div class="col col-8">Day End</div>
             <div class="col col-9">Total Cost</div>
             <div class="col col-10">Status</div>
-            <div class="col col-11">Edit</div>
-            <div class="col col-12">Del</div>
         </li>
 
         <c:forEach items="${listMB}" var="a">
             <li class="table-row">
-                <div class="col col-1" data-label="username">${a.userName}</div>
-                <div class="col col-2" data-label="userphone">${a.userPhone}</div>
-                <div class="col col-3" data-label="useremail">${a.userEmail}</div>
+                <c:if test="${a.confirm == true}">
+                    <div class="col col-1" data-label="username">${a.userName}</div>
+                    <div class="col col-2" data-label="userphone">${a.userPhone}</div>
+                    <div class="col col-3" data-label="useremail">${a.userEmail}</div>
+                </c:if>
+                <c:if test="${a.confirm == false}">
+                    <div class="col col-1" data-label="username"></div>
+                    <div class="col col-2" data-label="userphone"></div>
+                    <div class="col col-3" data-label="useremail"></div>
+                </c:if>
                 <div class="col col-4" data-label="hotelname">${a.hotelName}</div>
                 <div class="col col-5" data-label="roomname">${a.roomName}</div>
                 <div class="col col-6" data-label="amount"> ${a.numOfRoom}</div>
@@ -134,21 +132,17 @@
                 <div class="col col-8" data-label="dayend">${a.dateEnd}</div>
                 <div class="col col-9" data-label="totalcost">${a.totalCost}</div>
                 <c:if test="${a.confirm == true}">
-                    <div class="col col-10" data-label="Status"><a href="ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel" class="badge badge-confirm">active</a></div>
-<%--                    ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel--%>
+                    <div class="col col-10" data-label="Status"><a
+                            href="ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel"
+                            class="badge badge-confirm">active</a></div>
+                    <%--                    ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel--%>
                 </c:if>
                 <c:if test="${a.confirm == false}">
-                    <div class="col col-10" data-label="Status"><a href="ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel" class="badge badge-updating">inactive</a></div>
-<%--                    ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel--%>
+                    <div class="col col-10" data-label="Status"><a
+                            href="ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel"
+                            class="badge badge-updating">inactive</a></div>
+                    <%--                    ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel--%>
                 </c:if>
-                <i class="fas fa-edit col col-11"></i>
-                <div class="col col-12" data-label="">
-                    <a href="#" class="delete" data-toggle="modal">
-                        <i class="material-icons" data-toggle="tooltip" title="Delete">
-                            &#xE872;
-                        </i>
-                    </a>
-                </div>
             </li>
 
         </c:forEach>

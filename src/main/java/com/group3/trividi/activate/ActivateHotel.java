@@ -20,8 +20,8 @@ public class ActivateHotel extends HttpServlet {
         } else {
             hotel.activate(Integer.parseInt(id), false);
         }
-
-        response.sendRedirect("LoadMyHotel");
+        String page = request.getParameter("page");
+        response.sendRedirect(page);
     }
 
     @Override

@@ -11,17 +11,18 @@ import java.io.IOException;
 public class ActivateRoom extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         response.setContentType("text/html;charset=UTF-8");
         String id = request.getParameter("id");
         String ac = request.getParameter("check");
-        Hotel_DAO hotel = new Hotel_DAO();
+        Hotel_DAO accRoom = new Hotel_DAO();
         if (ac.equals("true")) {
-            hotel.activate(Integer.parseInt(id), true);
+            accRoom.activateRoom(Integer.parseInt(id), true);
         } else {
-            hotel.activate(Integer.parseInt(id), false);
+            accRoom.activateRoom(Integer.parseInt(id), false);
         }
-
-        response.sendRedirect("LoadMyHotel");
+        String page = request.getParameter("page");
+        response.sendRedirect(page);
     }
 
     @Override

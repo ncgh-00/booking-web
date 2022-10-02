@@ -1,6 +1,7 @@
 package com.group3.trividi.dao;
 
 import com.group3.trividi.context.DBContext;
+import com.group3.trividi.model.Hotel_Category;
 import com.group3.trividi.model.Hotel_Details;
 import com.group3.trividi.model.Room_Details;
 
@@ -85,7 +86,7 @@ public class Hotel_DAO {
     public List<Hotel_Details> getHotelsInHome() {
         int i = 0;
         List<Hotel_Details> list = new ArrayList<>();
-        String query = "select * from Hotel_Details order by ID_Hotel";
+        String query = "select * from Hotel_Details where [Status] = 1 order by ID_Hotel ";
         try {
             // Open connection with SQL Server
             conn = new DBContext().getConnection();
@@ -123,6 +124,32 @@ public class Hotel_DAO {
     }
 
     public List<Room_Details> getRoomDetails(String id_hotel) {
+        List<Room_Details> list = new ArrayList<>();
+        String query = "select * from Room_Details where [Status] = 1 and ID_Hotel = "+ id_hotel +" ";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Room_Details(rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        rs.getBoolean(8)));
+
+            }
+            System.out.println(list.size() + "rooms");
+        } catch (Exception e) {
+            System.out.println("Fail, please contact to admin!!");
+        }
+
+        return list;
+    }
+
+    public List<Room_Details> getAllRoomDetails(String id_hotel) {
         List<Room_Details> list = new ArrayList<>();
         String query = "select * from Room_Details where ID_Hotel = "+ id_hotel +" ";
         try {
@@ -166,7 +193,48 @@ public class Hotel_DAO {
             e.printStackTrace();
         }
     }
+    public void activateRoom(int id, boolean check) {
+        int active;
+        if (check) {
+            active = 0;
+        } else {
+            active = 1;
+        }
+        String query = "update Room_Details set [Status] = "+active+" where ID_Room_Details = " + id + " ";
+        try {
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            st = conn.createStatement();
 
+            st.executeUpdate(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Hotel_Category> getCategory() {
+        List<Hotel_Category> list = new ArrayList<>();
+        String query = "select * from Hotel_Category ";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Hotel_Category(rs.getInt(1),
+                        rs.getString(2)
+                ));
+            }
+        } catch (Exception e) {
+            System.out.println("Fail, please contact to admin!!");
+        }
+
+        return list;
+    }
+
+    public static void main(String[] args) {
+        Hotel_DAO d = new Hotel_DAO();
+        d.getCategory();
+    }
 
     }
 
