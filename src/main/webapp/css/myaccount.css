@@ -103,9 +103,10 @@ a{
 .user-detail .infor .details p {
     font-weight: 500;
     font-size: 18px;
-    margin-left: 16px;
+    margin-left: 14px;
     display: inline-block;
 }
+
 
 /* table */
 .info-container{
