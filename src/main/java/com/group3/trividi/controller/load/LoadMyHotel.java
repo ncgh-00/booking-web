@@ -42,13 +42,13 @@ public class LoadMyHotel extends HttpServlet {
         request.setAttribute("hotel",hotel_details);
 
         List<Room_Details> listRD = hotel.getRoomDetails(id);
-        request.setAttribute("listA", listRD);
+        request.setAttribute("listRD", listRD);
 
         Booking_DAO booking = new Booking_DAO();
         List<Booking> listMB = booking.getBooks(id);
         request.setAttribute("listMB", listMB);
 
-        request.getRequestDispatcher("MyHotel.jsp").forward(request, response);
+        request.getRequestDispatcher("myhotel.jsp").forward(request, response);
     }
 
     @Override

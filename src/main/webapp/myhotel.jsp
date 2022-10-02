@@ -77,7 +77,7 @@
             <div class="col col-6">del</div>
 
         </li>
-        <c:forEach items="${listA}" var="o">
+        <c:forEach items="${listRD}" var="o">
             <li class="table-row">
                 <div class="col col-1" data-label="Name of room">${o.name}</div>
                 <div class="col col-2" data-label="Cost">${o.cost}</div>
@@ -103,6 +103,7 @@
             </li>
         </c:forEach>
     </ul>
+
     <h2>Manage Booking</h2>
     <ul class="responsive-table">
         <li class="table-header">
@@ -150,6 +151,7 @@
 
 
     </ul>
+
 </div>
 </body>
 </html>

@@ -25,7 +25,7 @@ public class LoadMyAccount extends HttpServlet {
         Booking_DAO booking = new Booking_DAO();
         List<Booking> listB = booking.getBook(acc.getUID());
         request.setAttribute("listB", listB);
-        request.getRequestDispatcher("MyAccount.jsp").forward(request, response);
+        request.getRequestDispatcher("myaccount.jsp").forward(request, response);
     }
 
     @Override
