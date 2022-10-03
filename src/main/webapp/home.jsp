@@ -65,30 +65,30 @@
 
     <div class="row">
         <div class="img">
-            <img src="images/book-img.svg" alt="">
+            <img src="${hotel_details.image}" alt="">
         </div>
 
         <div class="hot-hotel-content">
             <div class="hotel-info">
-                <h2>where to</h2>
+                <h2>${hotel_details.name}</h2>
+
                 <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
+                    <c:forEach begin="1" end="${hotel_details.star}">
+                        <i class="fas fa-star"></i>
+                    </c:forEach>
                 </div>
-                <h3>how many</h3>
+
+                <h3 class="hotel-desc">${hotel_details.des}</h3>
                 <h3>
                     <i class="fa-solid fa-phone"></i>
-                    Phone: <a href="tel:+0000"></a> 0000
+                    Phone: <a href="tel:+${hotel_details.phone}"><span>${hotel_details.phone}</span></a>
                 </h3>
                 <h3>
                     <i class="fa-sharp fa-solid fa-location-dot"></i>
-                    Address: 0000
+                    Address: <span>${hotel_details.address}</span>
                 </h3>
 
-                <a href="#" class="btn"> Book now</a>
+                <a href="LoadBooking?id=${hotel_details.id}" class="btn"> Book now</a>
             </div>
         </div>
     </div>

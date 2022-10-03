@@ -25,7 +25,12 @@ public class LoadHome extends HttpServlet {
         List<City> listC = city.getCitys();
         request.setAttribute("listC", listC); // EL ${list}
         request.setAttribute("page", "index.jsp");
+        String id = request.getParameter("id");
+        Hotel_Details hotel_details = hotel.getHotHotel(id);
+        request.setAttribute("hotel_details", hotel_details);
+        request.setAttribute("id", id);
         request.getRequestDispatcher("home.jsp").forward(request, response);
+
     }
 
     @Override

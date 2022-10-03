@@ -231,6 +231,41 @@ public class Hotel_DAO {
         return list;
     }
 
+    public Hotel_Details getHotHotel(String id) {
+        Hotel_Details hh = null;
+        String query = "select * from Hotel_Details\n"+
+        "where ID_Hotel = (select top 1 ID_Hotel from (select ID_Hotel, Count(ID_Hotel) numbers from Manage_Booking b\n"+
+        "group by ID_Hotel) c\n"+
+        "where numbers = (select Max(c.numbers) from\n"+
+                "(select ID_Hotel, Count(ID_Hotel) numbers from Manage_Booking b\n"+
+                        "group by ID_Hotel) c) )";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+//                int id, String name, String des, String image, String phone, String address, int star,boolean status, String category, String city, int cost, int discount
+                hh = new Hotel_Details(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getBoolean(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getInt(11),
+                        rs.getInt(12)
+                );
+            }
+            System.out.println(hh);
+        } catch (Exception e) {
+            System.out.println("Fail, please contact to admin!!");
+        }
+        return hh;
+    }
+
     public static void main(String[] args) {
         Hotel_DAO d = new Hotel_DAO();
         d.getCategory();
