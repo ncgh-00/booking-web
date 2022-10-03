@@ -1,25 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
 
-:root{
-    --orange:#ffa500;
+:root {
+    --orange: #ffa500;
 }
 
-*{
+* {
     font-family: 'Nunito', sans-serif;
-    margin:0; padding:0;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     text-transform: capitalize;
-    outline: none; border:none;
+    outline: none;
+    border: none;
     text-decoration: none;
     transition: all .2s linear;
 }
 
-*::selection{
-    background:var(--orange);
-    color:#fff;
+*::selection {
+    background: var(--orange);
+    color: #fff;
 }
 
-html{
+html {
     font-size: 62.5%;
     overflow-x: hidden;
     scroll-padding-top: 6rem;
@@ -27,31 +29,29 @@ html{
 }
 
 
-
-.btn{
+.btn {
     display: inline-block;
-    margin-top: 1rem;
-    background:#fff200;
-    color:black;
-    padding:.8rem 3rem;
-    border:.2rem solid #fff200;
+    background: var(--orange);
+    color: black;
+    padding: .8rem 3rem;
+    border: .2rem solid var(--orange);
     cursor: pointer;
     font-size: 1.7rem;
 }
 
-.btn:hover{
-    background:white;
-    color:black;
+.btn:hover {
+    background: rgba(255, 165, 0, .2);
+    color: var(--orange);
 }
 
-a{
+a {
     color: #6777ef;
     text-decoration: none;
     background-color: transparent;
 }
 
-.container{
-    padding: 40px;
+.container {
+    padding: 30px;
     margin: 70px;
     width: 100%;
     background: #fff;
@@ -65,19 +65,22 @@ a{
     padding-left: 10px;
     padding-right: 10px;
 }
-.container .title{
+
+.container .title {
     text-transform: uppercase;
     font-size: 30px;
     font-weight: 700;
     position: relative;
-    border-bottom: 1px solid  #333;
+    border-bottom: 1px solid #333;
     margin-bottom: 10px;
 }
-.container .title h3{
+
+.container .title h3 {
     font-size: 12px;
     font-weight: lighter;
 }
-.container .title::before{
+
+.container .title::before {
     content: '';
     position: absolute;
     left: 0;
@@ -85,14 +88,17 @@ a{
     height: 3px;
     width: 30px;
 }
+
 .container .user-detail {
     justify-content: space-between;
 }
-.user-detail .infor{
+
+.user-detail .infor {
     margin: 20px 0 12px 0;
     width: calc(100% / 2 - 20px);
     margin-bottom: 25px;
 }
+
 .user-detail .infor .details {
     display: block;
     font-weight: 600;
@@ -109,13 +115,14 @@ a{
 
 
 /* table */
-.info-container{
+.info-container {
     width: 100%;
     border: 1px solid #0a0909;
     padding: 35px 15px 50px 15px;
-    background:rgba(237, 235, 230, 0.4);
+    background: rgba(237, 235, 230, 0.4);
     border-radius: 5px;
 }
+
 h2 {
     font-size: 30px;
     margin: 20px 0;
@@ -129,56 +136,72 @@ h2 {
     justify-content: space-between;
     margin-bottom: 25px;
 }
+
 .responsive-table .table-header {
-    background-color: #fff200;
+    background-color: var(--orange);
     font-size: 18px;
     text-transform: uppercase;
     letter-spacing: 0.03em;
+    font-weight: 600;
 
 }
+
 .responsive-table .table-row {
     background-color: #ffffff;
     box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.15);
     font-size: 17px;
 }
+
 .responsive-table .col-1 {
     flex-basis: 52%;
 }
+
 .responsive-table .col-2 {
     flex-basis: 60%;
 }
+
 .responsive-table .col-3 {
     flex-basis: 40%;
 }
+
 .responsive-table .col-4 {
     flex-basis: 50%;
 }
+
 .responsive-table .col-5 {
     flex-basis: 50%;
 }
+
 .responsive-table .col-6 {
     flex-basis: 52%;
 }
+
 .responsive-table .col-7 {
     flex-basis: 52%;
 }
+
 .responsive-table .col-8 {
     flex-basis: 8%;
 }
+
 @media (max-width: 767px) {
     .responsive-table .table-header {
         display: none;
     }
+
     .responsive-table li {
         display: block;
     }
+
     .responsive-table .col {
         flex-basis: 100%;
     }
+
     .responsive-table .col {
         display: flex;
         padding: 10px 0;
     }
+
     .responsive-table .col:before {
         color: #6C7A89;
         padding-right: 10px;
@@ -187,14 +210,17 @@ h2 {
         text-align: right;
     }
 }
-.badge-updating{
+
+.badge-updating {
     color: white;
     background-color: red;
 }
-.badge-confirm{
+
+.badge-confirm {
     color: white;
     background-color: greenyellow;
 }
+
 .badge {
     display: inline-block;
     padding: .25em .4em;
@@ -205,4 +231,93 @@ h2 {
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: .25rem;
+}
+
+/* Notification*/
+.noti {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.noti-container {
+    background-color: #eeeeee;
+    border-radius: 6px;
+    width: 400px;
+    max-width: calc(100% - 32px);
+    min-height: 400px;
+    /*padding: 10px;*/
+    border-radius: 1rem;
+}
+
+.noti-heading {
+    font-size: 22px;
+    padding: 12px;
+    font-weight: 600;
+    position: relative;
+    background-color: wheat;
+    border-radius: 1rem;
+}
+
+.noti-heading .heading {
+    color: #111;
+    text-align: center;
+}
+
+.noti-heading .close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #333333;
+    border-radius: .5rem;
+    font-size: 2rem;
+    padding: .6rem 1.3rem;
+    cursor: pointer;
+}
+
+.noti-heading .close-btn:hover {
+    opacity: 0.5;
+}
+
+.noti-body {
+    padding: 12px 16px;
+}
+
+.noti-body .message {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    display: block;
+    text-align: center;
+}
+
+.noti-body p {
+    font-size: 16px;
+    color: #444;
+}
+
+.noti-body .label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    line-height: 2;
+    margin-left: 50px;
+    margin-right: 16px;
+    text-decoration-line: underline;
+}
+
+.edit-btn {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.mt-12 {
+    margin-top: 12px;
 }

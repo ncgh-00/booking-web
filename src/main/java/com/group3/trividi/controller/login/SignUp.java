@@ -5,9 +5,12 @@ import com.group3.trividi.model.Account;
 import com.group3.trividi.utils.HashPassword;
 import com.group3.trividi.utils.Validation;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "SignUp", value = "/SignUp")
@@ -29,9 +32,20 @@ public class SignUp extends HttpServlet {
         String id_hotel = request.getParameter("id_hotel");
         HttpSession session = request.getSession();
         User_DAO dao = new User_DAO();
-        boolean check = dao.checkAccount(username, mail);
-        if (check) {
-            request.setAttribute("errorSignup", "Username or Email was used !");
+        if (dao.checkEmail(mail)) {
+            request.setAttribute("errorSignup", "Email was used !");
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
+        } else if (!Validation.validEmail(mail)) {
+            request.setAttribute("errorSignup", "Email invalid !");
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
+        } else if (dao.checkPhone(phone)) {
+            request.setAttribute("errorSignup", "Phone was used !");
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
+        } else if (!Validation.validPhone(phone)) {
+            request.setAttribute("errorSignup", "Phone invalid !");
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
+        } else if (dao.checkUsername(username)) {
+            request.setAttribute("errorSignup", "Username was used !");
             request.getRequestDispatcher("signup.jsp").forward(request, response);
         } else if (password.length() < 6) {
             request.setAttribute("errorSignup", "Password must be greater than 6 character !");
@@ -39,20 +53,14 @@ public class SignUp extends HttpServlet {
         } else if (!password.equals(repass)) {
             request.setAttribute("errorSignup", "Password and Repassword don't match !");
             request.getRequestDispatcher("signup.jsp").forward(request, response);
-        } else if (!Validation.validPhone(phone)) {
-            request.setAttribute("errorSignup", "Phone invalid !");
-            request.getRequestDispatcher("signup.jsp").forward(request, response);
-        } else if (!Validation.validEmail(mail)) {
-            request.setAttribute("errorSignup", "Email invalid !");
-            request.getRequestDispatcher("signup.jsp").forward(request, response);
         } else {
             request.removeAttribute("errorSignup");
             dao.insert(username, HashPassword.getHashedPassword(password), name, mail, phone);
             Account acc = dao.getUSer(username, HashPassword.getHashedPassword(password));
             session.setAttribute("Account", acc);
             session.setAttribute("role", acc.getRoleID());
-            request.setAttribute("id_hotel",id_hotel);
-            if(page == null || page.equals("null")){
+            request.setAttribute("id_hotel", id_hotel);
+            if (page == null || page.equals("null")) {
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
                 return;
             }

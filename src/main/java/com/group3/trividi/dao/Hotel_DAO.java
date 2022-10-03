@@ -84,9 +84,7 @@ public class Hotel_DAO {
     }
 
     public List<Hotel_Details> getHotelsInHome() {
-        int i = 0;
-        List<Hotel_Details> list = new ArrayList<>();
-        String query = "select * from Hotel_Details where [Status] = 1 order by ID_Hotel ";
+        String query = "select top 8 * from Hotel_Details where [Status] = 1 order by ID_Hotel ";
 
         return get(query);
     }
@@ -109,6 +107,7 @@ public class Hotel_DAO {
                         rs.getBoolean(8)));
 
             }
+
             System.out.println(list.size() + "rooms");
         } catch (Exception e) {
             System.out.println("Fail, please contact to admin!!");
@@ -199,7 +198,8 @@ public class Hotel_DAO {
 
         return list;
     }
-    private List<Hotel_Details> get(String query){
+
+    private List<Hotel_Details> get(String query) {
         List<Hotel_Details> list = new ArrayList<>();
         try {
             // Open connection with SQL Server
@@ -235,12 +235,12 @@ public class Hotel_DAO {
 
     public Hotel_Details getHotHotel() {
         Hotel_Details hh = null;
-        String query = "select * from Hotel_Details\n"+
-        "where ID_Hotel = (select top 1 ID_Hotel from (select ID_Hotel, Count(ID_Hotel) numbers from Manage_Booking b\n"+
-        "group by ID_Hotel) c\n"+
-        "where numbers = (select Max(c.numbers) from\n"+
-                "(select ID_Hotel, Count(ID_Hotel) numbers from Manage_Booking b\n"+
-                        "group by ID_Hotel) c) )";
+        String query = "select * from Hotel_Details\n" +
+                "where ID_Hotel = (select top 1 ID_Hotel from (select ID_Hotel, Count(ID_Hotel) numbers from Manage_Booking b\n" +
+                "group by ID_Hotel) c\n" +
+                "where numbers = (select Max(c.numbers) from\n" +
+                "(select ID_Hotel, Count(ID_Hotel) numbers from Manage_Booking b\n" +
+                "group by ID_Hotel) c) )";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -267,12 +267,13 @@ public class Hotel_DAO {
         }
         return hh;
     }
+
     public List<Hotel_Details> searchHotels(String hotel, String city, String cate, int cost, String greater) {
         List list = null;
         String query = "";
         if (greater.equalsIgnoreCase("great")) query = "select * from Hotel_Details a\n" +
                 "where a.Name like '%" + hotel + "%' and a.Category like '%" + cate + "'% and a.City like '%" + city + "%' and a.Cost > " + cost;
-        else if(greater.equalsIgnoreCase("low")) query = "select * from Hotel_Details a\n" +
+        else if (greater.equalsIgnoreCase("low")) query = "select * from Hotel_Details a\n" +
                 "where a.Name like '%" + hotel + "%' and a.Category like '%" + cate + "'% and a.City like '%" + city + "%' and a.Cost < " + cost;
         else query = "select * from Hotel_Details a\n" +
                     "where a.Name like '%" + hotel + "%' and a.Category like '%" + cate + "'% and a.City like '%" + city + "%'";

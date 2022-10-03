@@ -112,20 +112,21 @@
             <div class="box">
                 <img src="${o.image}" alt="">
                 <div class="content">
-                    <h3> <i class="fas fa-map-marker-alt"></i> ${o.city} </h3>
+                    <h3><i class="fas fa-map-marker-alt"></i> ${o.city} </h3>
                     <p>${o.name}</p>
                     <div class="stars">
                         <c:forEach begin="1" end="${o.star}">
                             <i class="fas fa-star"></i>
                         </c:forEach>
                     </div>
-                    <div class="price"> ${Math.ceil(o.cost*(1-o.discount/100)/24000)} $ <span>${Math.ceil(o.cost/24000)} $</span> </div>
-<%--                    <c:if test="${sessionScope.Account.username == null}">--%>
-<%--                        <a href="login.jsp" class="btn">book now</a>--%>
-<%--                    </c:if>--%>
-<%--                    <c:if test="${sessionScope.Account.username != null}">--%>
-                        <a href="LoadBooking?id=${o.id}" class="btn">book now</a>
-<%--                    </c:if>--%>
+                    <div class="price"> ${Math.ceil(o.cost*(1-o.discount/100)/24000)} $ <span>${Math.ceil(o.cost/24000)} $</span>
+                    </div>
+                        <%--                    <c:if test="${sessionScope.Account.username == null}">--%>
+                        <%--                        <a href="login.jsp" class="btn">book now</a>--%>
+                        <%--                    </c:if>--%>
+                        <%--                    <c:if test="${sessionScope.Account.username != null}">--%>
+                    <a href="LoadBooking?id=${o.id}" class="btn">book now</a>
+                        <%--                    </c:if>--%>
                 </div>
             </div>
         </c:forEach>

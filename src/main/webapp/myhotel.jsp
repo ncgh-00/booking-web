@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
@@ -58,7 +58,7 @@
                         class="badge badge-updating">inactive</a></div>
 
             </c:if>
-            <a href="LoadEditHotel" ><i class="fas fa-edit col col-8"></i></a>
+            <a href="LoadEditHotel"><i class="fas fa-edit col col-8"></i></a>
 
 
         </li>

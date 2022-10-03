@@ -1,10 +1,12 @@
-package com.group3.trividi.activate;
+package com.group3.trividi.controller.activate;
 
 import com.group3.trividi.dao.Booking_DAO;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "ConfirmBooking", value = "/ConfirmBooking")
@@ -17,9 +19,9 @@ public class ConfirmBooking extends HttpServlet {
         String check = request.getParameter("check");
         String page = request.getParameter("page");
         Booking_DAO dao = new Booking_DAO();
-        if(check.equalsIgnoreCase("false")){
+        if (check.equalsIgnoreCase("false")) {
             dao.activate(id, false, id_staff);
-        }else{
+        } else {
             dao.activate(id, true, id_staff);
         }
         response.sendRedirect(page);

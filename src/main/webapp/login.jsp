@@ -34,10 +34,12 @@
             </div>
             <input type="submit" value="Login" class="btn">
             <input type="hidden" value="<%=request.getParameter("page")%>" name="page">
-            <input type="hidden" value="<%=request.getParameter("id_hotel")%>" name="id_hotel">
+            <input type="hidden" value="<%=request.getParameter("id")%>" name="id">
         </form>
         <div class="form-link">
-            <span>Don't have an account? <a href="signup.jsp?page=<%=request.getParameter("page")%>&&id_hotel=<%=request.getParameter("id_hotel")%>" class="signup-link">Signup</a></span>
+            <span>Don't have an account? <a
+                    href="signup.jsp?page=<%=request.getParameter("page")%>&&id=<%=request.getParameter("id")%>"
+                    class="signup-link">Signup</a></span>
         </div>
         <div class="line"></div>
         <div class="media-options">

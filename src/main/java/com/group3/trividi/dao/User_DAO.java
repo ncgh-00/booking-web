@@ -16,10 +16,47 @@ public class User_DAO {
     ResultSet rs = null; // Receive the respond result of SQL Server
     Statement st = null;
 
-    public boolean checkAccount(String username, String mail) {
+    public boolean checkUsername(String username) {
         boolean check = false;
         String query = "select * from Account\n"
-                + "where Username = '" + username + "' or Email = '" + mail + "'";
+                + "where Username = '" + username + "'";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                check = true;
+            }
+
+        } catch (Exception e) {
+            System.out.println("Fail, please contact to admin!!");
+        }
+
+        return check;
+    }
+
+    public boolean checkEmail(String mail) {
+        boolean check = false;
+        String query = "select * from Account\n"
+                + "where Email = '" + mail + "'";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                check = true;
+            }
+
+        } catch (Exception e) {
+            System.out.println("Fail, please contact to admin!!");
+        }
+        return check;
+    }
+
+    public boolean checkPhone(String phone) {
+        boolean check = false;
+        String query = "select * from Account\n"
+                + "where Phone = '" + phone + "'";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -54,11 +91,23 @@ public class User_DAO {
     }
 
     public Account getUSer(String username, String pass) {
-        Account acc ;
+        Account acc;
         String query = "select a.UID, a.ID_Hotel, a.Role_ID, a.Username, a.Hash_password, a.FullName, a.Email, a.Phone, a.Status \n" +
                 "from Account as a\n" +
-                "where a.Username = '"+ username +"' and a.Hash_password = '"+ pass +"'";
-//        System.out.println(query);
+                "where a.Username = '" + username + "' and a.Hash_password = '" + pass + "'";
+        return get(query);
+    }
+
+    public Account getUSer(String UID) {
+        Account acc;
+        String query = "select a.UID, a.ID_Hotel, a.Role_ID, a.Username, a.Hash_password, a.FullName, a.Email, a.Phone, a.Status \n" +
+                "from Account as a\n" +
+                "where a.UID = '" + UID + "'";
+        return get(query);
+    }
+
+    private Account get (String query){
+        Account acc;
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -72,7 +121,6 @@ public class User_DAO {
         } catch (Exception e) {
             System.out.println("Fail, please contact to admin!!");
         }
-
         return null;
     }
 
@@ -107,25 +155,6 @@ public class User_DAO {
             e.printStackTrace();
         }
     }
-
-    public boolean checkEmail(String mail) {
-        boolean check = false;
-        String query = "select * from Account\n"
-                + "where Email = '" + mail + "'";
-        try {
-            conn = new DBContext().getConnection();
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                check = true;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Fail, please contact to admin!!");
-        }
-        return check;
-    }
-
 
 
 //

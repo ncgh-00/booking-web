@@ -31,12 +31,13 @@ html {
 .mt-body {
     margin-top: 4rem;
 }
-.mb-body{
+
+.mb-body {
     margin-bottom: 8rem;
 }
 
 .magrin-slide {
-   margin-right: 24.5px !important;
+    margin-right: 24.5px !important;
 }
 
 .field-text-error {
@@ -46,6 +47,9 @@ html {
     color: #222222;
     font-weight: 400;
     border-radius: 9px;
+    font-size: 1.5rem;
+    width: 70%;
+    margin: auto;
 }
 
 section {
@@ -63,7 +67,7 @@ section {
     color: var(--orange);
     border-radius: .5rem;
     padding: .2rem 1rem;
-    
+
 }
 
 .heading span.space {
@@ -253,19 +257,19 @@ header .search-bar-container label:hover {
     display: none;
 }
 
-.search-bar-container #option-1:checked:checked~.option-1,
-.search-bar-container #option-2:checked:checked~.option-2 {
+.search-bar-container #option-1:checked:checked ~ .option-1,
+.search-bar-container #option-2:checked:checked ~ .option-2 {
     border-color: var(--orange);
     background: var(--orange);
 }
 
-.search-bar-container #option-1:checked:checked~.option-1 .dot,
-.search-bar-container #option-2:checked:checked~.option-2 .dot {
+.search-bar-container #option-1:checked:checked ~ .option-1 .dot,
+.search-bar-container #option-2:checked:checked ~ .option-2 .dot {
     background: #fff;
 }
 
-.search-bar-container #option-1:checked:checked~.option-1 .dot::before,
-.search-bar-container #option-2:checked:checked~.option-2 .dot::before {
+.search-bar-container #option-1:checked:checked ~ .option-1 .dot::before,
+.search-bar-container #option-2:checked:checked ~ .option-2 .dot::before {
     opacity: 1;
     transform: scale(1);
 }
@@ -275,11 +279,10 @@ header .search-bar-container label:hover {
     color: #808080;
 }
 
-.search-bar-container #option-1:checked:checked~.option-1 span,
-.search-bar-container #option-2:checked:checked~.option-2 span {
+.search-bar-container #option-1:checked:checked ~ .option-1 span,
+.search-bar-container #option-2:checked:checked ~ .option-2 span {
     color: #fff;
 }
-
 
 
 #menu-bar {
@@ -350,7 +353,7 @@ header .search-bar-container label:hover {
 .home .controls .vid-btn.active {
     background: var(--orange);
 }
- 
+
 
 .hot-hotel .row {
     display: flex;
@@ -408,6 +411,7 @@ header .search-bar-container label:hover {
     color: #444;
     text-align: left;
 }
+
 .hot-hotel .row .hot-hotel-content .hotel-info span,
 .hot-hotel .row .hot-hotel-content .hotel-info .hotel-desc {
     font-size: 1.8rem;
@@ -558,6 +562,7 @@ header .search-bar-container label:hover {
 .review .review-slider {
     padding-bottom: 2rem;
 }
+
 .review .swiper-slide {
     height: auto;
 }
@@ -600,7 +605,7 @@ header .search-bar-container label:hover {
 }
 
 .review .box .price,
-.review .box .price .text{
+.review .box .price .text {
     font-size: 2rem;
     color: #333;
     padding: 1rem;
@@ -707,15 +712,6 @@ header .search-bar-container label:hover {
     padding: .5rem 0;
     flex: 1;
 }
-.flex-1-6 {
-    flex: 1.6 !important;
-}
-
-.flex-2-1 {
-    flex: 2.1 !important;
-}
-
-
 
 .inputBox + .inputBox {
     margin-left: 2rem;
@@ -740,17 +736,15 @@ header .search-bar-container label:hover {
 }
 
 
-
-
 /* media queries */
 
-@media (max-width:1200px) {
+@media (max-width: 1200px) {
     html {
         font-size: 58%;
     }
 }
 
-@media (max-width:991px) {
+@media (max-width: 991px) {
     header {
         padding: 2rem;
     }
@@ -768,7 +762,7 @@ header .search-bar-container label:hover {
     }
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
     #menu-bar {
         display: initial;
     }
@@ -814,7 +808,7 @@ header .search-bar-container label:hover {
 
 }
 
-@media (max-width:450px) {
+@media (max-width: 450px) {
     html {
         font-size: 56%;
     }

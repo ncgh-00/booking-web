@@ -19,6 +19,7 @@ public class Trans_Date {
         }
         return null;
     }
+
     public static void main(String[] args) {
         Trans_Date tool = new Trans_Date();
         System.out.println(tool.translate("20/4/2002"));

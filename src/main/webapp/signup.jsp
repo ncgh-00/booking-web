@@ -16,7 +16,7 @@
         <h3 class="heading">Sign Up</h3>
         <form action="SignUp" class="form" method="post">
             <div class="input">
-                <input type="text" class="input-box" placeholder="Full Name" name="name" required>
+                <input type="text" class="input-box" placeholder="Full name" name="name" required>
             </div>
 
             <div class="input">
@@ -24,20 +24,19 @@
             </div>
 
             <div class="input">
-                <input type="tel" class="input-box" placeholder="Phone Number" name="phone" required>
+                <input type="tel" class="input-box" placeholder="Phone number" name="phone" required>
             </div>
 
             <div class="input">
-                <input type="text" class="input-box" placeholder="User Name" name="user_name" required>
+                <input type="text" class="input-box" placeholder="User name" name="user_name" required>
             </div>
 
             <div class="input-pas">
                 <input type="password" class="input-box password" placeholder="Password" name="pass" required>
-                <i class='bx bx-hide eye-icon'></i>
             </div>
 
             <div class="input-pas">
-                <input type="password" class="input-box password" placeholder="Repeat Password" name="repass" required>
+                <input type="password" class="input-box password" placeholder="Repeat password" name="repass" required>
                 <i class='bx bx-hide eye-icon'></i>
             </div>
 
@@ -48,10 +47,12 @@
             </c:if>
             <input type="submit" value="Sign Up" class="btn">
             <input type="hidden" value="<%=request.getParameter("page")%>" name="page">
-            <input type="hidden" value="<%=request.getParameter("id_hotel")%>" name="id_hotel">
+            <input type="hidden" value="<%=request.getParameter("id")%>" name="id">
         </form>
         <div class="form-link">
-            <span>Already have an account? <a href="login.jsp?page=<%=request.getParameter("page")%>&&id_hotel=<%=request.getParameter("id_hotel")%>" class="signup-link">Login</a></span>
+            <span>Already have an account? <a
+                    href="login.jsp?page=<%=request.getParameter("page")%>&&id=<%=request.getParameter("id")%>"
+                    class="signup-link">Login</a></span>
         </div>
         <div class="line"></div>
         <div class="media-options">

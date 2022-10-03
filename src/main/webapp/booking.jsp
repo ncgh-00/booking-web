@@ -23,8 +23,75 @@
 <jsp:include page="header.jsp"></jsp:include>
 <!-- header section ends -->
 
+<!-- book section starts -->
+<section class="book mt-body" id="book">
+    <h1 class="heading">
+        <span>b</span>
+        <span>o</span>
+        <span>o</span>
+        <span>k</span>
+        <span class="space"></span>
+        <span>n</span>
+        <span>o</span>
+        <span>w</span>
+    </h1>
+
+    <div class="row">
+        <div class="img">
+            <img src="./images/travel-img.svg" alt="">
+        </div>
+
+        <form action="BookRoom?id=${hotel_details.id}" method="post">
+            <c:if test="${sessionScope.Account == null || sessionScope.role == 0}">
+                <div class="form-row">
+                    <div class="inputBox">
+                        <h3>Name</h3>
+                        <input type="text" placeholder="Full name" name="name" required>
+                    </div>
+                    <div class="inputBox">
+                        <h3>Phone</h3>
+                        <input type="tel" placeholder="Phone number" name="phone" required>
+                    </div>
+                </div>
+            </c:if>
+            <div class="form-row">
+                <div class="inputBox">
+                    <h3>Room Type</h3>
+                    <select name="roomtype" id="room">
+                        <c:forEach items="${listR}" var="o">
+                            <option value="${o.id}">${o.name}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="inputBox">
+                    <h3>How many</h3>
+                    <input type="number" min="1" placeholder="Number of rooms" name="numofroom" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="inputBox">
+                    <h3>Arrivals</h3>
+                    <input type="date" required name="dateS">
+                </div>
+                <div class="inputBox">
+                    <h3>Leaving</h3>
+                    <input type="date" required name="dateE">
+                </div>
+            </div>
+            <c:if test="${error != null}">
+                <div class="field-text-error">
+                    <p>${error}</p>
+                </div>
+            </c:if>
+            <input type="submit" class="btn" value="book now">
+        </form>
+    </div>
+</section>
+<!-- book section ends -->
+
 <!-- Hotel detail section starts -->
-<section class="hot-hotel mt-body" id="hot-hotel">
+<section class="hot-hotel " id="hot-hotel">
     <h1 class="heading">
         <span>H</span>
         <span>o</span>
@@ -111,76 +178,6 @@
 
 <!-- Room section ends -->
 
-<!-- book section starts -->
-<section class="book mb-body" id="book">
-    <h1 class="heading">
-        <span>b</span>
-        <span>o</span>
-        <span>o</span>
-        <span>k</span>
-        <span class="space"></span>
-        <span>n</span>
-        <span>o</span>
-        <span>w</span>
-    </h1>
-
-    <div class="row">
-        <div class="img">
-            <img src="./images/travel-img.svg" alt="">
-        </div>
-
-        <form action="BookRoom?id=${hotel_details.id}" method="post">
-    <c:if test="${sessionScope.Account == null || sessionScope.role == 0}">
-            <div class="form-row">
-                <div class="inputBox flex-1-6">
-                    <h3>Name</h3>
-                    <input type="text" placeholder="Full name" name="name" required>
-                </div>
-                <div class="inputBox">
-                    <h3>Phone</h3>
-                    <input type="tel" placeholder="Phone number" name="phone" required>
-                </div>
-                <div class="inputBox flex-2-1">
-                    <h3>Email</h3>
-                    <input type="email" placeholder="Email" name="email" required>
-                </div>
-            </div>
-    </c:if>
-            <div class="form-row">
-                <div class="inputBox">
-                    <h3>Room Type</h3>
-                    <select name="roomtype" id="room">
-                        <c:forEach items="${listR}" var="o">
-                            <option value="${o.id}" >${o.name}</option>
-                        </c:forEach>
-                    </select>
-                </div>
-                <div class="inputBox">
-                    <h3>How many</h3>
-                    <input type="number" min="1" placeholder="Number of rooms" name="numofroom" required>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="inputBox">
-                    <h3>Arrivals</h3>
-                    <input type="date" required name="dateS">
-                </div>
-                <div class="inputBox">
-                    <h3>Leaving</h3>
-                    <input type="date" required name="dateE">
-                </div>
-            </div>
-            <c:if test="${error != null}">
-                <div class="field-text-error">
-                    <p>${error}</p>
-                </div>
-            </c:if>
-            <input type="submit" class="btn" value="book now">
-        </form>
-    </div>
-</section>
-<!-- book section ends -->
 
 <!--footer section starts-->
 <jsp:include page="footer.jsp"></jsp:include>

@@ -20,8 +20,6 @@ public class City {
     }
 
 
-
-
     public String getName() {
         return name;
     }
@@ -37,7 +35,6 @@ public class City {
     public void setLink_images(String link_images) {
         this.link_images = link_images;
     }
-
 
 
 }

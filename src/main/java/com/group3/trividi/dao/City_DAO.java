@@ -24,7 +24,7 @@ public class City_DAO {
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add( new City(rs.getInt(1),
+                list.add(new City(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3)
                 ));

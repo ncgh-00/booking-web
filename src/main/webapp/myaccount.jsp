@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
@@ -31,16 +31,18 @@
         </div>
         <div class="user-detail">
             <div class="infor">
-                <span class="details">Fullname:  <p>${o.fullname}</p></span>
+                <span class="details">Fullname:  <p>${sessionScope.Account.fullname}</p></span>
             </div>
             <div class="infor">
-                <span class="details">Username:  <p>${o.username}</p></span>
+                <span class="details">Username:  <p>${sessionScope.Account.username}</p></span>
             </div>
             <div class="infor">
-                <span class="details">Email:  <p>${o.email}</p></span>
+                <span class="details">Email:
+                    <p> ${sessionScope.Account.email == null?"You should add your email!":sessionScope.Account.email} </p>
+                </span>
             </div>
             <div class="infor">
-                <span class="details">Phone:  <p>${o.phone}</p></span>
+                <span class="details">Phone:  <p>${sessionScope.Account.phone}</p></span>
             </div>
             <div>
                 <a href="edituser.jsp" class="btn">Edit Profile</a>
@@ -95,9 +97,26 @@
         </c:forEach>
 
 
-
     </ul>
 </div>
-
+<c:if test="${show == 1}">
+<div class="noti ">
+    <div class="noti-container">
+        <div class="noti-heading">
+            <h3 class="heading">Welcome to Trividi website booking</h3>
+            <a href="LoadMyAccount" class="close-btn"><i class="fas fa-times"></i></a>
+        </div>
+        <div class="noti-body">
+            <p class="message mt-12">Your booking has been successful!</p>
+            <span class="message mt-12"> Your account has been created: </span>
+            <p><span class="label mt-12">Username:</span>${sessionScope.Account.username}</p>
+            <p><span class="label">Password:</span>${requestScope.pass}</p>
+        </div>
+        <div class="edit-btn">
+            <a href="edituser.jsp" class="btn">Edit Profile</a>
+        </div>
+    </div>
+</div>
+</c:if>
 </body>
 </html>

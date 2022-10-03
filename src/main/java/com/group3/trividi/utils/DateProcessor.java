@@ -14,7 +14,7 @@ public class DateProcessor {
     public static long duration(String now, String late) {
         long duration;
         now = now.replace("/", "-");
-        late = late.replace("/", "-");;
+        late = late.replace("/", "-");
         System.out.println(now);
         System.out.println(late);
         LocalDate localDate = LocalDate.parse(now);

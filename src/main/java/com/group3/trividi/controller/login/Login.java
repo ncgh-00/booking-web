@@ -4,9 +4,12 @@ import com.group3.trividi.dao.User_DAO;
 import com.group3.trividi.model.Account;
 import com.group3.trividi.utils.HashPassword;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "Login", value = "/Login")
@@ -32,18 +35,16 @@ public class Login extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
             session.setAttribute("role", 0);
 
-        }else if(!acc.isStatus()){
+        } else if (!acc.isStatus()) {
             request.setAttribute("error", "Account is blocked! ");
             request.getRequestDispatcher("login.jsp").forward(request, response);
             session.setAttribute("role", 0);
-        }
-
-        else {
+        } else {
             request.removeAttribute("error");
             session.setAttribute("Account", acc);
             session.setAttribute("role", acc.getRoleID());
-            request.setAttribute("id_hotel",id_hotel);
-            if(page == null || page.equals("null")){
+            request.setAttribute("id_hotel", id_hotel);
+            if (page == null || page.equals("null")) {
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
                 return;
             }

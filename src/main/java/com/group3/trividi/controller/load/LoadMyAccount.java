@@ -21,7 +21,6 @@ public class LoadMyAccount extends HttpServlet {
         HttpSession session = request.getSession();
         Account acc = (Account) session.getAttribute("Account");
         User_DAO dao = new User_DAO();
-        request.setAttribute("o", dao.getUSer(acc.getUsername(), acc.getHashPassword()));
         Booking_DAO booking = new Booking_DAO();
         List<Booking> listB = booking.getBook(acc.getUID());
         request.setAttribute("listB", listB);

@@ -15,7 +15,7 @@ public class Hotel_Details {
     private int cost;
     private int discount;
 
-    public Hotel_Details(int id, String name, String des, String image, String phone, String address, int star,boolean status, String category, String city, int cost, int discount) {
+    public Hotel_Details(int id, String name, String des, String image, String phone, String address, int star, boolean status, String category, String city, int cost, int discount) {
         this.id = id;
         this.name = name;
         this.des = des;
