@@ -35,7 +35,8 @@ public class HashPassword {
         for(int i = 4; i< length ; i++) {
             password[i] = combinedChars.charAt(random.nextInt(combinedChars.length()));
         }
-        return password.toString();
+
+        return String.valueOf(password);
     }
     public static void main(String[] args)  {
         System.out.println(generatePassword(8));
