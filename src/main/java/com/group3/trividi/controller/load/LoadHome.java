@@ -32,9 +32,9 @@ public class LoadHome extends HttpServlet {
         request.setAttribute("listC", listC); // EL ${list}
         request.setAttribute("page", "index.jsp");
         String id = request.getParameter("id");
-        Hotel_Details hotel_details = hotel.getHotHotel(id);
+        Hotel_Details hotel_details = hotel.getHotHotel();
         request.setAttribute("hotel_details", hotel_details);
-        request.setAttribute("id", id);
+
         request.getRequestDispatcher("home.jsp").forward(request, response);
 
     }

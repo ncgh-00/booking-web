@@ -233,7 +233,7 @@ public class Hotel_DAO {
         return list;
     }
 
-    public Hotel_Details getHotHotel(String id) {
+    public Hotel_Details getHotHotel() {
         Hotel_Details hh = null;
         String query = "select * from Hotel_Details\n"+
         "where ID_Hotel = (select top 1 ID_Hotel from (select ID_Hotel, Count(ID_Hotel) numbers from Manage_Booking b\n"+
@@ -271,9 +271,11 @@ public class Hotel_DAO {
         List list = null;
         String query = "";
         if (greater.equalsIgnoreCase("great")) query = "select * from Hotel_Details a\n" +
-                "where a.Name = '" + hotel + "' and a.Category = '" + cate + "' and a.City = '" + city + "' and a.Cost > " + cost;
+                "where a.Name like '%" + hotel + "%' and a.Category like '%" + cate + "'% and a.City like '%" + city + "%' and a.Cost > " + cost;
+        else if(greater.equalsIgnoreCase("low")) query = "select * from Hotel_Details a\n" +
+                "where a.Name like '%" + hotel + "%' and a.Category like '%" + cate + "'% and a.City like '%" + city + "%' and a.Cost < " + cost;
         else query = "select * from Hotel_Details a\n" +
-                "where a.Name = '" + hotel + "' and a.Category = '" + cate + "' and a.City = '" + city + "' and a.Cost < " + cost;
+                    "where a.Name like '%" + hotel + "%' and a.Category like '%" + cate + "'% and a.City like '%" + city + "%'";
         return get(query);
     }
 

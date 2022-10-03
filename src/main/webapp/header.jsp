@@ -107,21 +107,21 @@
          </div>
      </c:if>
 
-            <form action="" class="search-bar-container" method="POST">
+            <form action="Search" class="search-bar-container" method="POST">
                 <p>Search bar</p>
                 <div class="row">
-                    <input type="text" id="search-bar-1" placeholder="search here...">
+                    <input type="text" id="search-bar-1" placeholder="search here..." name="hotel">
                     <div class="col">
                         <select name="search-by-city"  >
                             <option value=" "  selected>[Search City]</option>
                             <c:forEach items="${sessionScope.city}" var="ct">
-                                <option value="${ct.id}" >${ct.name}</option>
+                                <option value="${ct.name}" >${ct.name}</option>
                             </c:forEach>
                         </select>
                         <select name="search-by-category" >
                             <option value=" "  selected>[Search Category]</option>
                             <c:forEach items="${sessionScope.Category}" var="ca">
-                                <option value="${ca.id}" >${ca.name}</option>
+                                <option value="${ca.name}" >${ca.name}</option>
                             </c:forEach>
                         </select>
                         <button class="search-btn" type="submit"><label for="search-bar-1" class="fas fa-search"></label></button>
@@ -130,7 +130,7 @@
 
                 <p>Cost filter</p>
                 <div class="row">
-                    <input type="number" min="0" id="search-bar-2" placeholder="search here...">
+                    <input type="number" min="0" id="search-bar-2" placeholder="search here..." name="cost">
 
                     <div class="col">
                         <input type="radio" id="option-1" name="cost_filter" value="great">
