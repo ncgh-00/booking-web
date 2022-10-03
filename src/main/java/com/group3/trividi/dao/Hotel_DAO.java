@@ -268,15 +268,11 @@ public class Hotel_DAO {
         return hh;
     }
 
-    public List<Hotel_Details> searchHotels(String hotel, String city, String cate, int cost, String greater) {
+    public List<Hotel_Details> searchHotels(String hotel, String city, String cate) {
         List list = null;
-        String query = "";
-        if (greater.equalsIgnoreCase("great")) query = "select * from Hotel_Details a\n" +
-                "where a.Name like '%" + hotel + "%' and a.Category like '%" + cate + "'% and a.City like '%" + city + "%' and a.Cost > " + cost;
-        else if (greater.equalsIgnoreCase("low")) query = "select * from Hotel_Details a\n" +
-                "where a.Name like '%" + hotel + "%' and a.Category like '%" + cate + "'% and a.City like '%" + city + "%' and a.Cost < " + cost;
-        else query = "select * from Hotel_Details a\n" +
-                    "where a.Name like '%" + hotel + "%' and a.Category like '%" + cate + "'% and a.City like '%" + city + "%'";
+        String query = "select * from Hotel_Details a\n" +
+                    "where a.Name like '%" + hotel + "%' and a.Category like '%" + cate + "%' and a.City like '%" + city + "%'";
+        System.out.println(query);
         return get(query);
     }
 

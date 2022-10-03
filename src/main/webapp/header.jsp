@@ -89,19 +89,19 @@
         </div>
     </c:if>
 
-            <form action="Search" class="search-bar-container" method="POST">
+            <form action="Search" class="search-bar-container" method="post">
                 <p>Search bar</p>
                 <div class="row">
                     <input type="text" id="search-bar-1" placeholder="search here..." name="hotel">
                     <div class="col">
                         <select name="search-by-city"  >
-                            <option value=" "  selected>[Search City]</option>
+                            <option value=""  selected>[Search City]</option>
                             <c:forEach items="${sessionScope.city}" var="ct">
                                 <option value="${ct.name}" >${ct.name}</option>
                             </c:forEach>
                         </select>
                         <select name="search-by-category" >
-                            <option value=" "  selected>[Search Category]</option>
+                            <option value=""  selected>[Search Category]</option>
                             <c:forEach items="${sessionScope.Category}" var="ca">
                                 <option value="${ca.name}" >${ca.name}</option>
                             </c:forEach>
