@@ -28,6 +28,7 @@ public class EditUser extends HttpServlet {
         String email = request.getParameter("email");
         String id = request.getParameter("id");
         User_DAO dao = new User_DAO();
+
         if (name == null)
             name = "";
         if (phone == null) {

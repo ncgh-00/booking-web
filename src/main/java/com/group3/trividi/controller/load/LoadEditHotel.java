@@ -23,10 +23,10 @@ public class LoadEditHotel extends HttpServlet {
 
         List<Hotel_Category> category = hotel.getCategory();
         request.setAttribute("category", category);
-
+        String idh = request.getParameter("idh");
         List<City> cityList = city.getCitys();
         request.setAttribute("cityList", cityList);
-
+        request.setAttribute("idh", idh);
         request.getRequestDispatcher("edithotel.jsp").forward(request, response);
     }
 

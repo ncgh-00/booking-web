@@ -13,14 +13,20 @@
 <div class="layout">
     <div class="container">
         <h3 class="heading">Edit Hotel</h3>
-        <form action="EditUser?id=${sessionScope.Account.UID}" class="form" method="post">
+        <form action="EditHotel" class="form" method="post">
+            <input type="hidden" class="input-box" name="idhotel" value="<%=request.getParameter("idh")%>">
             <div class="input">
                 <input type="text" class="input-box" placeholder="Hotel Name" name="name">
             </div>
 
             <div class="input">
-                <select name="category" id="catogory">
-                    <c:forEach items="${category}" var="o">
+                <textarea class="input-box" name="description" placeholder="Description" rows="2"></textarea>
+            </div>
+
+            <div class="input">
+                <select name="category" id="category">
+                    <option value="">Select Category</option>
+                    <c:forEach items="${sessionScope.Category}" var="o">
                         <option value="${o.id}">${o.name}</option>
                     </c:forEach>
                 </select>
@@ -40,7 +46,8 @@
 
             <div class="input">
                 <select name="city" id="city">
-                    <c:forEach items="${cityList}" var="o">
+                    <option value="">Select City</option>
+                    <c:forEach items="${sessionScope.city}" var="o">
                         <option value="${o.id}">${o.name}</option>
                     </c:forEach>
                 </select>

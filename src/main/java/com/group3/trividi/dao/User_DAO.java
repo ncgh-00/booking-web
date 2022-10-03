@@ -125,7 +125,7 @@ public class User_DAO {
     }
 
     public void editUser(String id, String password, String name, String phone, String email) {
-        String sql = "update [Account] set ";
+        String sql = "update Room_Details set ";
 
         if (!password.isEmpty()) {
             sql += " [Hash_password] = '" + HashPassword.getHashedPassword(password) + "',";

@@ -29,6 +29,7 @@
     <ul class="responsive-table">
         <li class="table-header">
             <div class="col col-1">Hotel Name</div>
+            <div class="col col-1">Description</div>
             <div class="col col-2">Category</div>
             <div class="col col-3">Phone</div>
             <div class="col col-4">Address</div>
@@ -41,6 +42,7 @@
 
         <li class="table-row">
             <div class="col col-1" data-label="Location">${hotel.name}</div>
+            <div class="col col-1" data-label="Location">${hotel.des}</div>
             <div class="col col-2" data-label="Category">${hotel.category}</div>
             <div class="col col-3" data-label="Phone"> ${hotel.phone}</div>
             <div class="col col-4" data-label="Address">${hotel.address}</div>
@@ -58,7 +60,7 @@
                         class="badge badge-updating">inactive</a></div>
 
             </c:if>
-            <a href="LoadEditHotel"><i class="fas fa-edit col col-8"></i></a>
+            <a href="LoadEditHotel?idh=${hotel.id}"><i class="fas fa-edit col col-8"></i></a>
 
 
         </li>
@@ -66,9 +68,12 @@
     </ul>
 
     <h2>Manage Room Details</h2>
+
+    <div class="add-room"><a class="btn" href="addroom.jsp?idh=${hotel.id}">Add room</a></div>
     <ul class="responsive-table">
         <li class="table-header">
             <div class="col col-1">Name of room</div>
+            <div class="col col-1">Description</div>
             <div class="col col-2">Cost</div>
             <div class="col col-3">Discount</div>
             <div class="col col-4">Status</div>
@@ -78,21 +83,22 @@
         <c:forEach items="${listRD}" var="o">
             <li class="table-row">
                 <div class="col col-1" data-label="Name of room">${o.name}</div>
-                <div class="col col-2" data-label="Cost">${o.cost}</div>
-                <div class="col col-3" data-label="Discount"> ${o.discount}</div>
+                <div class="col col-2" data-label="Description">${o.des}</div>
+                <div class="col col-3" data-label="Cost">${o.cost}</div>
+                <div class="col col-4" data-label="Discount"> ${o.discount}</div>
 
                 <c:if test="${o.status == true}">
-                    <div class="col col-4" data-label="Status"><a
+                    <div class="col col-5" data-label="Status"><a
                             href="ActivateRoom?id=${o.id}&check=${o.status}&page=LoadMyHotel"
                             class="badge badge-confirm">active</a></div>
                 </c:if>
                 <c:if test="${o.status == false}">
-                    <div class="col col-4" data-label="Status"><a
+                    <div class="col col-5" data-label="Status"><a
                             href="ActivateRoom?id=${o.id}&check=${o.status}&page=LoadMyHotel"
                             class="badge badge-updating">inactive</a></div>
                 </c:if>
 
-                <a href="editroom.jsp"><i class="fas fa-edit col col-5"></i></a>
+                <a href="editroom.jsp?idr=${o.id}"><i class="fas fa-edit col col-5"></i></a>
 
             </li>
         </c:forEach>

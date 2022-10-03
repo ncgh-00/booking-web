@@ -4,6 +4,7 @@ import com.group3.trividi.context.DBContext;
 import com.group3.trividi.model.Hotel_Category;
 import com.group3.trividi.model.Hotel_Details;
 import com.group3.trividi.model.Room_Details;
+import com.group3.trividi.utils.HashPassword;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -276,10 +277,99 @@ public class Hotel_DAO {
         return get(query);
     }
 
-    public static void main(String[] args) {
-        Hotel_DAO d = new Hotel_DAO();
-        d.getCategory();
+    public void editHotel(String id, String name, String des, String category, String phone, String address, String numOfStar, String city) {
+        String sql = "update [Hotel] set ";
+
+        if (!name.isEmpty()) {
+            sql += " [Name] = '" + name + "',";
+        }
+        if (!des.isEmpty()) {
+            sql += " [Description] = '" + des + "',";
+        }
+        if(!category.isEmpty()){
+            sql += "[ID_Category] = '" + category +"',";
+        }
+        if (!phone.isEmpty()) {
+            sql += " [Phone] = '" + phone + "',";
+        }
+        if (!address.isEmpty()) {
+            sql += " [Address] = '" + address + "',";
+        }
+        if (!numOfStar.isEmpty()) {
+            sql += " [NumberOfStars] = " + numOfStar + ",";
+        }
+        if (!city.isEmpty()) {
+            sql += " [ID_City] = " + city + ",";
+        }
+        sql = sql.substring(0, sql.length() - 1);
+        sql += " where [ID_Hotel] = '" + id + "'";
+        System.out.println(sql);
+
+        try {
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            st = conn.createStatement();
+
+            st.executeUpdate(sql);
+            System.out.println("success");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    public void editRoom(String id, String name,String des, String cost, String discount) {
+        String sql = "update [Room_Details] set ";
+
+        if (!name.isEmpty()) {
+            sql += " [Name] = '" + name + "',";
+        }
+        if (!des.isEmpty()) {
+            sql += " [Description] = '" + des + "',";
+        }
+        if(!cost.isEmpty()){
+            sql += "[Cost] = '" + cost +"',";
+        }
+        if (!discount.isEmpty()) {
+            sql += " [Discount] = '" + discount + "',";
+        }
+
+        sql = sql.substring(0, sql.length() - 1);
+        sql += " where [ID_Room_Details] = '" + id + "'";
+        System.out.println(sql);
+
+        try {
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            st = conn.createStatement();
+
+            st.executeUpdate(sql);
+            System.out.println("success");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void addRoom(String id_hotel, String name, String image, String description, String cost, String discount) {
+        String query = "insert into Room_Details(ID_Hotel,[Name],[Image],[Description],Cost,Discount,Status) \n"
+                + "values (?,?,?,?,?,?,'1')";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, id_hotel);
+            ps.setString(2, name);
+            ps.setString(3, image);
+            ps.setString(4, description);
+            ps.setString(5, cost);
+            ps.setString(6, discount);
+            ps.executeUpdate();
+            System.out.println("add duoc roi ne");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+//    public static void main(String[] args) {
+//        Hotel_DAO h = new Hotel_DAO();
+//        h.addRoom("1","binh","binh binh","binh binh binh", "123456","12");
+//    }
 }
 
