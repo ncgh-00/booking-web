@@ -4,6 +4,7 @@ package com.group3.trividi.controller.load;
 import com.group3.trividi.dao.City_DAO;
 import com.group3.trividi.dao.Hotel_DAO;
 import com.group3.trividi.model.City;
+import com.group3.trividi.model.Hotel_Category;
 import com.group3.trividi.model.Hotel_Details;
 
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -23,6 +25,10 @@ public class LoadHome extends HttpServlet {
         request.setAttribute("listH", listH); // EL ${list}
         City_DAO city = new City_DAO();
         List<City> listC = city.getCitys();
+        List<Hotel_Category> cate =  hotel.getCategory();
+        HttpSession session = request.getSession();
+        session.setAttribute("Category",cate);
+        session.setAttribute("city",listC);
         request.setAttribute("listC", listC); // EL ${list}
         request.setAttribute("page", "index.jsp");
         String id = request.getParameter("id");

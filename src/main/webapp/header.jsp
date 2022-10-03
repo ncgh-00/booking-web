@@ -107,19 +107,22 @@
          </div>
      </c:if>
 
-            <form action="" class="search-bar-container">
+            <form action="" class="search-bar-container" method="POST">
                 <p>Search bar</p>
                 <div class="row">
                     <input type="text" id="search-bar-1" placeholder="search here...">
                     <div class="col">
-                        <select name="search-by" id="xx">
-                            <option value="city">[Search City]</option>
-                            <option value="hotel" selected>[Search Hotel]</option>
-                            <option value="city">[Search City]</option>
+                        <select name="search-by-city"  >
+                            <option value=" "  selected>[Search City]</option>
+                            <c:forEach items="${sessionScope.city}" var="ct">
+                                <option value="${ct.id}" >${ct.name}</option>
+                            </c:forEach>
                         </select>
-                        <select name="search-by" id="x">
-                            <option value="hotel" selected>[Search Hotel]</option>
-                            <option value="city">[Search City]</option>
+                        <select name="search-by-category" >
+                            <option value=" "  selected>[Search Category]</option>
+                            <c:forEach items="${sessionScope.Category}" var="ca">
+                                <option value="${ca.id}" >${ca.name}</option>
+                            </c:forEach>
                         </select>
                         <button class="search-btn" type="submit"><label for="search-bar-1" class="fas fa-search"></label></button>
                     </div>
@@ -130,8 +133,8 @@
                     <input type="number" min="0" id="search-bar-2" placeholder="search here...">
 
                     <div class="col">
-                        <input type="radio" id="option-1" name="cost_filter" >
-                        <input type="radio" id="option-2" name="cost_filter">
+                        <input type="radio" id="option-1" name="cost_filter" value="great">
+                        <input type="radio" id="option-2" name="cost_filter" value="low">
                         <label for="option-1" class="option option-1">
                             <div class="dot"></div>
                             <span>Greater</span>

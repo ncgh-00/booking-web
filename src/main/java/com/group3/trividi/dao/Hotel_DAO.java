@@ -20,7 +20,7 @@ public class Hotel_DAO {
 
     public Hotel_Details getHotel(String id) {
         Hotel_Details hd = null;
-        String query = "select * from Hotel_Details where ID_Hotel = "+ id + " ";
+        String query = "select * from Hotel_Details where ID_Hotel = " + id + " ";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -87,45 +87,13 @@ public class Hotel_DAO {
         int i = 0;
         List<Hotel_Details> list = new ArrayList<>();
         String query = "select * from Hotel_Details where [Status] = 1 order by ID_Hotel ";
-        try {
-            // Open connection with SQL Server
-            conn = new DBContext().getConnection();
-            // Throw the query statement to SQL Server
-            ps = conn.prepareStatement(query);
-            // Get the result of SQL Server ans store in rs
-            rs = ps.executeQuery();
 
-            // Add data in rs to ArrayList
-            while (rs.next()) {
-                //int id, String name, String image, double price, String title, String description
-                list.add(new Hotel_Details(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getString(5),
-                        rs.getString(6),
-                        rs.getInt(7),
-                        rs.getBoolean(8),
-                        rs.getString(9),
-                        rs.getString(10),
-                        rs.getInt(11),
-                        rs.getInt(12)
-                ));
-                i++;
-                if (i == 8) {
-                    break;
-                }
-            }
-            System.out.println(list.size());
-        } catch (Exception e) {
-            System.out.println("Fail, please contact to admin!!");
-        }
-        return list;
+        return get(query);
     }
 
     public List<Room_Details> getRoomDetails(String id_hotel) {
         List<Room_Details> list = new ArrayList<>();
-        String query = "select * from Room_Details where [Status] = 1 and ID_Hotel = "+ id_hotel +" ";
+        String query = "select * from Room_Details where [Status] = 1 and ID_Hotel = " + id_hotel + " ";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -151,7 +119,7 @@ public class Hotel_DAO {
 
     public List<Room_Details> getAllRoomDetails(String id_hotel) {
         List<Room_Details> list = new ArrayList<>();
-        String query = "select * from Room_Details where ID_Hotel = "+ id_hotel +" ";
+        String query = "select * from Room_Details where ID_Hotel = " + id_hotel + " ";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -193,6 +161,7 @@ public class Hotel_DAO {
             e.printStackTrace();
         }
     }
+
     public void activateRoom(int id, boolean check) {
         int active;
         if (check) {
@@ -200,7 +169,7 @@ public class Hotel_DAO {
         } else {
             active = 1;
         }
-        String query = "update Room_Details set [Status] = "+active+" where ID_Room_Details = " + id + " ";
+        String query = "update Room_Details set [Status] = " + active + " where ID_Room_Details = " + id + " ";
         try {
             conn = new DBContext().getConnection();
             // Throw the query statement to SQL Server
@@ -228,6 +197,39 @@ public class Hotel_DAO {
             System.out.println("Fail, please contact to admin!!");
         }
 
+        return list;
+    }
+    private List<Hotel_Details> get(String query){
+        List<Hotel_Details> list = new ArrayList<>();
+        try {
+            // Open connection with SQL Server
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            ps = conn.prepareStatement(query);
+            // Get the result of SQL Server ans store in rs
+            rs = ps.executeQuery();
+
+            // Add data in rs to ArrayList
+            while (rs.next()) {
+                //int id, String name, String image, double price, String title, String description
+                list.add(new Hotel_Details(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getBoolean(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getInt(11),
+                        rs.getInt(12)
+                ));
+            }
+            System.out.println(list.size());
+        } catch (Exception e) {
+            System.out.println("Fail, please contact to admin!!");
+        }
         return list;
     }
 
@@ -265,11 +267,20 @@ public class Hotel_DAO {
         }
         return hh;
     }
+    public List<Hotel_Details> searchHotels(String hotel, String city, String cate, int cost, String greater) {
+        List list = null;
+        String query = "";
+        if (greater.equalsIgnoreCase("great")) query = "select * from Hotel_Details a\n" +
+                "where a.Name = '" + hotel + "' and a.Category = '" + cate + "' and a.City = '" + city + "' and a.Cost > " + cost;
+        else query = "select * from Hotel_Details a\n" +
+                "where a.Name = '" + hotel + "' and a.Category = '" + cate + "' and a.City = '" + city + "' and a.Cost < " + cost;
+        return get(query);
+    }
 
     public static void main(String[] args) {
         Hotel_DAO d = new Hotel_DAO();
         d.getCategory();
     }
 
-    }
+}
 
