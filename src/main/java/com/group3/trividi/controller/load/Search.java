@@ -6,7 +6,10 @@ import com.group3.trividi.model.Hotel_Details;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import javax.swing.plaf.IconUIResource;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @WebServlet(name = "Search", value = "/Search")
@@ -25,21 +28,30 @@ public class Search extends HttpServlet {
 
         String cost = request.getParameter("cost");
         if(cost == null || cost.trim().isEmpty()) cost = "-1";
-        int price = 24000*Integer.parseInt(cost);
+        int price = Integer.parseInt(cost);
         Hotel_DAO dao = new Hotel_DAO();
         List<Hotel_Details> ls = dao.searchHotels(name,city,cate);
-        if(greater != null && !greater.trim().isEmpty()){
-            for(int i =0 ;i < ls.size();i++){
+        System.out.println(greater);
+        System.out.println(ls.size());
+        System.out.println(price);
+        if(greater != null && !greater.trim().isEmpty() && price > 0){
+                List<Hotel_Details> invalidList = new ArrayList<>();
+                for(Hotel_Details ht : ls){
+                    System.out.println((1-ht.getDiscount()/100.0)*ht.getCost()/24000);
+                    if (greater.equalsIgnoreCase("great")){
 
-                if (greater.equalsIgnoreCase("great") && price > 0){
-
-                    if(price*24000 > (1-ls.get(i).getDiscount()/100.0)*ls.get(i).getCost()) ls.remove(ls.get(i));
-                }else if (greater.equalsIgnoreCase("low") && price >0){
-                    if(price*24000 < (1-ls.get(i).getDiscount()/100.0)*ls.get(i).getCost()) ls.remove(ls.get(i));
+                        if((1-ht.getDiscount()/100.0)*ht.getCost()/24000>price) continue;
+                    }else if (greater.equalsIgnoreCase("low")){
+                        if((1-ht.getDiscount()/100.0)*ht.getCost()/24000 < price) continue;
+                    }
+                    invalidList.add(ht);
+                    System.out.println("remove");
                 }
+                ls.removeAll(invalidList);
 
-            }
+
         }
+
 
         request.setAttribute("listH",ls);
 
