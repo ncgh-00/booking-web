@@ -3,7 +3,10 @@
 <header>
     <div id="menu-bar" class="fas fa-bars"></div>
 
-    <a href="#" class="logo"><span>T</span>rividi</a>
+    <div class="logo-img">
+        <img src="./images/logo.svg" alt="Khong hien">
+    </div>
+    <a href="index.jsp" class="logo"><span>T</span>rividi</a>
 
 
     <c:if test="${sessionScope.Account == null || sessionScope.role == 0}">

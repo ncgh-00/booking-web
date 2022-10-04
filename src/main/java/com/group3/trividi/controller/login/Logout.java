@@ -18,7 +18,7 @@ public class Logout extends HttpServlet {
         session.removeAttribute("role");
         session.removeAttribute("Account");
         request.setAttribute("id_hotel", id_hotel);
-        if (page == null || page.equals("null")) {
+        if (page == null) {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         } else
             request.getRequestDispatcher(page).forward(request, response);

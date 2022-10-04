@@ -29,7 +29,7 @@ html {
 }
 
 .mt-body {
-    margin-top: 4rem;
+    margin-top: 6rem !important;
 }
 
 .mb-body {
@@ -102,6 +102,11 @@ header {
     justify-content: space-between;
     padding: 1.5rem 9%;
 }
+header .logo-img img {
+    width: 35px;
+    height: 35px;
+    margin-right: 1rem;
+}
 
 header .logo {
     font-size: 2.5rem;
@@ -120,7 +125,7 @@ header .navbar {
 
 header .navbar a {
     color: #fff;
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin: .8rem 2rem;
 }
 
@@ -765,6 +770,9 @@ header .search-bar-container label:hover {
 @media (max-width: 768px) {
     #menu-bar {
         display: initial;
+    }
+    header .logo-img {
+        display: none;
     }
 
     header .navbar {
