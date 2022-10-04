@@ -31,7 +31,7 @@ public class Search extends HttpServlet {
         int price = Integer.parseInt(cost);
         Hotel_DAO dao = new Hotel_DAO();
         List<Hotel_Details> ls = dao.searchHotels(name,city,cate);
-
+        //search
         if(greater != null && !greater.trim().isEmpty() && price > 0){
                 List<Hotel_Details> invalidList = new ArrayList<>();
                 for(Hotel_Details ht : ls){
