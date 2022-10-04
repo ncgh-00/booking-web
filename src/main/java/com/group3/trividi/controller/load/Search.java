@@ -31,9 +31,7 @@ public class Search extends HttpServlet {
         int price = Integer.parseInt(cost);
         Hotel_DAO dao = new Hotel_DAO();
         List<Hotel_Details> ls = dao.searchHotels(name,city,cate);
-        System.out.println(greater);
-        System.out.println(ls.size());
-        System.out.println(price);
+
         if(greater != null && !greater.trim().isEmpty() && price > 0){
                 List<Hotel_Details> invalidList = new ArrayList<>();
                 for(Hotel_Details ht : ls){
@@ -45,7 +43,7 @@ public class Search extends HttpServlet {
                         if((1-ht.getDiscount()/100.0)*ht.getCost()/24000 < price) continue;
                     }
                     invalidList.add(ht);
-                    System.out.println("remove");
+
                 }
                 ls.removeAll(invalidList);
 
