@@ -234,6 +234,9 @@ h2 {
 }
 
 /* Notification*/
+.noti.open {
+    display: flex;
+}
 .noti {
     position: fixed;
     top: 0;
@@ -241,10 +244,10 @@ h2 {
     left: 0;
     right: 0;
     background-color: rgba(0,0,0,0.5);
-    display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2000;
+    display: none;
 }
 
 .noti-container {
@@ -320,4 +323,9 @@ h2 {
 
 .mt-12 {
     margin-top: 12px;
+}
+
+.add-room {
+    text-align: center;
+    margin-bottom: 8px;
 }

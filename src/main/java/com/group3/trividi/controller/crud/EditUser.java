@@ -56,6 +56,10 @@ public class EditUser extends HttpServlet {
 
         if (password == null) {
             password = "";
+        } else if (password.length() < 6) {
+            request.setAttribute("error", "Password must be greater than 6 character !");
+            request.getRequestDispatcher("edituser.jsp").forward(request, response);
+            return;
         } else if (!password.equals(repass)) {
             request.setAttribute("error", "Password and repassword don't match!");
             request.getRequestDispatcher("edituser.jsp").forward(request, response);

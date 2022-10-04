@@ -46,8 +46,6 @@ public class Booking_DAO {
 
                 ));
             }
-
-            System.out.print(list.size());
         } catch (Exception e) {
             e.printStackTrace();
         }

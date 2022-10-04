@@ -99,12 +99,12 @@
 
     </ul>
 </div>
-<c:if test="${show == 1}">
-<div class="noti ">
+
+<div class="noti close-btn ${show == 1?"open":""} ">
     <div class="noti-container">
         <div class="noti-heading">
             <h3 class="heading">Welcome to Trividi website booking</h3>
-            <a href="LoadMyAccount" class="close-btn"><i class="fas fa-times"></i></a>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
         </div>
         <div class="noti-body">
             <p class="message mt-12">Your booking has been successful!</p>
@@ -117,6 +117,7 @@
         </div>
     </div>
 </div>
-</c:if>
+
+<script src="./js/noti.js"></script>
 </body>
 </html>

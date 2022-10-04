@@ -5,6 +5,7 @@ import com.group3.trividi.dao.User_DAO;
 import com.group3.trividi.model.Account;
 import com.group3.trividi.utils.DateProcessor;
 import com.group3.trividi.utils.HashPassword;
+import com.group3.trividi.utils.Validation;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -49,7 +50,11 @@ public class BookRoom extends HttpServlet {
 
         if (acc == null) {
             User_DAO u = new User_DAO();
-            if(u.checkPhone(phone)){
+            if(!Validation.validPhone(phone)){
+                request.setAttribute("error", "Phone is invalid!");
+                request.getRequestDispatcher("LoadBooking?id_hotel=" + id_hotel).forward(request, response);
+                return;
+            } else if(u.checkPhone(phone)){
                 request.setAttribute("error", "Phone was used! Please login your account before booking!");
                 request.getRequestDispatcher("LoadBooking?id_hotel=" + id_hotel).forward(request, response);
                 return;
