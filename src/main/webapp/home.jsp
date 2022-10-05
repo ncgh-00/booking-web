@@ -156,7 +156,7 @@
                 <div class="content">
                     <h3>${o.name}</h3>
 
-                    <a href="./SearchControl?action=city&search_content=${o.name}" class="btn">see more</a>
+                    <a href="Search?search-by-city=${o.name}" class="btn">see more</a>
                 </div>
 
             </div>

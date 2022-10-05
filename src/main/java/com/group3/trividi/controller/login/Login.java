@@ -3,6 +3,7 @@ package com.group3.trividi.controller.login;
 import com.group3.trividi.dao.User_DAO;
 import com.group3.trividi.model.Account;
 import com.group3.trividi.utils.HashPassword;
+import com.group3.trividi.utils.StringCutter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,6 +45,7 @@ public class Login extends HttpServlet {
             session.setAttribute("Account", acc);
             session.setAttribute("role", acc.getRoleID());
             request.setAttribute("id_hotel", id_hotel);
+            session.setAttribute("name", StringCutter.cut(acc.getFullname()));
             if (page == null || page.equals("null")) {
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
                 return;

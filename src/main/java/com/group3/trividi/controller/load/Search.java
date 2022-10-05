@@ -16,7 +16,7 @@ import java.util.List;
 public class Search extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doPost(request,response);
     }
 
     @Override
@@ -25,7 +25,8 @@ public class Search extends HttpServlet {
         String greater = request.getParameter("cost_filter");
         String city = request.getParameter("search-by-city");
         String cate = request.getParameter("search-by-category");
-
+        if(name == null ||name.trim().isEmpty()) name = "";
+        if(cate == null ||cate.trim().isEmpty()) cate = "";
         String cost = request.getParameter("cost");
         if(cost == null || cost.trim().isEmpty()) cost = "-1";
         int price = Integer.parseInt(cost);

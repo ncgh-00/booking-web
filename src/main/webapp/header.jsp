@@ -62,7 +62,7 @@
         </nav>
 
         <div class="username">
-            <a href="#">${sessionScope.Account.fullname}</a>
+            <a href="#">${sessionScope.name}</a>
         </div>
 
         <div class="icons">

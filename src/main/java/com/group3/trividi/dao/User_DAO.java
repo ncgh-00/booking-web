@@ -89,6 +89,22 @@ public class User_DAO {
             e.printStackTrace();
         }
     }
+    public void insert(String email,String name){
+        String query = "insert into Account(Role_ID,Username,Hash_password,Fullname,Email,Status) \n"
+                + "values ('3',?,?,?,?,'1')";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, email);
+            ps.setString(2,HashPassword.generatePassword(8));
+            ps.setString(3, name);
+            ps.setString(4, email);
+            ps.executeUpdate();
+            System.out.println("dang ky duoc roi");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public Account getUSer(String username, String pass) {
         Account acc;
@@ -105,7 +121,13 @@ public class User_DAO {
                 "where a.UID = '" + UID + "'";
         return get(query);
     }
-
+    public Account getUserByEmail(String email){
+        Account acc;
+        String query = "select a.UID, a.ID_Hotel, a.Role_ID, a.Username, a.Hash_password, a.FullName, a.Email, a.Phone, a.Status \n" +
+                "from Account as a\n" +
+                "where a.Email = '" + email + "'";
+        return get(query);
+    }
     private Account get (String query){
         Account acc;
         try {

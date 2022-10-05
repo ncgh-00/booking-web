@@ -43,7 +43,8 @@
         </div>
         <div class="line"></div>
         <div class="media-options">
-            <a href="#" class="field google">
+            <a href="https://accounts.google.com/o/oauth2/auth?scope=openid%20profile%20email&redirect_uri=http://localhost:8080/Trividi_Project/LoginGoogle&response_type=code
+    &client_id=938297631263-5icnubscvafbg7tdpch94v3ppdebq7cd.apps.googleusercontent.com&approval_prompt=force" class="field google">
                 <img src="images/google.png" alt="" class="google-img">
                 <span>Login with Google</span>
             </a>
