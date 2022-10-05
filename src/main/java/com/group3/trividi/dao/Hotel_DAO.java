@@ -4,7 +4,6 @@ import com.group3.trividi.context.DBContext;
 import com.group3.trividi.model.Hotel_Category;
 import com.group3.trividi.model.Hotel_Details;
 import com.group3.trividi.model.Room_Details;
-import com.group3.trividi.utils.HashPassword;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -236,12 +235,14 @@ public class Hotel_DAO {
 
     public Hotel_Details getHotHotel() {
         Hotel_Details hh = null;
-        String query = "select * from Hotel_Details\n" +
-                "where ID_Hotel = (select top 1 ID_Hotel from (select ID_Hotel, Count(ID_Hotel) numbers from Manage_Booking b\n" +
-                "group by ID_Hotel) c\n" +
-                "where numbers = (select Max(c.numbers) from\n" +
-                "(select ID_Hotel, Count(ID_Hotel) numbers from Manage_Booking b\n" +
-                "group by ID_Hotel) c) )";
+        String query = "select * from Hotel_Details\n"+
+        "where ID_Hotel = (select top 1 ID_Hotel from (select ID_Hotel, Count(ID_Hotel) numbers from Manage_Booking b\n"+
+        "where b.Confirm = 1\n"+
+        "group by ID_Hotel ) c\n"+
+        "where numbers = (select Max(c.numbers) from\n"+
+                "(select ID_Hotel, Count(ID_Hotel) numbers from Manage_Booking b\n"+
+                        "where b.Confirm = 1\n"+
+                        "group by ID_Hotel ) c) )\n";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
