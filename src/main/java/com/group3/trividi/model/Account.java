@@ -12,6 +12,7 @@ public class Account {
     private String phone;
     private boolean status;
 
+
     public Account(String UID, int idHotel, int roleID, String username, String hashPassword, String fullname, String email, String phone, boolean status) {
         this.UID = UID;
         this.idHotel = idHotel;
@@ -22,7 +23,10 @@ public class Account {
         this.email = email;
         this.phone = phone;
         this.status = status;
+
     }
+
+
 
     public String getUID() {
         return UID;

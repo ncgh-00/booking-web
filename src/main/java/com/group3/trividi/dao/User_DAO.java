@@ -178,13 +178,4 @@ public class User_DAO {
         }
     }
 
-
-//
-//    public static void main(String[] args) {
-//        User_DAO u = new User_DAO();
-//        Account a = u.getUSer("huyne", HashPassword.getHashedPassword("123456"));
-//        if (a != null){
-//            System.out.println(a.getFullname());
-//        } else System.out.println("cac");
-//    }
 }
