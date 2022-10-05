@@ -5,11 +5,7 @@ import com.group3.trividi.dao.User_DAO;
 import com.group3.trividi.google.GooglePojo;
 import com.group3.trividi.google.GoogleUtils;
 import com.group3.trividi.model.Account;
-import com.group3.trividi.model.Hotel_Details;
 import com.group3.trividi.utils.StringCutter;
-
-import java.io.IOException;
-
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 @WebServlet(name = "LoginGoogle", value = "/LoginGoogle")
 public class LoginGoogle extends HttpServlet {
@@ -43,8 +40,9 @@ public class LoginGoogle extends HttpServlet {
             if(acc == null){
                 dao.insert(googlePojo.getEmail(), googlePojo.getGiven_name());
                 acc = dao.getUserByEmail(googlePojo.getEmail());
-                session.setAttribute("name", StringCutter.cut(acc.getFullname()));
             }
+            System.out.println(StringCutter.cut(acc.getFullname()));
+            session.setAttribute("name", StringCutter.cut(acc.getFullname()));
             session.setAttribute("Account", acc);
             session.setAttribute("role", acc.getRoleID());
             RequestDispatcher dis = request.getRequestDispatcher("index.jsp");
