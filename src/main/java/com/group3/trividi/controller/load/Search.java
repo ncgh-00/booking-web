@@ -6,10 +6,10 @@ import com.group3.trividi.model.Hotel_Details;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-import javax.swing.plaf.IconUIResource;
+
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
+
 import java.util.List;
 
 @WebServlet(name = "Search", value = "/Search")
