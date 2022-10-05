@@ -212,12 +212,12 @@ h2 {
 }
 
 .badge-updating {
-    color: white;
+    color: #333;
     background-color: red;
 }
 
 .badge-confirm {
-    color: white;
+    color: #333;
     background-color: greenyellow;
 }
 
@@ -231,6 +231,11 @@ h2 {
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: .25rem;
+}
+.edit:hover,
+.delete:hover,
+.badge:hover {
+    opacity: 0.8;
 }
 
 /* Notification*/
