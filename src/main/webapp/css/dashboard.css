@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+
+:root {
+    --orange: #ffa500;
+}
+
+* {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+*::selection {
+    background: var(--orange);
+    color: #fff;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+}
+body {
+    background-color: #ddd;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.menu {
+    position: fixed;
+    top: 6.6rem;
+    width: 100%;
+    z-index: 10;
+}
+
+.menu .menu__bar {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 0.5rem 0.5rem rgba(0,0,0, 0.25);
+}
+
+.menu .menu__item {
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    list-style: none;
+    padding: 1.6rem 0.5rem;
+    border-bottom: 0.3rem solid transparent;
+}
+
+.menu .menu__item.selected,
+.menu .menu__item:hover {
+    color: var(--orange);
+    border-bottom: 0.3rem solid var(--orange);
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 15rem 5% 45rem;
+}
+
+.content .nav {
+    display: flex;
+    align-items: center;
+}
+
+.content .nav .add-icon {
+    margin-right: 0.5rem;
+}
+
+.content .nav .btn {
+    font-size: 1.5rem;
+    background-color: var(--orange);
+    padding: .6rem 1.5rem;
+    border: 0.2rem solid var(--orange);
+    color: #333;
+    margin: 0;
+}
+
+.content .btn:hover {
+    background: rgba(255, 165, 0, .2);
+}
+
+.content .nav .search {
+    margin-left: 5rem;
+}
+
+.content .nav .search__bar {
+    width: 40rem;
+    height: 4rem;
+    padding: 1rem;
+    border-radius: 0.6rem;
+    font-size: 1.5rem;
+}
+
+
+.content .table {
+    display: table;
+    margin-top: 1rem;
+    color: #333333;
+}
+
+.content .table__head {
+    background-color: #fff;
+    display: table-row;
+    text-align: center;
+    color: #000000;
+}
+
+.content .table__row {
+    display: table-row;
+    width: 100%;
+    background-color: #fff;
+}
+
+.content .table__cell {
+    display: table-cell;
+    padding: 1.5rem 1.5rem;
+    border-top: 1rem solid #ddd;
+    font-size: 1.5rem;
+    font-weight: 600;
+    min-width: 10rem;
+    word-break: break-word;
+    text-transform: none;
+    vertical-align: middle;
+    position: relative;
+}
+
+.content .table__cell.header__table {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+
+.table__cell + .table__cell {
+    border-left: 0.2rem solid #ddd;
+}
+
+.content .badge-inactive {
+    color: #000;
+    background-color: red;
+}
+
+.content .badge-active {
+    color: #000;
+    background-color: greenyellow;
+}
+
+.content .badge {
+    display: inline-block;
+    padding: 0.3rem 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    border-radius: .25rem;
+}
+
+.content .badge:hover {
+    opacity: 0.8;
+}
+
+.content .priority {
+    padding: 1.2rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    border-radius: .25rem;
+    cursor: pointer;
+}
+
+.content .priority:hover .set-priority {
+    display: flex;
+}
+
+.content .set-priority .op-1,
+.content .priority-1 {
+    background-color: red;
+}
+
+.content .set-priority .op-2,
+.content .priority-2 {
+    background-color: rgb(255, 183, 0);
+}
+
+.content .set-priority .op-3,
+.content .priority-3 {
+    background-color: rgb(255, 213, 0);
+}
+
+.content .set-priority .op-4,
+.content .priority-4 {
+    background-color: rgb(49, 192, 2);
+}
+
+.content .set-priority .op-5,
+.content .priority-5 {
+    background-color: rgb(90, 142, 246);
+}
+
+.content .set-priority {
+    position: absolute;
+    box-shadow: 0 0.5rem 0.5rem rgba(0,0,0, 0.25);
+    left: -384px;
+    top: 80%;
+    display: none;
+    justify-content: space-around;
+    transform-origin: calc(100% - 25px) top;
+    animation: priority ease-in-out 0.3s;
+    will-change: opacity, transform;
+    cursor: pointer;
+}
+
+.content .set-priority::after {
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: 38px;
+    display: block;
+    border-style: solid;
+    border-width: 10px 10px;
+    border-color: transparent transparent #ddd transparent;
+}
+
+.content .set-priority::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    right: 28px;
+    width: 40px;
+    height: 15px;
+    display: block;
+    background-color: transparent;
+}
+
+@keyframes priority {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.content .set-priority input[type="radio"] {
+    display: none;
+}
+
+
+.content .set-priority .option {
+    padding: 1rem .8rem;
+    background-color: #ddd;
+}
+
+.content .set-priority .option:hover {
+    opacity: 0.8;
+    box-shadow: 0.5rem 0rem 0.5rem rgba(0,0,0, 0.25);
+    cursor: pointer;
+}
+
+
+.content .set-priority .op-1,
+.content .set-priority .op-2,
+.content .set-priority .op-3,
+.content .set-priority .op-4,
+.content .set-priority .op-5 {
+    padding: 0.3rem 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    border-radius: .25rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+.role {
+    display: inline-block;
+    padding: .3rem .5rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: center;
+    border-radius: .25rem;
+    cursor: pointer;
+
+}
+
+.role:hover .set-role {
+    display: flex;
+}
+
+.set-role .op-1,
+.role-1 {
+    background-color: rgb(255, 187, 0);
+}
+
+.set-role .op-2,
+.role-2 {
+    background-color: rgb(49, 192, 2);
+}
+
+.set-role .op-3,
+.role-3 {
+    background-color: rgb(90, 142, 246);
+}
+
+.set-role {
+    position: absolute;
+    z-index: 100;
+    box-shadow: 0 0.5rem 0.5rem rgba(0,0,0, 0.25);
+    left: -50px;
+    top: 80%;
+    width: 20rem;
+    background-color: #ddd;
+    display: none;
+    justify-content: space-around;
+    transform-origin: calc(100% - 85px) top;
+    animation: priority ease-in-out 0.3s;
+    will-change: opacity, transform;
+    cursor: pointer;
+}
+
+.set-role::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -20px;
+    right: 85px;
+    display: block;
+    border-style: solid;
+    border-width: 10px 10px;
+    border-color: transparent transparent #ddd transparent;
+
+}
+
+.set-role::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    right: 28px;
+    width: 40px;
+    height: 15px;
+    display: block;
+    background-color: transparent;
+}
+
+.set-role input[type="radio"] {
+    display: none;
+}
+
+.set-role .option {
+    padding: .8rem .8rem;
+    background-color: #ddd;
+}
+
+.set-role .option:hover {
+    opacity: 0.8;
+    box-shadow: 0.5rem 0rem 0.5rem rgba(0,0,0, 0.25);
+    cursor: pointer;
+}
+
+.set-role .op-1,
+.set-role .op-2,
+.set-role .op-3 {
+    padding: 0.3rem 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    border-radius: .25rem;
+    color: #fff;
+}
+
+
+

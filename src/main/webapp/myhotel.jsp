@@ -28,7 +28,7 @@
     <h2>Manage Hotel</h2>
     <ul class="responsive-table">
         <li class="table-header">
-            <div class="col col-1">Hotel Name</div>
+            <div class="col col-1">Hotel's Name</div>
             <div class="col col-1">Description</div>
             <div class="col col-2">Category</div>
             <div class="col col-3">Phone</div>
@@ -49,18 +49,18 @@
             <div class="col col-5" data-label="Number Of Star">${hotel.star}</div>
             <div class="col col-6" data-label="City">${hotel.city}</div>
             <c:if test="${hotel.status == true}">
-                <div class="col col-7" data-label="Status"><a
+                <div class="col col-7" data-label="Status"><a title="Change status"
                         href="ActivateHotel?id=${hotel.id}&check=${hotel.status}&page=LoadMyHotel"
                         class="badge badge-confirm">active</a></div>
 
             </c:if>
             <c:if test="${hotel.status == false}">
-                <div class="col col-7" data-label="Status"><a
+                <div class="col col-7" data-label="Status"><a title="Change status"
                         href="ActivateHotel?id=${hotel.id}&check=${hotel.status}&page=LoadMyHotel"
                         class="badge badge-updating">inactive</a></div>
 
             </c:if>
-            <a href="LoadEditHotel?idh=${hotel.id}"><i class="fas fa-edit col col-8"></i></a>
+            <a class="edit" href="LoadEditHotel?idh=${hotel.id}"><i class="fas fa-edit col col-8"></i></a>
 
 
         </li>
@@ -88,17 +88,17 @@
                 <div class="col col-4" data-label="Discount"> ${o.discount}</div>
 
                 <c:if test="${o.status == true}">
-                    <div class="col col-5" data-label="Status"><a
+                    <div class="col col-5" data-label="Status"><a title="Change status"
                             href="ActivateRoom?id=${o.id}&check=${o.status}&page=LoadMyHotel"
                             class="badge badge-confirm">active</a></div>
                 </c:if>
                 <c:if test="${o.status == false}">
-                    <div class="col col-5" data-label="Status"><a
+                    <div class="col col-5" data-label="Status"><a title="Change status"
                             href="ActivateRoom?id=${o.id}&check=${o.status}&page=LoadMyHotel"
                             class="badge badge-updating">inactive</a></div>
                 </c:if>
 
-                <a href="editroom.jsp?idr=${o.id}"><i class="fas fa-edit col col-5"></i></a>
+                <a class="edit" href="editroom.jsp?idr=${o.id}"><i class="fas fa-edit col col-5"></i></a>
 
             </li>
         </c:forEach>
@@ -127,9 +127,9 @@
                     <div class="col col-3" data-label="useremail">${a.userEmail}</div>
                 </c:if>
                 <c:if test="${a.confirm == false}">
-                    <div class="col col-1" data-label="username"></div>
-                    <div class="col col-2" data-label="userphone"></div>
-                    <div class="col col-3" data-label="useremail"></div>
+                    <div class="col col-1" data-label="username"><i class="fa-sharp fa-solid fa-eye-slash"></i></div>
+                    <div class="col col-2" data-label="userphone"><i class="fa-sharp fa-solid fa-eye-slash"></i></div>
+                    <div class="col col-3" data-label="useremail"><i class="fa-sharp fa-solid fa-eye-slash"></i></div>
                 </c:if>
                 <div class="col col-4" data-label="hotelname">${a.hotelName}</div>
                 <div class="col col-5" data-label="roomname">${a.roomName}</div>
@@ -138,15 +138,15 @@
                 <div class="col col-8" data-label="dayend">${a.dateEnd}</div>
                 <div class="col col-9" data-label="totalcost">${a.totalCost}</div>
                 <c:if test="${a.confirm == true}">
-                    <div class="col col-10" data-label="Status"><a
+                    <div class="col col-10" data-label="Status"><a title="Change status"
                             href="ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel"
-                            class="badge badge-confirm">active</a></div>
+                            class="badge badge-confirm">Confirm</a></div>
                     <%--                    ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel--%>
                 </c:if>
                 <c:if test="${a.confirm == false}">
-                    <div class="col col-10" data-label="Status"><a
+                    <div class="col col-10" data-label="Status"><a title="Change status"
                             href="ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel"
-                            class="badge badge-updating">inactive</a></div>
+                            class="badge badge-updating">Updating</a></div>
                     <%--                    ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel--%>
                 </c:if>
             </li>
