@@ -39,7 +39,8 @@ public class Hotel_DAO {
                         rs.getString(9),
                         rs.getString(10),
                         rs.getInt(11),
-                        rs.getInt(12)
+                        rs.getInt(12),
+                        rs.getInt(13)
                 );
             }
             System.out.println(hd);
@@ -51,7 +52,7 @@ public class Hotel_DAO {
 
     public List<Hotel_Details> getHotels() {
         List<Hotel_Details> list = new ArrayList<>();
-        String query = "select * from Hotel_Details where Status = 1 order by Cost asc ";
+        String query = "select * from Hotel_Details where Status = 1 order by Priority asc ";
         try {
             // Open connection with SQL Server
             conn = new DBContext().getConnection();
@@ -74,7 +75,8 @@ public class Hotel_DAO {
                         rs.getString(9),
                         rs.getString(10),
                         rs.getInt(11),
-                        rs.getInt(12)
+                        rs.getInt(12),
+                        rs.getInt(13)
                 ));
             }
             System.out.println(list.size());
@@ -85,7 +87,7 @@ public class Hotel_DAO {
     }
 
     public List<Hotel_Details> getHotelsInHome() {
-        String query = "select top 8 * from Hotel_Details where [Status] = 1 order by ID_Hotel ";
+        String query = "select top 8 * from Hotel_Details where [Status] = 1 order by [Priority] ";
 
         return get(query);
     }
@@ -224,7 +226,8 @@ public class Hotel_DAO {
                         rs.getString(9),
                         rs.getString(10),
                         rs.getInt(11),
-                        rs.getInt(12)
+                        rs.getInt(12),
+                        rs.getInt(13)
                 ));
             }
             System.out.println(list.size());
@@ -259,7 +262,8 @@ public class Hotel_DAO {
                         rs.getString(9),
                         rs.getString(10),
                         rs.getInt(11),
-                        rs.getInt(12)
+                        rs.getInt(12),
+                        rs.getInt(13)
                 );
             }
             System.out.println(hh);

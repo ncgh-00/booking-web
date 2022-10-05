@@ -42,7 +42,7 @@
                 </span>
             </div>
             <div class="infor">
-                <span class="details">Phone:  <p>${sessionScope.Account.phone}</p></span>
+                <span class="details">Phone:  <p>${sessionScope.Account.phone==null?"You should add your phone":sessionScope.Account.phone}</p></span>
             </div>
             <div>
                 <a href="edituser.jsp" class="btn">Edit Profile</a>

@@ -15,7 +15,8 @@ public class Hotel_Details {
     private int cost;
     private int discount;
 
-    public Hotel_Details(int id, String name, String des, String image, String phone, String address, int star, boolean status, String category, String city, int cost, int discount) {
+    private int priority;
+    public Hotel_Details(int id, String name, String des, String image, String phone, String address, int star, boolean status, String category, String city, int cost, int discount,int priority) {
         this.id = id;
         this.name = name;
         this.des = des;
@@ -28,6 +29,15 @@ public class Hotel_Details {
         this.city = city;
         this.cost = cost;
         this.discount = discount;
+        this.priority = priority;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 
     public int getId() {
