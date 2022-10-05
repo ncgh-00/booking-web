@@ -213,8 +213,8 @@ body {
 .content .set-priority {
     position: absolute;
     box-shadow: 0 0.5rem 0.5rem rgba(0,0,0, 0.25);
-    left: -384px;
-    top: 80%;
+    left: -364px;
+    top: 90%;
     display: none;
     justify-content: space-around;
     transform-origin: calc(100% - 25px) top;
@@ -237,10 +237,10 @@ body {
 .content .set-priority::before {
     content: "";
     position: absolute;
-    top: -15px;
-    right: 28px;
-    width: 40px;
-    height: 15px;
+    top: -18px;
+    right: 0;
+    width: 462px;
+    height: 19px;
     display: block;
     background-color: transparent;
 }
@@ -322,8 +322,8 @@ body {
     position: absolute;
     z-index: 100;
     box-shadow: 0 0.5rem 0.5rem rgba(0,0,0, 0.25);
-    left: -50px;
-    top: 80%;
+    left: -55px;
+    top: 90%;
     width: 20rem;
     background-color: #ddd;
     display: none;
@@ -350,10 +350,10 @@ body {
 .set-role::before {
     content: "";
     position: absolute;
-    top: -15px;
-    right: 28px;
-    width: 40px;
-    height: 15px;
+    top: -20px;
+    right: 0;
+    width: 200px;
+    height: 20px;
     display: block;
     background-color: transparent;
 }
