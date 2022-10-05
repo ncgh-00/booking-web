@@ -53,7 +53,7 @@ public class Search extends HttpServlet {
 
 
         request.setAttribute("listH",ls);
-
+        request.setAttribute("search",1);
         request.setAttribute("page","index.jsp");
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
