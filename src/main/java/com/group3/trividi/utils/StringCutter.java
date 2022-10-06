@@ -7,7 +7,6 @@ public class StringCutter {
         else {
             return name;
         }
-
     }
 
     public static void main(String[] args) {

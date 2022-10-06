@@ -5,6 +5,8 @@ import com.group3.trividi.context.DBContext;
 import com.group3.trividi.model.Account;
 import com.group3.trividi.model.Account_Info;
 import com.group3.trividi.utils.HashPassword;
+import com.group3.trividi.utils.NameGenerator;
+import com.sun.corba.se.spi.activation.InitialNameServicePackage.NameAlreadyBound;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -260,9 +262,26 @@ public class User_DAO {
         }
     }
 
+    public void randomUser(int role_id){
+        String query = "insert into Account(Role_ID,Username,Hash_password,Status) values (?,?,?,'1')";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, role_id);
+            ps.setString(2, NameGenerator.randomIdentifier());
+            ps.setString(3, HashPassword.generatePassword(8));
+            ps.executeUpdate();
+            System.out.println("dang ky duoc roi");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
     public static void main(String[] args) {
         User_DAO h = new User_DAO();
-        h.getUsersInfo();
+        h.randomUser(1);
     }
 
 
