@@ -13,8 +13,8 @@
 </head>
 
 <body>
-<jsp:include page="header.jsp"></jsp:include>
 
+<a class="nav-link" href="HomeBooking">
 <div class="menu">
     <ul class="menu__bar">
         <a class="menu__item selected" href="">

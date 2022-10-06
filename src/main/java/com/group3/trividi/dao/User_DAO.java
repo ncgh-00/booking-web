@@ -3,12 +3,15 @@ package com.group3.trividi.dao;
 
 import com.group3.trividi.context.DBContext;
 import com.group3.trividi.model.Account;
+import com.group3.trividi.model.Account_Info;
 import com.group3.trividi.utils.HashPassword;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class User_DAO {
     Connection conn = null; // Connect with SQL Server
@@ -177,5 +180,35 @@ public class User_DAO {
             e.printStackTrace();
         }
     }
+
+    public List<Account_Info> getUsersInfo() {
+        List<Account_Info> list = new ArrayList<>();
+        String query = "select * from Account_Info";
+        try {
+            // Open connection with SQL Server
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            ps = conn.prepareStatement(query);
+            // Get the result of SQL Server ans store in rs
+            rs = ps.executeQuery();
+
+            // Add data in rs to ArrayList
+            while (rs.next()) {
+                //int id, String name, String image, double price, String title, String description
+                list.add(new Account_Info(rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getBoolean(10),rs.getInt(1), rs.getString(11), rs.getString(12)
+                ));
+            }
+            System.out.println(list.size());
+        } catch (Exception e) {
+            System.out.println("Fail, please contact to admin!!");
+        }
+        return list;
+    }
+
+    public static void main(String[] args) {
+        User_DAO h = new User_DAO();
+        h.getUsersInfo();
+    }
+
 
 }
