@@ -205,6 +205,45 @@ public class User_DAO {
         return list;
     }
 
+    public void activate(String uid, boolean check) {
+        int status;
+        if (check) {
+            status = 0;
+        } else {
+            status = 1;
+        }
+        String query = "update [Account_Info] set [Status] = " + status + " where [UID] = '" + uid + "' ";
+        try {
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            st = conn.createStatement();
+
+            st.executeUpdate(query);
+            System.out.println(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addAcc(String username, String password, String fullname, String email, String phone, int roleID) {
+        String query = "insert into Account(Role_ID,Username,Hash_password,FullName,Email,Phone,Status) \n"
+                + "values (?,?,?,?,?,?,'1')";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(2, username);
+            ps.setString(3, password);
+            ps.setString(4, fullname);
+            ps.setString(5, email);
+            ps.setString(6, phone);
+            ps.setInt(1, roleID);
+            ps.executeUpdate();
+            System.out.println("add duoc roi");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void editRole(String id, String role_id) {
         String sql = "update [Account] set Role_ID = "+role_id+" where UID = '"+id+"'";
 
@@ -223,7 +262,7 @@ public class User_DAO {
 
     public static void main(String[] args) {
         User_DAO h = new User_DAO();
-        h.editRole("1","1");
+        h.getUsersInfo();
     }
 
 

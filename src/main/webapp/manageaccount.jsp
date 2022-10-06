@@ -32,7 +32,7 @@
 
 <div class="content">
     <div class="nav">
-        <a href="" class="btn"><i class="add-icon fa-solid fa-circle-plus"></i>Add</a>
+        <a href="#" class="btn"><i class="add-icon fa-solid fa-circle-plus"></i>Add</a>
         <form action="" class="search">
             <input type="text" class="search__bar" id="search-bar" placeholder="Search here...">
         </form>
@@ -49,33 +49,51 @@
             <div class="table__cell header__table">Status</div>
         </div>
         <c:forEach items="${ListA}" var="o">
-            <div class="table__row">
-                <div class="table__cell" data-label="Full Name">${o.fullname}</div>
-                <div class="table__cell" data-label="Email">${o.email}</div>
-                <div class="table__cell" data-label="Phone">${o.phone}</div>
-                <div class="table__cell" data-label="User Name">${o.username}</div>
-                <div class="table__cell align-center" data-label="Password">${o.hashPassword}</div>
-                <div class="table__cell align-center">
-                    <div class="role
+        <div class="table__row">
+            <div class="table__cell" data-label="Full Name">${o.fullname}</div>
+            <div class="table__cell" data-label="Email">${o.email}</div>
+            <div class="table__cell" data-label="Phone">${o.phone}</div>
+            <div class="table__cell" data-label="User Name">${o.username}</div>
+            <div class="table__cell align-center" data-label="Password">${o.hashPassword}</div>
+            <div class="table__cell align-center">
+                <div class="role
                     <c:if test="${o.roleID == 1}">role-1</c:if>
                     <c:if test="${o.roleID == 2}">role-2</c:if>
                     <c:if test="${o.roleID == 3}">role-3</c:if>
                 ">
-                            ${o.roleName}
-                        <div action="EditRole?id=${o.UID}" class="set-role">
-                            <a href="EditRole?id=${o.UID}&role=1" class="option"><p class="op-1">Admin</p></a>
-                            <a href="EditRole?id=${o.UID}&role=2" class="option"><p class="op-2">Staff</p></a>
-                            <a href="EditRole?id=${o.UID}&role=3" class="option"><p class="op-3">User</p></a>
-                        </div>
+                        ${o.roleName}
+                    <div action="EditRole?id=${o.UID}" class="set-role">
+                        <a href="EditRole?id=${o.UID}&role=1" class="option"><p class="op-1">Admin</p></a>
+                        <a href="EditRole?id=${o.UID}&role=2" class="option"><p class="op-2">Staff</p></a>
+                        <a href="EditRole?id=${o.UID}&role=3" class="option"><p class="op-3">User</p></a>
                     </div>
                 </div>
-                <div class="table__cell">${o.hotelManage}</div>
-                <div class="table__cell align-center">
-                    <a href="" class="badge badge-active" title="Change status">Active</a>
-                </div>
             </div>
-        </c:forEach>
-    </div>
+            <div class="table__cell">${o.hotelManage}</div>
+
+                <%--                <c:if test="${o.status == true}">--%>
+                <%--                <div class="table__cell align-center">--%>
+                <%--                    <a href="ActivateAccounts?uid=${o.uid}" class="badge badge-active" title="Change status">Active</a>--%>
+                <%--                </div>--%>
+                <%--                </c:if>--%>
+            <c:if test="${o.status == true}">
+                <div class="table__cell align-center" data-label="Status">
+                    <a title="Change status"
+                       href="ActivateAccounts?uid=${o.UID}&check=${o.status}&page=LoadAccounts"
+                       class="badge badge-active">active</a>
+                </div>
+            </c:if>
+            <c:if test="${o.status == false}">
+                <div class="table__cell align-center" data-label="Status">
+                    <a title="Change status"
+                       href="ActivateAccounts?uid=${o.UID}&check=${o.status}&page=LoadAccounts"
+                       class="badge badge-inactive">inactive</a>
+                </div>
+            </c:if>
+
+        </div>
+</c:forEach>
+</div>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
 </body>

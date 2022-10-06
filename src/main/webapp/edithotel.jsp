@@ -25,7 +25,7 @@
 
             <div class="input">
                 <select name="category" id="category">
-                    <option value="">Select Category</option>
+                    <option value="" selected>Select Category</option>
                     <c:forEach items="${sessionScope.Category}" var="o">
                         <option value="${o.id}">${o.name}</option>
                     </c:forEach>

@@ -20,7 +20,7 @@
         <a class="menu__item selected" href="">
             <li>Hotel Management</li>
         </a>
-        <a class="menu__item" href="">
+        <a class="menu__item" href="LoadAccounts">
             <li>Account Management</li>
         </a>
         <a class="menu__item" href="">
