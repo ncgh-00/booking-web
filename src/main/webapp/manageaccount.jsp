@@ -62,25 +62,31 @@
                     <c:if test="${o.roleID == 3}">role-3</c:if>
                 ">
                     ${o.roleName}
-                    <form action="" class="set-role" method="post">
+                    <form action="EditRole?id=${o.UID}" class="set-role" method="post" >
                         <input type="radio" id="op-1" name="role" value="1">
                         <input type="radio" id="op-2" name="role" value="2">
                         <input type="radio" id="op-3" name="role" value="3">
-                        <button type="submit" class="option">
+
                             <label for="op-1">
+                                <button type="submit" class="option">
                                 <p class="op-1">Admin</p>
+                                </button>
                             </label>
-                        </button>
-                        <button type="submit" class="option">
+
+
                             <label for="op-2">
+                                <button type="submit" class="option">
                                 <p class="op-2">Staff</p>
+                                </button>
                             </label>
-                        </button>
-                        <button type="submit" class="option">
+
+
                             <label for="op-3">
+                                <button type="submit" class="option">
                                 <p class="op-3">User</p>
+                                </button>
                             </label>
-                        </button>
+
                     </form>
                 </div>
             </div>

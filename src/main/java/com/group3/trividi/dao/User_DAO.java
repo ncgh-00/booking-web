@@ -205,9 +205,25 @@ public class User_DAO {
         return list;
     }
 
+    public void editRole(String id, String role_id) {
+        String sql = "update [Account] set Role_ID = "+role_id+" where UID = '"+id+"'";
+
+        System.out.println(sql);
+
+        try {
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            st = conn.createStatement();
+
+            st.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         User_DAO h = new User_DAO();
-        h.getUsersInfo();
+        h.editRole("1","1");
     }
 
 
