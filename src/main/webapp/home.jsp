@@ -24,7 +24,7 @@
 <!--  section ends -->
 
 <!-- home section starts -->
-<section class="home" id="home">
+<section class="home ${search==1?"hidden":""}" id="home">
     <div class="content">
         <h3>welcome to A global icon of luxury</h3>
         <p>dicover new places with us, luxury awaits</p>
@@ -50,7 +50,7 @@
 
 <!-- Hot hotel section starts -->
 
-<section class="hot-hotel" id="hot-hotel">
+<section class="hot-hotel ${search==1?"hidden":""}" id="hot-hotel">
     <h1 class="heading">
         <span>H</span>
         <span>o</span>
@@ -98,7 +98,8 @@
 
 <!-- Hotel section starts -->
 
-<section class="hotel" id="hotel">
+<section class="hotel ${search==1?"mt-body":""}" id="hotel">
+    <c:if test="${search!=1}">
     <h1 class="heading">
         <span>H</span>
         <span>o</span>
@@ -106,7 +107,26 @@
         <span>e</span>
         <span>l</span>
     </h1>
+    </c:if>
 
+    <c:if test="${search==1}">
+        <h1 class="heading">
+            <span>S</span>
+            <span>e</span>
+            <span>a</span>
+            <span>r</span>
+            <span>c</span>
+            <span>h</span>
+            <span class="space"></span>
+            <span>R</span>
+            <span>e</span>
+            <span>s</span>
+            <span>u</span>
+            <span>l</span>
+            <span>t</span>
+            <span>s</span>
+        </h1>
+    </c:if>
     <div class="box-container">
         <c:forEach items="${listH}" var="o">
             <div class="box">
@@ -141,7 +161,7 @@
 
 <!-- city section starts -->
 
-<section class="city" id="city">
+<section class="city ${search==1?"hidden":""}" id="city">
     <h1 class="heading">
         <span>c</span>
         <span>i</span>
@@ -170,7 +190,7 @@
 
 <!-- services section starts -->
 
-<section class="services" id="services">
+<section class="services ${search==1?"hidden":""}" id="services">
     <h1 class="heading">
         <span>s</span>
         <span>e</span>
