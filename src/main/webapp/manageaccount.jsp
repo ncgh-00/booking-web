@@ -49,52 +49,31 @@
             <div class="table__cell header__table">Status</div>
         </div>
         <c:forEach items="${ListA}" var="o">
-        <div class="table__row">
-            <div class="table__cell" data-label="Full Name">${o.fullname}</div>
-            <div class="table__cell" data-label="Email">${o.email}</div>
-            <div class="table__cell" data-label="Phone">${o.phone}</div>
-            <div class="table__cell" data-label="User Name">${o.username}</div>
-            <div class="table__cell align-center" data-label="Password">${o.hashPassword}</div>
-            <div class="table__cell align-center">
-                <div class="role
+            <div class="table__row">
+                <div class="table__cell" data-label="Full Name">${o.fullname}</div>
+                <div class="table__cell" data-label="Email">${o.email}</div>
+                <div class="table__cell" data-label="Phone">${o.phone}</div>
+                <div class="table__cell" data-label="User Name">${o.username}</div>
+                <div class="table__cell align-center" data-label="Password">${o.hashPassword}</div>
+                <div class="table__cell align-center">
+                    <div class="role
                     <c:if test="${o.roleID == 1}">role-1</c:if>
                     <c:if test="${o.roleID == 2}">role-2</c:if>
                     <c:if test="${o.roleID == 3}">role-3</c:if>
                 ">
-                    ${o.roleName}
-                    <form action="EditRole?id=${o.UID}" class="set-role" method="post" >
-                        <input type="radio" id="op-1" name="role" value="1">
-                        <input type="radio" id="op-2" name="role" value="2">
-                        <input type="radio" id="op-3" name="role" value="3">
-
-                            <label for="op-1">
-                                <button type="submit" class="option">
-                                <p class="op-1">Admin</p>
-                                </button>
-                            </label>
-
-
-                            <label for="op-2">
-                                <button type="submit" class="option">
-                                <p class="op-2">Staff</p>
-                                </button>
-                            </label>
-
-
-                            <label for="op-3">
-                                <button type="submit" class="option">
-                                <p class="op-3">User</p>
-                                </button>
-                            </label>
-
-                    </form>
+                            ${o.roleName}
+                        <div action="EditRole?id=${o.UID}" class="set-role">
+                            <a href="EditRole?id=${o.UID}&role=1" class="option"><p class="op-1">Admin</p></a>
+                            <a href="EditRole?id=${o.UID}&role=2" class="option"><p class="op-2">Staff</p></a>
+                            <a href="EditRole?id=${o.UID}&role=3" class="option"><p class="op-3">User</p></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="table__cell">${o.hotelManage}</div>
+                <div class="table__cell align-center">
+                    <a href="" class="badge badge-active" title="Change status">Active</a>
                 </div>
             </div>
-            <div class="table__cell">${o.hotelManage}</div>
-            <div class="table__cell align-center">
-                <a href="" class="badge badge-active" title="Change status">Active</a>
-            </div>
-        </div>
         </c:forEach>
     </div>
 </div>
