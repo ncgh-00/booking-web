@@ -317,8 +317,8 @@ body {
     position: absolute;
     z-index: 100;
     box-shadow: 0 0.5rem 0.5rem rgba(0,0,0, 0.25);
-    left: -40px;
-    top: 90%;
+    left: -26px;
+    top: 95%;
     width: 20rem;
     background-color: #ddd;
     display: none;
