@@ -206,13 +206,12 @@
         <div class="box">
             <i class="fas fa-hotel"></i>
             <h3>affordable hotels</h3>
-            <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.
-                Lorem Ipsum is simply dummy text of the farhan and typesetting industry
-                Lorem Ipsum is simply dummy text of the farhan and typesetting industry</p>
+            <p>Coming to Trividi Joint Stock Company, customers will always find hotels with affordable prices but receive the best service.
+                Additionally, we frequently give discounts on our website so that clients always get the best deals.</p>
         </div>
         <div class="box">
             <i class="fas fa-utensils"></i>
-            <h3>food and drinks</h3>
+            <h3>fast to booking</h3>
             <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.
                 Lorem Ipsum is simply dummy text of the farhan and typesetting industry
                 Lorem Ipsum is simply dummy text of the farhan and typesetting industry</p>
