@@ -10,10 +10,7 @@ import com.group3.trividi.utils.StringCutter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(name = "LoginGoogle", value = "/LoginGoogle")
@@ -45,6 +42,9 @@ public class LoginGoogle extends HttpServlet {
             session.setAttribute("name", StringCutter.cut(acc.getFullname()));
             session.setAttribute("Account", acc);
             session.setAttribute("role", acc.getRoleID());
+            Cookie uid = new Cookie("uid",acc.getUID());
+            uid.setMaxAge(36000);
+            response.addCookie(uid);
             RequestDispatcher dis = request.getRequestDispatcher("index.jsp");
             dis.forward(request, response);
         }

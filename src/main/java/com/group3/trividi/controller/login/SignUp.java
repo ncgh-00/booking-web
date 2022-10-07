@@ -7,10 +7,7 @@ import com.group3.trividi.utils.Validation;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(name = "SignUp", value = "/SignUp")
@@ -57,6 +54,9 @@ public class SignUp extends HttpServlet {
             request.removeAttribute("errorSignup");
             dao.insert(username, HashPassword.getHashedPassword(password), name, mail, phone);
             Account acc = dao.getUSer(username, HashPassword.getHashedPassword(password));
+            Cookie uid = new Cookie("uid",acc.getUID());
+            uid.setMaxAge(36000);
+            response.addCookie(uid);
             session.setAttribute("Account", acc);
             session.setAttribute("role", acc.getRoleID());
             request.setAttribute("id_hotel", id_hotel);

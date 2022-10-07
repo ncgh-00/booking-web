@@ -7,10 +7,7 @@ import com.group3.trividi.utils.StringCutter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(name = "Login", value = "/Login")
@@ -41,11 +38,13 @@ public class Login extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
             session.setAttribute("role", 0);
         } else {
+            Cookie uid = new Cookie("uid",acc.getUID());
+            uid.setMaxAge(36000);
+            response.addCookie(uid);
             request.removeAttribute("error");
             session.setAttribute("Account", acc);
             session.setAttribute("role", acc.getRoleID());
             request.setAttribute("id_hotel", id_hotel);
-            System.out.println(StringCutter.cut(acc.getFullname()));
             session.setAttribute("name", StringCutter.cut(acc.getFullname()));
             if (page == null || page.equals("null")) {
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
