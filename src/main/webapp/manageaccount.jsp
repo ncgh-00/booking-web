@@ -25,7 +25,7 @@
             <li>Account Management</li>
         </a>
         <a class="menu__item" href="">
-            <li>statitic</li>
+            <li>statistic</li>
         </a>
     </ul>
 </div>

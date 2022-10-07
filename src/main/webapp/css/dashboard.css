@@ -385,5 +385,121 @@ body {
     color: #fff;
 }
 
+.card-orange {
+    background-image: linear-gradient(90deg, #fe9466, #feb697);
+}
+
+.card-green {
+    background-image: linear-gradient(90deg, #0ac383, #0df2a2);
+}
+
+.card-red {
+    background-image: linear-gradient(90deg, #fe5d70, #fe8f9d);
+}
+
+.card-blue {
+    background-image: linear-gradient(90deg, #01a9ac, #01dbdf);
+}
+
+.card-container {
+    margin-top: 15rem;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+}
+
+.card {
+    padding: 2rem;
+    width: 35rem;
+    color: #fff;
+    border-radius: 0.6rem;
+    margin: 1rem
+}
+
+.card__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card__content {
+}
+
+.card__number {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.card__details {
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.card__icon {
+    font-size: 2.5rem;
+}
+
+.icon + .icon{
+    margin-left: 0.2rem;
+}
+
+.line {
+    background-color: #fff;
+    height: 1px;
+    width: 100%;
+    margin: 1.5rem 0;
+}
+
+.card__footer {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.card_time {
+    text-transform: none;
+}
+
+.card__footer i {
+    margin-right: 0.8rem;
+
+}
+
+.form-search {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar {
+    width: 15rem;
+    padding: .6rem 2rem;
+    border-radius: 0.6rem;
+    font-size: 1.5rem;
+}
+
+.search-bar + .search-bar {
+    margin-left: 2rem;
+}
+
+.form-search .btn {
+    font-size: 1.5rem;
+    margin-left: 2rem;
+    background-color: var(--orange);
+    padding: .6rem 2rem;
+    border: 0.2rem solid var(--orange);
+    color: #333;
+    cursor: pointer;
+}
+
+.form-search .btn:hover {
+    background: rgba(255, 165, 0, .2);
+}
+
+.chart-container {
+    height: 60vh;
+}
+
 
 
