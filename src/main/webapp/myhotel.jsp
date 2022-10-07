@@ -30,6 +30,7 @@
         <li class="table-header">
             <div class="col col-1">Hotel's Name</div>
             <div class="col col-1">Description</div>
+            <div class="col col-1">Image</div>
             <div class="col col-2">Category</div>
             <div class="col col-3">Phone</div>
             <div class="col col-4">Address</div>
@@ -42,7 +43,8 @@
 
         <li class="table-row">
             <div class="col col-1" data-label="Location">${hotel.name}</div>
-            <div class="col col-1" data-label="Location">${hotel.des}</div>
+            <div class="col col-1" data-label="Description">${hotel.des}</div>
+            <div class="col col-1" data-label="Image">${hotel.image}</div>
             <div class="col col-2" data-label="Category">${hotel.category}</div>
             <div class="col col-3" data-label="Phone"> ${hotel.phone}</div>
             <div class="col col-4" data-label="Address">${hotel.address}</div>
@@ -74,6 +76,7 @@
         <li class="table-header">
             <div class="col col-1">Name of room</div>
             <div class="col col-1">Description</div>
+            <div class="col col-1">Image</div>
             <div class="col col-2">Cost</div>
             <div class="col col-3">Discount</div>
             <div class="col col-4">Status</div>
@@ -84,6 +87,7 @@
             <li class="table-row">
                 <div class="col col-1" data-label="Name of room">${o.name}</div>
                 <div class="col col-2" data-label="Description">${o.des}</div>
+                <div class="col col-1" data-label="Image">${o.images}</div>
                 <div class="col col-3" data-label="Cost">${o.cost}</div>
                 <div class="col col-4" data-label="Discount"> ${o.discount}</div>
 

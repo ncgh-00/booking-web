@@ -5,6 +5,7 @@ import com.group3.trividi.model.Hotel_Category;
 import com.group3.trividi.model.Hotel_Details;
 import com.group3.trividi.model.Room_Details;
 
+import javax.servlet.http.Part;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -282,7 +283,9 @@ public class Hotel_DAO {
         return get(query);
     }
 
-    public void editHotel(String id, String name, String des, String category, String phone, String address, String numOfStar, String city) {
+    public void editHotel(String id, String name, String des, String category, String phone, String address, String numOfStar, String city, String fileName) {
+//        String img = image;
+
         String sql = "update [Hotel] set ";
 
         if (!name.isEmpty()) {
@@ -303,6 +306,9 @@ public class Hotel_DAO {
         if (!numOfStar.isEmpty()) {
             sql += " [NumberOfStars] = " + numOfStar + ",";
         }
+        if (!fileName.isEmpty()) {
+            sql += " [Image] = 'images/" + fileName + "',";
+        }
         if (!city.isEmpty()) {
             sql += " [ID_City] = " + city + ",";
         }
@@ -322,7 +328,7 @@ public class Hotel_DAO {
         }
     }
 
-    public void editRoom(String id, String name,String des, String cost, String discount) {
+    public void editRoom(String id, String name,String des, String cost, String discount, String image) {
         String sql = "update [Room_Details] set ";
 
         if (!name.isEmpty()) {
@@ -336,6 +342,9 @@ public class Hotel_DAO {
         }
         if (!discount.isEmpty()) {
             sql += " [Discount] = '" + discount + "',";
+        }
+        if (!image.isEmpty()) {
+            sql += " Image = 'images/" + image + "',";
         }
 
         sql = sql.substring(0, sql.length() - 1);

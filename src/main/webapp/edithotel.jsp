@@ -13,7 +13,7 @@
 <div class="layout">
     <div class="container">
         <h3 class="heading">Edit Hotel</h3>
-        <form action="EditHotel" class="form" method="post">
+        <form action="EditHotel" class="form" method="post" enctype="multipart/form-data">
             <input type="hidden" class="input-box" name="idhotel" value="<%=request.getParameter("idh")%>">
             <div class="input">
                 <input type="text" class="input-box" placeholder="Hotel Name" name="name">
@@ -30,6 +30,10 @@
                         <option value="${o.id}">${o.name}</option>
                     </c:forEach>
                 </select>
+            </div>
+
+            <div class="input">
+                <input type="file" class="input-box" placeholder="Image" name="image">
             </div>
 
             <div class="input">

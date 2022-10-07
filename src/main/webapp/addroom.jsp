@@ -15,14 +15,14 @@
     <div class="container">
 
         <h3 class="heading">Add Room</h3>
-        <form action="AddRoom?idh=<%=request.getParameter("idh")%>" class="form" method="post">
+        <form action="AddRoom?idh=<%=request.getParameter("idh")%>" class="form" method="post" enctype="multipart/form-data">
 
             <div class="input">
                 <input type="text" class="input-box" placeholder="Name of room" name="name">
             </div>
 
             <div class="input">
-                <input type="text" class="input-box" placeholder="Image" name="image">
+                <input type="file" class="input-box" placeholder="Image" name="image">
             </div>
 
 

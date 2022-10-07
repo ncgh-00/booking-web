@@ -14,14 +14,17 @@
     <div class="container">
         <h3 class="heading">Edit Hotel</h3>
 
-        <form action="EditRoom" class="form" method="post">
-            <input type="hidden" class="input-box" name="idroom" value="<%=request.getParameter("idr")%>">
+        <form action="EditRoom" class="form" method="post" enctype="multipart/form-data">
+            <input type="hidden" class="input-box" name="idroom" value="<%=request.getParameter("idr")%>" >
             <div class="input">
                 <input type="text" class="input-box" placeholder="Name of room" name="name">
             </div>
 
             <div class="input">
                 <textarea class="input-box" name="description" placeholder="Description" rows="2"></textarea>
+            </div>
+            <div class="input">
+                <input type="file" class="input-box" placeholder="Image" name="image">
             </div>
 
             <div class="input">
