@@ -43,7 +43,6 @@
             <div class="table__cell header__table">Email</div>
             <div class="table__cell header__table">Phone</div>
             <div class="table__cell header__table">User Name</div>
-            <div class="table__cell header__table">Password</div>
             <div class="table__cell header__table">Role</div>
             <div class="table__cell header__table">Hotel Manage</div>
             <div class="table__cell header__table">Status</div>
@@ -53,8 +52,7 @@
             <div class="table__cell" data-label="Full Name">${o.fullname}</div>
             <div class="table__cell" data-label="Email">${o.email}</div>
             <div class="table__cell" data-label="Phone">${o.phone}</div>
-            <div class="table__cell" data-label="User Name">${o.username}</div>
-            <div class="table__cell align-center" data-label="Password">${o.hashPassword}</div>
+            <div class="table__cell align-center" data-label="User Name">${o.username}</div>
             <div class="table__cell align-center">
                 <div class="role
                     <c:if test="${o.roleID == 1}">role-1</c:if>
@@ -70,12 +68,6 @@
                 </div>
             </div>
             <div class="table__cell">${o.hotelManage}</div>
-
-                <%--                <c:if test="${o.status == true}">--%>
-                <%--                <div class="table__cell align-center">--%>
-                <%--                    <a href="ActivateAccounts?uid=${o.uid}" class="badge badge-active" title="Change status">Active</a>--%>
-                <%--                </div>--%>
-                <%--                </c:if>--%>
             <c:if test="${o.status == true}">
                 <div class="table__cell align-center" data-label="Status">
                     <a title="Change status"

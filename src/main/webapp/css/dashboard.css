@@ -173,12 +173,12 @@ body {
 }
 
 .content .priority {
-    padding: 1.2rem 2rem;
-    font-size: 1.5rem;
-    font-weight: 600;
+    padding: 1.2rem;
+    width: 6rem;
     text-align: center;
     border-radius: .25rem;
     cursor: pointer;
+    margin: auto;
 }
 
 .content .priority:hover .set-priority {
@@ -213,8 +213,8 @@ body {
 .content .set-priority {
     position: absolute;
     box-shadow: 0 0.5rem 0.5rem rgba(0,0,0, 0.25);
-    left: -364px;
-    top: 90%;
+    left: -334px;
+    top: 76%;
     display: none;
     justify-content: space-around;
     transform-origin: calc(100% - 25px) top;
@@ -227,7 +227,7 @@ body {
     content: "";
     position: absolute;
     top: -20px;
-    right: 38px;
+    right: 51px;
     display: block;
     border-style: solid;
     border-width: 10px 10px;
@@ -255,11 +255,6 @@ body {
         transform: scale(1);
     }
 }
-
-.content .set-priority input[type="radio"] {
-    display: none;
-}
-
 
 .content .set-priority .option {
     padding: 1rem .8rem;
@@ -491,6 +486,7 @@ body {
     border: 0.2rem solid var(--orange);
     color: #333;
     cursor: pointer;
+    margin-top: 0;
 }
 
 .form-search .btn:hover {

@@ -51,7 +51,7 @@ public class Hotel_DAO {
 
     public List<Hotel_Details> getHotels() {
         List<Hotel_Details> list = new ArrayList<>();
-        String query = "select * from Hotel_Details where Status = 1 order by Priority asc ";
+        String query = "select * from Hotel_Details order by Priority asc ";
         try {
             // Open connection with SQL Server
             conn = new DBContext().getConnection();

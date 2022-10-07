@@ -13,8 +13,7 @@
 </head>
 
 <body>
-
-<a class="nav-link" href="HomeBooking">
+<jsp:include page="header.jsp"></jsp:include>
 <div class="menu">
     <ul class="menu__bar">
         <a class="menu__item selected" href="">
@@ -61,39 +60,13 @@
             </div>
             <div class="table__cell align-center">
                 <div class="priority priority-1">
-                    <form action="index.html" class="set-priority" method="post">
-                        <input type="radio" id="op-1" name="priority" value="1">
-                        <input type="radio" id="op-2" name="priority" value="2">
-                        <input type="radio" id="op-3" name="priority" value="3">
-                        <input type="radio" id="op-4" name="priority" value="4">
-                        <input type="radio" id="op-5" name="priority" value="5">
-
-                        <button type="submit" class="option">
-                            <label for="op-1">
-                                <p class="op-1">Priority: 1</p>
-                            </label>
-                        </button>
-                        <button type="submit" class="option">
-                            <label for="op-2">
-                                <p class="op-2">Priority: 2</p>
-                            </label>
-                        </button>
-                        <button type="submit" class="option">
-                            <label for="op-3">
-                                <p class="op-3">Priority: 3</p>
-                            </label>
-                        </button>
-                        <button type="submit" class="option">
-                            <label for="op-4">
-                                <p class="op-4">Priority: 4</p>
-                            </label>
-                        </button>
-                        <button type="submit" class="option">
-                            <label for="op-5">
-                                <p class="op-5">Priority: 5</p>
-                            </label>
-                        </button>
-                    </form>
+                    <div class="set-priority" >
+                        <a class="option"><p class="op-1">Priority: 1</p></a>
+                        <a class="option"><p class="op-2">Priority: 2</p></a>
+                        <a class="option"><p class="op-3">Priority: 3</p> </a>
+                        <a class="option"><p class="op-4">Priority: 4</p></a>
+                        <a class="option"><p class="op-5">Priority: 5</p></a>
+                    </div>
                 </div>
 
             </div>

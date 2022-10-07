@@ -16,6 +16,7 @@
 </head>
 
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 <div class="menu">
     <ul class="menu__bar">
         <a class="menu__item" href="">
@@ -94,7 +95,7 @@
 
 <form action="" class="form-search">
     <input type="number" class="search-bar" placeholder="Month" min="1" max="12">
-    <input type="text" class="search-bar" placeholder="Year" min="2022">
+    <input type="number" class="search-bar" placeholder="Year" min="2022">
 
     <input type="submit" value="View" class="btn">
 </form>
@@ -102,6 +103,9 @@
 <div class="chart-container">
 
 </div>
+
+
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 
 </html>
