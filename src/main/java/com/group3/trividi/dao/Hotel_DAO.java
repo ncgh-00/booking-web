@@ -370,11 +370,65 @@ public class Hotel_DAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        }
+
+    public List<Hotel_Details> getAdHotels() {
+        List<Hotel_Details> list = new ArrayList<>();
+        String query = "select * from Hotel_Details order by ID_Hotel asc ";
+        try {
+            // Open connection with SQL Server
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            ps = conn.prepareStatement(query);
+            // Get the result of SQL Server ans store in rs
+            rs = ps.executeQuery();
+
+            // Add data in rs to ArrayList
+            while (rs.next()) {
+                //int id, String name, String des, String image, String phone, String address, int star, boolean status, String category, String city, int cost, int discount,int priority
+                list.add(new Hotel_Details(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getBoolean(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getInt(11),
+                        rs.getInt(12),
+                        rs.getInt(13)
+                ));
+            }
+            System.out.println(list.size());
+        } catch (Exception e) {
+            System.out.println("Fail, please contact to admin!!");
+        }
+        return list;
     }
 
-//    public static void main(String[] args) {
-//        Hotel_DAO h = new Hotel_DAO();
+    public void editPriority(String id, String priority) {
+        String sql = "update [Hotel_Details] set Priority = "+priority+" where ID_Hotel = "+id;
+
+        System.out.println(sql);
+
+        try {
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            st = conn.createStatement();
+
+            st.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        Hotel_DAO h = new Hotel_DAO();
+        h.getAdHotels();
 //        h.addRoom("1","binh","binh binh","binh binh binh", "123456","12");
-//    }
+
+    }
 }
 

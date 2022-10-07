@@ -135,7 +135,7 @@ body {
     word-break: break-word;
     text-transform: none;
     vertical-align: middle;
-    position: relative;
+    /*position: relative;*/
 }
 
 .content .table__cell.header__table {
@@ -179,6 +179,7 @@ body {
     border-radius: .25rem;
     cursor: pointer;
     margin: auto;
+    position: relative;
 }
 
 .content .priority:hover .set-priority {
@@ -214,7 +215,7 @@ body {
     position: absolute;
     box-shadow: 0 0.5rem 0.5rem rgba(0,0,0, 0.25);
     left: -33.5rem;
-    top: 76%;
+    top: 60%;
     display: none;
     justify-content: space-around;
     transform-origin: calc(100% - 25px) top;
@@ -291,6 +292,7 @@ body {
     text-align: center;
     border-radius: .25rem;
     cursor: pointer;
+    position: relative;
 
 }
 

@@ -1,7 +1,6 @@
-package com.group3.trividi.controller.load;
+package com.group3.trividi.controller.crud;
 
 import com.group3.trividi.dao.Hotel_DAO;
-import com.group3.trividi.model.Hotel_Details;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,16 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(name = "LoadHotels", value = "/LoadHotels")
-public class LoadHotels extends HttpServlet {
+@WebServlet(name = "EditPriority", value = "/EditPriority")
+public class EditPriority extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        String priority = request.getParameter("priority");
+
         Hotel_DAO dao = new Hotel_DAO();
-        List<Hotel_Details> list = dao.getAdHotels();
-        request.setAttribute("listH", list);
-        request.getRequestDispatcher("managehotel.jsp").forward(request, response);
+        dao.editPriority(id, priority);
+        response.sendRedirect("LoadHotels");
     }
 
     @Override

@@ -47,30 +47,46 @@
             <div class="table__cell header__table">Status</div>
             <div class="table__cell header__table">priority</div>
         </div>
+        <c:forEach items="${listH}" var="o">
         <div class="table__row">
-            <div class="table__cell">sss</div>
-            <div class="table__cell">sssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
-            <div class="table__cell">sssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
-            <div class="table__cell">sss</div>
-            <div class="table__cell">sss</div>
-            <div class="table__cell align-center">sss</div>
-            <div class="table__cell align-center">sss</div>
+            <div class="table__cell">${o.name}</div>
+            <div class="table__cell">${o.des}</div>
+            <div class="table__cell">${o.category}</div>
+            <div class="table__cell">${o.phone}</div>
+            <div class="table__cell">${o.address}</div>
+            <div class="table__cell align-center">${o.star}</div>
+            <div class="table__cell align-center">${o.city}</div>
+            <c:if test="${o.status == true}">
             <div class="table__cell align-center">
-                <a href="" class="badge badge-active" title="Change status">Active</a>
+                <a href="ActivateHotel?id=${o.id}&check=${o.status}&page=LoadHotels"
+                   class="badge badge-active" title="Change status">Active</a>
             </div>
+            </c:if>
+            <c:if test="${o.status == false}">
+                <div class="table__cell align-center">
+                    <a href="ActivateHotel?id=${o.id}&check=${o.status}&page=LoadHotels"
+                       class="badge badge-inactive" title="Change status">Inactive</a>
+                </div>
+            </c:if>
             <div class="table__cell align-center">
-                <div class="priority priority-1">
-                    <div class="set-priority" >
-                        <a class="option"><p class="op-1">Priority: 1</p></a>
-                        <a class="option"><p class="op-2">Priority: 2</p></a>
-                        <a class="option"><p class="op-3">Priority: 3</p> </a>
-                        <a class="option"><p class="op-4">Priority: 4</p></a>
-                        <a class="option"><p class="op-5">Priority: 5</p></a>
+                <div class="priority
+                     <c:if test="${o.priority == 1}">priority-1</c:if>
+                     <c:if test="${o.priority == 2}">priority-2</c:if>
+                     <c:if test="${o.priority == 3}">priority-3</c:if>
+                     <c:if test="${o.priority == 4}">priority-4</c:if>
+                     <c:if test="${o.priority == 5}">priority-5</c:if>
+                ">
+                    <div class="set-priority">
+                        <a href="EditPriority?id=${o.id}&priority=1" class="option"><p class="op-1">Priority: 1</p></a>
+                        <a href="EditPriority?id=${o.id}&priority=2" class="option"><p class="op-2">Priority: 2</p></a>
+                        <a href="EditPriority?id=${o.id}&priority=3" class="option"><p class="op-3">Priority: 3</p> </a>
+                        <a href="EditPriority?id=${o.id}&priority=4" class="option"><p class="op-4">Priority: 4</p></a>
+                        <a href="EditPriority?id=${o.id}&priority=5" class="option"><p class="op-5">Priority: 5</p></a>
                     </div>
                 </div>
-
             </div>
         </div>
+        </c:forEach>
     </div>
 </div>
 
