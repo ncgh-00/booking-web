@@ -47,6 +47,7 @@ public class LoginFilter implements Filter {
                 session.setAttribute("role", acc.getRoleID());
                 session.setAttribute("name", StringCutter.cut(acc.getFullname()));
             }
+
         }
 
 
