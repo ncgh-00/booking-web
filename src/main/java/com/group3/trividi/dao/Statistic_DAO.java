@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Statistic_DAO {
 
@@ -17,42 +18,77 @@ public class Statistic_DAO {
     Statement st = null;
     String sql;
 
-    private HashMap<Integer,String> dicMonth(){
-        HashMap<Integer,String> dic = new HashMap<>();
-        dic.put(1,"January");
-        dic.put(2,"February ");
-        dic.put(3,"March");
-        dic.put(4,"April");
-        dic.put(5,"May");
-        dic.put(6,"June");
-        dic.put(7,"July");
-        dic.put(8,"August");
-        dic.put(9,"September");
-        dic.put(10,"October");
-        dic.put(11,"November");
-        dic.put(12,"December");
+    private HashMap<String,String> dicMonth(){
+        HashMap<String,String> dic = new HashMap<>();
+        dic.put("01","January");
+        dic.put("02","February ");
+        dic.put("03","March");
+        dic.put("04","April");
+        dic.put("05","May");
+        dic.put("06","June");
+        dic.put("07","July");
+        dic.put("08","August");
+        dic.put("09","September");
+        dic.put("10","October");
+        dic.put("11","November");
+        dic.put("12","December");
         return dic;
     }
 
-    public HashMap<String,Double> getData(Integer year,Integer month){
-        HashMap<String,Double> frame = new HashMap<>();
-        HashMap<Integer,String> dic = dicMonth();
-        if(year != null && month ==  null){
-            sql = "select Month,(sum)Total from [Statistic]\n" +
+    public HashMap<String,Double> getData(String year,String month){
+        System.out.println(year + month);
+        LinkedHashMap <String,Double> frame = new LinkedHashMap<>();
+        HashMap<String,String> dic = dicMonth();
+        if(year != null && !year.trim().isEmpty() && (month ==  null|| month.trim().isEmpty())){
+            System.out.println("1");
+            sql = "select Month,sum(Total) from [Statistic]\n" +
                     "where year = "+ year +" group by Month " +" order by Month";
             try {
                 conn = new DBContext().getConnection();
                 ps = conn.prepareStatement(sql);
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                     frame.put(dic.get(rs.getInt(1)),rs.getInt(2)/24000*0.001);
+                     frame.put(dic.get(rs.getString(1)),(double) Math.round(( rs.getDouble(2)*0.001)*1000/1000));
                 }
 
                 System.out.println("ok");
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }else if(year == null && month == null){
+            System.out.println(2);
+            year = String.valueOf(java.time.LocalDate.now()).substring(0,4);
+            sql = "select Month,sum(Total) from [Statistic]\n" +
+                    "where year = "+ year +" group by Month " +" order by Month";
+            try {
+                conn = new DBContext().getConnection();
+                ps = conn.prepareStatement(sql);
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    frame.put(dic.get(rs.getString(1)),rs.getDouble(2)*0.001);
+                }
+
+                System.out.println("ok");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else if(year != null && month != null && !year.trim().isEmpty() && !month.trim().isEmpty()){
+            System.out.println(3);
+            sql = "select Day,sum(Total) from [Statistic]\n" +
+                    "where year = "+ year +" and Month = "+ month +"group by Day order by Day";
+            try {
+                conn = new DBContext().getConnection();
+                ps = conn.prepareStatement(sql);
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    frame.put(rs.getString(1),  rs.getDouble(2)*0.001);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+
         return frame;
     }
 
@@ -70,7 +106,7 @@ public class Statistic_DAO {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                return new DayProfit(rs.getInt(1), rs.getInt(2)/24000*0.001);
+                return new DayProfit(rs.getInt(1), rs.getDouble(2)*0.001);
             }
             System.out.println("ok");
         } catch (Exception e) {
@@ -87,7 +123,7 @@ public class Statistic_DAO {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                return rs.getInt(1)/24000*0.001;
+                return rs.getDouble(1)*0.001;
             }
             System.out.println("ok");
         } catch (Exception e) {
@@ -114,6 +150,6 @@ public class Statistic_DAO {
 
     public static void main(String[] args) {
         Statistic_DAO dao = new Statistic_DAO();
-        System.out.println(dao.getTotalInDay().getNumberBooks());
+        System.out.println(dao.getData("2022","10").size());
     }
 }
