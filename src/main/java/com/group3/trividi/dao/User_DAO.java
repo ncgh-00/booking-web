@@ -133,7 +133,7 @@ public class User_DAO {
                 "where a.Email = '" + email + "'";
         return get(query);
     }
-    private Account get (String query){
+    private Account get(String query){
         Account acc;
         try {
             conn = new DBContext().getConnection();
@@ -184,8 +184,20 @@ public class User_DAO {
     }
 
     public List<Account_Info> getUsersInfo() {
-        List<Account_Info> list = new ArrayList<>();
         String query = "select * from Account_Info";
+        return getAccInfo(query);
+    }
+
+    public  List<Account_Info> searchUser(String username) {
+        String query = "select * from Account_Info \n" +
+                "where [Username] like '%"+ username +"%'";
+        System.out.println(query);
+        return getAccInfo(query);
+    }
+
+    private List<Account_Info> getAccInfo(String query) {
+        List<Account_Info> list = new ArrayList<>();
+
         try {
             // Open connection with SQL Server
             conn = new DBContext().getConnection();

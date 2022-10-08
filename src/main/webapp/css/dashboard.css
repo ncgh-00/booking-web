@@ -93,16 +93,13 @@ body {
     background: rgba(255, 165, 0, .2);
 }
 
-.content .nav .search {
-    margin-left: 5rem;
-}
-
 .content .nav .search__bar {
-    width: 40rem;
+    width: 20rem;
     height: 4rem;
     padding: 1rem;
     border-radius: 0.6rem;
     font-size: 1.5rem;
+    text-transform: none;
 }
 
 
