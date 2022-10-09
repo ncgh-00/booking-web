@@ -45,7 +45,7 @@ public class AddRoom extends HttpServlet {
         Hotel_DAO dao = new Hotel_DAO();
         System.out.println("id hotel ne nhe: "+idh);
         dao.addRoom(idh, name, imageFileName, description, cost, discount);
-        response.sendRedirect("LoadMyHotel");
+        response.sendRedirect("LoadMyHotel#manageroom");
 
     }
 }

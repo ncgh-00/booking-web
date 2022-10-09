@@ -1,19 +1,17 @@
 package com.group3.trividi.controller.crud;
 
 import com.group3.trividi.dao.Hotel_DAO;
-import com.group3.trividi.dao.User_DAO;
-import com.group3.trividi.model.Account;
-import com.group3.trividi.model.City;
-import com.group3.trividi.model.Hotel_Category;
-import com.group3.trividi.utils.Validation;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.*;
 
 @MultipartConfig
 @WebServlet(name = "EditHotel", value = "/EditHotel")
@@ -34,29 +32,28 @@ public class EditHotel extends HttpServlet {
         String numOfStar = request.getParameter("numOfStar");
         String city = request.getParameter("city");
 //        String image = request.getParameter("image");
-        Part file =   request.getPart("image");
+        Part file = request.getPart("image");
         String imageFileName = file.getSubmittedFileName();
-        String uploadPath = "C:/Lesson Material/SWP/booking-web/src/main/webapp/images/"+imageFileName;
+            String uploadPath = "C:/Lesson Material/SWP/booking-web/src/main/webapp/images/" + imageFileName;
 
-        try {
+            try {
 
-            FileOutputStream fos = new FileOutputStream(uploadPath);
-            InputStream is = file.getInputStream();
+                FileOutputStream fos = new FileOutputStream(uploadPath);
+                InputStream is = file.getInputStream();
 
-            byte[] data = new byte[is.available()];
-            is.read(data);
-            fos.write(data);
-            fos.close();
+                byte[] data = new byte[is.available()];
+                is.read(data);
+                fos.write(data);
+                fos.close();
 
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         Hotel_DAO dao = new Hotel_DAO();
         String idh = request.getParameter("idhotel");
 
-        dao.editHotel(idh, name,des, category, phone, address, numOfStar, city, imageFileName);
-        response.sendRedirect("LoadMyHotel");
+        dao.editHotel(idh, name, des, category, phone, address, numOfStar, city, imageFileName);
+        response.sendRedirect("LoadMyHotel#managehotel");
 
     }
 }

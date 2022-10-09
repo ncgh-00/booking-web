@@ -18,13 +18,14 @@ public class ConfirmBooking extends HttpServlet {
         String id_staff = request.getParameter("id_staff");
         String check = request.getParameter("check");
         String page = request.getParameter("page");
+        String position = request.getParameter("pageposition");
         Booking_DAO dao = new Booking_DAO();
         if (check.equalsIgnoreCase("false")) {
             dao.activate(id, false, id_staff);
         } else {
             dao.activate(id, true, id_staff);
         }
-        response.sendRedirect(page);
+        response.sendRedirect(position==null?page:page+position);
     }
 
     @Override

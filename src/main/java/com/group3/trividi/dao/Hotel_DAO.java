@@ -92,7 +92,7 @@ public class Hotel_DAO {
 
     public List<Room_Details> getAllRoomDetails(String id_hotel) {
         List<Room_Details> list = new ArrayList<>();
-        String query = "select * from Room_Details where ID_Hotel = " + id_hotel + " ";
+        String query = "select * from Room_Details where ID_Hotel = " + id_hotel + " order by [Id_Room_Details] desc";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);

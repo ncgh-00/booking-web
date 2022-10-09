@@ -135,11 +135,12 @@
     <input type="submit" value="View" class="btn">
 </form>
 <div class="chart-container">
+    <c:if test="${requestScope.map.size() == 0}">
+        <div class="notify">This time dose not have any Book!</div>
+    </c:if>
     <div id="chart">
     </div>
-    <c:if test="${requestScope.map.size() == 0}">
-        <c:out value="This time dose not have any Book"/>
-    </c:if>
+
 </div>
 
 

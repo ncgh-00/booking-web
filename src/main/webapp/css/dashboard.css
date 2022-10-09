@@ -503,6 +503,7 @@ body {
 
 .chart-container {
     display: flex;
+    flex-direction: column;
     margin: 3rem 0 10rem;
 }
 
@@ -512,6 +513,14 @@ body {
     height: 50rem;
 }
 
+.chart-container .notify {
+    margin: auto;
+    font-size: 2rem ;
+    color: #333333;
+    background-color: #ff8b8b;
+    padding: 2rem;
+    border-radius: 0.6rem;
+}
 /* Notification*/
 .noti.open {
     display: flex;

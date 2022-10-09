@@ -18,24 +18,24 @@
         <form action="AddRoom?idh=<%=request.getParameter("idh")%>" class="form" method="post" enctype="multipart/form-data">
 
             <div class="input">
-                <input type="text" class="input-box" placeholder="Name of room" name="name">
+                <input type="text" class="input-box" placeholder="Name of room" name="name" required>
             </div>
 
             <div class="input">
-                <input type="file" class="input-box" title="Choose file" name="image">
+                <input type="file" class="input-box" title="Choose file" name="image" required>
             </div>
 
 
             <div class="input">
-                <input type="text" class="input-box" placeholder="Cost" name="cost">
+                <input type="text" class="input-box" placeholder="Cost" name="cost" required>
             </div>
 
             <div class="input">
-                <input type="text" class="input-box" placeholder="Discount" name="discount">
+                <input type="text" class="input-box" placeholder="Discount" name="discount" required>
             </div>
 
             <div class="input">
-                <textarea class="input-box" name="description" placeholder="Description" rows="2"></textarea>
+                <textarea class="input-box" name="description" placeholder="Description" rows="2" required></textarea>
             </div>
 
             <input type="submit" value="Add" class="btn">

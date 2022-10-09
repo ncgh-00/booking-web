@@ -26,7 +26,7 @@
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 <div class="container margin-top margin-bottom">
-    <h2>Manage Hotel</h2>
+    <h2 id="managehotel">Manage Hotel</h2>
     <ul class="responsive-table">
         <li class="table-header">
             <div class="col col-xl">Hotel's Name</div>
@@ -53,12 +53,12 @@
             <div class="col col-s align-center" data-label="City">${hotel.city}</div>
             <c:if test="${hotel.status == true}">
                 <div class="col col-xs align-center" data-label="Status"><a title="Change status"
-                        href="ActivateHotel?id=${hotel.id}&check=${hotel.status}&page=LoadMyHotel"
+                        href="ActivateHotel?id=${hotel.id}&check=${hotel.status}&page=LoadMyHotel&pageposition=#managehotel"
                         class="badge badge-confirm">active</a></div>
             </c:if>
             <c:if test="${hotel.status == false}">
                 <div class="col col-xs align-center" data-label="Status"><a title="Change status"
-                        href="ActivateHotel?id=${hotel.id}&check=${hotel.status}&page=LoadMyHotel"
+                        href="ActivateHotel?id=${hotel.id}&check=${hotel.status}&page=LoadMyHotel&pageposition=#managehotel"
                         class="badge badge-updating">inactive</a></div>
             </c:if>
             <div class="col col-xs align-center" >
@@ -67,7 +67,7 @@
         </li>
     </ul>
 
-    <h2>Manage Room Details</h2>
+    <h2 id="manageroom">Manage Room Details</h2>
 
     <div class="add-room"><a class="btn" href="addroom.jsp?idh=${hotel.id}">Add room</a></div>
     <ul class="responsive-table ">
@@ -91,12 +91,12 @@
 
                 <c:if test="${o.status == true}">
                     <div class="col col-xs align-center" data-label="Status"><a title="Change status"
-                            href="ActivateRoom?id=${o.id}&check=${o.status}&page=LoadMyHotel"
+                            href="ActivateRoom?id=${o.id}&check=${o.status}&page=LoadMyHotel&pageposition=#manageroom"
                             class="badge badge-confirm">active</a></div>
                 </c:if>
                 <c:if test="${o.status == false}">
                     <div class="col col-xs align-center" data-label="Status"><a title="Change status"
-                            href="ActivateRoom?id=${o.id}&check=${o.status}&page=LoadMyHotel"
+                            href="ActivateRoom?id=${o.id}&check=${o.status}&page=LoadMyHotel&pageposition=#manageroom"
                             class="badge badge-updating">inactive</a></div>
                 </c:if>
                 <div class="col col-xs align-center">
@@ -105,7 +105,8 @@
             </li>
         </c:forEach>
     </ul>
-    <h2>Manage Booking</h2>
+
+    <h2 id="managebooking">Manage Booking</h2>
     <ul class="responsive-table">
         <li class="table-header">
             <div class="col col-s">User name</div>
@@ -141,15 +142,13 @@
                 <div class="col col-s align-center" data-label="totalcost">${a.totalCost}</div>
                 <c:if test="${a.confirm == true}">
                     <div class="col col-xs align-center" data-label="Status"><a title="Change status"
-                            href="ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel"
+                            href="ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel&pageposition=#managebooking"
                             class="badge badge-confirm">Confirm</a></div>
-                    <%--                    ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel--%>
                 </c:if>
                 <c:if test="${a.confirm == false}">
                     <div class="col col-xs align-center" data-label="Status"><a title="Change status"
-                            href="ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel"
+                            href="ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel&pageposition=#managebooking"
                             class="badge badge-updating">Updating</a></div>
-                    <%--                    ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel--%>
                 </c:if>
             </li>
 

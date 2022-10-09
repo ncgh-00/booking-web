@@ -16,6 +16,7 @@ public class ActivateHotel extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String id = request.getParameter("id");
         String ac = request.getParameter("check");
+        String posi = request.getParameter("pageposition");
         Hotel_DAO hotel = new Hotel_DAO();
         if (ac.equals("true")) {
             hotel.activate(Integer.parseInt(id), true);
@@ -23,7 +24,8 @@ public class ActivateHotel extends HttpServlet {
             hotel.activate(Integer.parseInt(id), false);
         }
         String page = request.getParameter("page");
-        response.sendRedirect(page);
+
+        response.sendRedirect(posi == null?page:page+posi);
     }
 
     @Override

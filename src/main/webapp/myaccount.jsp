@@ -56,7 +56,7 @@
 
 <!-- table -->
 
-<div class="container margin-bottom">
+<div id="yourbooking" class="container margin-bottom">
     <h2>Your Booking</h2>
     <ul class="responsive-table">
         <li class="table-header">

@@ -18,7 +18,7 @@ public class DeleteBooking extends HttpServlet {
         String id = request.getParameter("id");
         String page = request.getParameter("page");
         dao.deleteBook(id);
-        response.sendRedirect(page);
+        response.sendRedirect(page+"#yourbooking");
     }
 
     @Override
