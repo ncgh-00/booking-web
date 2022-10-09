@@ -45,7 +45,6 @@
         </form>
     </div>
 </div>
-<%--hi--%>
 <script src="js/form.js"></script>
 </body>
 </html>

@@ -22,7 +22,7 @@
             </div>
 
             <div class="input">
-                <input type="file" class="input-box" placeholder="Image" name="image">
+                <input type="file" class="input-box" title="Choose file" name="image">
             </div>
 
 
@@ -38,16 +38,9 @@
                 <textarea class="input-box" name="description" placeholder="Description" rows="2"></textarea>
             </div>
 
-            <c:if test="${error != null}">
-                <div class="field-text-error">
-                    <p>${error}</p>
-                </div>
-            </c:if>
             <input type="submit" value="Add" class="btn">
         </form>
     </div>
 </div>
-<%--hi--%>
-<script src="js/form.js"></script>
 </body>
 </html>

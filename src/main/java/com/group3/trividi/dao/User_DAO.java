@@ -183,8 +183,23 @@ public class User_DAO {
         }
     }
 
+    public void addHotelforStaff(String staffid, String idhotel) {
+        String sql = "update [Account] set [ID_Hotel] = "+idhotel+" where [UID] = '" + staffid + "'";
+        System.out.println(sql);
+        try {
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            st = conn.createStatement();
+
+            st.executeUpdate(sql);
+            System.out.println("success");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public List<Account_Info> getUsersInfo() {
-        String query = "select * from Account_Info";
+        String query = "select * from Account_Info order by [UID] desc";
         return getAccInfo(query);
     }
 
@@ -239,24 +254,6 @@ public class User_DAO {
         }
     }
 
-    public void addAcc(String username, String password, String fullname, String email, String phone, int roleID) {
-        String query = "insert into Account(Role_ID,Username,Hash_password,FullName,Email,Phone,Status) \n"
-                + "values (?,?,?,?,?,?,'1')";
-        try {
-            conn = new DBContext().getConnection();
-            ps = conn.prepareStatement(query);
-            ps.setString(2, username);
-            ps.setString(3, password);
-            ps.setString(4, fullname);
-            ps.setString(5, email);
-            ps.setString(6, phone);
-            ps.setInt(1, roleID);
-            ps.executeUpdate();
-            System.out.println("add duoc roi");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     public void editRole(String id, String role_id) {
         String sql = "update [Account] set Role_ID = "+role_id+" where UID = '"+id+"'";
@@ -274,14 +271,36 @@ public class User_DAO {
         }
     }
 
-    public void randomUser(int role_id){
+//    public Account_Info getNewAccount() {
+//        Account_Info acc ;
+//        String query = "select Top 1 * from Account_Info order by [UID] desc";
+//        try {
+//            // Open connection with SQL Server
+//            conn = new DBContext().getConnection();
+//            // Throw the query statement to SQL Server
+//            ps = conn.prepareStatement(query);
+//            // Get the result of SQL Server ans store in rs
+//            rs = ps.executeQuery();
+//
+//            // Add data in rs to ArrayList
+//            while (rs.next()) {
+//                //int id, String name, String image, double price, String title, String description
+//                return acc = new Account_Info(rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getBoolean(10),rs.getInt(1), rs.getString(11), rs.getString(12));
+//            }
+//        } catch (Exception e) {
+//            System.out.println("Fail, please contact to admin!!");
+//        }
+//        return null;
+//    }
+
+    public void randomUser(int role_id, String username, String pass){
         String query = "insert into Account(Role_ID,Username,Hash_password,Status) values (?,?,?,'1')";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setInt(1, role_id);
-            ps.setString(2, NameGenerator.randomIdentifier());
-            ps.setString(3, HashPassword.generatePassword(8));
+            ps.setString(2, username);
+            ps.setString(3, HashPassword.getHashedPassword(pass));
             ps.executeUpdate();
             System.out.println("dang ky duoc roi");
         } catch (Exception e) {
@@ -292,8 +311,7 @@ public class User_DAO {
 
 
     public static void main(String[] args) {
-        User_DAO h = new User_DAO();
-        h.randomUser(1);
+
     }
 
 

@@ -24,7 +24,7 @@
                 <textarea class="input-box" name="description" placeholder="Description" rows="2"></textarea>
             </div>
             <div class="input">
-                <input type="file" class="input-box" placeholder="Image" name="image">
+                <input type="file" class="input-box" title="Choose file" name="image">
             </div>
 
             <div class="input">
@@ -39,7 +39,5 @@
         </form>
     </div>
 </div>
-<%--hi--%>
-<script src="js/form.js"></script>
 </body>
 </html>

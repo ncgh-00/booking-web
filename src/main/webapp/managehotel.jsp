@@ -16,13 +16,13 @@
 <jsp:include page="header.jsp"></jsp:include>
 <div class="menu">
     <ul class="menu__bar">
-        <a class="menu__item selected" href="">
+        <a class="menu__item selected" href="#">
             <li>Hotel Management</li>
         </a>
         <a class="menu__item" href="LoadAccounts">
             <li>Account Management</li>
         </a>
-        <a class="menu__item" href="">
+        <a class="menu__item" href="LoadStatistic">
             <li>statistic</li>
         </a>
     </ul>
@@ -31,11 +31,11 @@
 <div class="content">
     <div class="nav">
         <a href="" class="btn"><i class="add-icon fa-solid fa-circle-plus"></i>Add</a>
-        <form action="" class="search">
-            <input type="text" class="search__bar" id="search-bar" placeholder="Search here...">
+        <form action="SearchHotel" class="search" method="post">
+            <input type="text" oninput="searchHotel(this)" name="hotelname" class="search__bar" id="search-bar" placeholder="Search here...">
         </form>
     </div>
-    <div class="table">
+    <div id="row-table" class="table">
         <div class="table__head">
             <div class="table__cell header__table">Hotel's Name</div>
             <div class="table__cell header__table">Description</div>
@@ -51,8 +51,8 @@
         <div class="table__row">
             <div class="table__cell">${o.name}</div>
             <div class="table__cell">${o.des}</div>
-            <div class="table__cell">${o.category}</div>
-            <div class="table__cell">${o.phone}</div>
+            <div class="table__cell align-center">${o.category}</div>
+            <div class="table__cell align-center">${o.phone}</div>
             <div class="table__cell">${o.address}</div>
             <div class="table__cell align-center">${o.star}</div>
             <div class="table__cell align-center">${o.city}</div>
@@ -90,7 +90,51 @@
     </div>
 </div>
 
+
+<div class="noti close-btn">
+    <div class="noti-container">
+        <div class="noti-heading">
+            <h3 class="heading">Welcome to Trividi website booking</h3>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+        </div>
+        <div class="noti-body">
+            <p class="message mt-12">Your booking has been successful!</p>
+            <span class="message mt-12"> Your account has been created: </span>
+            <p><span class="label mt-12">Username:</span>${sessionScope.Account.username}</p>
+            <p><span class="label">Password:</span>${requestScope.pass}</p>
+        </div>
+        <div class="edit-btn">
+            <a href="edituser.jsp" class="btn">Edit Profile</a>
+        </div>
+    </div>
+</div>
+
 <jsp:include page="footer.jsp"></jsp:include>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    function searchHotel(acc) {
+        var txtSearch = acc.value;
+        $.ajax({
+            url: '/Trividi_Project/SearchHotel',
+            type: 'post',
+            data: {
+                hotelname: txtSearch
+            },
+            success: function (data) {
+                var row = document.getElementById("row-table")
+                row.innerHTML = data;
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+
+    }
+</script>
+
+<script src="./js/header.js"></script>
 </body>
 
 </html>

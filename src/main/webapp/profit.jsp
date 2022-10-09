@@ -50,13 +50,13 @@
 <jsp:include page="header.jsp"></jsp:include>
 <div class="menu">
     <ul class="menu__bar">
-        <a class="menu__item" href="">
+        <a class="menu__item" href="LoadAccounts">
             <li>Hotel Management</li>
         </a>
         <a class="menu__item" href="LoadAccounts">
             <li>Account Management</li>
         </a>
-        <a class="menu__item selected" href="">
+        <a class="menu__item selected" href="#">
             <li>statistic</li>
         </a>
     </ul>
@@ -125,18 +125,29 @@
 </div>
 
 <form action="LoadStatistic" class="form-search">
-    <input type="number" class="search-bar" placeholder="Month" min="1" max="12" name="month">
-    <input type="number" class="search-bar" placeholder="Year" min="2022" name="year">
+    <input oninput="checkRequired(this)" type="number" class="search-bar" placeholder="Month" min="1" max="12" name="month">
+    <input id="year" type="number" class="search-bar" placeholder="Year" min="2022" name="year">
 
     <input type="submit" value="View" class="btn">
 </form>
 <div class="chart-container">
-    <div id="chart" style="width: 900px; height: 500px">
+    <div id="chart">
     </div>
 </div>
 
 
 <jsp:include page="footer.jsp"></jsp:include>
+
+<script>
+    function checkRequired(input) {
+        var text = input.value;
+        const year = document.getElementById("year")
+        const attr = document.createAttribute("required");
+        if(text != ""){
+            year.setAttributeNode(attr);
+        }
+    }
+</script>
 </body>
 
 </html>

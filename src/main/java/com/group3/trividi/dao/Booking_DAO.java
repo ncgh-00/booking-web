@@ -39,10 +39,11 @@ public class Booking_DAO {
                         rs.getDate(9),
                         rs.getInt(11),
                         rs.getBoolean(12),
-                        rs.getString(13),
                         rs.getString(14),
                         rs.getString(15),
-                        rs.getInt(3)
+                        rs.getString(16),
+                        rs.getInt(3),
+                        rs.getString(13)
 
                 ));
             }
@@ -73,10 +74,11 @@ public class Booking_DAO {
                         rs.getDate(9),
                         rs.getInt(11),
                         rs.getBoolean(12),
-                        rs.getString(13),
                         rs.getString(14),
                         rs.getString(15),
-                        rs.getInt(3)
+                        rs.getString(16),
+                        rs.getInt(3),
+                        rs.getString(13)
 
                 ));
             }

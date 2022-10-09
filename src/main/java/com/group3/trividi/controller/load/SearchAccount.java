@@ -16,7 +16,7 @@ import java.util.List;
 public class SearchAccount extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
+//        doPost(request, response);
     }
 
     @Override
@@ -59,8 +59,13 @@ public class SearchAccount extends HttpServlet {
                     "                            <a href=\"EditRole?id=" + o.getUID() + "&role=3\" class=\"option\"><p class=\"op-3\">User</p></a>\n" +
                     "                        </div>\n" +
                     "                    </div>\n" +
-                    "                </div>\n" +
-                    "                <div class=\"table__cell\">"+o.getHotelManage()+"</div>";
+                    "                </div>\n";
+            if(o.getRoleID() != 2)
+                output += "<div class=\"table__cell align-center\">No</div>";
+            else if(o.getRoleID() == 2 && o.getHotelManage() != null)
+                output += "<div class=\"table__cell align-center\">"+o.getHotelManage()+"</div>";
+            else if(o.getRoleID() == 2 && o.getHotelManage() == null)
+                output += "<div class=\"table__cell align-center\"><a href=\"LoadAddHotelForStaff?staffid="+o.getUID()+"\" class=\"add-btn\">Add Hotel</a></div>";
             if(o.isStatus())
                 output += "<div class=\"table__cell align-center\" data-label=\"Status\">\n" +
                         "                        <a title=\"Change status\"\n" +

@@ -15,7 +15,9 @@
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+          integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
@@ -54,40 +56,40 @@
 
 <!-- table -->
 
-<div class="container">
+<div class="container margin-bottom">
     <h2>Your Booking</h2>
     <ul class="responsive-table">
         <li class="table-header">
-            <div class="col col-1">Location</div>
-            <div class="col col-2">Room name</div>
-            <div class="col col-3">Amount</div>
-            <div class="col col-4">Day Start</div>
-            <div class="col col-5">Day End</div>
-            <div class="col col-6">Total Cost</div>
-            <div class="col col-7">Status</div>
-            <div class="col col-8"></div>
+            <div class="col col-l">Location</div>
+            <div class="col col-l">Room name</div>
+            <div class="col col-xs">Amount</div>
+            <div class="col col-m">Day Start</div>
+            <div class="col col-m">Day End</div>
+            <div class="col col-s">Total Cost</div>
+            <div class="col col-xs">Status</div>
+            <div class="col col-xs">Action</div>
         </li>
 
         <c:forEach items="${listB}" var="o">
             <li class="table-row">
-                <div class="col col-1" data-label="Location">${o.hotelName}</div>
-                <div class="col col-2" data-label="Room name">${o.roomName}</div>
-                <div class="col col-3" data-label="Amount"> ${o.numOfRoom}</div>
-                <div class="col col-4" data-label="Day Start">${o.dateStart}</div>
-                <div class="col col-5" data-label="Day End">${o.dateEnd}</div>
-                <div class="col col-6" data-label="Total Cost">${o.totalCost}</div>
+                <div class="col col-l" data-label="Location">${o.hotelName}</div>
+                <div class="col col-l align-center" data-label="Room name">${o.roomName}</div>
+                <div class="col col-xs align-center" data-label="Amount"> ${o.numOfRoom}</div>
+                <div class="col col-m align-center" data-label="Day Start">${o.dateStart}</div>
+                <div class="col col-m align-center" data-label="Day End">${o.dateEnd}</div>
+                <div class="col col-s align-center" data-label="Total Cost">${o.totalCost}</div>
                 <c:if test="${o.confirm == true}">
-                    <div class="col col-7" data-label="Status"><a class="badge badge-confirm">confirm</a></div>
+                    <div class="col col-xs align-center" data-label="Status"><a class="badge badge-confirm">confirm</a></div>
 
                 </c:if>
                 <c:if test="${o.confirm == false}">
-                    <div class="col col-7" data-label="Status"><a class="badge badge-updating">updating</a></div>
+                    <div class="col col-xs align-center" data-label="Status"><a class="badge badge-updating">updating</a></div>
 
                 </c:if>
 
-                <div class="col col-8" data-label="">
+                <div class="col col-xs align-center" data-label="">
                     <a href="DeleteBooking?id=${o.idBooking}&&page=LoadMyAccount" class="delete" data-toggle="modal">
-                        <i class="material-icons" data-toggle="tooltip" title="Delete">
+                        <i class="icon material-icons" data-toggle="tooltip" title="Delete">
                             &#xE872;
                         </i>
                     </a>
@@ -117,7 +119,8 @@
         </div>
     </div>
 </div>
-
+<jsp:include page="footer.jsp"></jsp:include>
 <script src="./js/noti.js"></script>
+<script src="./js/header.js"></script>
 </body>
 </html>

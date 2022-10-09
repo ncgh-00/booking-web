@@ -18,13 +18,13 @@
 
 <div class="menu">
     <ul class="menu__bar">
-        <a class="menu__item" href="">
+        <a class="menu__item" href="LoadHotels">
             <li>Hotel Management</li>
         </a>
-        <a class="menu__item selected" href="">
+        <a class="menu__item selected" href="#">
             <li>Account Management</li>
         </a>
-        <a class="menu__item" href="">
+        <a class="menu__item" href="LoadStatistic">
             <li>statistic</li>
         </a>
     </ul>
@@ -32,10 +32,10 @@
 
 <div class="content">
     <div class="nav">
-        <a href="#" class="btn"><i class="add-icon fa-solid fa-circle-plus"></i>Add</a>
+        <a href="AddNewAccount" class="btn"><i class="add-icon fa-solid fa-circle-plus"></i>Add new account</a>
         <form action="SearchAccount" class="search" method="post">
             <input oninput="searchAccount(this)" type="text" name="text" class="search__bar" id="search-bar"
-                   placeholder="Search here...">
+                   placeholder="Search here (username) ...">
         </form>
     </div>
     <div id="row-table" class="table">
@@ -68,7 +68,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="table__cell">${o.hotelManage}</div>
+                <c:if test="${o.roleID == 2 && o.hotelManage == null }">
+                <div class="table__cell align-center"><a href="LoadAddHotelForStaff?staffid=${o.UID}" class="add-btn">Add Hotel</a></div>
+                </c:if>
+                <c:if test="${o.roleID == 2 && o.hotelManage != null }">
+                    <div class="table__cell align-center">${o.hotelManage}</div>
+                </c:if>
+                <c:if test="${o.roleID != 2}">
+                    <div class="table__cell align-center">No</div>
+                </c:if>
+
                 <c:if test="${o.status == true}">
                     <div class="table__cell align-center" data-label="Status">
                         <a title="Change status"
@@ -88,6 +97,21 @@
         </c:forEach>
     </div>
 </div>
+
+<div class="noti close-btn ${show==1?"open":""}">
+    <div class="noti-container">
+        <div class="noti-heading">
+            <h3 class="heading">New Account</h3>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+        </div>
+        <div class="noti-body">
+            <span class="message mt-12"> New account has been created: </span>
+            <p><span class="label mt-12">Username:</span>${requestScope.username}</p>
+            <p><span class="label">Password:</span>${requestScope.pass}</p>
+        </div>
+    </div>
+</div>
+
 <jsp:include page="footer.jsp"></jsp:include>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
@@ -113,6 +137,9 @@
 
     }
 </script>
+
+<script src="./js/header.js"></script>
+<script src="./js/noti.js"></script>
 </body>
 
 </html>

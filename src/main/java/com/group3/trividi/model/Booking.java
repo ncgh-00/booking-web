@@ -13,12 +13,13 @@ public class Booking {
     private Date dateEnd;
     private int totalCost;
     private boolean confirm;
-    private String userName;
+    private String fullName;
     private String userPhone;
     private String userEmail;
     private int idHotel;
+    private String create;
 
-    public Booking(int idBooking, String uid, String staffID, String hotelName, String roomName, int numOfRoom, Date dateStart, Date dateEnd, int totalCost, boolean confirm, String userName, String userPhone, String userEmail, int idHotel) {
+    public Booking(int idBooking, String uid, String staffID, String hotelName, String roomName, int numOfRoom, Date dateStart, Date dateEnd, int totalCost, boolean confirm, String fullName, String userPhone, String userEmail, int idHotel, String create) {
         this.idBooking = idBooking;
         this.uid = uid;
         this.staffID = staffID;
@@ -29,10 +30,11 @@ public class Booking {
         this.dateEnd = dateEnd;
         this.totalCost = totalCost;
         this.confirm = confirm;
-        this.userName = userName;
+        this.fullName = fullName;
         this.userPhone = userPhone;
         this.userEmail = userEmail;
         this.idHotel = idHotel;
+        this.create = create;
     }
 
     public int getIdBooking() {
@@ -115,12 +117,12 @@ public class Booking {
         this.confirm = confirm;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getUserPhone() {
@@ -145,5 +147,13 @@ public class Booking {
 
     public void setIdHotel(int idHotel) {
         this.idHotel = idHotel;
+    }
+
+    public String getCreate() {
+        return create;
+    }
+
+    public void setCreate(String create) {
+        this.create = create;
     }
 }

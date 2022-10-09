@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Hotel</title>
-    <link rel="stylesheet" href="css/form-s.css">
+    <link rel="stylesheet" href="css/form-l.css">
 </head>
 <body>
 <div class="layout">
@@ -24,7 +24,7 @@
             </div>
 
             <div class="input">
-                <select name="category" id="category">
+                <select name="category" id="category" class="input-box">
                     <option value="" selected>Select Category</option>
                     <c:forEach items="${sessionScope.Category}" var="o">
                         <option value="${o.id}">${o.name}</option>
@@ -33,7 +33,7 @@
             </div>
 
             <div class="input">
-                <input type="file" class="input-box" placeholder="Image" name="image">
+                <input type="file" class="input-box" title="cax nef" name="image">
             </div>
 
             <div class="input">
@@ -49,7 +49,7 @@
             </div>
 
             <div class="input">
-                <select name="city" id="city">
+                <select name="city" id="city" class="input-box">
                     <option value="">Select City</option>
                     <c:forEach items="${sessionScope.city}" var="o">
                         <option value="${o.id}">${o.name}</option>
@@ -57,18 +57,9 @@
                 </select>
             </div>
 
-
-            <c:if test="${error != null}">
-                <div class="field-text-error">
-                    <p>${error}</p>
-                </div>
-            </c:if>
-
             <input type="submit" value="Edit" class="btn">
         </form>
     </div>
 </div>
-<%--hi--%>
-<script src="js/form.js"></script>
 </body>
 </html>
