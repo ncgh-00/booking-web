@@ -19,15 +19,16 @@
     <link rel="stylesheet" href="./css/dashboard.css">
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
+
         google.charts.load('current', {'packages': ['corechart']});
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
 
             var data = google.visualization.arrayToDataTable([
-                ['Time', 'Dollar']
+                ['Time', 'Number of Books','Dollar']
                 <c:forEach items="${requestScope.map}" var="o">
-                    ,['<c:out value="${o.key}"/>',<c:out value="${o.value}"/>]
+                    ,['<c:out value="${o.key}"/>',<c:out value="${o.value.numberBooks}"/>,<c:out value="${o.value.total}"/>]
                 </c:forEach>
             ]);
 
@@ -35,11 +36,14 @@
                 title: 'Trividi Performance',
                 hAxis: {title: 'Timeline'},
                 vAxis: {title: 'Profit'},
-                legend: 'none'
+                seriesType: 'bars',
+                series: {1: {type: 'line'},
+                legend: {position: 'top', textStyle: {color: 'blue', fontSize: 16}}}
             };
-
-            var chart = new google.visualization.LineChart(document.getElementById('chart'));
-            chart.draw(data, options);
+            <c:if test="${requestScope.map.size() > 0}">
+            <c:out value="var chart = new google.visualization.ComboChart(document.getElementById('chart'));
+            chart.draw(data, options);" escapeXml="false"/>
+            </c:if>
 
         }
     </script>
@@ -133,6 +137,9 @@
 <div class="chart-container">
     <div id="chart">
     </div>
+    <c:if test="${requestScope.map.size() == 0}">
+        <c:out value="This time dose not have any Book"/>
+    </c:if>
 </div>
 
 

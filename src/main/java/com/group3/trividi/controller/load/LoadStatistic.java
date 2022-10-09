@@ -1,6 +1,7 @@
 package com.group3.trividi.controller.load;
 
 import com.group3.trividi.dao.Statistic_DAO;
+import com.group3.trividi.model.StatisticWeb;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -16,8 +17,8 @@ public class LoadStatistic extends HttpServlet {
         String year =  request.getParameter("year");
         String month = request.getParameter("month");
         Statistic_DAO dao = new Statistic_DAO();
-        HashMap<String,Double> ls =  dao.getData(year,month);
-        System.out.println(ls.size());
+        HashMap<String, StatisticWeb> ls =  dao.getData(year,month);
+        ls.forEach((k,v) -> System.out.println(k +" "+ v.toString()));
         request.setAttribute("map", ls);
         request.setAttribute("allProfit", dao.getAllProfits());
         request.setAttribute("allBooks",dao.getNumberOfBooks());

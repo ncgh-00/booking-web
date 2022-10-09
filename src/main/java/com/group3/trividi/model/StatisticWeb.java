@@ -1,6 +1,6 @@
 package com.group3.trividi.model;
 
-public class DayProfit {
+public class StatisticWeb {
     private int numberBooks;
     private double total;
 
@@ -20,8 +20,16 @@ public class DayProfit {
         this.total = total;
     }
 
-    public DayProfit(int numberBooks, double total) {
+    public StatisticWeb(int numberBooks, double total) {
         this.numberBooks = numberBooks;
         this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "StatisticWeb{" +
+                "numberBooks=" + numberBooks +
+                ", total=" + total +
+                '}';
     }
 }

@@ -1,12 +1,13 @@
 package com.group3.trividi.dao;
 
 import com.group3.trividi.context.DBContext;
-import com.group3.trividi.model.DayProfit;
+import com.group3.trividi.model.StatisticWeb;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -17,6 +18,8 @@ public class Statistic_DAO {
     ResultSet rs = null; // Receive the respond result of SQL Server
     Statement st = null;
     String sql;
+
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     private HashMap<String,String> dicMonth(){
         HashMap<String,String> dic = new HashMap<>();
@@ -35,37 +38,37 @@ public class Statistic_DAO {
         return dic;
     }
 
-    public HashMap<String,Double> getData(String year,String month){
+    public HashMap<String,StatisticWeb> getData(String year,String month){
         System.out.println(year + month);
-        LinkedHashMap <String,Double> frame = new LinkedHashMap<>();
+        LinkedHashMap <String,StatisticWeb> frame = new LinkedHashMap<>();
         HashMap<String,String> dic = dicMonth();
         if(year != null && !year.trim().isEmpty() && (month ==  null|| month.trim().isEmpty())){
             System.out.println("1");
-            sql = "select Month,sum(Total) from [Statistic]\n" +
+            sql = "select Month,sum(Total),sum(number_of_book) from [Statistic]\n" +
                     "where year = "+ year +" group by Month " +" order by Month";
             try {
                 conn = new DBContext().getConnection();
                 ps = conn.prepareStatement(sql);
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                     frame.put(dic.get(rs.getString(1)),(double) Math.round(( rs.getDouble(2)*0.001)*1000/1000));
+                    frame.put(dic.get(rs.getString(1)),new StatisticWeb(rs.getInt(3),Double.parseDouble(df.format((rs.getDouble(2)*0.001)))));
                 }
 
                 System.out.println("ok");
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }else if(year == null && month == null){
+        }else if((year == null && month == null) || (year.trim().isEmpty() && month.trim().isEmpty())){
             System.out.println(2);
             year = String.valueOf(java.time.LocalDate.now()).substring(0,4);
-            sql = "select Month,sum(Total) from [Statistic]\n" +
+            sql = "select Month,sum(Total),sum(number_of_book) from [Statistic]\n" +
                     "where year = "+ year +" group by Month " +" order by Month";
             try {
                 conn = new DBContext().getConnection();
                 ps = conn.prepareStatement(sql);
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    frame.put(dic.get(rs.getString(1)),rs.getDouble(2)*0.001);
+                    frame.put(dic.get(rs.getString(1)),new StatisticWeb(rs.getInt(3),Double.parseDouble(df.format((rs.getDouble(2)*0.001)))));
                 }
 
                 System.out.println("ok");
@@ -74,14 +77,14 @@ public class Statistic_DAO {
             }
         }else if(year != null && month != null && !year.trim().isEmpty() && !month.trim().isEmpty()){
             System.out.println(3);
-            sql = "select Day,sum(Total) from [Statistic]\n" +
-                    "where year = "+ year +" and Month = "+ month +"group by Day order by Day";
+            sql = "select Day,Month,sum(Total),sum(number_of_book) from [Statistic]\n" +
+                    "where year = "+ year +" and Month = "+ month +"group by Day,Month order by Day";
             try {
                 conn = new DBContext().getConnection();
                 ps = conn.prepareStatement(sql);
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    frame.put(rs.getString(1),  rs.getDouble(2)*0.001);
+                    frame.put(rs.getString(1)+"/"+rs.getString(2),new StatisticWeb(rs.getInt(4),Double.parseDouble(df.format((rs.getDouble(3)*0.001)))));
                 }
 
             } catch (Exception e) {
@@ -93,7 +96,7 @@ public class Statistic_DAO {
     }
 
 
-    public DayProfit getTotalInDay() {
+    public StatisticWeb getTotalInDay() {
 
         String dt = String.valueOf(java.time.LocalDate.now());
         String year = dt.substring(0, 4);
@@ -106,13 +109,13 @@ public class Statistic_DAO {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                return new DayProfit(rs.getInt(1), rs.getDouble(2)*0.001);
+                return new StatisticWeb(rs.getInt(1), rs.getDouble(2)*0.001);
             }
             System.out.println("ok");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return new DayProfit(0,0);
+        return new StatisticWeb(0,0);
     }
 
     public double getAllProfits(){
