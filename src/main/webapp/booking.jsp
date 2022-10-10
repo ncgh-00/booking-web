@@ -203,37 +203,22 @@
         </div>
         <div class="reviews-list">
             <h2>List Review</h2>
-            <div class="review-item">
-                <div class="review-heading">
-                    <i class="user-icon fas fa-user"></i>
-                    <h3 class="name">Name</h3>
-                    <p class="date">26/03/2022</p>
+            <c:forEach items="${listRate}" var="o">
+                <div class="review-item">
+                    <div class="review-heading">
+                        <i class="user-icon fas fa-user"></i>
+                        <h3 class="name">${o.fullname}</h3>
+                        <p class="date">${o.date}</p>
+                    </div>
+                    <div class="stars">
+                        <c:forEach begin="1" end="${o.stars}">
+                            <i class="fas fa-star"></i>
+                        </c:forEach>
+                    </div>
+                    <div class="comment">${o.comment}</div>
                 </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <div class="comment">asdasdasd hhhhhhhhhhhhhhhhh bbbbbbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbb hhhhhhhhhhhh hhhhhhhhhh</div>
-            </div>
+            </c:forEach>
 
-            <div class="review-item">
-                <div class="review-heading">
-                    <i class="user-icon fas fa-user"></i>
-                    <h3 class="name">Name</h3>
-                    <p class="date">26/03/2022</p>
-                </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <div class="comment">asdasdasd hhhhhhhhhhhhhhhhh bbbbbbbbbbbbbbbbbbbb bb bbbbbbbbbbbbbbbbbbbbbbb hhhhhhhhhhhhhhhhhhhhhh</div>
-            </div>
         </div>
     </div>
 </section>

@@ -7,15 +7,17 @@ public class Rate {
     private String UID;
     private int ID_Hotel;
     private String comment;
-    private int NumberOfStars;
+    private int stars;
     private Date date;
 
-    public Rate(String fullname, String UID, int ID_Hotel, String comment, int numberOfStars, Date date) {
+
+
+    public Rate(String fullname, String UID, int ID_Hotel, String comment, int stars, Date date) {
         this.fullname = fullname;
         this.UID = UID;
         this.ID_Hotel = ID_Hotel;
         this.comment = comment;
-        NumberOfStars = numberOfStars;
+        this.stars = stars;
         this.date = date;
     }
 
@@ -51,12 +53,12 @@ public class Rate {
         this.comment = comment;
     }
 
-    public int getNumberOfStars() {
-        return NumberOfStars;
+    public int getStars() {
+        return stars;
     }
 
-    public void setNumberOfStars(int numberOfStars) {
-        NumberOfStars = numberOfStars;
+    public void setStars(int stars) {
+        this.stars = stars;
     }
 
     public Date getDate() {
@@ -65,5 +67,17 @@ public class Rate {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Rate{" +
+                "fullname='" + fullname + '\'' +
+                ", UID='" + UID + '\'' +
+                ", ID_Hotel=" + ID_Hotel +
+                ", comment='" + comment + '\'' +
+                ", stars=" + stars +
+                ", date=" + date +
+                '}';
     }
 }

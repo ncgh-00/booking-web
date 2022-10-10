@@ -1,7 +1,9 @@
 package com.group3.trividi.controller.load;
 
 import com.group3.trividi.dao.Hotel_DAO;
+import com.group3.trividi.dao.Rate_DAO;
 import com.group3.trividi.model.Hotel_Details;
+import com.group3.trividi.model.Rate;
 import com.group3.trividi.model.Room_Details;
 
 import javax.servlet.ServletException;
@@ -20,11 +22,19 @@ public class LoadBooking extends HttpServlet {
         Hotel_DAO dao = new Hotel_DAO();
         Hotel_Details hotel_details = dao.getHotel(id);
         List<Room_Details> list_R = dao.getRoomDetails(id);
+        Rate_DAO rate = new Rate_DAO();
+        List<Rate> list = rate.getRate(id, 0);
+        System.out.println(list.toString());
+        request.setAttribute("listRate", list);
         request.setAttribute("hotel_details", hotel_details);
         request.setAttribute("listR", list_R);
         request.setAttribute("page", "LoadBooking");
         request.setAttribute("id_hotel", id);
+
+
         request.getRequestDispatcher("booking.jsp").forward(request, response);
+
+
     }
 
     @Override
