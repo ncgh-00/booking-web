@@ -91,10 +91,10 @@
 </div>
 
 
-<div class="noti close-btn">
+<div class="noti close-btn open">
     <div class="noti-container">
         <div class="noti-heading">
-            <h3 class="heading">Welcome to Trividi website booking</h3>
+            <h3 class="heading">Choose Accout for staff</h3>
             <div class="close-btn"><i class="fas fa-times"></i></div>
         </div>
         <div class="noti-body">

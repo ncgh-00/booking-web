@@ -54,7 +54,7 @@ public class EditUser extends HttpServlet {
             return;
         }
 
-        if (password == null) {
+        if (password == null || password.isEmpty()) {
             password = "";
         } else if (password.length() < 6) {
             request.setAttribute("error", "Password must be greater than 6 character !");

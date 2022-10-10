@@ -5,6 +5,7 @@ import com.group3.trividi.dao.User_DAO;
 import com.group3.trividi.model.Account;
 import com.group3.trividi.utils.DateProcessor;
 import com.group3.trividi.utils.HashPassword;
+import com.group3.trividi.utils.StringCutter;
 import com.group3.trividi.utils.Validation;
 
 import javax.servlet.ServletException;
@@ -40,13 +41,6 @@ public class BookRoom extends HttpServlet {
         Booking_DAO dao = new Booking_DAO();
         Account acc = (Account) session.getAttribute("Account");
         DateProcessor tool = new DateProcessor();
-        System.out.println(dateS);
-        System.out.println(tool.isLogicDate(dateS));
-        if (DateProcessor.duration(dateS, dateE) <= 0 || !tool.isLogicDate(dateS)) {
-            request.setAttribute("error", "Date is not valid!");
-            request.getRequestDispatcher("LoadBooking?id_hotel=" + id_hotel).forward(request, response);
-            return;
-        }
 
         if (acc == null) {
             User_DAO u = new User_DAO();
@@ -59,12 +53,17 @@ public class BookRoom extends HttpServlet {
                 request.getRequestDispatcher("LoadBooking?id_hotel=" + id_hotel).forward(request, response);
                 return;
             }
+            if (DateProcessor.duration(dateS, dateE) <= 0 || !tool.isLogicDate(dateS)) {
+                request.setAttribute("error", "Date is not valid!");
+                request.getRequestDispatcher("LoadBooking?id_hotel=" + id_hotel).forward(request, response);
+                return;
+            }
             String pass = HashPassword.generatePassword(8);
             u.insert(phone,HashPassword.getHashedPassword(pass), name, null, phone);
             Account ac = u.getUSer(phone, HashPassword.getHashedPassword(pass));
             session.setAttribute("Account", ac);
             session.setAttribute("role", ac.getRoleID());
-
+            session.setAttribute("name", StringCutter.cut(ac.getFullname()));
             dao.insertBook(id_Type,
                     ac.getUID(),
                     dateS,
