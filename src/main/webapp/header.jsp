@@ -13,13 +13,13 @@
         <nav class="navbar">
             <a href="index.jsp">home</a>
             <c:if test="${requestScope.page == 'index.jsp' }">
-                <a href="#city">hotel</a>
+                <a href="#hotel">hotel</a>
                 <a href="#city">city</a>
                 <a href="#services">services</a>
             </c:if>
             <c:if test="${requestScope.page == 'LoadBooking' }">
-                <a href="#city">Room</a>
-                <a href="#services">Book</a>
+                <a href="#hot-hotel">Hotel</a>
+                <a href="#review">Room</a>
             </c:if>
             <a href="#contact">contact</a>
         </nav>

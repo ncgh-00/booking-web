@@ -173,11 +173,100 @@
             </c:forEach>
         </div>
     </div>
-    </div>
 </section>
 
 <!-- Room section ends -->
 
+<%--RATE SECTION STARTS--%>
+<section class="rating mb-body" id="rating">
+    <h1 class="heading">
+        <span>R</span>
+        <span>A</span>
+        <span>T</span>
+        <span>I</span>
+        <span>N</span>
+        <span>G</span>
+    </h1>
+
+    <div class="rate-container">
+        <div class="voting-section">
+            <h2>Rating of xxx hotel</h2>
+            <div class="number-stars">
+                <p>4/5</p>
+                <i class="fas fa-star"></i>
+            </div>
+            <p class="number-rates">2000 rates</p>
+            <c:if test="${sessionScope.Account != null}">
+                <button class="btn rate-hotel">rate hotel</button>
+            </c:if>
+
+        </div>
+        <div class="reviews-list">
+            <h2>List Review</h2>
+            <div class="review-item">
+                <div class="review-heading">
+                    <i class="user-icon fas fa-user"></i>
+                    <h3 class="name">Name</h3>
+                    <p class="date">26/03/2022</p>
+                </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <div class="comment">asdasdasd hhhhhhhhhhhhhhhhh bbbbbbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbb hhhhhhhhhhhh hhhhhhhhhh</div>
+            </div>
+
+            <div class="review-item">
+                <div class="review-heading">
+                    <i class="user-icon fas fa-user"></i>
+                    <h3 class="name">Name</h3>
+                    <p class="date">26/03/2022</p>
+                </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <div class="comment">asdasdasd hhhhhhhhhhhhhhhhh bbbbbbbbbbbbbbbbbbbb bb bbbbbbbbbbbbbbbbbbbbbbb hhhhhhhhhhhhhhhhhhhhhh</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="vote-conatainer close-btn">
+    <form action="" class="vote-form">
+        <h2>Rating hotel</h2>
+        <div class="close-btn"><i class="fas fa-times"></i></div>
+        <input type="radio" id="op-1" name="numofstar">
+        <input type="radio" id="op-2" name="numofstar">
+        <input type="radio" id="op-3" name="numofstar">
+        <input type="radio" id="op-4" name="numofstar">
+        <input type="radio" id="op-5" name="numofstar">
+        <label for="op-1" class="option op-1">
+            <span>1<i class="fas fa-star"></i></span>
+        </label>
+        <label for="op-2" class="option op-2">
+            <span>2<i class="fas fa-star"></i></span>
+        </label>
+        <label for="op-3" class="option op-3">
+            <span>3<i class="fas fa-star"></i></span>
+        </label>
+        <label for="op-4" class="option op-4">
+            <span>4<i class="fas fa-star"></i></span>
+        </label>
+        <label for="op-5" class="option op-5">
+            <span>5<i class="fas fa-star"></i></span>
+        </label>
+        <textarea name="comment" class="input-box" rows="3" placeholder="Comment here..."></textarea>
+        <input type="submit" class="btn">
+    </form>
+</div>
+<%--RATE SECTION ENDS--%>
 
 <!--footer section starts-->
 <jsp:include page="footer.jsp"></jsp:include>
@@ -186,6 +275,7 @@
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <!-- custome js file link -->
 <script src="./js/slider.js" type="text/javascript"></script>
+<script src="./js/rate.js"></script>
 </body>
 
 </html>
