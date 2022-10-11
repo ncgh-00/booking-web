@@ -13,8 +13,6 @@ import java.io.IOException;
 public class AddRate extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
     }
 
     @Override
@@ -23,11 +21,10 @@ public class AddRate extends HttpServlet {
         String cmt = request.getParameter("comment");
         int stars = Integer.parseInt(request.getParameter("numofstar"));
         String uid  = request.getParameter("uid");
-
+        System.out.println(id_hotel + " " + cmt +  " " + stars + " " + uid );
         Rate_DAO dao = new Rate_DAO();
-        dao.addRate(uid,id_hotel,cmt,stars);
-        request.setAttribute("id", id_hotel);
-//        request.getRequestDispatcher("LoadHome").forward(request,response);
-        response.sendRedirect("LoadHome");
+        dao.addRate(uid, id_hotel, cmt, stars);
+//        request.setAttribute("id", id_hotel);
+        request.getRequestDispatcher("LoadBooking?id="+id_hotel).forward(request,response);
     }
 }

@@ -19,7 +19,6 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String page = request.getParameter("page");
@@ -44,7 +43,7 @@ public class Login extends HttpServlet {
             request.removeAttribute("error");
             session.setAttribute("Account", acc);
             session.setAttribute("role", acc.getRoleID());
-            request.setAttribute("id_hotel", id_hotel);
+            request.setAttribute("id", id_hotel);
             session.setAttribute("name", StringCutter.cut(acc.getFullname()));
             if (page == null || page.equals("null")) {
                 request.getRequestDispatcher("/index.jsp").forward(request, response);

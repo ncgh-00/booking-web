@@ -27,7 +27,7 @@ public class SignUp extends HttpServlet {
         String repass = request.getParameter("repass");
         String phone = request.getParameter("phone");
         String page = request.getParameter("page");
-        String id_hotel = request.getParameter("id_hotel");
+        String id_hotel = request.getParameter("id");
         HttpSession session = request.getSession();
         User_DAO dao = new User_DAO();
         if (dao.checkEmail(mail)) {
@@ -61,7 +61,7 @@ public class SignUp extends HttpServlet {
             session.setAttribute("Account", acc);
             session.setAttribute("role", acc.getRoleID());
             session.setAttribute("name", StringCutter.cut(acc.getFullname()));
-            request.setAttribute("id_hotel", id_hotel);
+            request.setAttribute("id", id_hotel);
             if (page == null || page.equals("null")) {
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
                 return;

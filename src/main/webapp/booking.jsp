@@ -224,7 +224,7 @@
 </section>
 
 <div class="vote-conatainer close-btn">
-    <form method="post" action="AddRate?uid=${sessionScope.Account.UID}&id_hotel=${hotel_details.id}" class="vote-form">
+    <form action="AddRate?uid=${sessionScope.Account.UID}&id_hotel=${hotel_details.id}" class="vote-form" method="post">
         <h2>Rating hotel</h2>
         <div class="close-btn"><i class="fas fa-times"></i></div>
         <input value="1" type="radio" id="op-1" name="numofstar">

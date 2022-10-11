@@ -30,8 +30,6 @@ public class LoadBooking extends HttpServlet {
         request.setAttribute("listR", list_R);
         request.setAttribute("page", "LoadBooking");
         request.setAttribute("id_hotel", id);
-
-
         request.getRequestDispatcher("booking.jsp").forward(request, response);
 
 
@@ -39,20 +37,6 @@ public class LoadBooking extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("id");
-        Hotel_DAO dao = new Hotel_DAO();
-        Hotel_Details hotel_details = dao.getHotel(id);
-        List<Room_Details> list_R = dao.getRoomDetails(id);
-        Rate_DAO rate = new Rate_DAO();
-        List<Rate> list = rate.getRate(id, 0);
-        System.out.println(list.toString());
-        request.setAttribute("listRate", list);
-        request.setAttribute("hotel_details", hotel_details);
-        request.setAttribute("listR", list_R);
-        request.setAttribute("page", "LoadBooking");
-        request.setAttribute("id_hotel", id);
-
-
-        request.getRequestDispatcher("booking.jsp").forward(request, response);
+        doGet(request,response);
     }
 }
