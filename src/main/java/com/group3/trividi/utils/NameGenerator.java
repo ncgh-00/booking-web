@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class NameGenerator {
     // class variable
-    static final String lexicon = "!?abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ12345674890";
+    static final String lexicon = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     static final java.util.Random rand = new java.util.Random();
 

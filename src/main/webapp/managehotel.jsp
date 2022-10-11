@@ -30,7 +30,7 @@
 
 <div class="content">
     <div class="nav">
-        <a href="" class="btn"><i class="add-icon fa-solid fa-circle-plus"></i>Add</a>
+        <button class="btn show-choose-account"><i class="add-icon fa-solid fa-circle-plus"></i>Add</button>
         <form action="SearchHotel" class="search" method="post">
             <input type="text" oninput="searchHotel(this)" name="hotelname" class="search__bar" id="search-bar" placeholder="Search here...">
         </form>
@@ -91,25 +91,47 @@
 </div>
 
 
-<div class="noti close-btn open">
+<div class="noti close-btn">
     <div class="noti-container">
         <div class="noti-heading">
             <h3 class="heading">Choose Accout for staff</h3>
             <div class="close-btn"><i class="fas fa-times"></i></div>
         </div>
-        <div class="noti-body">
-            <p class="message mt-12">Your booking has been successful!</p>
-            <span class="message mt-12"> Your account has been created: </span>
-            <p><span class="label mt-12">Username:</span>${sessionScope.Account.username}</p>
-            <p><span class="label">Password:</span>${requestScope.pass}</p>
+        <form action="AddHotel" class="noti-body align-center" method="post">
+            <div class="row">
+                <select name="uid" class="select">
+                    <option value="" selected>[Select account]</option>
+                    <c:forEach items="${listA}" var="o">
+                        <option value="${o.UID}">${o.username}</option>
+                    </c:forEach>
+                </select>
+                <a class="btn" href="AddHotel">New Account</a>
+            </div>
+
+            <input type="submit" class="btn close-btn" value="Finish">
+        </form>
+    </div>
+</div>
+
+<div class="notify close-btn ${show==1?"open":""}">
+    <div class="noti-container">
+        <div class="noti-heading">
+            <h3 class="heading">New Account</h3>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
         </div>
-        <div class="edit-btn">
-            <a href="edituser.jsp" class="btn">Edit Profile</a>
+        <div class="noti-body">
+            <span class="message mt-12"> New account has been created: </span>
+            <p><span class="label mt-12">Username:</span>${requestScope.username}</p>
+            <p><span class="label">Password:</span>${requestScope.pass}</p>
         </div>
     </div>
 </div>
 
+
+
+
 <jsp:include page="footer.jsp"></jsp:include>
+<script src="./js/choose_account.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>

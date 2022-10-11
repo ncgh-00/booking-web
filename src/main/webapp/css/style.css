@@ -882,6 +882,18 @@ header .search-bar-container label:hover {
     text-align: center;
     padding: 2rem;
     position: relative;
+    animation: showModal ease 0.5s;
+}
+@keyframes showModal {
+    from {
+        opacity: 0.3;
+        transform: translateY(-121px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .vote-form .close-btn {

@@ -6,7 +6,6 @@ import com.group3.trividi.model.Hotel_Details;
 import com.group3.trividi.model.Location;
 import com.group3.trividi.model.Room_Details;
 
-import javax.servlet.http.Part;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -53,7 +52,7 @@ public class Hotel_DAO {
 
     public List<Hotel_Details> getHotels() {
         List<Hotel_Details> list = new ArrayList<>();
-        String query = "select * from Hotel_Details order by Priority asc ";
+        String query = "select * from Hotel_Details order by Status, Priority asc ";
 
         return get(query);
     }
@@ -211,14 +210,14 @@ public class Hotel_DAO {
 
     public Hotel_Details getHotHotel() {
         Hotel_Details hh = null;
-        String query = "select * from Hotel_Details\n"+
-        "where ID_Hotel = (select top 1 ID_Hotel from (select ID_Hotel, Count(ID_Hotel) numbers from Manage_Booking b\n"+
-        "where b.Confirm = 1\n"+
-        "group by ID_Hotel ) c\n"+
-        "where numbers = (select Max(c.numbers) from\n"+
-                "(select ID_Hotel, Count(ID_Hotel) numbers from Manage_Booking b\n"+
-                        "where b.Confirm = 1\n"+
-                        "group by ID_Hotel ) c) )\n";
+        String query = "select * from Hotel_Details\n" +
+                "where ID_Hotel = (select top 1 ID_Hotel from (select ID_Hotel, Count(ID_Hotel) numbers from Manage_Booking b\n" +
+                "where b.Confirm = 1\n" +
+                "group by ID_Hotel ) c\n" +
+                "where numbers = (select Max(c.numbers) from\n" +
+                "(select ID_Hotel, Count(ID_Hotel) numbers from Manage_Booking b\n" +
+                "where b.Confirm = 1\n" +
+                "group by ID_Hotel ) c) )\n";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -250,7 +249,7 @@ public class Hotel_DAO {
     public List<Hotel_Details> searchHotels(String hotel, String city, String cate) {
         List list = null;
         String query = "select * from Hotel_Details a\n" +
-                    "where a.Name like '%" + hotel + "%' and a.Category like '%" + cate + "%' and a.City like '%" + city + "%'";
+                "where a.Name like '%" + hotel + "%' and a.Category like '%" + cate + "%' and a.City like '%" + city + "%'";
         System.out.println(query);
         return get(query);
     }
@@ -266,8 +265,8 @@ public class Hotel_DAO {
         if (!des.isEmpty()) {
             sql += " [Description] = '" + des + "',";
         }
-        if(!category.isEmpty()){
-            sql += "[ID_Category] = '" + category +"',";
+        if (!category.isEmpty()) {
+            sql += "[ID_Category] = '" + category + "',";
         }
         if (!phone.isEmpty()) {
             sql += " [Phone] = '" + phone + "',";
@@ -300,7 +299,7 @@ public class Hotel_DAO {
         }
     }
 
-    public void editRoom(String id, String name,String des, String cost, String discount, String image) {
+    public void editRoom(String id, String name, String des, String cost, String discount, String image) {
         String sql = "update [Room_Details] set ";
 
         if (!name.isEmpty()) {
@@ -309,8 +308,8 @@ public class Hotel_DAO {
         if (!des.isEmpty()) {
             sql += " [Description] = '" + des + "',";
         }
-        if(!cost.isEmpty()){
-            sql += "[Cost] = '" + cost +"',";
+        if (!cost.isEmpty()) {
+            sql += "[Cost] = '" + cost + "',";
         }
         if (!discount.isEmpty()) {
             sql += " [Discount] = '" + discount + "',";
@@ -334,6 +333,7 @@ public class Hotel_DAO {
             e.printStackTrace();
         }
     }
+
     public void addRoom(String id_hotel, String name, String image, String description, String cost, String discount) {
         String query = "insert into Room_Details(ID_Hotel,[Name],[Image],[Description],Cost,Discount,Status) \n"
                 + "values (?,?,?,?,?,?,'1')";
@@ -351,11 +351,44 @@ public class Hotel_DAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        }
+    }
 
+    public void addHotel(String name, String description, String image,  String phone, String address) {
+        String query = "insert into Hotel([Name], [Description], [Image], [Phone], [Address], [NumberOfStars], [Status], [ID_City], [ID_Category], [Priority])\n" +
+                "values (?,?,?,?,?,null,0,1,1,5)";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ps.setString(2, description);
+            ps.setString(3, image);
+            ps.setString(4, phone);
+            ps.setString(5, address);
+            ps.executeUpdate();
+            System.out.println("add duoc roi ne");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getIDHotel() {
+        String id = "";
+        String query = "select top 1 ID_Hotel from Hotel order by ID_Hotel desc";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                id = rs.getString(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Fail, please contact to admin!!");
+        }
+        return id;
+    }
 
     public void editPriority(String id, String priority) {
-        String sql = "update [Hotel_Details] set Priority = "+priority+" where ID_Hotel = "+id;
+        String sql = "update [Hotel_Details] set Priority = " + priority + " where ID_Hotel = " + id;
 
         System.out.println(sql);
 

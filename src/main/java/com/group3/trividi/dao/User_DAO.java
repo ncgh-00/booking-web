@@ -101,7 +101,7 @@ public class User_DAO {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, email);
-            ps.setString(2,HashPassword.generatePassword(8));
+            ps.setString(2,HashPassword.getHashedPassword(HashPassword.generatePassword(8)));
             ps.setString(3, name);
             ps.setString(4, email);
             ps.executeUpdate();
@@ -199,7 +199,12 @@ public class User_DAO {
     }
 
     public List<Account_Info> getUsersInfo() {
-        String query = "select * from Account_Info order by [UID] desc";
+        String query = "select * from Account_Info order by Status, [UID] desc";
+        return getAccInfo(query);
+    }
+
+    public List<Account_Info> getStaff() {
+        String query = "select * from Account_Info where [Role_Id] = 2 order by [UID] desc";
         return getAccInfo(query);
     }
 
@@ -271,27 +276,21 @@ public class User_DAO {
         }
     }
 
-//    public Account_Info getNewAccount() {
-//        Account_Info acc ;
-//        String query = "select Top 1 * from Account_Info order by [UID] desc";
-//        try {
-//            // Open connection with SQL Server
-//            conn = new DBContext().getConnection();
-//            // Throw the query statement to SQL Server
-//            ps = conn.prepareStatement(query);
-//            // Get the result of SQL Server ans store in rs
-//            rs = ps.executeQuery();
-//
-//            // Add data in rs to ArrayList
-//            while (rs.next()) {
-//                //int id, String name, String image, double price, String title, String description
-//                return acc = new Account_Info(rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getBoolean(10),rs.getInt(1), rs.getString(11), rs.getString(12));
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Fail, please contact to admin!!");
-//        }
-//        return null;
-//    }
+    public String getIDUser() {
+        String id = "";
+        String query = "select Top 1 UID from Account_Info order by [UID] desc";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                id = rs.getString(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Fail, please contact to admin!!");
+        }
+        return id;
+    }
 
     public void randomUser(int role_id, String username, String pass){
         String query = "insert into Account(Role_ID,Username,Hash_password,Status) values (?,?,?,'1')";
@@ -302,7 +301,7 @@ public class User_DAO {
             ps.setString(2, username);
             ps.setString(3, HashPassword.getHashedPassword(pass));
             ps.executeUpdate();
-            System.out.println("dang ky duoc roi");
+            System.out.println("dang ky duoc roi!!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -311,6 +310,12 @@ public class User_DAO {
 
 
     public static void main(String[] args) {
+        User_DAO u = new User_DAO();
+
+        String username = NameGenerator.randomIdentifier();
+        String pass = HashPassword.generatePassword(8);
+        u.randomUser(2,username, pass);
+        System.out.println(u.getIDUser());
 
     }
 
