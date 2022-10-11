@@ -859,9 +859,12 @@ header .search-bar-container label:hover {
 
 /*voteing*/
 
+.edit-conatainer.open,
 .vote-conatainer.open {
     display: flex;
 }
+
+.edit-conatainer,
 .vote-conatainer {
     position: fixed;
     top: 0;
@@ -990,6 +993,10 @@ header .search-bar-container label:hover {
 
 .vote-form .input-box:focus {
     box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, .5);
+}
+
+button + button {
+    margin-left: 0.8rem;
 }
 
 

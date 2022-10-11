@@ -68,10 +68,30 @@ public class Rate_DAO {
         return list;
     }
 
+    public boolean checkUID(String id_hotel, String uid){
+        boolean check = false;
+        String query = "select * from [Rate_View] where ID_Hotel = " + id_hotel + " and UID = '" + uid + "'";
+
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            System.out.println(query);
+//            String fullname, String UID, int ID_Hotel, String comment, int numberOfStars, Date date
+            while (rs.next()) {
+                    check = true;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return check;
+    }
+
     public static void main(String[] args) {
         Rate_DAO rate = new Rate_DAO();
-        rate.addRate("UCODE00000006","2","fghbvhjbxvhjxbv", 3 );
-
+        if (rate.checkUID("2", "UCODE00000007"))
+            System.out.println("hello");
     }
 
 }

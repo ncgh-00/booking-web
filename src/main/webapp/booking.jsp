@@ -197,7 +197,13 @@
             </div>
             <p class="number-rates">2000 rates</p>
             <c:if test="${sessionScope.Account != null}">
-                <button class="btn rate-hotel">rate hotel</button>
+                <c:if test="${checkUID == true}">
+                    <button class="btn edit-rate">Edit Rate</button>
+                    <button class="btn ">Delete Rate</button>
+                </c:if>
+                <c:if test="${checkUID == false}">
+                    <button class="btn rate-hotel">rate hotel</button>
+                </c:if>
             </c:if>
 
         </div>
@@ -222,6 +228,36 @@
         </div>
     </div>
 </section>
+
+<div class="edit-conatainer close-btn">
+    <form action="AddRate?uid=${sessionScope.Account.UID}&id_hotel=${hotel_details.id}" class="vote-form" method="post">
+        <h2>Rating hotel</h2>
+        <div class="close-btn"><i class="fas fa-times"></i></div>
+        <input value="1" type="radio" id="op-1" name="numofstar">
+        <input value="2" type="radio" id="op-2" name="numofstar">
+        <input value="3" type="radio" id="op-3" name="numofstar">
+        <input value="4" type="radio" id="op-4" name="numofstar">
+        <input value="5" type="radio" id="op-5" name="numofstar">
+        <label for="op-1" class="option op-1">
+            <span>1<i class="fas fa-star"></i></span>
+        </label>
+        <label for="op-2" class="option op-2">
+            <span>2<i class="fas fa-star"></i></span>
+        </label>
+        <label for="op-3" class="option op-3">
+            <span>3<i class="fas fa-star"></i></span>
+        </label>
+        <label for="op-4" class="option op-4">
+            <span>4<i class="fas fa-star"></i></span>
+        </label>
+        <label for="op-5" class="option op-5">
+            <span>5<i class="fas fa-star"></i></span>
+        </label>
+        <textarea name="comment" class="input-box" rows="3" placeholder="Comment here..."></textarea>
+        <input value="Submit" type="submit" class="btn">
+    </form>
+</div>
+
 
 <div class="vote-conatainer close-btn">
     <form action="AddRate?uid=${sessionScope.Account.UID}&id_hotel=${hotel_details.id}" class="vote-form" method="post">
