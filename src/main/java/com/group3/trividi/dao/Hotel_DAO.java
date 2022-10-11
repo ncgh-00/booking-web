@@ -254,7 +254,7 @@ public class Hotel_DAO {
         return get(query);
     }
 
-    public void editHotel(String id, String name, String des, String category, String phone, String address, String numOfStar, String city, String fileName) {
+    public void editHotel(String id, String name, String des, String category, String phone, String address, String numOfStar, String city,String lng, String lat, String fileName) {
 //        String img = image;
 
         String sql = "update [Hotel] set ";
@@ -282,6 +282,12 @@ public class Hotel_DAO {
         }
         if (!city.isEmpty()) {
             sql += " [ID_City] = " + city + ",";
+        }
+        if (!lng.isEmpty()) {
+            sql += " [Lng] = " + lng + ",";
+        }
+        if (!lat.isEmpty()) {
+            sql += " [Lat] = " + lat + ",";
         }
         sql = sql.substring(0, sql.length() - 1);
         sql += " where [ID_Hotel] = '" + id + "'";

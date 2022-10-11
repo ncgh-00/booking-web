@@ -36,6 +36,12 @@
                 <input type="file" class="input-box" title="cax nef" name="image">
             </div>
 
+            <c:if test="${error != null}">
+                <div class="field-text-error">
+                    <p>${error}</p>
+                </div>
+            </c:if>
+
             <div class="input">
                 <input type="tel" class="input-box" placeholder="Phone" name="phone">
             </div>
@@ -56,8 +62,18 @@
                     </c:forEach>
                 </select>
             </div>
+            <div class="input">
+                <input type="text" class="input-box" placeholder="LNG" name="lng">
+            </div>
+
+            <div class="input">
+                <input type="text" class="input-box" placeholder="LAT" name="lat">
+            </div>
+
+
 
             <input type="submit" value="Edit" class="btn">
+
         </form>
     </div>
 </div>

@@ -22,7 +22,17 @@ public class Validation {
         return true;
     }
 
+    public static boolean validLocation(String location) {
+        if (!location.isEmpty()) {
+            if (location.matches("^[\\.0-9]*$")) {
+                return true;
+            }
+            return false;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
-        System.out.println(Validation.validEmail("huy123@gmail"));
+        System.out.println(Validation.validLocation("20.95459478953557"));
     }
 }

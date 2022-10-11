@@ -25,6 +25,12 @@ public class LoadEditHotel extends HttpServlet {
         request.setAttribute("category", category);
         String idh = request.getParameter("idh");
         List<City> cityList = city.getCitys();
+//        String error = request.getParameter("error");
+//
+//        if(error != null || !error.isEmpty()){
+//            request.setAttribute("error",error);
+//        }
+
         request.setAttribute("cityList", cityList);
         request.setAttribute("idh", idh);
         request.getRequestDispatcher("edithotel.jsp").forward(request, response);
@@ -32,6 +38,25 @@ public class LoadEditHotel extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Hotel_DAO hotel = new Hotel_DAO();
+        City_DAO city = new City_DAO();
 
+        List<Hotel_Category> category = hotel.getCategory();
+        request.setAttribute("category", category);
+        String idh = request.getParameter("idh");
+        List<City> cityList = city.getCitys();
+        String error1 = request.getParameter("error1");
+        String error2 = request.getParameter("error2");
+
+        if(error1 != null) {
+            request.setAttribute("error", "Location is invalid");
+        }
+        if(error2 != null) {
+            request.setAttribute("error", "Phone is invalid");
+        }
+
+        request.setAttribute("cityList", cityList);
+        request.setAttribute("idh", idh);
+        request.getRequestDispatcher("edithotel.jsp").forward(request, response);
     }
 }

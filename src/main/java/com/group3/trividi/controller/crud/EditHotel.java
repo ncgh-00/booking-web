@@ -1,6 +1,8 @@
 package com.group3.trividi.controller.crud;
 
+import com.group3.trividi.controller.load.LoadEditHotel;
 import com.group3.trividi.dao.Hotel_DAO;
+import com.group3.trividi.utils.Validation;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -31,6 +33,8 @@ public class EditHotel extends HttpServlet {
         String address = request.getParameter("address");
         String numOfStar = request.getParameter("numOfStar");
         String city = request.getParameter("city");
+        String lng = request.getParameter("lng");
+        String lat = request.getParameter("lat");
 //        String image = request.getParameter("image");
         Part file = request.getPart("image");
         String imageFileName = file.getSubmittedFileName();
@@ -49,10 +53,25 @@ public class EditHotel extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+            if(!Validation.validLocation(lat) || !Validation.validLocation(lng)){
+                request.setAttribute("error1","true");
+                request.getRequestDispatcher("LoadEditHotel").forward(request,response);
+                return;
+            }
+
+        if(!Validation.validPhone(phone)){
+            request.setAttribute("error2","true");
+            request.getRequestDispatcher("LoadEditHotel").forward(request,response);
+            return;
+        }
+
+
+
         Hotel_DAO dao = new Hotel_DAO();
         String idh = request.getParameter("idhotel");
 
-        dao.editHotel(idh, name, des, category, phone, address, numOfStar, city, imageFileName);
+        dao.editHotel(idh, name, des, category, phone, address, numOfStar, city,lng,lat, imageFileName);
         response.sendRedirect("LoadMyHotel#managehotel");
 
     }
