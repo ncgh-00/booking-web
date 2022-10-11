@@ -1,7 +1,7 @@
 const closeBtns = document.querySelectorAll('.close-btn');
 const vote_conatainer = document.querySelector('.vote-conatainer');
 const edit_conatainer = document.querySelector('.edit-conatainer')
-const vote_form = document.querySelector('.vote-form');
+const vote_forms = document.querySelectorAll('.vote-form');
 const rate_hotel = document.querySelector('.rate-hotel');
 const edit_rate = document.querySelector('.edit-rate');
 
@@ -25,6 +25,8 @@ for (const closeBtn of closeBtns) {
     })
 }
 
-vote_form.addEventListener('click', function (event) {
-    event.stopPropagation()
-})
+for (const vote_form of vote_forms) {
+    vote_form.addEventListener('click', function (event) {
+        event.stopPropagation()
+    })
+}

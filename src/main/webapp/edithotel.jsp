@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Hotel</title>
-    <link rel="stylesheet" href="css/form-l.css">
+    <link rel="stylesheet" href="css/form-xl.css">
 </head>
 <body>
 <div class="layout">
@@ -36,11 +36,7 @@
                 <input type="file" class="input-box" title="cax nef" name="image">
             </div>
 
-            <c:if test="${error != null}">
-                <div class="field-text-error">
-                    <p>${error}</p>
-                </div>
-            </c:if>
+
 
             <div class="input">
                 <input type="tel" class="input-box" placeholder="Phone" name="phone">
@@ -70,7 +66,11 @@
                 <input type="text" class="input-box" placeholder="LAT" name="lat">
             </div>
 
-
+            <c:if test="${error != null}">
+                <div class="field-text-error">
+                    <p>${error}</p>
+                </div>
+            </c:if>
 
             <input type="submit" value="Edit" class="btn">
 

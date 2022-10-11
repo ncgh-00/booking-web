@@ -857,7 +857,7 @@ header .search-bar-container label:hover {
 
 
 
-/*voteing*/
+/*voting*/
 
 .edit-conatainer.open,
 .vote-conatainer.open {
@@ -957,7 +957,12 @@ header .search-bar-container label:hover {
 .vote-form #op-2:checked:checked~.op-2,
 .vote-form #op-3:checked:checked~.op-3,
 .vote-form #op-4:checked:checked~.op-4,
-.vote-form #op-5:checked:checked~.op-5 {
+.vote-form #op-5:checked:checked~.op-5,
+.vote-form #op-e1:checked:checked~.op-1,
+.vote-form #op-e2:checked:checked~.op-2,
+.vote-form #op-e3:checked:checked~.op-3,
+.vote-form #op-e4:checked:checked~.op-4,
+.vote-form #op-e5:checked:checked~.op-5{
     border-color: #555;
     background: var(--orange);
     box-shadow: 0 0 0.8rem rgba(0, 0, 0, .5);
@@ -968,7 +973,12 @@ header .search-bar-container label:hover {
 .vote-form #op-2:checked:checked~.op-2 span,
 .vote-form #op-3:checked:checked~.op-3 span,
 .vote-form #op-4:checked:checked~.op-4 span,
-.vote-form #op-5:checked:checked~.op-5 span {
+.vote-form #op-5:checked:checked~.op-5 span,
+.vote-form #op-e1:checked:checked~.op-1 span,
+.vote-form #op-e2:checked:checked~.op-2 span,
+.vote-form #op-e3:checked:checked~.op-3 span,
+.vote-form #op-e4:checked:checked~.op-4 span,
+.vote-form #op-e5:checked:checked~.op-5 span{
     color: #fff;
 }
 
@@ -976,7 +986,12 @@ header .search-bar-container label:hover {
 .vote-form #op-2:checked:checked~.op-2 i,
 .vote-form #op-3:checked:checked~.op-3 i,
 .vote-form #op-4:checked:checked~.op-4 i,
-.vote-form #op-5:checked:checked~.op-5 i {
+.vote-form #op-5:checked:checked~.op-5 i,
+.vote-form #op-e1:checked:checked~.op-1 i,
+.vote-form #op-e2:checked:checked~.op-2 i,
+.vote-form #op-e3:checked:checked~.op-3 i,
+.vote-form #op-e4:checked:checked~.op-4 i,
+.vote-form #op-e5:checked:checked~.op-5 i{
     color: #fff;
 
 }
