@@ -23,7 +23,7 @@ public class Login extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String page = request.getParameter("page");
-        String id_hotel = request.getParameter("id_hotel");
+        String id_hotel = request.getParameter("id");
         HttpSession session = request.getSession();
         User_DAO dao = new User_DAO();
         Account acc = dao.getUSer(username, HashPassword.getHashedPassword(password));

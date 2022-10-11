@@ -2,9 +2,11 @@ package com.group3.trividi.controller.crud;
 
 import com.group3.trividi.dao.Rate_DAO;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "AddRate", value = "/AddRate")
@@ -17,13 +19,15 @@ public class AddRate extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String uid  = request.getParameter("uid");
         String id_hotel = request.getParameter("id_hotel");
-        String cmt = request.getParameter("cmt");
-        int stars = Integer.parseInt(request.getParameter("stars"));
+        String cmt = request.getParameter("comment");
+        int stars = Integer.parseInt(request.getParameter("numofstar"));
+        String uid  = request.getParameter("uid");
 
         Rate_DAO dao = new Rate_DAO();
-        dao.addRate(uid, id_hotel,cmt,stars);
-        response.sendRedirect("LoadBooking");
+        dao.addRate(uid,id_hotel,cmt,stars);
+        request.setAttribute("id", id_hotel);
+//        request.getRequestDispatcher("LoadHome").forward(request,response);
+        response.sendRedirect("LoadHome");
     }
 }

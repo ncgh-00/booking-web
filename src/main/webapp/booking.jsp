@@ -224,14 +224,14 @@
 </section>
 
 <div class="vote-conatainer close-btn">
-    <form action="" class="vote-form">
+    <form method="post" action="AddRate?uid=${sessionScope.Account.UID}&id_hotel=${hotel_details.id}" class="vote-form">
         <h2>Rating hotel</h2>
         <div class="close-btn"><i class="fas fa-times"></i></div>
-        <input type="radio" id="op-1" name="numofstar">
-        <input type="radio" id="op-2" name="numofstar">
-        <input type="radio" id="op-3" name="numofstar">
-        <input type="radio" id="op-4" name="numofstar">
-        <input type="radio" id="op-5" name="numofstar">
+        <input value="1" type="radio" id="op-1" name="numofstar">
+        <input value="2" type="radio" id="op-2" name="numofstar">
+        <input value="3" type="radio" id="op-3" name="numofstar">
+        <input value="4" type="radio" id="op-4" name="numofstar">
+        <input value="5" type="radio" id="op-5" name="numofstar">
         <label for="op-1" class="option op-1">
             <span>1<i class="fas fa-star"></i></span>
         </label>
@@ -248,7 +248,7 @@
             <span>5<i class="fas fa-star"></i></span>
         </label>
         <textarea name="comment" class="input-box" rows="3" placeholder="Comment here..."></textarea>
-        <input type="submit" class="btn">
+        <input value="Submit" type="submit" class="btn">
     </form>
 </div>
 <%--RATE SECTION ENDS--%>

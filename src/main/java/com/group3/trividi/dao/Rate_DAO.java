@@ -17,7 +17,7 @@ public class Rate_DAO {
     Statement st = null;
 
     public void addRate(String uid, String id_Hotel, String cmt, int stars){
-        String query = "INSERT INTO [Rate] ([UID], [ID_Hotel], [Comment], [NumberOfStars], [Date]) value(?,?,?,?,'getDate()')";
+        String query = "INSERT INTO [Rate] ([UID], [ID_Hotel], [Comment], [NumberOfStars], [Date]) values (?,?,?,?,getDate())";
 
 
         try {
@@ -29,6 +29,7 @@ public class Rate_DAO {
             ps.setString(3, cmt);
             ps.setInt(4, stars);
             ps.executeUpdate();
+            System.out.println(query);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -69,8 +70,7 @@ public class Rate_DAO {
 
     public static void main(String[] args) {
         Rate_DAO rate = new Rate_DAO();
-        List<Rate> list = rate.getRate("1",0);
-
+        rate.addRate("UCODE00000006","2","fghbvhjbxvhjxbv", 3 );
 
     }
 
