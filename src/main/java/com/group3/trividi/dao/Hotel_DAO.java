@@ -3,6 +3,7 @@ package com.group3.trividi.dao;
 import com.group3.trividi.context.DBContext;
 import com.group3.trividi.model.Hotel_Category;
 import com.group3.trividi.model.Hotel_Details;
+import com.group3.trividi.model.Location;
 import com.group3.trividi.model.Room_Details;
 
 import javax.servlet.http.Part;
@@ -369,8 +370,37 @@ public class Hotel_DAO {
         }
     }
 
-    public static void main(String[] args) {
+    public List<Location> getMaps(){
+        List<Location> list = new ArrayList<>();
+        String sql = "select * from Location_map";
+        try {
+            // Open connection with SQL Server
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            ps = conn.prepareStatement(sql);
+            // Get the result of SQL Server ans store in rs
+            rs = ps.executeQuery();
 
+            // Add data in rs to ArrayList
+            while (rs.next()) {
+                //int id, String name, String image, double price, String title, String description
+                list.add(new Location(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5)));
+            }
+            System.out.println(list.size());
+        } catch (Exception e) {
+            System.out.println("Fail, please contact to admin!!");
+        }
+
+        return list;
+    }
+
+
+    public static void main(String[] args) {
+        Hotel_DAO dao = new Hotel_DAO();
+
+        for(Location l : dao.getMaps()){
+            System.out.println(","+l.getLat());
+        }
     }
 }
 

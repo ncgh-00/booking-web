@@ -37,7 +37,7 @@
         <nav class="navbar">
             <a href="index.jsp">home</a>
 
-            <a href="managehotel.jsp">Dashboard</a>
+            <a href="LoadHotels">Dashboard</a>
             <a href="LoadMyAccount">My account</a>
             <a href="#contact">contact</a>
         </nav>
