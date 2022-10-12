@@ -232,7 +232,7 @@
                         </div>
                         <c:if test="${o.UID == sessionScope.Account.UID}">
                             <div class="row">
-                                <a class="delete-rate icon" href="XXX?idrate=${o.id_rate}"><i
+                                <a class="delete-rate icon" href="DeleteRate?id_rate=${o.id_rate}&id_hotel=${o.ID_Hotel}"><i
                                         class="fa-solid fa-trash-can"></i></a>
                             </div>
                         </c:if>

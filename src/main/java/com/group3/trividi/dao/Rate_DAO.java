@@ -88,10 +88,23 @@ public class Rate_DAO {
         return check;
     }
 
+    public void DeleteRate(String id){
+        String query = "DELETE FROM Rate WHERE ID_Rate = " + id +" ";
+
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.executeUpdate();
+            System.out.println(query);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         Rate_DAO rate = new Rate_DAO();
-        if (rate.checkUID("2", "UCODE00000007"))
-            System.out.println("hello");
+        rate.DeleteRate("17");
     }
 
 }
