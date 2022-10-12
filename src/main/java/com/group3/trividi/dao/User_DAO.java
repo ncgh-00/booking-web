@@ -292,32 +292,13 @@ public class User_DAO {
         return id;
     }
 
-    public void randomUser(int role_id, String username, String pass){
-        String query = "insert into Account(Role_ID,Username,Hash_password,Status) values (?,?,?,'1')";
-        try {
-            conn = new DBContext().getConnection();
-            ps = conn.prepareStatement(query);
-            ps.setInt(1, role_id);
-            ps.setString(2, username);
-            ps.setString(3, HashPassword.getHashedPassword(pass));
-            ps.executeUpdate();
 
-            System.out.println("dang ky duoc roi!!");
-            System.out.println(query);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
 
 
     public static void main(String[] args) {
         User_DAO u = new User_DAO();
 
-        String username = NameGenerator.randomIdentifier();
-        String pass = HashPassword.generatePassword(8);
-        u.randomUser(2,username, pass);
-        System.out.println(u.getIDUser());
 
     }
 

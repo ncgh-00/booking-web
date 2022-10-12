@@ -37,16 +37,14 @@ public class Login extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
             session.setAttribute("role", 0);
         } else {
-            Cookie uid = new Cookie("uid",acc.getUID());
+            Cookie uid = new Cookie("uid", acc.getUID());
             uid.setMaxAge(36000);
             response.addCookie(uid);
             request.removeAttribute("error");
             session.setAttribute("Account", acc);
             session.setAttribute("role", acc.getRoleID());
             request.setAttribute("id", id_hotel);
-            if (!acc.getFullname().isEmpty() || acc.getFullname() != null) {
-                session.setAttribute("name", StringCutter.cut(acc.getFullname()));
-            }
+            session.setAttribute("name", StringCutter.cut(acc.getFullname()));
             if (page == null || page.equals("null")) {
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
                 return;

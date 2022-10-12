@@ -6,10 +6,9 @@ import com.group3.trividi.model.Account;
 import com.group3.trividi.utils.StringCutter;
 
 import javax.servlet.*;
-import javax.servlet.annotation.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
@@ -45,9 +44,7 @@ public class LoginFilter implements Filter {
                 acc = dao.getUSer(uid);
                 session.setAttribute("Account", acc);
                 session.setAttribute("role", acc.getRoleID());
-                if (!acc.getFullname().isEmpty() || acc.getFullname() != null) {
-                    session.setAttribute("name", StringCutter.cut(acc.getFullname()));
-                }
+                session.setAttribute("name", StringCutter.cut(acc.getFullname()));
             }
 
         }
