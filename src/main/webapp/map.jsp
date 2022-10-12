@@ -10,7 +10,8 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>Map</title>
+    <title>Map</title
+    <link rel="icon" type="image/x-icon" href="./images/logo.svg">
     <meta name="robots" content="noindex, nofollow"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link
