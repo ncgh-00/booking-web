@@ -197,24 +197,28 @@
             </div>
             <p class="number-rates">2000 rates</p>
             <c:if test="${sessionScope.Account != null}">
-                <c:if test="${checkUID == true}">
-                    <button class="btn edit-rate">Edit Rate</button>
-                    <button class="btn ">Delete Rate</button>
-                </c:if>
                 <c:if test="${checkUID == false}">
                     <button class="btn rate-hotel">rate hotel</button>
                 </c:if>
             </c:if>
 
         </div>
-        <div class="reviews-list">
+        <div id="list-cmt" class="reviews-list">
             <h2>List Review</h2>
             <c:forEach items="${listRate}" var="o">
-                <div class="review-item">
+                <div class="num_comment review-item">
                     <div class="review-heading">
-                        <i class="user-icon fas fa-user"></i>
-                        <h3 class="name">${o.fullname}</h3>
-                        <p class="date">${o.date}</p>
+                        <div class="row">
+                            <i class="user-icon fas fa-user"></i>
+                            <h3 class="name">${o.fullname}</h3>
+                            <p class="date">${o.date}</p>
+                        </div>
+                        <c:if test="${o.UID == sessionScope.Account.UID}">
+                            <div class="row">
+                                <div class="edit-rate icon" href=""><i class="fa-solid fa-pen-to-square"></i></div>
+                                <a class="delete-rate icon" href=""><i class="fa-solid fa-trash-can"></i></a>
+                            </div>
+                        </c:if>
                     </div>
                     <div class="stars">
                         <c:forEach begin="1" end="${o.stars}">
@@ -224,7 +228,7 @@
                     <div class="comment">${o.comment}</div>
                 </div>
             </c:forEach>
-
+            <div class="align-center"><button onclick="loadMore()" class="btn load-btn">Load More</button></div>
         </div>
     </div>
 </section>
@@ -290,12 +294,37 @@
 
 <!--footer section starts-->
 <jsp:include page="footer.jsp"></jsp:include>
-<!--footer section ends-->
 
+<!--footer section ends-->
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- custome js file link -->
 <script src="./js/slider.js" type="text/javascript"></script>
 <script src="./js/rate.js"></script>
+<input type="hidden" value="${hotel_details.id}" id="idhotel">
+<script>
+    function loadMore() {
+        var amount = document.getElementsByClassName("num_comment").length;
+        var idhotel = $("#idhotel").val();
+        $.ajax({
+            url: '/Trividi_Project/LoadComment',
+            type: 'get',
+            data: {
+                amount_cmt: amount,
+                id_hotel : idhotel
+            },
+            success: function (data) {
+                var list = document.getElementById("list-cmt")
+                list.innerHTML += data;
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+    }
+</script>
 </body>
 
 </html>

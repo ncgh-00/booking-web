@@ -25,11 +25,6 @@ public class LoadEditHotel extends HttpServlet {
         request.setAttribute("category", category);
         String idh = request.getParameter("idh");
         List<City> cityList = city.getCitys();
-//        String error = request.getParameter("error");
-//
-//        if(error != null || !error.isEmpty()){
-//            request.setAttribute("error",error);
-//        }
 
         request.setAttribute("cityList", cityList);
         request.setAttribute("idh", idh);
@@ -45,16 +40,14 @@ public class LoadEditHotel extends HttpServlet {
         request.setAttribute("category", category);
         String idh = request.getParameter("idh");
         List<City> cityList = city.getCitys();
-        String error1 = request.getParameter("error1");
-        String error2 = request.getParameter("error2");
+        String location = request.getParameter("location");
+        String phone = request.getParameter("tel");
 
-        if(error1 != null) {
+        System.out.println(location + "  " + phone);
+        if (location!=null)
             request.setAttribute("error", "Location is invalid");
-        }
-        if(error2 != null) {
+        if (phone!=null)
             request.setAttribute("error", "Phone is invalid");
-        }
-
         request.setAttribute("cityList", cityList);
         request.setAttribute("idh", idh);
         request.getRequestDispatcher("edithotel.jsp").forward(request, response);
