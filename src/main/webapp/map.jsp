@@ -18,21 +18,29 @@
             rel="stylesheet"
     />
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
-    <link
-            href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css"
-            rel="stylesheet"
-    />
+<%--    <link--%>
+<%--            href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css"--%>
+<%--            rel="stylesheet"--%>
+<%--    />--%>
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.1/mapbox-gl-directions.js"></script>
     <link
             rel="stylesheet"
             href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.1/mapbox-gl-directions.css"
             type="text/css"
     />
-
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
+        }
+        .marker {
+            background-image: url('/Trividi_Project/images/logo.svg');
+            background-size: cover;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
         }
 
         #geocoder-container > div {
@@ -71,7 +79,7 @@
 </div>
 
 <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoicGhvbmdiaW5odHJhbiIsImEiOiJjbDkxajlpcWMweHVyM29sZjlmam50cWt5In0.6Vn-pATCtMvLNp9S2uqxMw';
+    mapboxgl.accessToken = 'pk.eyJ1IjoicGhvbmdiaW5odHJhbiIsImEiOiJjbDk1cXNwa3QwMWtxM291bmZneGRkYWg0In0.Tt1Ipv9H5OWHQmrYz0REUw';
 
         <c:if test="${requestScope.lng == null || requestScope.lat == null }">
             const map = new mapboxgl.Map({
@@ -87,7 +95,7 @@
         container: 'map',
         style: 'mapbox://styles/phongbinhtran/cl91jrxll003316o7q0b7awxi',
         center: [<c:out value="${requestScope.lng}"/>,<c:out value="${requestScope.lat}"/>],
-        zoom: 13
+        zoom: 15
     });
     </c:if>
 
@@ -101,9 +109,13 @@
             </c:forEach>
             []
         ];
+    var el;
+
 
         for(let i = 0 ; i < data.length -1 ; i++){
-            new mapboxgl.Marker({color: "#ffa500"})
+            el = document.createElement('div');
+            el.className = 'marker';
+            new mapboxgl.Marker(el)
                 .setLngLat([data[i][2],data[i][3]])
                 .setPopup(new mapboxgl.Popup().setHTML("<div style='align-content: center;width: 160px;height: 180px'><a href="+"'LoadBooking?id="+data[i][1]+"'>"+data[i][0]+"</a><img src='"+data[i][4]+"'width='150' height='150'></div>"))
                 .addTo(map);
