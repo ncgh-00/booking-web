@@ -224,6 +224,7 @@ body {
     animation: priority ease-in-out 0.3s;
     will-change: opacity, transform;
     cursor: pointer;
+    z-index: 1000;
 }
 
 .content .set-priority::after {
@@ -596,6 +597,7 @@ body {
 .noti-body p {
     font-size: 16px;
     color: #444;
+    text-transform: none;
 }
 
 .noti-body .label {

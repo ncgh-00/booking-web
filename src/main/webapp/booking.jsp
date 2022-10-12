@@ -283,7 +283,7 @@
 </div>
 
 <div class="edit-conatainer close-btn">
-    <form action="AddRate?uid=${sessionScope.Account.UID}&id_hotel=${hotel_details.id}" class="vote-form" method="post">
+    <form action="EditRate?uid=${sessionScope.Account.UID}&id_hotel=${hotel_details.id}" class="vote-form" method="post">
         <h2>Edit Rate</h2>
         <div class="close-btn"><i class="fas fa-times"></i></div>
         <input value="1" type="radio" id="op-e1" name="numofstar">

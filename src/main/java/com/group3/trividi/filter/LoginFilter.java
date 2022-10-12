@@ -45,7 +45,9 @@ public class LoginFilter implements Filter {
                 acc = dao.getUSer(uid);
                 session.setAttribute("Account", acc);
                 session.setAttribute("role", acc.getRoleID());
-                session.setAttribute("name", StringCutter.cut(acc.getFullname()));
+                if (!acc.getFullname().isEmpty() || acc.getFullname() != null) {
+                    session.setAttribute("name", StringCutter.cut(acc.getFullname()));
+                }
             }
 
         }

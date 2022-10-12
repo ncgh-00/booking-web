@@ -59,6 +59,7 @@ public class BookRoom extends HttpServlet {
                 return;
             }
             String pass = HashPassword.generatePassword(8);
+            System.out.println("pass :" +pass);
             u.insert(phone,HashPassword.getHashedPassword(pass), name, null, phone);
             Account ac = u.getUSer(phone, HashPassword.getHashedPassword(pass));
             session.setAttribute("Account", ac);

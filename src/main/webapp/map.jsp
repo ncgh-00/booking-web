@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>Demo: How directions works</title>
+    <title>Map</title>
     <meta name="robots" content="noindex, nofollow"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link

@@ -301,7 +301,9 @@ public class User_DAO {
             ps.setString(2, username);
             ps.setString(3, HashPassword.getHashedPassword(pass));
             ps.executeUpdate();
+
             System.out.println("dang ky duoc roi!!");
+            System.out.println(query);
         } catch (Exception e) {
             e.printStackTrace();
         }

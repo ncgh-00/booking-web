@@ -41,7 +41,7 @@ public class HashPassword {
 
     public static void main(String[] args) {
        String a = HashPassword.generatePassword(9);
-        System.out.println(HashPassword.getHashedPassword(a));
+        System.out.println(HashPassword.getHashedPassword("MOQausRPK"));
     }
 
 }

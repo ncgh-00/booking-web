@@ -34,11 +34,13 @@ public class LoadComment extends HttpServlet {
                     "                            <p class=\"date\">" + r.getDate() + "</p>\n" +
                     "                        </div>\n";
 
-            if (r.getUID().equalsIgnoreCase(acc.getUID())) {
+
+            if (acc != null && r.getUID().equalsIgnoreCase(acc.getUID())) {
                 output += "<div class=\"row\">\n" +
-                        "                                <a class=\"delete-rate icon\" href=\"XXX?idrate=" + r.getId_rate() + "\"><i class=\"fa-solid fa-trash-can\"></i></a>\n" +
+                        "                                <a class=\"delete-rate icon\" href=\"DeleteRate?id_rate=" + r.getId_rate() + "&id_hotel=" + r.getID_Hotel() + "\"><i class=\"fa-solid fa-trash-can\"></i></a>\n" +
                         "                            </div>";
             }
+
 
             output += "</div>\n" +
                     "                    <div class=\"stars\">";

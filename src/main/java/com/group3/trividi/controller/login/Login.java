@@ -44,7 +44,9 @@ public class Login extends HttpServlet {
             session.setAttribute("Account", acc);
             session.setAttribute("role", acc.getRoleID());
             request.setAttribute("id", id_hotel);
-            session.setAttribute("name", StringCutter.cut(acc.getFullname()));
+            if (!acc.getFullname().isEmpty() || acc.getFullname() != null) {
+                session.setAttribute("name", StringCutter.cut(acc.getFullname()));
+            }
             if (page == null || page.equals("null")) {
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
                 return;

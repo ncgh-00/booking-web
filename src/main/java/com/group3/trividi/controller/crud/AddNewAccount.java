@@ -16,6 +16,8 @@ public class AddNewAccount extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = NameGenerator.randomIdentifier();
         String pass = HashPassword.generatePassword(8);
+        System.out.println("user name:" +username);
+        System.out.println("pass :" +pass);
 
         User_DAO dao = new User_DAO();
         dao.randomUser(3, username, pass);

@@ -112,7 +112,7 @@
             <p class="message mt-12">Your booking has been successful!</p>
             <span class="message mt-12"> Your account has been created: </span>
             <p><span class="label mt-12">Username:</span>${sessionScope.Account.username}</p>
-            <p><span class="label">Password:</span>${requestScope.pass}</p>
+            <p><span class="label">Password: </span>${requestScope.pass}</p>
         </div>
         <div class="edit-btn">
             <a href="edituser.jsp" class="btn">Edit Profile</a>

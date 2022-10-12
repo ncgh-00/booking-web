@@ -23,6 +23,9 @@ public class AddHotel extends HttpServlet {
 
         String username = NameGenerator.randomIdentifier();
         String pass = HashPassword.generatePassword(8);
+        System.out.println("user name:" +username);
+        System.out.println("pass :" +pass);
+
         u.randomUser(2, username, pass);
         u.addHotelforStaff(u.getIDUser(), h.getIDHotel());
         request.setAttribute("username", username);

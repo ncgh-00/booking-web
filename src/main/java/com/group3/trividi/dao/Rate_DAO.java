@@ -16,7 +16,7 @@ public class Rate_DAO {
     ResultSet rs = null; // Receive the respond result of SQL Server
     Statement st = null;
 
-    public void addRate(String uid, String id_Hotel, String cmt, int stars){
+    public void addRate(String uid, String id_Hotel, String cmt, int stars) {
         String query = "INSERT INTO [Rate] ([UID], [ID_Hotel], [Comment], [NumberOfStars], [Date]) values (?,?,?,?,getDate())";
 
 
@@ -36,13 +36,13 @@ public class Rate_DAO {
     }
 
 
-    public List<Rate> getRate(String id_hotel, int offset){
+    public List<Rate> getRate(String id_hotel, int offset) {
         List<Rate> list = new ArrayList<>();
-        String query = "select * from [Rate_View]\n"+
-        "where ID_Hotel = \n" +id_hotel+
-        " order by Date\n"+
-        "OFFSET " +offset + " ROWS\n"+
-        "FETCH NEXT 3 ROWS ONLY";
+        String query = "select * from [Rate_View]\n" +
+                "where ID_Hotel = \n" + id_hotel +
+                " order by Date\n" +
+                "OFFSET " + offset + " ROWS\n" +
+                "FETCH NEXT 3 ROWS ONLY";
 
         try {
             conn = new DBContext().getConnection();
@@ -68,7 +68,7 @@ public class Rate_DAO {
         return list;
     }
 
-    public boolean checkUID(String id_hotel, String uid){
+    public boolean checkUID(String id_hotel, String uid) {
         boolean check = false;
         String query = "select * from [Rate_View] where ID_Hotel = " + id_hotel + " and UID = '" + uid + "'";
 
@@ -79,7 +79,7 @@ public class Rate_DAO {
             System.out.println(query);
 //            String fullname, String UID, int ID_Hotel, String comment, int numberOfStars, Date date
             while (rs.next()) {
-                    check = true;
+                check = true;
             }
 
         } catch (Exception e) {
@@ -88,8 +88,8 @@ public class Rate_DAO {
         return check;
     }
 
-    public void DeleteRate(String id){
-        String query = "DELETE FROM Rate WHERE ID_Rate = " + id +" ";
+    public void DeleteRate(String id) {
+        String query = "DELETE FROM Rate WHERE ID_Rate = " + id + " ";
 
         try {
             conn = new DBContext().getConnection();
@@ -97,6 +97,32 @@ public class Rate_DAO {
             ps.executeUpdate();
             System.out.println(query);
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void editRate(String numofstars, String cmt, String uid, String idhotel) {
+        String sql = "update [Rate] set ";
+
+        if (!numofstars.isEmpty()) {
+            sql += " [NumberOfStars] = '" + numofstars + "',";
+        }
+        if (!cmt.isEmpty()) {
+            sql += " [Comment] = '" + cmt + "',";
+        }
+
+        sql = sql.substring(0, sql.length() - 1);
+        sql += " where [ID_Hotel] = '" + idhotel + "' and [UID] = '" + uid + "'";
+        System.out.println(sql);
+
+        try {
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            st = conn.createStatement();
+
+            st.executeUpdate(sql);
+            System.out.println("sua cmt thanh cong!!!");
         } catch (Exception e) {
             e.printStackTrace();
         }

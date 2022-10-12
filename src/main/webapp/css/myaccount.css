@@ -315,6 +315,7 @@ h2 {
 .noti-body p {
     font-size: 16px;
     color: #444;
+    text-transform: none;
 }
 
 .noti-body .label {

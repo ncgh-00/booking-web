@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Manage Hotel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/dashboard.css">
@@ -122,7 +122,7 @@
         <div class="noti-body">
             <span class="message mt-12"> New account has been created: </span>
             <p><span class="label mt-12">Username:</span>${requestScope.username}</p>
-            <p><span class="label">Password:</span>${requestScope.pass}</p>
+            <p><span class="label">Password: </span>${requestScope.pass}</p>
         </div>
     </div>
 </div>
