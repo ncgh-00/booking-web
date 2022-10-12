@@ -117,6 +117,7 @@ public class Booking_DAO {
             ps.setString(3, dateS);
             ps.setString(4, dateE);
             ps.setInt(5, numOfRoom);
+            System.out.println(total + " "+ numOfRoom +" "+ DateProcessor.duration(dateS, dateE));
             ps.setLong(6, total * numOfRoom * DateProcessor.duration(dateS, dateE));
             ps.executeUpdate();
         } catch (Exception e) {

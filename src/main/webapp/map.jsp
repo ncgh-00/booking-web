@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>Map</title
+    <title>Map</title>
     <link rel="icon" type="image/x-icon" href="./images/logo.svg">
     <meta name="robots" content="noindex, nofollow"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -37,6 +37,7 @@
         }
         .marker {
             background-image: url('/Trividi_Project/images/logo.svg');
+            background-color: rgba(246, 162, 81, 0);
             background-size: cover;
             width: 45px;
             height: 45px;
@@ -96,7 +97,7 @@
         container: 'map',
         style: 'mapbox://styles/phongbinhtran/cl91jrxll003316o7q0b7awxi',
         center: [<c:out value="${requestScope.lng}"/>,<c:out value="${requestScope.lat}"/>],
-        zoom: 15
+        zoom: 20
     });
     </c:if>
 

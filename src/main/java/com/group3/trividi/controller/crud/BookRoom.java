@@ -37,11 +37,16 @@ public class BookRoom extends HttpServlet {
 
         int numberR = Integer.parseInt(number);
         int id_Type = Integer.parseInt(idType);
-
+        System.out.println(dateS);
+        System.out.println(dateE);
         Booking_DAO dao = new Booking_DAO();
         Account acc = (Account) session.getAttribute("Account");
         DateProcessor tool = new DateProcessor();
-
+        if (DateProcessor.duration(dateS, dateE) <= 0 || !tool.isLogicDate(dateS)) {
+            request.setAttribute("error", "Date is not valid!");
+            request.getRequestDispatcher("LoadBooking?id_hotel=" + id_hotel).forward(request, response);
+            return;
+        }
         if (acc == null) {
             User_DAO u = new User_DAO();
             if(!Validation.validPhone(phone)){
@@ -53,11 +58,7 @@ public class BookRoom extends HttpServlet {
                 request.getRequestDispatcher("LoadBooking?id_hotel=" + id_hotel).forward(request, response);
                 return;
             }
-            if (DateProcessor.duration(dateS, dateE) <= 0 || !tool.isLogicDate(dateS)) {
-                request.setAttribute("error", "Date is not valid!");
-                request.getRequestDispatcher("LoadBooking?id_hotel=" + id_hotel).forward(request, response);
-                return;
-            }
+
             String pass = HashPassword.generatePassword(8);
             System.out.println("pass :" +pass);
             u.insert(phone,HashPassword.getHashedPassword(pass), name, null, phone);

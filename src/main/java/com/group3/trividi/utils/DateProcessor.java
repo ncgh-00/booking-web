@@ -40,6 +40,6 @@ public class DateProcessor {
 
     public static void main(String[] args) {
         DateProcessor tool = new DateProcessor();
-        System.out.println(tool.isLogicDate("2022/07/01"));
+        System.out.println(tool.isLogicDate("2022-07-01"));
     }
 }
