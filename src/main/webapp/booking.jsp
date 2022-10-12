@@ -134,6 +134,7 @@
                 </h3>
 
                 <a href="#book" class="btn"> Book now</a>
+                <a href="LoadMap?lng=${requestScope.location.lng}&lat=${requestScope.location.lat}" class="btn"> See In Map</a>
             </div>
         </div>
     </div>

@@ -12,7 +12,13 @@ public class LoadMap extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Hotel_DAO dao = new Hotel_DAO();
-        request.setAttribute("list",dao.getMaps());
+        request.setAttribute("list", dao.getMaps());
+        String lng = request.getParameter("lng");
+        String lat = request.getParameter("lat");
+
+        request.setAttribute("lng", lng);
+        request.setAttribute("lat", lat);
+
         request.getRequestDispatcher("map.jsp").forward(request, response);
     }
 

@@ -433,13 +433,35 @@ public class Hotel_DAO {
         return list;
     }
 
+    public Location getLocation(String id){
+
+        String sql = "select * from Location_map where [id_hotel] = " + id;
+        try {
+            // Open connection with SQL Server
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            ps = conn.prepareStatement(sql);
+            // Get the result of SQL Server ans store in rs
+            rs = ps.executeQuery();
+
+            // Add data in rs to ArrayList
+            while (rs.next()) {
+                //int id, String name, String image, double price, String title, String description
+                return new Location(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5));
+            }
+
+        } catch (Exception e) {
+            System.out.println("Fail, please contact to admin!!");
+        }
+
+        return null;
+    }
+
 
     public static void main(String[] args) {
         Hotel_DAO dao = new Hotel_DAO();
 
-        for(Location l : dao.getMaps()){
-            System.out.println(","+l.getLat());
-        }
+        System.out.println(dao.getLocation("1").toString());
     }
 }
 

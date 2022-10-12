@@ -40,9 +40,8 @@ public class LoadBooking extends HttpServlet {
         request.setAttribute("listR", list_R);
         request.setAttribute("page", "LoadBooking");
         request.setAttribute("id_hotel", id);
+        request.setAttribute("location",dao.getLocation(id));
         request.getRequestDispatcher("booking.jsp").forward(request, response);
-
-
     }
 
     @Override

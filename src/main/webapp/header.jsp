@@ -16,6 +16,7 @@
                 <a href="#hotel">hotel</a>
                 <a href="#city">city</a>
                 <a href="#services">services</a>
+                <a href="LoadMap">Map</a>
             </c:if>
             <c:if test="${requestScope.page == 'LoadBooking' }">
                 <a href="#hot-hotel">Hotel</a>
@@ -40,6 +41,8 @@
             <a href="LoadHotels">Dashboard</a>
             <a href="LoadMyAccount">My account</a>
             <a href="#contact">contact</a>
+            <a href="LoadMap">Map</a>
+
         </nav>
         <div class="username">
             <a href="#">${sessionScope.name}</a>
@@ -60,6 +63,7 @@
             <a href="LoadMyAccount">My account</a>
             <a href="LoadMyHotel">My hotel</a>
             <a href="#contact">contact</a>
+            <a href="LoadMap">Map</a>
         </nav>
 
         <div class="username">
@@ -79,6 +83,7 @@
             <a href="index.jsp">home</a>
             <a href="LoadMyAccount">My account</a>
             <a href="#contact">contact</a>
+            <a href="LoadMap">Map</a>
         </nav>
 
         <div class="username">

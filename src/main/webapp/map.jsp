@@ -72,26 +72,40 @@
 
 <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoicGhvbmdiaW5odHJhbiIsImEiOiJjbDkxajlpcWMweHVyM29sZjlmam50cWt5In0.6Vn-pATCtMvLNp9S2uqxMw';
+
+        <c:if test="${requestScope.lng == null || requestScope.lat == null }">
+            const map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/phongbinhtran/cl91jrxll003316o7q0b7awxi',
+                center: [108.33901399926685,15.28257503710688],
+                zoom: 7
+             });
+        </c:if>
+
+    <c:if test="${requestScope.lng != null || requestScope.lat != null }">
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/phongbinhtran/cl91jrxll003316o7q0b7awxi',
-        center: [109.1685, 14.4612],
+        center: [<c:out value="${requestScope.lng}"/>,<c:out value="${requestScope.lat}"/>],
         zoom: 13
     });
+    </c:if>
+
+
+
 
     <c:if test="${requestScope.list.size() != 0}">
-
         var data = [
             <c:forEach items="${requestScope.list}" var="o">
-                ['<c:out value="${o.name}"/>',<c:out value="${o.id_hotel}"/>,<c:out value="${o.lng}"/>,<c:out value="${o.lat}"/>],
+                ['<c:out value="${o.name}"/>',<c:out value="${o.id_hotel}"/>,<c:out value="${o.lng}"/>,<c:out value="${o.lat}"/>,'<c:out value="${o.link}"/>'],
             </c:forEach>
             []
         ];
 
         for(let i = 0 ; i < data.length -1 ; i++){
-            new mapboxgl.Marker()
+            new mapboxgl.Marker({color: "#ffa500"})
                 .setLngLat([data[i][2],data[i][3]])
-                .setPopup(new mapboxgl.Popup().setHTML("<a href="+"'LoadBooking?id="+data[i][1]+"'>"+data[i][0]+"</a>"))
+                .setPopup(new mapboxgl.Popup().setHTML("<div style='align-content: center;width: 160px;height: 180px'><a href="+"'LoadBooking?id="+data[i][1]+"'>"+data[i][0]+"</a><img src='"+data[i][4]+"'width='150' height='150'></div>"))
                 .addTo(map);
         }
 
