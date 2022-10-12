@@ -2,6 +2,7 @@ package com.group3.trividi.dao;
 
 import com.group3.trividi.context.DBContext;
 import com.group3.trividi.model.StatisticWeb;
+import com.group3.trividi.model.Statistic_Rate;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +21,7 @@ public class Statistic_DAO {
     String sql;
 
     private static final DecimalFormat df = new DecimalFormat("0.00");
-
+    private static final DecimalFormat dfr = new DecimalFormat("0.0");
     private HashMap<String,String> dicMonth(){
         HashMap<String,String> dic = new HashMap<>();
         dic.put("01","January");
@@ -151,8 +152,26 @@ public class Statistic_DAO {
         return 0;
     }
 
+    public Statistic_Rate getRateStatistic (String id_hotel) {
+        sql = "select COUNT(ID_Hotel) as NumOfRate, sum(NumberOfStars) as NumOfStar from Rate_View \n" +
+                "where ID_Hotel = "+ id_hotel+ " \n"+
+                "group by ID_Hotel";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new Statistic_Rate(rs.getInt(1),Double.parseDouble(dfr.format(rs.getDouble(2)/rs.getInt(1))));
+            }
+            System.out.println("ok");
+        } catch (Exception e) {
+            System.out.println("Fail, please contact to admin!!");
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         Statistic_DAO dao = new Statistic_DAO();
-        System.out.println(dao.getData("2022","10").size());
+        System.out.println(dao.getRateStatistic("2"));
     }
 }

@@ -134,7 +134,7 @@
                 </h3>
 
                 <a href="#book" class="btn"> Book now</a>
-                <a href="LoadMap?lng=${requestScope.location.lng}&lat=${requestScope.location.lat}" class="btn"> See In Map</a>
+                <a href="LoadMap?lng=${requestScope.location.lng}&lat=${requestScope.location.lat}" class="btn mg-l"> See In Map</a>
             </div>
         </div>
     </div>
@@ -191,16 +191,32 @@
 
     <div class="rate-container">
         <div class="voting-section">
-            <h2>Rating of xxx hotel</h2>
+            <h2>Rating of ${hotel_details.name}</h2>
             <div class="number-stars">
-                <p>4/5</p>
+                <c:if test="${numofstars != null}">
+                    <p>${numofstars} / 5.0</p>
+
+                </c:if>
+                <c:if test="${numofstars == null}">
+                    <p>0.0 / 5.0</p>
+
+                </c:if>
                 <i class="fas fa-star"></i>
             </div>
-            <p class="number-rates">2000 rates</p>
+            <c:if test="${numofrates != null}">
+                <p class="number-rates">${numofrates} rates</p>
+            </c:if>
+            <c:if test="${numofrates == null}">
+                <p class="number-rates">0 rates</p>
+            </c:if>
             <c:if test="${sessionScope.Account != null}">
                 <c:if test="${checkUID == false}">
                     <button class="btn rate-hotel">rate hotel</button>
                 </c:if>
+                <c:if test="${checkUID == true}">
+                    <button class="edit-rate btn">Edit rate</button>
+                </c:if>
+
             </c:if>
 
         </div>
@@ -216,8 +232,8 @@
                         </div>
                         <c:if test="${o.UID == sessionScope.Account.UID}">
                             <div class="row">
-                                <div class="edit-rate icon" href=""><i class="fa-solid fa-pen-to-square"></i></div>
-                                <a class="delete-rate icon" href=""><i class="fa-solid fa-trash-can"></i></a>
+                                <a class="delete-rate icon" href="XXX?idrate=${o.id_rate}"><i
+                                        class="fa-solid fa-trash-can"></i></a>
                             </div>
                         </c:if>
                     </div>
@@ -229,7 +245,10 @@
                     <div class="comment">${o.comment}</div>
                 </div>
             </c:forEach>
-            <div class="align-center"><button onclick="loadMore()" class="btn load-btn">Load More</button></div>
+
+        </div>
+        <div class="align-center">
+            <button onclick="loadMore()" class="btn load-btn">Load More</button>
         </div>
     </div>
 </section>
@@ -314,7 +333,7 @@
             type: 'get',
             data: {
                 amount_cmt: amount,
-                id_hotel : idhotel
+                id_hotel: idhotel
             },
             success: function (data) {
                 var list = document.getElementById("list-cmt")

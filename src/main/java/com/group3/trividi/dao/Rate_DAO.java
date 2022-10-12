@@ -56,8 +56,8 @@ public class Rate_DAO {
                         rs.getInt(3),
                         rs.getString(4),
                         rs.getInt(5),
-                        rs.getDate(6)
-
+                        rs.getDate(6),
+                        rs.getInt(7)
                 ));
             }
 

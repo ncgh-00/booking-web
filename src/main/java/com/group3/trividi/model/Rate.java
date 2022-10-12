@@ -9,16 +9,16 @@ public class Rate {
     private String comment;
     private int stars;
     private Date date;
+    private int id_rate;
 
-
-
-    public Rate(String fullname, String UID, int ID_Hotel, String comment, int stars, Date date) {
+    public Rate(String fullname, String UID, int ID_Hotel, String comment, int stars, Date date, int id_rate) {
         this.fullname = fullname;
         this.UID = UID;
         this.ID_Hotel = ID_Hotel;
         this.comment = comment;
         this.stars = stars;
         this.date = date;
+        this.id_rate = id_rate;
     }
 
     public String getFullname() {
@@ -69,6 +69,14 @@ public class Rate {
         this.date = date;
     }
 
+    public int getId_rate() {
+        return id_rate;
+    }
+
+    public void setId_rate(int id_rate) {
+        this.id_rate = id_rate;
+    }
+
     @Override
     public String toString() {
         return "Rate{" +
@@ -78,6 +86,7 @@ public class Rate {
                 ", comment='" + comment + '\'' +
                 ", stars=" + stars +
                 ", date=" + date +
+                ", id_rate=" + id_rate +
                 '}';
     }
 }

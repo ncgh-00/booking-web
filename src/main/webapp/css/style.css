@@ -36,6 +36,10 @@ html {
     margin-bottom: 8rem;
 }
 
+.mg-l{
+    margin-left: 1rem;
+}
+
 .magrin-slide {
     margin-right: 24.5px !important;
 }
@@ -775,6 +779,12 @@ header .search-bar-container label:hover {
     margin: auto;
 }
 
+.rate-container .load-btn {
+    margin-top: 4rem;
+    padding: 1rem 3.5rem;
+    font-size: 2rem;
+}
+
 
 .voting-section h2 {
     font-size: 2.5rem;
@@ -811,11 +821,7 @@ header .search-bar-container label:hover {
     margin-top: 3rem;
 }
 
-.reviews-list .load-btn {
-    margin-top: 4rem;
-    padding: 1rem 3.5rem;
-    font-size: 2rem;
-}
+
 
 .reviews-list h2 {
     font-size: 2.5rem;

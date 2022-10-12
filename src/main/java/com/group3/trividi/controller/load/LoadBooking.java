@@ -2,10 +2,8 @@ package com.group3.trividi.controller.load;
 
 import com.group3.trividi.dao.Hotel_DAO;
 import com.group3.trividi.dao.Rate_DAO;
-import com.group3.trividi.model.Account;
-import com.group3.trividi.model.Hotel_Details;
-import com.group3.trividi.model.Rate;
-import com.group3.trividi.model.Room_Details;
+import com.group3.trividi.dao.Statistic_DAO;
+import com.group3.trividi.model.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,6 +31,12 @@ public class LoadBooking extends HttpServlet {
         if (acc != null) {
             if (rate.checkUID(id, acc.getUID()))
                 checkUID = true;
+        }
+        Statistic_DAO s = new Statistic_DAO();
+        Statistic_Rate r = s.getRateStatistic(id);
+        if(r != null) {
+            request.setAttribute("numofrates",r.getNumOfRates());
+            request.setAttribute("numofstars",r.getNumberOfStars());
         }
         request.setAttribute("checkUID", checkUID);
         request.setAttribute("listRate", list);
