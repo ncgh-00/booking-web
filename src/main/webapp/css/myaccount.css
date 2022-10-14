@@ -183,7 +183,7 @@ h2 {
     text-align: center !important;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 849px) {
     .responsive-table .table-header {
         display: none;
     }
@@ -220,6 +220,17 @@ h2 {
     background-color: greenyellow;
 }
 
+.badge-hotel {
+    display: inline-block;
+    padding: 0.8em 0.8em;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
 .badge {
     display: inline-block;
     padding: 0.6em 0.8em;
@@ -231,6 +242,8 @@ h2 {
     vertical-align: baseline;
     border-radius: .25rem;
 }
+
+.badge-hotel:hover,
 .edit:hover,
 .delete:hover,
 .badge:hover {
@@ -355,7 +368,7 @@ h2 {
 }
 
 .margin-top {
-    margin-top: 8rem;
+    margin-top: 4rem;
 }
 
 .margin-bottom {

@@ -25,7 +25,7 @@
             </div>
 
             <div class="input">
-                <input type="tel" class="input-box" placeholder="Email (Optional)" name="email">
+                <input type="email" class="input-box" placeholder="Email (Optional)" name="email">
             </div>
 
             <div class="input-pas">

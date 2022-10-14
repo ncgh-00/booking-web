@@ -49,6 +49,7 @@ public class LoadMyHotel extends HttpServlet {
         Booking_DAO booking = new Booking_DAO();
         List<Booking> listMB = booking.getBooks(id);
         request.setAttribute("listMB", listMB);
+        request.setAttribute("location",hotel.getLocation(id));
 
         request.getRequestDispatcher("myhotel.jsp").forward(request, response);
     }

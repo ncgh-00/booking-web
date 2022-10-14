@@ -24,7 +24,6 @@ public class LoadBooking extends HttpServlet {
         List<Room_Details> list_R = dao.getRoomDetails(id);
         Rate_DAO rate = new Rate_DAO();
         List<Rate> list = rate.getRate(id, 0);
-        System.out.println(list.toString());
         HttpSession session = request.getSession();
         Account acc = (Account) session.getAttribute("Account");
         boolean checkUID = false;

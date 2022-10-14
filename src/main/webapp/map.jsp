@@ -36,11 +36,11 @@
             padding: 0;
         }
         .marker {
-            background-image: url('/Trividi_Project/images/logo.svg');
+            background-image: url('./images/logo.svg');
             background-color: rgba(246, 162, 81, 0);
             background-size: cover;
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             cursor: pointer;
         }
@@ -50,6 +50,22 @@
             margin-left: 25%;
         }
 
+        .mapboxgl-popup-close-button {
+        font-size: 21px;
+        }
+
+        a {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        a:hover {
+            opacity: 0.5;
+        }
+
+        a:focus-visible {
+            outline: none;
+        }
         .string {
             color: #314ccd;
         }

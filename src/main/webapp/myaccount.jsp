@@ -57,7 +57,22 @@
 <!-- table -->
 
 <div id="yourbooking" class="container margin-bottom">
-    <h2>Your Booking</h2>
+    <h1 class="heading">
+        <span>M</span>
+        <span>a</span>
+        <span>n</span>
+        <span>a</span>
+        <span>g</span>
+        <span>e</span>
+        <span class="space"></span>
+        <span>B</span>
+        <span>o</span>
+        <span>o</span>
+        <span>k</span>
+        <span>i</span>
+        <span>n</span>
+        <span>g</span>
+    </h1>
     <ul class="responsive-table">
         <li class="table-header">
             <div class="col col-l">Location</div>

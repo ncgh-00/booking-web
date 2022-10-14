@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: PC
-  Date: 10/2/2022
-  Time: 1:07 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -26,7 +20,62 @@
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 <div class="container margin-top margin-bottom">
-    <h2 id="managehotel">Manage Hotel</h2>
+    <section class="hot-hotel " id="hot-hotel">
+        <h1 class="heading">
+            <span>M</span>
+            <span>a</span>
+            <span>n</span>
+            <span>a</span>
+            <span>g</span>
+            <span>e</span>
+            <span class="space"></span>
+            <span>H</span>
+            <span>o</span>
+            <span>t</span>
+            <span>e</span>
+            <span>l</span>
+        </h1>
+        <div class="add-room"><a class="btn" href="hotelprofit.jsp">View Statistic</a></div>
+        <div class="row">
+            <div class="img">
+                <img src="${hotel.image}" alt="">
+            </div>
+
+            <div class="hot-hotel-content">
+                <div class="hotel-info">
+                    <h2>${hotel.name}</h2>
+
+                    <div class="stars">
+                        <c:forEach begin="1" end="${hotel.star}">
+                            <i class="fas fa-star"></i>
+                        </c:forEach>
+                    </div>
+
+                    <h3 class="hotel-desc">${hotel.des}</h3>
+                    <h3>
+                        <i class="fa-solid fa-phone"></i>
+                        Phone: <a href="tel:+${hotel.phone}"><span>${hotel.phone}</span></a>
+                    </h3>
+                    <h3>
+                        <i class="fa-sharp fa-solid fa-location-dot"></i>
+                        Address: <span>${hotel.address}</span>
+                    </h3>
+                    <c:if test="${hotel.status == true}">
+                        <div class="align-center" data-label="Status"><a title="Change status"
+                                                                                    href="ActivateHotel?id=${hotel.id}&check=${hotel.status}&page=LoadMyHotel&pageposition=#managehotel"
+                                                                                    class="badge-hotel badge-confirm">active</a></div>
+                    </c:if>
+                    <c:if test="${hotel.status == false}">
+                        <div class=" align-center" data-label="Status"><a title="Change status"
+                                                                                    href="ActivateHotel?id=${hotel.id}&check=${hotel.status}&page=LoadMyHotel&pageposition=#managehotel"
+                                                                                    class="badge-hotel badge-updating">inactive</a></div>
+                    </c:if>
+                    <a href="LoadEditHotel?idh=${hotel.id}" class="btn">Edit Hotel</a>
+                    <a href="LoadMap?lng=${requestScope.location.lng}&lat=${requestScope.location.lat}" class="btn mg-l"> See In Map</a>
+                </div>
+            </div>
+        </div>
+    </section>
     <ul class="responsive-table">
         <li class="table-header">
             <div class="col col-xl">Hotel's Name</div>
@@ -67,8 +116,19 @@
         </li>
     </ul>
 
-    <h2 id="manageroom">Manage Room Details</h2>
-
+    <h1 class="heading">
+        <span>M</span>
+        <span>a</span>
+        <span>n</span>
+        <span>a</span>
+        <span>g</span>
+        <span>e</span>
+        <span class="space"></span>
+        <span>R</span>
+        <span>o</span>
+        <span>o</span>
+        <span>M</span>
+    </h1>
     <div class="add-room"><a class="btn" href="addroom.jsp?idh=${hotel.id}">Add room</a></div>
     <ul class="responsive-table ">
         <li class="table-header">
@@ -105,8 +165,22 @@
             </li>
         </c:forEach>
     </ul>
-
-    <h2 id="managebooking">Manage Booking</h2>
+    <h1 class="heading">
+        <span>M</span>
+        <span>a</span>
+        <span>n</span>
+        <span>a</span>
+        <span>g</span>
+        <span>e</span>
+        <span class="space"></span>
+        <span>B</span>
+        <span>o</span>
+        <span>o</span>
+        <span>k</span>
+        <span>i</span>
+        <span>n</span>
+        <span>g</span>
+    </h1>
     <ul class="responsive-table">
         <li class="table-header">
             <div class="col col-s">User name</div>
