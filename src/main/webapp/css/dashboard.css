@@ -519,7 +519,7 @@ body {
     height: 50rem;
 }
 
-.chart-container .notify {
+.chart-container .notification {
     margin: auto;
     font-size: 2rem ;
     color: #333333;
@@ -528,7 +528,6 @@ body {
     border-radius: 0.6rem;
 }
 /* Notification*/
-
 .notify.open,
 .noti.open {
     display: flex;

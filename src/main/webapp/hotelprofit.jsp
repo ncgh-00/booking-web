@@ -124,7 +124,7 @@
 </form>
 <div class="chart-container">
     <c:if test="${requestScope.map.size() == 0}">
-        <div class="notify">This time dose not have any Book!</div>
+        <div class="notification">This time dose not have any Book!</div>
     </c:if>
     <div id="chart">
     </div>
