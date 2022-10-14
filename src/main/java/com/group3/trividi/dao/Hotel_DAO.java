@@ -411,7 +411,7 @@ public class Hotel_DAO {
 
     public List<Location> getMaps(){
         List<Location> list = new ArrayList<>();
-        String sql = "select * from Location_map";
+        String sql = "select * from Location_map where lng is not null and lat is not null";
         try {
             // Open connection with SQL Server
             conn = new DBContext().getConnection();
@@ -435,7 +435,7 @@ public class Hotel_DAO {
 
     public Location getLocation(String id){
 
-        String sql = "select * from Location_map where [id_hotel] = " + id;
+        String sql = "select * from Location_map where [id_hotel] = " + id + " and lng is not null and lat is not null";
         try {
             // Open connection with SQL Server
             conn = new DBContext().getConnection();

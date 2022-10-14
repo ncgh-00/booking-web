@@ -88,7 +88,8 @@
                 container: 'map',
                 style: 'mapbox://styles/phongbinhtran/cl91jrxll003316o7q0b7awxi',
                 center: [108.33901399926685,15.28257503710688],
-                zoom: 7
+                zoom: 7,
+                projector: 'mercator'
              });
         </c:if>
 
@@ -97,7 +98,8 @@
         container: 'map',
         style: 'mapbox://styles/phongbinhtran/cl91jrxll003316o7q0b7awxi',
         center: [<c:out value="${requestScope.lng}"/>,<c:out value="${requestScope.lat}"/>],
-        zoom: 20
+        zoom: 20,
+        projector: 'mercator'
     });
     </c:if>
 
@@ -156,7 +158,7 @@
             },
             // When active the map will receive updates to the device's location as it changes.
             trackUserLocation: true,
-// Draw an arrow next to the location dot to indicate which direction the device is heading.
+            // Draw an arrow next to the location dot to indicate which direction the device is heading.
             showUserHeading: true
         })
     );
