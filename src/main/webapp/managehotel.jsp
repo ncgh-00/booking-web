@@ -95,7 +95,7 @@
 <div class="noti close-btn">
     <div class="noti-container">
         <div class="noti-heading">
-            <h3 class="heading">Choose Accout for staff</h3>
+            <h3 class="heading">Choose Staff For Hotel</h3>
             <div class="close-btn"><i class="fas fa-times"></i></div>
         </div>
         <form action="AddHotel" class="noti-body align-center" method="post">

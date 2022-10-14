@@ -1,11 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: PC
-  Date: 9/30/2022
-  Time: 11:58 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -59,11 +52,7 @@
 <div id="yourbooking" class="container margin-bottom">
     <h1 class="heading">
         <span>M</span>
-        <span>a</span>
-        <span>n</span>
-        <span>a</span>
-        <span>g</span>
-        <span>e</span>
+        <span>y</span>
         <span class="space"></span>
         <span>B</span>
         <span>o</span>

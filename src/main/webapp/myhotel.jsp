@@ -20,7 +20,7 @@
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 <div class="container margin-top margin-bottom">
-    <section class="hot-hotel " id="hot-hotel">
+    <section class="hot-hotel " id="managehotel">
         <h1 class="heading">
             <span>M</span>
             <span>a</span>
@@ -43,7 +43,7 @@
 
             <div class="hot-hotel-content">
                 <div class="hotel-info">
-                    <h2>${hotel.name}</h2>
+                    <h2 style=" margin: 0;">${hotel.name}</h2>
 
                     <div class="stars">
                         <c:forEach begin="1" end="${hotel.star}">
@@ -76,47 +76,9 @@
             </div>
         </div>
     </section>
-    <ul class="responsive-table">
-        <li class="table-header">
-            <div class="col col-xl">Hotel's Name</div>
-            <div class="col col-xl">Description</div>
-            <div class="col col-m">Image</div>
-            <div class="col col-s">Category</div>
-            <div class="col col-s">Phone</div>
-            <div class="col col-m">Address</div>
-            <div class="col col-xs">Number Of Star</div>
-            <div class="col col-s">City</div>
-            <div class="col col-xs">Status</div>
-            <div class="col col-xs">Action</div>
 
-        </li>
 
-        <li class="table-row">
-            <div class="col col-xl" data-label="Location">${hotel.name}</div>
-            <div class="col col-xl" data-label="Description">${hotel.des}</div>
-            <div class="col col-m align-center" data-label="Image">${hotel.image}</div>
-            <div class="col col-s align-center" data-label="Category">${hotel.category}</div>
-            <div class="col col-s align-center" data-label="Phone"> ${hotel.phone}</div>
-            <div class="col col-m" data-label="Address">${hotel.address}</div>
-            <div class="col col-xs align-center" data-label="Number Of Star">${hotel.star}</div>
-            <div class="col col-s align-center" data-label="City">${hotel.city}</div>
-            <c:if test="${hotel.status == true}">
-                <div class="col col-xs align-center" data-label="Status"><a title="Change status"
-                        href="ActivateHotel?id=${hotel.id}&check=${hotel.status}&page=LoadMyHotel&pageposition=#managehotel"
-                        class="badge badge-confirm">active</a></div>
-            </c:if>
-            <c:if test="${hotel.status == false}">
-                <div class="col col-xs align-center" data-label="Status"><a title="Change status"
-                        href="ActivateHotel?id=${hotel.id}&check=${hotel.status}&page=LoadMyHotel&pageposition=#managehotel"
-                        class="badge badge-updating">inactive</a></div>
-            </c:if>
-            <div class="col col-xs align-center" >
-            <a class="edit" href="LoadEditHotel?idh=${hotel.id}"><i class="icon fa-solid fa-pen-to-square"></i></a>
-            </div>
-        </li>
-    </ul>
-
-    <h1 class="heading">
+    <h1 class="heading" id="manageroom">
         <span>M</span>
         <span>a</span>
         <span>n</span>
@@ -165,7 +127,7 @@
             </li>
         </c:forEach>
     </ul>
-    <h1 class="heading">
+    <h1 class="heading" id="managebooking">
         <span>M</span>
         <span>a</span>
         <span>n</span>

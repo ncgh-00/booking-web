@@ -53,7 +53,7 @@ public class SignUp extends HttpServlet {
             request.getRequestDispatcher("signup.jsp").forward(request, response);
         } else {
             request.removeAttribute("errorSignup");
-            dao.insert(username, HashPassword.getHashedPassword(password), name, mail, phone);
+            dao.insert(3,username, HashPassword.getHashedPassword(password), name, mail, phone);
             Account acc = dao.getUSer(username, HashPassword.getHashedPassword(password));
             Cookie uid = new Cookie("uid",acc.getUID());
             uid.setMaxAge(36000);
