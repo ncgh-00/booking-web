@@ -221,7 +221,7 @@ public class User_DAO {
     }
 
     public List<Account_Info> getStaff() {
-        String query = "select * from Account_Info where [Role_Id] = 2 order by [UID] desc";
+        String query = "select * from Account_Info where [Role_Id] = 2 and ID_Hotel is null order by [UID] desc";
         return getAccInfo(query);
     }
 
