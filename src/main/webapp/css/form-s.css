@@ -86,6 +86,11 @@
     border-radius: 9px;
 }
 
+.field-text-error.sucess {
+    background-color: #97ffb8;
+}
+
+
 .form-link .forgot-pas-link,
 .form-link .signup-link {
     display: inline-block;

@@ -21,6 +21,7 @@ public class Search extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("hotel");
         String greater = request.getParameter("cost_filter");
         String city = request.getParameter("search-by-city");

@@ -26,7 +26,7 @@ public class Rate_DAO {
 
             ps.setString(1, uid);
             ps.setString(2, id_Hotel);
-            ps.setString(3, cmt);
+            ps.setString(3,"N'"+ cmt+"'");
             ps.setInt(4, stars);
             ps.executeUpdate();
             System.out.println(query);
@@ -109,7 +109,7 @@ public class Rate_DAO {
             sql += " [NumberOfStars] = '" + numofstars + "',";
         }
         if (!cmt.isEmpty()) {
-            sql += " [Comment] = '" + cmt + "',";
+            sql += " [Comment] = N'" + cmt + "',";
         }
 
         sql = sql.substring(0, sql.length() - 1);

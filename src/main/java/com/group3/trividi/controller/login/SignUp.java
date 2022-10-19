@@ -20,6 +20,7 @@ public class SignUp extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String username = request.getParameter("user_name");
         String name = request.getParameter("name");
         String mail = request.getParameter("email");

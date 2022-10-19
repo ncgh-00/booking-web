@@ -260,10 +260,10 @@ public class Hotel_DAO {
         String sql = "update [Hotel] set ";
 
         if (!name.isEmpty()) {
-            sql += " [Name] = '" + name + "',";
+            sql += " [Name] = N'" + name + "',";
         }
         if (!des.isEmpty()) {
-            sql += " [Description] = '" + des + "',";
+            sql += " [Description] = N'" + des + "',";
         }
         if (!category.isEmpty()) {
             sql += "[ID_Category] = '" + category + "',";
@@ -272,7 +272,7 @@ public class Hotel_DAO {
             sql += " [Phone] = '" + phone + "',";
         }
         if (!address.isEmpty()) {
-            sql += " [Address] = '" + address + "',";
+            sql += " [Address] = N'" + address + "',";
         }
         if (!numOfStar.isEmpty()) {
             sql += " [NumberOfStars] = " + numOfStar + ",";
@@ -309,10 +309,10 @@ public class Hotel_DAO {
         String sql = "update [Room_Details] set ";
 
         if (!name.isEmpty()) {
-            sql += " [Name] = '" + name + "',";
+            sql += " [Name] = N'" + name + "',";
         }
         if (!des.isEmpty()) {
-            sql += " [Description] = '" + des + "',";
+            sql += " [Description] = N'" + des + "',";
         }
         if (!cost.isEmpty()) {
             sql += "[Cost] = '" + cost + "',";
@@ -347,9 +347,9 @@ public class Hotel_DAO {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, id_hotel);
-            ps.setString(2, name);
+            ps.setString(2, "N'"+name+"'");
             ps.setString(3, image);
-            ps.setString(4, description);
+            ps.setString(4, "N'"+description+"'");
             ps.setString(5, cost);
             ps.setString(6, discount);
             ps.executeUpdate();
@@ -365,7 +365,7 @@ public class Hotel_DAO {
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setString(1, name);
+            ps.setString(1,name);
             ps.setString(2, description);
             ps.setString(3, image);
             ps.setString(4, phone);

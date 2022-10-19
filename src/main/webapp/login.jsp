@@ -31,7 +31,7 @@
             </c:if>
 
             <div class="form-link">
-                <a href="" class="forgot-pas-link">Forgot password?</a>
+                <a href="getpassword.jsp?page=<%=request.getParameter("page")%>&&id=<%=request.getParameter("id")%>" class="forgot-pas-link">Forgot password?</a>
             </div>
             <input type="submit" value="Login" class="btn">
             <input type="hidden" value="<%=request.getParameter("page")%>" name="page">

@@ -86,7 +86,7 @@ public class User_DAO {
             ps.setInt(1,roleid);
             ps.setString(2, username);
             ps.setString(3, password);
-            ps.setString(4, fullname);
+            ps.setString(4,"N'"+ fullname +"'");
             ps.setString(5, email);
             ps.setString(6, phone);
             ps.executeUpdate();
@@ -103,7 +103,7 @@ public class User_DAO {
             ps = conn.prepareStatement(query);
             ps.setString(1, email);
             ps.setString(2,HashPassword.getHashedPassword(HashPassword.generatePassword(8)));
-            ps.setString(3, name);
+            ps.setString(3,"N'"+ name+"'");
             ps.setString(4, email);
             ps.executeUpdate();
             System.out.println("dang ky duoc roi");
@@ -134,6 +134,21 @@ public class User_DAO {
                 "where a.Email = '" + email + "'";
         return get(query);
     }
+
+    public void resetPassword(String password, String email) {
+        String sql = "update [Account] set [Hash_password] = '" + HashPassword.getHashedPassword(password) + "' where Email = '" + email + "'";
+        try {
+            conn = new DBContext().getConnection();
+            // Throw the query statement to SQL Server
+            st = conn.createStatement();
+
+            st.executeUpdate(sql);
+            System.out.println("reset success");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private Account get(String query){
         Account acc;
         try {
@@ -145,6 +160,7 @@ public class User_DAO {
                         rs.getString(4), rs.getString(5), rs.getString(6),
                         rs.getString(7), rs.getString(8), rs.getBoolean(9));
             }
+//            System.out.println(query);
             System.out.println("ok");
         } catch (Exception e) {
             System.out.println("Fail, please contact to admin!!");
@@ -159,7 +175,7 @@ public class User_DAO {
             sql += " [Hash_password] = '" + HashPassword.getHashedPassword(password) + "',";
         }
         if (!name.isEmpty()) {
-            sql += " [FullName] = '" + name + "',";
+            sql += " [FullName] = N'" + name + "',";
         }
         if (!email.isEmpty()) {
             sql += " [Email] = '" + email + "',";

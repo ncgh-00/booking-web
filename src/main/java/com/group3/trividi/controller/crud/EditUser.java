@@ -21,6 +21,7 @@ public class EditUser extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String password = request.getParameter("pass");
         String repass = request.getParameter("repass");
         String phone = request.getParameter("phone");
