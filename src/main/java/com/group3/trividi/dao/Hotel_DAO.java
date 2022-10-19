@@ -249,7 +249,7 @@ public class Hotel_DAO {
     public List<Hotel_Details> searchHotels(String hotel, String city, String cate) {
         List list = null;
         String query = "select * from Hotel_Details a\n" +
-                "where a.Name like '%" + hotel + "%' and a.Category like '%" + cate + "%' and a.City like '%" + city + "%'";
+                "where a.Name like '%" + hotel + "%' and a.Category like '%" + cate + "%' and a.City like '%" + city + "%' and status = 1";
         System.out.println(query);
         return get(query);
     }

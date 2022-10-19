@@ -28,6 +28,7 @@
 
             var data = google.visualization.arrayToDataTable([
                 ['Time', 'Number of Books','Dollar']
+
                 <c:forEach items="${requestScope.map}" var="o">
                     ,['<c:out value="${o.key}"/>',<c:out value="${o.value.numberBooks}"/>,<c:out value="${o.value.total}"/>]
                 </c:forEach>
@@ -37,9 +38,8 @@
                 title: 'Trividi Performance',
                 hAxis: {title: 'Timeline'},
                 vAxis: {title: 'Profit'},
-                seriesType: 'bars',
-                series: {1: {type: 'line'},
-                legend: {position: 'top', textStyle: {color: 'blue', fontSize: 16}}}
+                seriesType: "bars",
+                series: {1: {type: 'line'}}
             };
             <c:if test="${requestScope.map.size() > 0}">
             <c:out value="var chart = new google.visualization.ComboChart(document.getElementById('chart'));
