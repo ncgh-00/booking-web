@@ -55,7 +55,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 <div class="menu">
     <ul class="menu__bar">
-        <a class="menu__item" href="LoadAccounts">
+        <a class="menu__item" href="LoadHotels">
             <li>Hotel Management</li>
         </a>
         <a class="menu__item" href="LoadAccounts">

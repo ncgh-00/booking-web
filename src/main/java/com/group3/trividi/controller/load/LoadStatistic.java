@@ -16,16 +16,32 @@ public class LoadStatistic extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String year =  request.getParameter("year");
         String month = request.getParameter("month");
+        String id = request.getParameter("id");
+
         Statistic_DAO dao = new Statistic_DAO();
-        HashMap<String, StatisticWeb> ls =  dao.getData(year,month);
-        ls.forEach((k,v) -> System.out.println(k +" "+ v.toString()));
-        request.setAttribute("map", ls);
-        request.setAttribute("allProfit", dao.getAllProfits());
-        request.setAttribute("allBooks",dao.getNumberOfBooks());
-        request.setAttribute("dayProfit",dao.getTotalInDay().getTotal());
-        request.setAttribute("dayBook", dao.getTotalInDay().getNumberBooks());
-        request.setAttribute("timeUpdate", LocalDateTime.now().getHour()+":" + LocalDateTime.now().getMinute());
-        request.getRequestDispatcher("profit.jsp").forward(request, response);
+        if(id == null || id.trim().isEmpty()){
+            HashMap<String, StatisticWeb> ls =  dao.getData(year,month);
+            ls.forEach((k,v) -> System.out.println(k +" "+ v.toString()));
+            request.setAttribute("map", ls);
+            request.setAttribute("allProfit", dao.getAllProfits());
+            request.setAttribute("allBooks",dao.getNumberOfBooks());
+            request.setAttribute("dayProfit",dao.getTotalInDay().getTotal());
+            request.setAttribute("dayBook", dao.getTotalInDay().getNumberBooks());
+            request.setAttribute("timeUpdate", LocalDateTime.now().getHour()+":" + LocalDateTime.now().getMinute());
+            request.getRequestDispatcher("profit.jsp").forward(request, response);
+        }else {
+            HashMap<String, StatisticWeb> ls =  dao.getData(id,year,month);
+            ls.forEach((k,v) -> System.out.println(k +" "+ v.toString()));
+            request.setAttribute("map", ls);
+            request.setAttribute("allProfit", dao.getAllProfits(id));
+            request.setAttribute("allBooks",dao.getNumberOfBooks(id));
+            request.setAttribute("dayProfit",dao.getTotalInDay(id).getTotal());
+            request.setAttribute("dayBook", dao.getTotalInDay(id).getNumberBooks());
+            request.setAttribute("timeUpdate", LocalDateTime.now().getHour()+":" + LocalDateTime.now().getMinute());
+            request.getRequestDispatcher("hotelprofit.jsp").forward(request, response);
+        }
+       
+
     }
 
     @Override

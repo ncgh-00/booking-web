@@ -58,7 +58,7 @@
     <div class="card card-orange">
         <div class="card__heading">
             <div class="card__content">
-                <h3 class="card__number">$</h3>
+                <h3 class="card__number">$${requestScope.allProfit}</h3>
                 <p class="card__details">all profits</p>
             </div>
             <div class="card__icon"><i class="fa-solid fa-money-bill-trend-up"></i></div>
@@ -66,14 +66,14 @@
         <div class="line"></div>
         <div class="card__footer">
             <i class="fa-regular fa-clock"></i>
-            <p class="card_time">update: </p>
+            <p class="card_time">update: ${requestScope.timeUpdate}</p>
         </div>
     </div>
 
     <div class="card card-green">
         <div class="card__heading">
             <div class="card__content">
-                <h3 class="card__number"></h3>
+                <h3 class="card__number">${requestScope.allBooks}</h3>
                 <p class="card__details">all bookings</p>
             </div>
             <div class="card__icon"><i class="fa-solid fa-rectangle-list"></i></div>
@@ -81,14 +81,14 @@
         <div class="line"></div>
         <div class="card__footer">
             <i class="fa-regular fa-clock"></i>
-            <p class="card_time">update: </p>
+            <p class="card_time">update: ${requestScope.timeUpdate} </p>
         </div>
     </div>
 
     <div class="card card-red">
         <div class="card__heading">
             <div class="card__content">
-                <h3 class="card__number">$</h3>
+                <h3 class="card__number">$${requestScope.dayProfit}</h3>
                 <p class="card__details">Day's profits</p>
             </div>
             <div class="card__icon"><i class="fa-solid fa-money-bill-trend-up"></i></div>
@@ -96,14 +96,14 @@
         <div class="line"></div>
         <div class="card__footer">
             <i class="fa-regular fa-clock"></i>
-            <p class="card_time"> update: </p>
+            <p class="card_time"> update: ${requestScope.timeUpdate}</p>
         </div>
     </div>
 
     <div class="card card-blue">
         <div class="card__heading">
             <div class="card__content">
-                <h3 class="card__number"></h3>
+                <h3 class="card__number">${requestScope.dayBook}</h3>
                 <p class="card__details">Day's bookings</p>
             </div>
             <div class="card__icon"><i class="fa-solid fa-rectangle-list"></i></div>
@@ -111,7 +111,7 @@
         <div class="line"></div>
         <div class="card__footer">
             <i class="fa-regular fa-clock"></i>
-            <p class="card_time"> update: </p>
+            <p class="card_time"> update: ${requestScope.timeUpdate}</p>
         </div>
     </div>
 </div>

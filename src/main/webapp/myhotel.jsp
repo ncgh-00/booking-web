@@ -35,7 +35,7 @@
             <span>e</span>
             <span>l</span>
         </h1>
-        <div class="add-room"><a class="btn" href="hotelprofit.jsp">View Statistic</a></div>
+        <div class="add-room"><a class="btn" href="LoadStatistic?id=${hotel.id}&year=&month=">View Statistic</a></div>
         <div class="row">
             <div class="img">
                 <img src="${hotel.image}" alt="">
@@ -71,7 +71,7 @@
                                                                                     class="badge-hotel badge-updating">inactive</a></div>
                     </c:if>
                     <a href="LoadEditHotel?idh=${hotel.id}" class="btn">Edit Hotel</a>
-                    <a href="LoadMap?lng=${requestScope.location.lng}&lat=${requestScope.location.lat}" class="btn mg-l"> See In Map</a>
+                    <a href="?LoadMaplng=${requestScope.location.lng}&lat=${requestScope.location.lat}" class="btn mg-l"> See In Map</a>
                 </div>
             </div>
         </div>
