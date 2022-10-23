@@ -28,7 +28,7 @@
 
 
             <div class="input">
-                <input type="text" class="input-box" placeholder="Cost" name="cost" required>
+                <input type="number" class="input-box" placeholder="Cost" name="cost" required>
             </div>
 
             <div class="input">
