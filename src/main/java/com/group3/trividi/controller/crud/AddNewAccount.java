@@ -20,7 +20,7 @@ public class AddNewAccount extends HttpServlet {
         System.out.println("pass :" +pass);
 
         User_DAO dao = new User_DAO();
-        dao.insert(3,username,HashPassword.getHashedPassword(pass),NameGenerator.randomIdentifier(),null,null);
+        dao.insert(3,username,HashPassword.getHashedPassword(pass),NameGenerator.randomIdentifier(),null,null,1);
         request.setAttribute("username", username);
         request.setAttribute("pass",pass);
         request.setAttribute("show",1);

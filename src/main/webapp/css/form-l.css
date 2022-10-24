@@ -101,6 +101,10 @@
     border-radius: 9px;
 }
 
+.field-text-error.sucess {
+    background-color: #97ffb8;
+}
+
 .btn {
     border: 0;
     width: 100%;

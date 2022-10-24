@@ -28,11 +28,11 @@
 
 
             <div class="input">
-                <input type="text" class="input-box" placeholder="Cost" name="cost" required>
+                <input type="number" class="input-box" placeholder="Cost" name="cost" min="1" required>
             </div>
 
             <div class="input">
-                <input type="text" class="input-box" placeholder="Discount" name="discount" required>
+                <input type="number" class="input-box" placeholder="Discount" name="discount" min="0" required>
             </div>
 
             <div class="input">

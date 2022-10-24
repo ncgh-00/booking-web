@@ -77,18 +77,19 @@ public class User_DAO {
         return check;
     }
 
-    public void insert(int roleid, String username, String password, String fullname, String email, String phone) {
+    public void insert(int roleid, String username, String password, String fullname, String email, String phone, int status) {
         String query = "insert into Account(Role_ID,Username,Hash_password,FullName,Email,Phone,Status) \n"
-                + "values (?,?,?,?,?,?,'1')";
+                + "values (?,?,?,?,?,?,?)";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setInt(1,roleid);
             ps.setString(2, username);
             ps.setString(3, password);
-            ps.setString(4,"N'"+ fullname +"'");
+            ps.setString(4,fullname);
             ps.setString(5, email);
             ps.setString(6, phone);
+            ps.setInt(7, status);
             ps.executeUpdate();
             System.out.println("dang ky duoc roi");
         } catch (Exception e) {
@@ -175,7 +176,7 @@ public class User_DAO {
             sql += " [Hash_password] = '" + HashPassword.getHashedPassword(password) + "',";
         }
         if (!name.isEmpty()) {
-            sql += " [FullName] = N'" + name + "',";
+            sql += " [FullName] = " + name + ",";
         }
         if (!email.isEmpty()) {
             sql += " [Email] = '" + email + "',";

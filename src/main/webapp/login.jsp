@@ -29,13 +29,23 @@
                     <p>${error}</p>
                 </div>
             </c:if>
+            <c:if test="${success != null}">
+                <input type="hidden" value="${requestScope.page}" name="page">
+                <input type="hidden" value="${requestScope.id}" name="id">
+                <div class="field-text-error sucess">
+                    <p>${success}</p>
+                </div>
+            </c:if>
 
             <div class="form-link">
-                <a href="getpassword.jsp?page=<%=request.getParameter("page")%>&&id=<%=request.getParameter("id")%>" class="forgot-pas-link">Forgot password?</a>
+                <a href="getpassword.jsp?page=<%=request.getParameter("page")%>&&id=<%=request.getParameter("id")%>"
+                   class="forgot-pas-link">Forgot password?</a>
             </div>
             <input type="submit" value="Login" class="btn">
-            <input type="hidden" value="<%=request.getParameter("page")%>" name="page">
-            <input type="hidden" value="<%=request.getParameter("id")%>" name="id">
+            <c:if test="${success == null}">
+                <input type="hidden" value="<%=request.getParameter("page")%>" name="page">
+                <input type="hidden" value="<%=request.getParameter("id")%>" name="id">
+            </c:if>
         </form>
         <div class="form-link">
             <span>Don't have an account? <a
@@ -45,7 +55,8 @@
         <div class="line"></div>
         <div class="media-options">
             <a href="https://accounts.google.com/o/oauth2/auth?scope=openid%20profile%20email&redirect_uri=http://localhost:8080/Trividi_Project/LoginGoogle&response_type=code
-    &client_id=938297631263-5icnubscvafbg7tdpch94v3ppdebq7cd.apps.googleusercontent.com&approval_prompt=force" class="field google">
+    &client_id=938297631263-5icnubscvafbg7tdpch94v3ppdebq7cd.apps.googleusercontent.com&approval_prompt=force"
+               class="field google">
                 <img src="images/google.png" alt="" class="google-img">
                 <span>Login with Google</span>
             </a>

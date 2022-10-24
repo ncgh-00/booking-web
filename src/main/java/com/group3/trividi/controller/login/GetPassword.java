@@ -66,7 +66,7 @@ public class GetPassword extends HttpServlet {
                 message.setSubject("[RESET PASSWORD]");
                 String xxx = "<body style=\"margin-left: 20px; color: #000; font-size: 16.5px;\">\n" +
                         "    <h2 style=\"margin-left: 50px;\">Trividi Booking System Password Reset</h2>\n" +
-                        "    <p>Hi "+acc.getFullname()+",</p>\n" +
+                        "    <p>Hi "+acc.getUsername()+",</p>\n" +
                         "    <p>We heard that you lost your account password.</p>\n" +
                         "    <p>But don't worry! We have sent you a new password in this email, you can change it on our website.</p>\n" +
                         "    <p><b>Your new password is: "+newpass+"</b></p>\n" +

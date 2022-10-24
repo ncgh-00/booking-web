@@ -269,6 +269,16 @@
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <!-- custome js file link -->
 <script src="./js/script.js"></script>
+<script>
+    function checkRequired(input) {
+        var text = input.value;
+        const great = document.getElementById("option-1")
+        const attr = document.createAttribute("required");
+        if(text != ""){
+            great.setAttributeNode(attr);
+        }
+    }
+</script>
 </body>
 
 </html>

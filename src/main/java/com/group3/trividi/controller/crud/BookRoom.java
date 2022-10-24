@@ -10,10 +10,7 @@ import com.group3.trividi.utils.Validation;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(name = "BookRoom", value = "/BookRoom")
@@ -38,8 +35,6 @@ public class BookRoom extends HttpServlet {
 
         int numberR = Integer.parseInt(number);
         int id_Type = Integer.parseInt(idType);
-        System.out.println(dateS);
-        System.out.println(dateE);
         Booking_DAO dao = new Booking_DAO();
         Account acc = (Account) session.getAttribute("Account");
         DateProcessor tool = new DateProcessor();
@@ -62,8 +57,11 @@ public class BookRoom extends HttpServlet {
 
             String pass = HashPassword.generatePassword(8);
             System.out.println("pass :" +pass);
-            u.insert(3,phone,HashPassword.getHashedPassword(pass), name, null, phone);
+            u.insert(3,phone,HashPassword.getHashedPassword(pass), name, null, phone,1);
             Account ac = u.getUSer(phone, HashPassword.getHashedPassword(pass));
+            Cookie uid = new Cookie("uid",ac.getUID());
+            uid.setMaxAge(24*60*60*90);
+            response.addCookie(uid);
             session.setAttribute("Account", ac);
             session.setAttribute("role", ac.getRoleID());
             session.setAttribute("name", StringCutter.cut(ac.getFullname()));

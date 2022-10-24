@@ -121,7 +121,7 @@
 
                 <p>Cost filter</p>
                 <div class="row">
-                    <input type="number" min="0" id="search-bar-2" placeholder="search here..." name="cost">
+                    <input oninput="checkRequired(this)" type="number" min="0" id="search-bar-2" placeholder="search here..." name="cost">
 
                     <div class="col">
                         <input type="radio" id="option-1" name="cost_filter" value="great">

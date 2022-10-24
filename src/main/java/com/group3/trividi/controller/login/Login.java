@@ -38,7 +38,7 @@ public class Login extends HttpServlet {
             session.setAttribute("role", 0);
         } else {
             Cookie uid = new Cookie("uid", acc.getUID());
-            uid.setMaxAge(36000);
+            uid.setMaxAge(24*60*60*90);
             response.addCookie(uid);
             request.removeAttribute("error");
             session.setAttribute("Account", acc);

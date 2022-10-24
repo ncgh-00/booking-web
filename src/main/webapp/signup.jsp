@@ -46,6 +46,11 @@
                     <p>${errorSignup}</p>
                 </div>
             </c:if>
+            <c:if test="${success != null}">
+                <div class="field-text-error sucess">
+                    <p>${success}</p>
+                </div>
+            </c:if>
             <input type="submit" value="Sign Up" class="btn">
             <input type="hidden" value="<%=request.getParameter("page")%>" name="page">
             <input type="hidden" value="<%=request.getParameter("id")%>" name="id">

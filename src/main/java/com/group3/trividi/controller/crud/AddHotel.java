@@ -26,7 +26,7 @@ public class AddHotel extends HttpServlet {
         System.out.println("user name:" +username);
         System.out.println("pass :" +pass);
 
-        u.insert(2,username,HashPassword.getHashedPassword(pass),NameGenerator.randomIdentifier(),null,null);
+        u.insert(2,username,HashPassword.getHashedPassword(pass),NameGenerator.randomIdentifier(),null,null,1);
         u.addHotelforStaff(u.getIDUser(), h.getIDHotel());
         request.setAttribute("username", username);
         request.setAttribute("pass", pass);
