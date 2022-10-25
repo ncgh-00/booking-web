@@ -170,7 +170,7 @@
     </h1>
 
     <div class="box-container">
-        <c:forEach items="${listC}" var="o">
+        <c:forEach items="${sessionScope.city}" var="o">
             <div class="box">
                 <img src="${o.link_images}" alt="">
                 <div class="content">

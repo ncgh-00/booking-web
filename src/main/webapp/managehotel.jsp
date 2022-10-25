@@ -100,8 +100,8 @@
         </div>
         <form action="AddHotel" class="noti-body align-center" method="post">
             <div class="row">
-                <select name="uid" class="select">
-                    <option value="" selected>[Select account]</option>
+                <select name="uid" class="select" required>
+                    <option value="" selected >[Select account]</option>
                     <c:forEach items="${listA}" var="o">
                         <option value="${o.UID}">${o.username}</option>
                     </c:forEach>

@@ -29,7 +29,6 @@ public class LoadHome extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("Category",cate);
         session.setAttribute("city",listC);
-        request.setAttribute("listC", listC); // EL ${list}
         request.setAttribute("page", "index.jsp");
         Hotel_Details hotel_details = hotel.getHotHotel();
         request.setAttribute("hotel_details", hotel_details);

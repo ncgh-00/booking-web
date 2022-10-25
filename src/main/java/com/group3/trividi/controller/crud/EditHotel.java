@@ -1,6 +1,7 @@
 package com.group3.trividi.controller.crud;
 
 import com.group3.trividi.dao.Hotel_DAO;
+import com.group3.trividi.model.Hotel_Details;
 import com.group3.trividi.utils.Validation;
 
 import javax.servlet.ServletException;
@@ -19,7 +20,11 @@ import java.io.InputStream;
 public class EditHotel extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        Hotel_DAO hotel = new Hotel_DAO();
+        String idh = request.getParameter("idh");
+        Hotel_Details h = hotel.getHotel(idh);
+        request.setAttribute("hotel", h);
+        request.getRequestDispatcher("edithotel.jsp").forward(request, response);
     }
 
     @Override
@@ -34,18 +39,26 @@ public class EditHotel extends HttpServlet {
         String city = request.getParameter("city");
         String lng = request.getParameter("lng");
         String lat = request.getParameter("lat");
-//        String image = request.getParameter("image");
+
+        Hotel_DAO dao = new Hotel_DAO();
+        String idh = request.getParameter("idhotel");
+        Hotel_Details h = dao.getHotel(idh);
+
         if (lat == null) {
             lat = "";
         } else if (!Validation.validLocation(lat)) {
-            request.getRequestDispatcher("LoadEditHotel?location=1").forward(request, response);
+            request.setAttribute("hotel", h);
+            request.setAttribute("error", "Location is invalid");
+            request.getRequestDispatcher("edithotel.jsp").forward(request, response);
             return;
         }
 
         if (lng == null) {
             lng = "";
         } else if (!Validation.validLocation(lng)) {
-            request.getRequestDispatcher("LoadEditHotel?location=1").forward(request, response);
+            request.setAttribute("hotel", h);
+            request.setAttribute("error", "Location is invalid");
+            request.getRequestDispatcher("edithotel.jsp").forward(request, response);
             return;
         }
 
@@ -53,7 +66,9 @@ public class EditHotel extends HttpServlet {
         if (phone == null) {
             phone = "";
         } else if (!Validation.validPhone(phone)) {
-            request.getRequestDispatcher("LoadEditHotel?tel=1").forward(request, response);
+            request.setAttribute("hotel", h);
+            request.setAttribute("error", "Phone is invalid");
+            request.getRequestDispatcher("edithotel.jsp").forward(request, response);
             return;
         }
         Part file = request.getPart("image");
@@ -73,11 +88,6 @@ public class EditHotel extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
-        Hotel_DAO dao = new Hotel_DAO();
-        String idh = request.getParameter("idhotel");
 
         dao.editHotel(idh, name, des, category, phone, address, numOfStar, city, lng, lat, imageFileName);
         response.sendRedirect("LoadMyHotel#managehotel");

@@ -1,6 +1,7 @@
 package com.group3.trividi.controller.crud;
 
 import com.group3.trividi.dao.Hotel_DAO;
+import com.group3.trividi.model.Room_Details;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -18,7 +19,12 @@ import java.io.InputStream;
 public class EditRoom extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String id = request.getParameter("idr");
+        Hotel_DAO dao = new Hotel_DAO();
+        Room_Details r = dao.getRoomByid(id);
+        System.out.println(r);
+        request.setAttribute("r", r);
+        request.getRequestDispatcher("editroom.jsp").forward(request,response);
     }
 
     @Override

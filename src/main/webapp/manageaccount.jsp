@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <c:if test="${o.roleID == 2 && o.hotelManage == null }">
-                <div class="table__cell align-center"><a href="LoadAddHotelForStaff?staffid=${o.UID}" class="add-btn">Add Hotel</a></div>
+                <div class="table__cell align-center"><a href="AddHotelForStaff?staffid=${o.UID}" class="add-btn">Add Hotel</a></div>
                 </c:if>
                 <c:if test="${o.roleID == 2 && o.hotelManage != null }">
                     <div class="table__cell align-center">${o.hotelManage}</div>

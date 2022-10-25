@@ -17,15 +17,15 @@
         <h3 class="heading">Edit User</h3>
         <form action="EditUser?id=${sessionScope.Account.UID}" class="form" method="post">
             <div class="input">
-                <input type="text" class="input-box" placeholder="Full name (Optional)" name="name">
+                <input type="text" class="input-box" placeholder="Full name (Optional)" name="name" value="${sessionScope.Account.fullname}">
             </div>
 
             <div class="input">
-                <input type="tel" class="input-box" placeholder="Phone number (Optional)" name="phone">
+                <input type="tel" class="input-box" placeholder="Phone number (Optional)" name="phone" value="${sessionScope.Account.phone}">
             </div>
 
             <div class="input">
-                <input type="email" class="input-box" placeholder="Email (Optional)" name="email">
+                <input type="email" class="input-box" placeholder="Email (Optional)" name="email" value="${sessionScope.Account.email}">
             </div>
 
             <div class="input-pas">

@@ -90,6 +90,30 @@ public class Hotel_DAO {
         return list;
     }
 
+    public Room_Details getRoomByid(String id) {
+        Room_Details r = null;
+        String query = "select * from Room_Details where ID_Room_Details = " + id;
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+               r = new Room_Details(rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        rs.getBoolean(8));
+
+            }
+        } catch (Exception e) {
+            System.out.println("Fail, please contact to admin!!");
+        }
+        return r;
+    }
+
     public List<Room_Details> getAllRoomDetails(String id_hotel) {
         List<Room_Details> list = new ArrayList<>();
         String query = "select * from Room_Details where ID_Hotel = " + id_hotel + " order by [Id_Room_Details] desc";

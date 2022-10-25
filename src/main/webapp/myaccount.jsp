@@ -32,12 +32,11 @@
                 <span class="details">Username:  <p>${sessionScope.Account.username}</p></span>
             </div>
             <div class="infor">
-                <span class="details">Email:
-                    <p> ${sessionScope.Account.email == null?"You should add your email!":sessionScope.Account.email} </p>
+                <span class="details">Email:     <p>${sessionScope.Account.email == null?"You should add your email!":sessionScope.Account.email} </p>
                 </span>
             </div>
             <div class="infor">
-                <span class="details">Phone:  <p>${sessionScope.Account.phone==null?"You should add your phone":sessionScope.Account.phone}</p></span>
+                <span class="details">Phone:     <p>${sessionScope.Account.phone==null?"You should add your phone!":sessionScope.Account.phone}</p></span>
             </div>
             <div>
                 <a href="edituser.jsp" class="btn">Edit Profile</a>

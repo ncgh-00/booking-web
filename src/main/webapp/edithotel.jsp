@@ -15,47 +15,45 @@
     <div class="container">
         <h3 class="heading">Edit Hotel</h3>
         <form action="EditHotel" class="form" method="post" enctype="multipart/form-data">
-            <input type="hidden" class="input-box" name="idhotel" value="<%=request.getParameter("idh")%>">
+            <input type="hidden" class="input-box" name="idhotel" value="${hotel.id}">
             <div class="input">
-                <input type="text" class="input-box" placeholder="Hotel Name" name="name">
+                <input type="text" class="input-box" placeholder="Hotel Name" name="name" value="${hotel.name}">
             </div>
 
             <div class="input">
-                <textarea class="input-box" name="description" placeholder="Description" rows="2"></textarea>
+                <textarea class="input-box" name="description" placeholder="Description" rows="2">${hotel.des}</textarea>
             </div>
 
             <div class="input">
                 <select name="category" id="category" class="input-box">
                     <option value="" selected>Select Category</option>
                     <c:forEach items="${sessionScope.Category}" var="o">
-                        <option value="${o.id}">${o.name}</option>
+                        <option value="${o.id}" ${hotel.category == o.name? "selected" : ""}>${o.name}</option>
                     </c:forEach>
                 </select>
             </div>
 
             <div class="input">
-                <input type="file" class="input-box" title="cax nef" name="image">
-            </div>
-
-
-
-            <div class="input">
-                <input type="tel" class="input-box" placeholder="Phone" name="phone">
+                <input type="file" class="input-box" name="image">
             </div>
 
             <div class="input">
-                <input type="text" class="input-box" placeholder="Address" name="address">
+                <input type="tel" class="input-box" placeholder="Phone" name="phone" value="${hotel.phone}">
             </div>
 
             <div class="input">
-                <input type="number" min="1" max="5" class="input-box" placeholder="Number of star" name="numOfStar">
+                <input type="text" class="input-box" placeholder="Address" name="address" value="${hotel.address}">
+            </div>
+
+            <div class="input">
+                <input type="number" min="1" max="5" class="input-box" placeholder="Number of star" name="numOfStar" value="${hotel.star}">
             </div>
 
             <div class="input">
                 <select name="city" id="city" class="input-box">
                     <option value="">Select City</option>
                     <c:forEach items="${sessionScope.city}" var="o">
-                        <option value="${o.id}">${o.name}</option>
+                        <option value="${o.id}" ${hotel.city == o.name?"selected":""}>${o.name}</option>
                     </c:forEach>
                 </select>
             </div>

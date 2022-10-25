@@ -16,24 +16,24 @@
         <h3 class="heading">Edit Hotel</h3>
 
         <form action="EditRoom" class="form" method="post" enctype="multipart/form-data">
-            <input type="hidden" class="input-box" name="idroom" value="<%=request.getParameter("idr")%>" >
+            <input type="hidden" class="input-box" name="idroom" value="${r.id}" >
             <div class="input">
-                <input type="text" class="input-box" placeholder="Name of room" name="name">
+                <input type="text" class="input-box" placeholder="Name of room" name="name" value="${r.name}">
             </div>
 
             <div class="input">
-                <textarea class="input-box" name="description" placeholder="Description" rows="2"></textarea>
+                <textarea class="input-box" name="description" placeholder="Description" rows="2">${r.des}</textarea>
             </div>
             <div class="input">
-                <input type="file" class="input-box" title="Choose file" name="image">
-            </div>
-
-            <div class="input">
-                <input type="number" min="1" class="input-box" placeholder="Cost" name="cost">
+                <input type="file" class="input-box" title="Choose file" name="image" value="${r.images}">
             </div>
 
             <div class="input">
-                <input type="number" min="0" class="input-box" placeholder="Discount" name="discount">
+                <input type="number" min="1" class="input-box" placeholder="Cost" name="cost" value="${r.cost}">
+            </div>
+
+            <div class="input">
+                <input type="number" min="0" class="input-box" placeholder="Discount" name="discount" value="${r.discount}">
             </div>
 
             <input type="submit" value="Edit" class="btn">
