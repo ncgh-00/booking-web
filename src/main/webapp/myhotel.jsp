@@ -61,14 +61,10 @@
                         Address: <span>${hotel.address}</span>
                     </h3>
                     <c:if test="${hotel.status == true}">
-                        <div class="align-center" data-label="Status"><a title="Change status"
-                                                                                    href="ActivateHotel?id=${hotel.id}&check=${hotel.status}&page=LoadMyHotel&pageposition=#managehotel"
-                                                                                    class="badge-hotel badge-confirm">active</a></div>
+                        <div class="align-center" data-label="Status"><a title="Change status" href="ActivateHotel?id=${hotel.id}&check=${hotel.status}&page=LoadMyHotel&pageposition=#managehotel" class="badge-hotel badge-confirm">active</a></div>
                     </c:if>
                     <c:if test="${hotel.status == false}">
-                        <div class=" align-center" data-label="Status"><a title="Change status"
-                                                                                    href="ActivateHotel?id=${hotel.id}&check=${hotel.status}&page=LoadMyHotel&pageposition=#managehotel"
-                                                                                    class="badge-hotel badge-updating">inactive</a></div>
+                        <div class=" align-center" data-label="Status"><a title="Change status" href="ActivateHotel?id=${hotel.id}&check=${hotel.status}&page=LoadMyHotel&pageposition=#managehotel" class="badge-hotel badge-updating">inactive</a></div>
                     </c:if>
                     <a href="LoadEditHotel?idh=${hotel.id}" class="btn">Edit Hotel</a>
                     <a href="?LoadMaplng=${requestScope.location.lng}&lat=${requestScope.location.lat}" class="btn mg-l"> See In Map</a>
@@ -87,8 +83,8 @@
         <span>e</span>
         <span class="space"></span>
         <span>R</span>
-        <span>o</span>
-        <span>o</span>
+        <span>O</span>
+        <span>O</span>
         <span>M</span>
     </h1>
     <div class="add-room"><a class="btn" href="addroom.jsp?idh=${hotel.id}">Add room</a></div>

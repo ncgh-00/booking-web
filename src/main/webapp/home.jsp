@@ -211,38 +211,29 @@
         </div>
         <div class="box">
             <i class="fas fa-utensils"></i>
+            <i class="fa-light fa-cart-shopping-fast"></i>
             <h3>fast to booking</h3>
-            <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.
-                Lorem Ipsum is simply dummy text of the farhan and typesetting industry
-                Lorem Ipsum is simply dummy text of the farhan and typesetting industry</p>
+            <p>The Trividi website always strives to make using it simple so that users can simply search hotel information and book hotels.</p>
         </div>
         <div class="box">
             <i class="fas fa-bullhorn"></i>
             <h3>safty guide</h3>
-            <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.
-                Lorem Ipsum is simply dummy text of the farhan and typesetting industry
-                Lorem Ipsum is simply dummy text of the farhan and typesetting industry</p>
+            <p>Users' security is always of the utmost importance, so they can be entirely confident while submitting their information on the Trividi website.</p>
         </div>
         <div class="box">
             <i class="fas fa-globe-asia"></i>
-            <h3>around the world</h3>
-            <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.
-                Lorem Ipsum is simply dummy text of the farhan and typesetting industry
-                Lorem Ipsum is simply dummy text of the farhan and typesetting industry</p>
+            <h3>around the country</h3>
+            <p>Our service is spread across the country with many hotels everywhere, so coming to Trividi booking website, customers will always find the right hotel for their needs.</p>
         </div>
         <div class="box">
-            <i class="fas fa-plane"></i>
-            <h3>fastest travel</h3>
-            <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.
-                Lorem Ipsum is simply dummy text of the farhan and typesetting industry
-                Lorem Ipsum is simply dummy text of the farhan and typesetting industry</p>
+            <i class="fa-solid fa-map-location-dot"></i>
+            <h3>easy to find</h3>
+            <p>The map tool on the Trividi booking website makes it simple for customers to look up hotels and entertainment venues in the area.</p>
         </div>
         <div class="box">
             <i class="fas fa-hiking"></i>
             <h3>adventures</h3>
-            <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.
-                Lorem Ipsum is simply dummy text of the farhan and typesetting industry
-                Lorem Ipsum is simply dummy text of the farhan and typesetting industry</p>
+            <p>Find out more about the hotel you wish to stay at with the assistance of actual images and reviews from prior guests to make your decision easier.</p>
         </div>
     </div>
 </section>
