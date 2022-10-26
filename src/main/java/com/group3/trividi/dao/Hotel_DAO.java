@@ -51,12 +51,16 @@ public class Hotel_DAO {
     }
 
     public List<Hotel_Details> getHotels() {
-        List<Hotel_Details> list = new ArrayList<>();
         String query = "select * from Hotel_Details order by Status, Priority asc ";
-
         return get(query);
     }
 
+    public List<Hotel_Details> getHotelsForStaff() {
+        String query = "select * from Hotel_Details\n" +
+                "EXCEPT \n" +
+                "select h.* from Hotel_Details h , Account a where h.ID_Hotel = a.ID_Hotel";
+        return get(query);
+    }
     public List<Hotel_Details> getHotelsInHome() {
         String query = "select top 8 * from Hotel_Details where [Status] = 1 order by [Priority] ";
 

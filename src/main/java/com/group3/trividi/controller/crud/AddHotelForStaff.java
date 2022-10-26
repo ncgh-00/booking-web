@@ -16,7 +16,7 @@ public class AddHotelForStaff extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String staffid = request.getParameter("staffid");
         Hotel_DAO dao = new Hotel_DAO();
-        List<Hotel_Details> list = dao.getHotels();
+        List<Hotel_Details> list = dao.getHotelsForStaff();
         request.setAttribute("listH",list);
         request.setAttribute("staffid", staffid);
         request.getRequestDispatcher("addhotelforstaff.jsp").forward(request,response);
