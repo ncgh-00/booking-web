@@ -242,7 +242,7 @@
 
 <!-- brand section -->
 
-<section class="brand-container">
+<section class="brand-container ${search==1?"hidden":""}">
     <div class="swiper mySwiper brand-slider">
         <div class="swiper-wrapper wrapper">
             <div class="swiper-slide"><img src="images/1.jpg" alt=""></div>

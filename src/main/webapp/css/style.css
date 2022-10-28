@@ -48,21 +48,14 @@ html {
     text-align: center;
 }
 
-.home.hidden {
+.home.hidden,
+.city.hidden,
+.hot-hotel.hidden,
+.services.hidden,
+.brand-container.hidden {
     display: none;
 }
 
-.hot-hotel.hidden {
-    display: none;
-}
-
-.services.hidden {
-    display: none;
-}
-
-.city.hidden {
-    display: none;
-}
 
 .field-text-error {
     margin-top: 8px;
