@@ -43,7 +43,7 @@
             <div class="table__cell header__table">Category</div>
             <div class="table__cell header__table">Phone</div>
             <div class="table__cell header__table">Address</div>
-            <div class="table__cell header__table">Number Of Star</div>
+            <div class="table__cell header__table">Number Of Stars</div>
             <div class="table__cell header__table">City</div>
             <div class="table__cell header__table">Status</div>
             <div class="table__cell header__table">priority</div>
@@ -157,7 +157,6 @@
     }
 </script>
 
-<script src="./js/header.js"></script>
 </body>
 
 </html>
