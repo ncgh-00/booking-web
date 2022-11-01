@@ -26,7 +26,7 @@
             <li>Account Management</li>
         </a>
         <a class="menu__item" href="LoadStatistic">
-            <li>statistic</li>
+            <li>statistics</li>
         </a>
     </ul>
 </div>
@@ -139,7 +139,6 @@
     }
 </script>
 
-<script src="./js/header.js"></script>
 <script src="./js/noti.js"></script>
 </body>
 

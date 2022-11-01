@@ -24,7 +24,7 @@
             <li>Account Management</li>
         </a>
         <a class="menu__item" href="LoadStatistic">
-            <li>statistic</li>
+            <li>statistics</li>
         </a>
     </ul>
 </div>
@@ -43,7 +43,7 @@
             <div class="table__cell header__table">Category</div>
             <div class="table__cell header__table">Phone</div>
             <div class="table__cell header__table">Address</div>
-            <div class="table__cell header__table">Number Of Stars</div>
+            <div class="table__cell header__table">Number Of Star</div>
             <div class="table__cell header__table">City</div>
             <div class="table__cell header__table">Status</div>
             <div class="table__cell header__table">priority</div>

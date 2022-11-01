@@ -62,7 +62,7 @@
             <li>Account Management</li>
         </a>
         <a class="menu__item selected" href="#">
-            <li>statistic</li>
+            <li>statistics</li>
         </a>
     </ul>
 </div>

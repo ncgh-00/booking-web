@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Hotel</title>
     <link rel="icon" type="image/x-icon" href="./images/logo.svg">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
           integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -143,7 +142,6 @@
         <li class="table-header">
             <div class="col col-s">User name</div>
             <div class="col col-s">Phone</div>
-            <div class="col col-m">Email</div>
 
             <div class="col col-xl">Location</div>
             <div class="col col-l">Room name</div>
@@ -159,14 +157,12 @@
                 <c:if test="${a.confirm == true}">
                     <div class="col col-s align-center" data-label="username">${a.fullName}</div>
                     <div class="col col-s align-center" data-label="userphone">${a.userPhone}</div>
-                    <div class="col col-m align-center" data-label="useremail">${a.userEmail}</div>
                 </c:if>
                 <c:if test="${a.confirm == false}">
                     <div class="col col-s align-center" data-label="username"><i class="icon fa-sharp fa-solid fa-eye-slash"></i></div>
                     <div class="col col-s align-center" data-label="userphone"><i class="icon fa-sharp fa-solid fa-eye-slash"></i></div>
-                    <div class="col col-m align-center" data-label="useremail"><i class="icon fa-sharp fa-solid fa-eye-slash"></i></div>
                 </c:if>
-                <div class="col col-xl" data-label="hotelname">${a.hotelName}</div>
+                <div class="col col-xl align-center" data-label="hotelname">${a.hotelName}</div>
                 <div class="col col-l align-center" data-label="roomname">${a.roomName}</div>
                 <div class="col col-xs align-center" data-label="amount"> ${a.numOfRoom}</div>
                 <div class="col col-m align-center" data-label="daystart">${a.dateStart}</div>
