@@ -117,7 +117,7 @@
             <input type="hidden" name="staffid" id="UID">
             <div class="row">
                 <select name="idhotel" class="select" required>
-                    <option value="" selected >[Select account]</option>
+                    <option value="" selected >[Select Hotel]</option>
                     <c:forEach items="${listH}" var="o">
                         <option value="${o.id}">${o.name}</option>
                     </c:forEach>
