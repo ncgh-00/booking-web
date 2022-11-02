@@ -38,7 +38,7 @@ public class BookRoom extends HttpServlet {
         Booking_DAO dao = new Booking_DAO();
         Account acc = (Account) session.getAttribute("Account");
         DateProcessor tool = new DateProcessor();
-        if (DateProcessor.duration(dateS, dateE) <= 0 || !tool.isLogicDate(dateS)) {
+        if (DateProcessor.duration(dateS, dateE) <= 0 || !tool.isLogicDate(dateS) || !tool.isLogicDate(dateE)) {
             request.setAttribute("error", "Date is not valid!");
             request.getRequestDispatcher("LoadBooking?id_hotel=" + id_hotel).forward(request, response);
             return;
@@ -46,11 +46,11 @@ public class BookRoom extends HttpServlet {
         if (acc == null) {
             User_DAO u = new User_DAO();
             if(!Validation.validPhone(phone)){
-                request.setAttribute("error", "Phone is invalid!");
+                request.setAttribute("error", "Phone number is invalid!");
                 request.getRequestDispatcher("LoadBooking?id_hotel=" + id_hotel).forward(request, response);
                 return;
             } else if(u.checkPhone(phone)){
-                request.setAttribute("error", "Phone was used! Please login your account before booking!");
+                request.setAttribute("error", "Phone number was used! Please login your account before booking!");
                 request.getRequestDispatcher("LoadBooking?id_hotel=" + id_hotel).forward(request, response);
                 return;
             }

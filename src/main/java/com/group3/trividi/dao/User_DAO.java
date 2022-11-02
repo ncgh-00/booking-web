@@ -216,8 +216,9 @@ public class User_DAO {
         }
     }
 
-    public List<Account_Info> getUsersInfo() {
-        String query = "select * from Account_Info order by Status, [UID] desc";
+    public List<Account_Info> getUsersInfo(String id) {
+        String query = "select * from Account_Info where [UID] != '" +id+ "' order by Status, [UID] desc";
+        System.out.println(query);
         return getAccInfo(query);
     }
 
@@ -226,9 +227,9 @@ public class User_DAO {
         return getAccInfo(query);
     }
 
-    public  List<Account_Info> searchUser(String username) {
+    public  List<Account_Info> searchUser(String username, String id) {
         String query = "select * from Account_Info \n" +
-                "where [Username] like '%"+ username +"%'";
+                "where [Username] like '%"+ username +"%' and [UID] != '" +id+ "'";
         System.out.println(query);
         return getAccInfo(query);
     }

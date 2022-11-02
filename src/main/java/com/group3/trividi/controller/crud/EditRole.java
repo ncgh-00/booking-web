@@ -18,7 +18,8 @@ public class EditRole extends HttpServlet {
 
 
         User_DAO dao = new User_DAO();
-        if (!role.equalsIgnoreCase("2")) dao.addHotelforStaff(id, "NULL");
+        if (!role.equalsIgnoreCase("2"))
+            dao.addHotelforStaff(id, "NULL");
         dao.editRole(id, role);
         response.sendRedirect("LoadAccounts");
     }

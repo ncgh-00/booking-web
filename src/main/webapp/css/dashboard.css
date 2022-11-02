@@ -91,6 +91,7 @@ body {
 .add-btn:hover,
 .content .btn:hover {
     background: rgba(255, 165, 0, .2);
+    cursor: pointer;
 }
 
 .content .nav .search__bar {

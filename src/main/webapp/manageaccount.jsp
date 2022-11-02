@@ -69,13 +69,18 @@
                         </div>
                     </div>
                 </div>
+
                 <c:if test="${o.roleID == 2 && o.hotelManage == null }">
-                <div class="table__cell align-center"><a href="AddHotelForStaff?staffid=${o.UID}" class="add-btn">Add Hotel</a></div>
+                <div class="table__cell align-center">
+                    <button onclick="getUID(this)" id="${o.UID}" class="add-btn show-choose-account">Add Hotel</button>
+                </div>
                 </c:if>
+
                 <c:if test="${o.roleID == 2 && o.hotelManage != null }">
                     <div class="table__cell align-center">${o.hotelManage}</div>
                 </c:if>
-                <c:if test="${o.roleID != 2}">
+
+                <c:if test="${o.roleID == 3 || o.roleID == 1}">
                     <div class="table__cell align-center">No</div>
                 </c:if>
 
@@ -86,6 +91,7 @@
                            class="badge badge-active">active</a>
                     </div>
                 </c:if>
+
                 <c:if test="${o.status == false}">
                     <div class="table__cell align-center" data-label="Status">
                         <a title="Change status"
@@ -95,11 +101,33 @@
                 </c:if>
 
             </div>
+
         </c:forEach>
     </div>
 </div>
 
-<div class="noti close-btn ${show==1?"open":""}">
+
+<div class="noti close-btn">
+    <div class="noti-container" style="margin-bottom: 120px; width: 425px;">
+        <div class="noti-heading">
+            <h3 class="heading">Choose Hotel For Staff</h3>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+        </div>
+        <form action="AddHotelForStaff" class="noti-body align-center" method="post">
+            <input type="hidden" name="staffid" id="UID">
+            <div class="row">
+                <select name="idhotel" class="select" required>
+                    <option value="" selected >[Select account]</option>
+                    <c:forEach items="${listH}" var="o">
+                        <option value="${o.id}">${o.name}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <input type="submit" class="btn close-btn" value="Finish">
+        </form>
+    </div>
+</div>
+<div class="notify close-btn ${show==1?"open":""}">
     <div class="noti-container">
         <div class="noti-heading">
             <h3 class="heading">New Account</h3>
@@ -113,6 +141,35 @@
     </div>
 </div>
 
+<script>
+    function getUID(btn) {
+        let uid = btn.id
+        document.getElementById("UID").value = uid;
+    }
+    const closeBtns = document.querySelectorAll('.close-btn');
+    const noti = document.querySelector('.noti');
+    const notify = document.querySelector('.notify')
+    const noti_containers = document.querySelectorAll('.noti-container');
+    const choose_accounts = document.querySelectorAll('.show-choose-account');
+
+    for(const choose of choose_accounts) {
+        choose.addEventListener('click', function () {
+            noti.classList.toggle('open')
+        })
+    }
+    for (const closeBtn of closeBtns) {
+        closeBtn.addEventListener('click', function () {
+            noti.classList.remove('open')
+            notify.classList.remove('open')
+        })
+    }
+
+    for (const noti_container of noti_containers) {
+        noti_container.addEventListener('click', function (event) {
+            event.stopPropagation()
+        })
+    }
+</script>
 <jsp:include page="footer.jsp"></jsp:include>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
@@ -138,8 +195,6 @@
 
     }
 </script>
-
-<script src="./js/noti.js"></script>
 </body>
 
 </html>

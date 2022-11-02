@@ -1,6 +1,7 @@
 package com.group3.trividi.controller.load;
 
 import com.group3.trividi.dao.User_DAO;
+import com.group3.trividi.model.Account;
 import com.group3.trividi.model.Account_Info;
 
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -23,7 +25,9 @@ public class SearchAccount extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String text = request.getParameter("text");
         User_DAO dao = new User_DAO();
-        List<Account_Info> list = dao.searchUser(text);
+        HttpSession session = request.getSession();
+        Account acc = (Account) session.getAttribute("Account");
+        List<Account_Info> list = dao.searchUser(text, acc.getUID());
         PrintWriter out = response.getWriter();
         out.println("<div class=\"table__head\">\n" +
                 "            <div class=\"table__cell header__table\">Full Name</div>\n" +
