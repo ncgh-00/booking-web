@@ -170,7 +170,7 @@
                 <div class="col col-s align-center" data-label="totalcost">${a.totalCost}</div>
                 <c:if test="${a.confirm == true}">
                     <div class="col col-xs align-center" data-label="Status"><a title="Change status"
-                            href="ConfirmBooking?id=${a.idBooking}&check=${a.confirm}&id_staff=${sessionScope.Account.UID}&page=LoadMyHotel&pageposition=#managebooking"
+                            href="#"
                             class="badge badge-confirm">Confirm</a></div>
                 </c:if>
                 <c:if test="${a.confirm == false}">
