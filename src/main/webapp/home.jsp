@@ -32,15 +32,15 @@
     </div>
 
     <div class="controls">
-        <span class="vid-btn active" data-src="images/vid-1.mp4"></span>
-        <span class="vid-btn" data-src="images/vid-2.mp4"></span>
-        <span class="vid-btn" data-src="images/vid-3.mp4"></span>
+        <span class="vid-btn active" data-src="images/vid-5.mp4"></span>
         <span class="vid-btn" data-src="images/vid-4.mp4"></span>
-        <span class="vid-btn" data-src="images/vid-5.mp4"></span>
+        <span class="vid-btn" data-src="images/vid-2.mp4"></span>
+        <span class="vid-btn " data-src="images/vid-1.mp4"></span>
+        <span class="vid-btn" data-src="images/vid-3.mp4"></span>
     </div>
 
     <div class="video-container">
-        <video src="images/vid-1.mp4" id="video-slider" loop autoplay muted></video>
+        <video src="images/vid-5.mp4" id="video-slider" loop autoplay muted></video>
     </div>
 
 </section>
@@ -127,7 +127,17 @@
             <span>s</span>
         </h1>
     </c:if>
+
     <div class="box-container">
+        <c:if test="${notfound == 0}">
+            <div class="search-not-found">
+                <span class="icon-not-found"><i class="fas fa-search"></i></span>
+                <p>Sorry we didn't find any results.</p>
+                <p>Check the spelling, or try a different search.</p>
+
+            </div>
+        </c:if>
+
         <c:forEach items="${listH}" var="o">
             <div class="box">
                 <img src="${o.image}" alt="">
@@ -141,19 +151,13 @@
                     </div>
                     <div class="price"> ${Math.ceil(o.cost*(1-o.discount/100)/24000)} $ <span>${Math.ceil(o.cost/24000)} $</span>
                     </div>
-                        <%--                    <c:if test="${sessionScope.Account.username == null}">--%>
-                        <%--                        <a href="login.jsp" class="btn">book now</a>--%>
-                        <%--                    </c:if>--%>
-                        <%--                    <c:if test="${sessionScope.Account.username != null}">--%>
                     <a href="LoadBooking?id=${o.id}" class="btn">book now</a>
-                        <%--                    </c:if>--%>
                 </div>
             </div>
         </c:forEach>
 
 
     </div>
-
 </section>
 
 

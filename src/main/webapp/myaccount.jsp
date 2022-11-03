@@ -91,11 +91,13 @@
                 </c:if>
 
                 <div class="col col-xs align-center" data-label="">
-                    <a href="DeleteBooking?id=${o.idBooking}&&page=LoadMyAccount" class="delete" data-toggle="modal">
-                        <i class="icon material-icons" data-toggle="tooltip" title="Delete">
-                            &#xE872;
-                        </i>
-                    </a>
+                    <c:if test="${o.confirm == false}">
+                        <a href="DeleteBooking?id=${o.idBooking}&&page=LoadMyAccount" class="delete" data-toggle="modal">
+                            <i class="icon material-icons" data-toggle="tooltip" title="Delete">
+                                &#xE872;
+                            </i>
+                        </a>
+                    </c:if>
                 </div>
 
             </li>

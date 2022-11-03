@@ -9,11 +9,15 @@
     <title>Login Page</title>
     <link rel="icon" type="image/x-icon" href="./images/logo.svg">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+          integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/form-l.css">
 </head>
 <body>
 <div class="layout">
     <div class="container">
+        <a href="index.jsp" class="backhome"><i class="fa-solid fa-arrow-left"></i></a>
         <h3 class="heading">Sign Up</h3>
         <form action="SignUp" class="form" method="post">
             <div class="input">

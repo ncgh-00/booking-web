@@ -52,7 +52,8 @@ public class Search extends HttpServlet {
 
         }
 
-
+        if(ls.size() == 0)
+            request.setAttribute("notfound",0);
         request.setAttribute("listH",ls);
         request.setAttribute("search",1);
         request.setAttribute("page","index.jsp");
