@@ -787,7 +787,7 @@ header .search-bar-container label:hover {
     margin: auto;
 }
 
-.rate-container .load-btn {
+.load-btn {
     margin-top: 4rem;
     padding: 1rem 3.5rem;
     font-size: 2rem;

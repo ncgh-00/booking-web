@@ -41,7 +41,6 @@ public class LoadComment extends HttpServlet {
                         "                            </div>";
             }
 
-
             output += "</div>\n" +
                     "                    <div class=\"stars\">";
             for (int i = 1; i <= r.getStars(); i++) {

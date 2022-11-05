@@ -67,6 +67,14 @@ public class Hotel_DAO {
         return get(query);
     }
 
+    public List<Hotel_Details> LoadMoreHotel(int offset) {
+        String query = "select * from Hotel_Details where [Status] = 1 \n" +
+                "order by [Priority]\n" +
+                "OFFSET "+offset+" ROWS FETCH NEXT 8 ROWS ONLY";
+
+        return get(query);
+    }
+
     public List<Room_Details> getRoomDetails(String id_hotel) {
         List<Room_Details> list = new ArrayList<>();
         String query = "select * from Room_Details where [Status] = 1 and ID_Hotel = " + id_hotel + " ";

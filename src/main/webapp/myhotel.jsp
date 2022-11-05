@@ -66,7 +66,7 @@
                         <div class=" align-center" data-label="Status"><a title="Change status" href="ActivateHotel?id=${hotel.id}&check=${hotel.status}&page=LoadMyHotel&pageposition=#managehotel" class="badge-hotel badge-updating">inactive</a></div>
                     </c:if>
                     <a href="EditHotel?idh=${hotel.id}" class="btn">Edit Hotel</a>
-                    <a href="?LoadMaplng=${requestScope.location.lng}&lat=${requestScope.location.lat}" class="btn mg-l"> See In Map</a>
+                    <a href="LoadMap?lng=${requestScope.location.lng}&lat=${requestScope.location.lat}" class="btn mg-l"> See In Map</a>
                 </div>
             </div>
         </div>

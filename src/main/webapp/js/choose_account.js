@@ -2,7 +2,7 @@ const closeBtns = document.querySelectorAll('.close-btn');
 const noti = document.querySelector('.noti');
 const notify = document.querySelector('.notify')
 const noti_containers = document.querySelectorAll('.noti-container');
-const choose_account = document.querySelectorAll('.show-choose-account');
+const choose_account = document.querySelector('.show-choose-account');
 
 choose_account.addEventListener('click', function () {
     noti.classList.toggle('open')

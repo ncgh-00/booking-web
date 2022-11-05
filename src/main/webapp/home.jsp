@@ -128,7 +128,7 @@
         </h1>
     </c:if>
 
-    <div class="box-container">
+    <div class="box-container" id="list-hotel">
         <c:if test="${notfound == 0}">
             <div class="search-not-found">
                 <span class="icon-not-found"><i class="fas fa-search"></i></span>
@@ -137,9 +137,8 @@
 
             </div>
         </c:if>
-
         <c:forEach items="${listH}" var="o">
-            <div class="box">
+            <div class="box num-hotel">
                 <img src="${o.image}" alt="">
                 <div class="content">
                     <h3><i class="fas fa-map-marker-alt"></i> ${o.city} </h3>
@@ -155,9 +154,12 @@
                 </div>
             </div>
         </c:forEach>
-
-
     </div>
+    <c:if test="${search!=1}">
+        <div class="align-center">
+            <button onclick="loadMore()" class="btn load-btn">Load More</button>
+        </div>
+    </c:if>
 </section>
 
 
@@ -193,7 +195,6 @@
 <!-- city section ends -->
 
 <!-- services section starts -->
-
 <section class="services ${search==1?"hidden":""}" id="services">
     <h1 class="heading">
         <span>s</span>
@@ -245,7 +246,6 @@
 <!-- services section ends -->
 
 <!-- brand section -->
-
 <section class="brand-container ${search==1?"hidden":""}">
     <div class="swiper mySwiper brand-slider">
         <div class="swiper-wrapper wrapper">
@@ -262,6 +262,9 @@
 <jsp:include page="footer.jsp"></jsp:include>
 
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- custome js file link -->
 <script src="./js/script.js"></script>
 <script>
@@ -272,6 +275,26 @@
         if(text != ""){
             great.setAttributeNode(attr);
         }
+    }
+</script>
+
+<script>
+    function loadMore() {
+        var amount = document.getElementsByClassName("num-hotel").length;
+        $.ajax({
+            url: '/Trividi_Project/LoadMoreHotel',
+            type: 'get',
+            data: {
+                amount_hotel: amount
+            },
+            success: function (data) {
+                var list = document.getElementById("list-hotel")
+                list.innerHTML += data;
+            },
+            error: function () {
+                alert("error");
+            }
+        });
     }
 </script>
 </body>
