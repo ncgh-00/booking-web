@@ -22,7 +22,6 @@
                 <a href="#hot-hotel">Hotel</a>
                 <a href="#review">Room</a>
             </c:if>
-            <a href="#contact">contact</a>
         </nav>
 
         <div class="icons">
@@ -40,7 +39,6 @@
 
             <a href="LoadHotels">Dashboard</a>
             <a href="LoadMyAccount">My account</a>
-            <a href="#contact">contact</a>
             <a href="LoadMap">Map</a>
 
         </nav>
@@ -59,10 +57,8 @@
     <c:if test="${sessionScope.role == 2  && sessionScope.Account.fullname != null}">
         <nav class="navbar">
             <a href="index.jsp">home</a>
-
             <a href="LoadMyAccount">My account</a>
             <a href="LoadMyHotel">My hotel</a>
-            <a href="#contact">contact</a>
             <a href="LoadMap">Map</a>
         </nav>
 
@@ -82,7 +78,6 @@
         <nav class="navbar">
             <a href="index.jsp">home</a>
             <a href="LoadMyAccount">My account</a>
-            <a href="#contact">contact</a>
             <a href="LoadMap">Map</a>
         </nav>
 
@@ -98,43 +93,45 @@
         </div>
     </c:if>
 
-            <form action="Search" class="search-bar-container" method="post">
-                <p>Search bar</p>
-                <div class="row">
-                    <input type="text" id="search-bar-1" placeholder="search here..." name="hotel">
-                    <div class="col">
-                        <select name="search-by-city"  >
-                            <option value=""  selected>[Search City]</option>
-                            <c:forEach items="${sessionScope.city}" var="ct">
-                                <option value="${ct.name}" >${ct.name}</option>
-                            </c:forEach>
-                        </select>
-                        <select name="search-by-category" >
-                            <option value=""  selected>[Search Category]</option>
-                            <c:forEach items="${sessionScope.Category}" var="ca">
-                                <option value="${ca.name}" >${ca.name}</option>
-                            </c:forEach>
-                        </select>
-                        <button class="search-btn" type="submit"><label for="search-bar-1" class="fas fa-search"></label></button>
-                    </div>
-                </div>
+    <form action="Search" class="search-bar-container" method="post" onsubmit="return checksubmit()">
+        }
+        <p>Search bar</p>
+        <div class="row">
+            <input type="text" id="search-bar-1" placeholder="search here..." name="hotel" id="id_search_bar">
+            <div class="col">
+                <select name="search-by-city">
+                    <option value="" selected>[Search City]</option>
+                    <c:forEach items="${sessionScope.city}" var="ct">
+                        <option value="${ct.name}">${ct.name}</option>
+                    </c:forEach>
+                </select>
+                <select name="search-by-category">
+                    <option value="" selected>[Search Category]</option>
+                    <c:forEach items="${sessionScope.Category}" var="ca">
+                        <option value="${ca.name}">${ca.name}</option>
+                    </c:forEach>
+                </select>
+                <button class="search-btn" type="submit"><label for="search-bar-1" class="fas fa-search"></label>
+                </button>
+            </div>
+        </div>
 
-                <p>Cost filter</p>
-                <div class="row">
-                    <input oninput="checkRequired(this)" type="number" min="0" id="search-bar-2" placeholder="search here..." name="cost">
+        <p>Cost filter</p>
+        <div class="row">
+            <input oninput="checkRequired(this)" type="number" min="0" id="search-bar-2" placeholder="search here..." name="cost">
 
-                    <div class="col">
-                        <input type="radio" id="option-1" name="cost_filter" value="great">
-                        <input type="radio" id="option-2" name="cost_filter" value="low">
-                        <label for="option-1" class="option option-1">
-                            <div class="dot"></div>
-                            <span>Greater</span>
-                        </label>
-                        <label for="option-2" class="option option-2">
-                            <div class="dot"></div>
-                            <span>Less</span>
-                        </label>
-                    </div>
-                </div>
-            </form>
-        </header>
+            <div class="col">
+                <input type="radio" id="option-1" name="cost_filter" value="great">
+                <input type="radio" id="option-2" name="cost_filter" value="low">
+                <label for="option-1" class="option option-1">
+                    <div class="dot"></div>
+                    <span>Greater</span>
+                </label>
+                <label for="option-2" class="option option-2">
+                    <div class="dot"></div>
+                    <span>Less</span>
+                </label>
+            </div>
+        </div>
+    </form>
+</header>

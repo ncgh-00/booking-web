@@ -267,6 +267,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- custome js file link -->
 <script src="./js/script.js"></script>
+
 <script>
     function checkRequired(input) {
         var text = input.value;
@@ -276,9 +277,7 @@
             great.setAttributeNode(attr);
         }
     }
-</script>
 
-<script>
     function loadMore() {
         var amount = document.getElementsByClassName("num-hotel").length;
         $.ajax({
@@ -295,6 +294,15 @@
                 alert("error");
             }
         });
+    }
+
+    function checksubmit() {
+        var s = document.getElementById('search-bar-1').value;
+        var c = document.getElementById('search-bar-2').value;
+        if(s == "" && c == "") {
+            return false;
+        }
+        return true;
     }
 </script>
 </body>
