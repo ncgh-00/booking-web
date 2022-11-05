@@ -4,7 +4,7 @@ const notify = document.querySelector('.notify')
 const noti_containers = document.querySelectorAll('.noti-container');
 const choose_account = document.querySelectorAll('.show-choose-account');
 
-choose-choose_account.addEventListener('click', function () {
+choose_account.addEventListener('click', function () {
     noti.classList.toggle('open')
 })
 

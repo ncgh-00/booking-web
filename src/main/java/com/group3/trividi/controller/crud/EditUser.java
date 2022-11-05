@@ -33,10 +33,12 @@ public class EditUser extends HttpServlet {
             name = "";
         if (phone == null) {
             phone = "";
-        } else if (dao.checkPhone(phone)) {
-            request.setAttribute("error", "Phone was used!");
-            request.getRequestDispatcher("edituser.jsp").forward(request, response);
-            return;
+        } else if (!dao.getUSer(id).getPhone().equals(phone)) {
+            if (dao.checkPhone(phone)) {
+                request.setAttribute("error", "Phone was used!");
+                request.getRequestDispatcher("edituser.jsp").forward(request, response);
+                return;
+            }
         } else if (!Validation.validPhone(phone)) {
             request.setAttribute("error", "Phone invalid!");
             request.getRequestDispatcher("edituser.jsp").forward(request, response);
@@ -44,10 +46,12 @@ public class EditUser extends HttpServlet {
         }
         if (email == null) {
             email = "";
-        } else if (dao.checkEmail(email)) {
-            request.setAttribute("error", "Email was used!");
-            request.getRequestDispatcher("edituser.jsp").forward(request, response);
-            return;
+        } else if (!dao.getUSer(id).getEmail().equals(email)){
+            if (dao.checkEmail(email)) {
+                request.setAttribute("error", "Email was used!");
+                request.getRequestDispatcher("edituser.jsp").forward(request, response);
+                return;
+            }
         } else if (!Validation.validEmail(email)) {
             request.setAttribute("error", "Email invalid!");
             request.getRequestDispatcher("edituser.jsp").forward(request, response);
