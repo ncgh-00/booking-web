@@ -1,5 +1,7 @@
 package com.group3.trividi.utils;
 
+import java.util.List;
+
 public class Validation {
     public static boolean validEmail(String email) {
         if (!email.isEmpty()) {
@@ -32,6 +34,13 @@ public class Validation {
         return true;
     }
 
+    public static boolean authorization(List<String> list, String code){
+        if(code.endsWith("js") ||code.endsWith("css") || code.endsWith("images") || code.endsWith("jsp")) return true;
+        for (String f : list ){
+            if(code.contains(f)) return true;
+        }
+        return false;
+    }
     public static void main(String[] args) {
         System.out.println(Validation.validLocation("20.95459478953557"));
     }

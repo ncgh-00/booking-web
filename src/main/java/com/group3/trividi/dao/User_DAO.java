@@ -312,12 +312,29 @@ public class User_DAO {
     }
 
 
+    public List<String> listFunction(String role_id){
+        List<String> list = new ArrayList<>();
+        String sql ="select * from [Authorization] " +
+                " where Role_ID = "+role_id;
 
-
-
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(rs.getString(3));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
     public static void main(String[] args) {
         User_DAO u = new User_DAO();
-
+        List<String> list = u.listFunction("1");
+        for(String fn : list){
+            System.out.println(fn);
+        }
 
     }
 
