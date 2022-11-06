@@ -299,7 +299,11 @@
     function checksubmit() {
         var s = document.getElementById('search-bar-1').value;
         var c = document.getElementById('search-bar-2').value;
-        if(s == "" && c == "") {
+        var op1 = document.getElementById('option-2').value;
+        var op2 = document.getElementById('option-1').value;
+
+
+        if(s == "" && c == "" && op1 == "" && op2 == "" ) {
             return false;
         }
         return true;
