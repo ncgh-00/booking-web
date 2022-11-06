@@ -16,6 +16,7 @@ public class EditRate extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String uid = request.getParameter("uid");
         String id_hotel = request.getParameter("id_hotel");
         String numofstar = request.getParameter("numofstar");

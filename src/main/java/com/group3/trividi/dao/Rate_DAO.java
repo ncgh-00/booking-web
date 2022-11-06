@@ -17,7 +17,7 @@ public class Rate_DAO {
     Statement st = null;
 
     public void addRate(String uid, String id_Hotel, String cmt, int stars) {
-        String query = "INSERT INTO [Rate] ([UID], [ID_Hotel], [Comment], [NumberOfStars], [Date]) values (?,?,?,?,getDate())";
+        String query = "INSERT INTO [Rate] ([UID], [ID_Hotel], [Comment], [NumberOfStars], [Date]) values (?,?,"+cmt+",?,getDate())";
 
 
         try {
@@ -26,8 +26,7 @@ public class Rate_DAO {
 
             ps.setString(1, uid);
             ps.setString(2, id_Hotel);
-            ps.setString(3,"N'"+ cmt+"'");
-            ps.setInt(4, stars);
+            ps.setInt(3, stars);
             ps.executeUpdate();
             System.out.println(query);
         } catch (Exception e) {

@@ -104,7 +104,7 @@ public class User_DAO {
             ps = conn.prepareStatement(query);
             ps.setString(1, email);
             ps.setString(2,HashPassword.getHashedPassword(HashPassword.generatePassword(8)));
-            ps.setString(3,"N'"+ name+"'");
+            ps.setString(3,name);
             ps.setString(4, email);
             ps.executeUpdate();
             System.out.println("dang ky duoc roi");
