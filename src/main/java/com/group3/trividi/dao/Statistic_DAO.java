@@ -109,7 +109,7 @@ public class Statistic_DAO {
                 ps = conn.prepareStatement(sql);
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    frame.put(dic.get(rs.getString(1)),new StatisticWeb(rs.getInt(3),Double.parseDouble(df.format((rs.getDouble(2)*0.001)))));
+                    frame.put(dic.get(rs.getString(1)),new StatisticWeb(rs.getInt(3),Double.parseDouble(df.format((rs.getDouble(2))))));
                 }
 
                 System.out.println("ok");
@@ -126,7 +126,7 @@ public class Statistic_DAO {
                 ps = conn.prepareStatement(sql);
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    frame.put(dic.get(rs.getString(1)),new StatisticWeb(rs.getInt(3),Double.parseDouble(df.format((rs.getDouble(2)*0.001)))));
+                    frame.put(dic.get(rs.getString(1)),new StatisticWeb(rs.getInt(3),Double.parseDouble(df.format((rs.getDouble(2))))));
                 }
 
                 System.out.println("ok");
@@ -142,7 +142,7 @@ public class Statistic_DAO {
                 ps = conn.prepareStatement(sql);
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    frame.put(rs.getString(1)+"/"+rs.getString(2),new StatisticWeb(rs.getInt(4),Double.parseDouble(df.format((rs.getDouble(3)*0.001)))));
+                    frame.put(rs.getString(1)+"/"+rs.getString(2),new StatisticWeb(rs.getInt(4),Double.parseDouble(df.format((rs.getDouble(3))))));
                 }
 
             } catch (Exception e) {
@@ -188,7 +188,7 @@ public class Statistic_DAO {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                return new StatisticWeb(rs.getInt(1), Double.parseDouble(df.format(rs.getDouble(2)*0.001)));
+                return new StatisticWeb(rs.getInt(1), Double.parseDouble(df.format(rs.getDouble(2))));
             }
             System.out.println("ok");
         } catch (Exception e) {
@@ -222,7 +222,7 @@ public class Statistic_DAO {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                return Double.parseDouble(dfr.format(rs.getDouble(1)*0.001));
+                return Double.parseDouble(dfr.format(rs.getDouble(1)));
             }
 
         } catch (Exception e) {
