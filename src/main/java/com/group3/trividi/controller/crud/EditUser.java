@@ -31,9 +31,9 @@ public class EditUser extends HttpServlet {
 
         if (name == null)
             name = "";
-        if (phone == null) {
+        if (phone == null || phone.trim().isEmpty()) {
             phone = "";
-        } else if (!dao.getUSer(id).getPhone().equals(phone)) {
+        } else if (dao.getUSer(id).getPhone() == null ||!dao.getUSer(id).getPhone().equals(phone)) {
             if (dao.checkPhone(phone)) {
                 request.setAttribute("error", "Phone was used!");
                 request.getRequestDispatcher("edituser.jsp").forward(request, response);
@@ -44,9 +44,9 @@ public class EditUser extends HttpServlet {
             request.getRequestDispatcher("edituser.jsp").forward(request, response);
             return;
         }
-        if (email == null) {
+        if (email == null || email.trim().isEmpty()) {
             email = "";
-        } else if (!dao.getUSer(id).getEmail().equals(email)){
+        } else if (dao.getUSer(id).getEmail() == null ||!dao.getUSer(id).getEmail().equals(email)){
             if (dao.checkEmail(email)) {
                 request.setAttribute("error", "Email was used!");
                 request.getRequestDispatcher("edituser.jsp").forward(request, response);

@@ -29,6 +29,8 @@ public class Authorization implements Filter {
         if(session.getAttribute("role") == null){
             role = "4";
         }else role = session.getAttribute("role").toString();
+        System.out.println(role);
+        System.out.println(path);
         boolean isPermit = Validation.authorization(dao.listFunction(role),path);
 
         if(!isPermit){
