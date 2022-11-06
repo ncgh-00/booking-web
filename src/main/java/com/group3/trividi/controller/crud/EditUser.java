@@ -33,17 +33,18 @@ public class EditUser extends HttpServlet {
             name = "";
         if (phone == null || phone.trim().isEmpty()) {
             phone = "";
-        } else if (dao.getUSer(id).getPhone() == null ||!dao.getUSer(id).getPhone().equals(phone)) {
+        } else if (!Validation.validPhone(phone)) {
+            request.setAttribute("error", "Phone invalid!");
+            request.getRequestDispatcher("edituser.jsp").forward(request, response);
+            return;
+        } else if (!dao.getUSer(id).getPhone().equals(phone)) {
             if (dao.checkPhone(phone)) {
                 request.setAttribute("error", "Phone was used!");
                 request.getRequestDispatcher("edituser.jsp").forward(request, response);
                 return;
             }
-        } else if (!Validation.validPhone(phone)) {
-            request.setAttribute("error", "Phone invalid!");
-            request.getRequestDispatcher("edituser.jsp").forward(request, response);
-            return;
         }
+
         if (email == null || email.trim().isEmpty()) {
             email = "";
         } else if (dao.getUSer(id).getEmail() == null ||!dao.getUSer(id).getEmail().equals(email)){
