@@ -32,9 +32,9 @@
 <div class="content">
     <div class="nav">
         <button class="btn show-choose-account"><i class="add-icon fa-solid fa-circle-plus"></i>Add</button>
-        <form action="SearchHotel" class="search" method="post">
+
             <input type="text" oninput="searchHotel(this)" name="hotelname" class="search__bar" id="search-bar" placeholder="Search here...">
-        </form>
+
     </div>
     <div id="row-table" class="table">
         <div class="table__head">

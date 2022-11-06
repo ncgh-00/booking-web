@@ -34,10 +34,10 @@
 <div class="content">
     <div class="nav">
         <a href="AddNewAccount" class="btn"><i class="add-icon fa-solid fa-circle-plus"></i>Add new account</a>
-        <form action="SearchAccount" class="search" method="post">
+
             <input oninput="searchAccount(this)" type="text" name="text" class="search__bar" id="search-bar"
                    placeholder="Search here (username) ...">
-        </form>
+
     </div>
     <div id="row-table" class="table">
         <div class="table__head">

@@ -176,7 +176,7 @@ public class User_DAO {
             sql += " [Hash_password] = '" + HashPassword.getHashedPassword(password) + "',";
         }
         if (!name.isEmpty()) {
-            sql += " [FullName] = '" + name + "',";
+            sql += " [FullName] = N'" + name + "',";
         }
         if (!email.isEmpty()) {
             sql += " [Email] = '" + email + "',";
