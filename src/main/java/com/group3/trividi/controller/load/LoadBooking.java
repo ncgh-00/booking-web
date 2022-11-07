@@ -1,5 +1,6 @@
 package com.group3.trividi.controller.load;
 
+import com.group3.trividi.dao.Booking_DAO;
 import com.group3.trividi.dao.Hotel_DAO;
 import com.group3.trividi.dao.Rate_DAO;
 import com.group3.trividi.dao.Statistic_DAO;
@@ -28,12 +29,17 @@ public class LoadBooking extends HttpServlet {
         HttpSession session = request.getSession();
         Account acc = (Account) session.getAttribute("Account");
         boolean checkUID = false;
+        Booking_DAO booking = new Booking_DAO();
         if (acc != null) {
-            Rate r = rate.getRateofUser(id,acc.getUID());
-            if (rate.checkUID(id, acc.getUID())){
-                checkUID = true;
-                request.setAttribute("Rate", r);
+            if(booking.checkBook(acc.getUID(),id)) {
+                request.setAttribute("checkBook", true);
+                Rate r = rate.getRateofUser(id,acc.getUID());
+                if (rate.checkUID(id, acc.getUID())){
+                    checkUID = true;
+                    request.setAttribute("Rate", r);
+                }
             }
+
 
 
         }

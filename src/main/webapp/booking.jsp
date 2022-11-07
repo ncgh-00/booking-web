@@ -210,13 +210,14 @@
                 <p class="number-rates">0 rates</p>
             </c:if>
             <c:if test="${sessionScope.Account != null}">
-                <c:if test="${checkUID == false}">
-                    <button class="btn rate-hotel">rate hotel</button>
+                <c:if test="${checkBook == true}">
+                    <c:if test="${checkUID == false}">
+                        <button class="btn rate-hotel">rate hotel</button>
+                    </c:if>
+                    <c:if test="${checkUID == true}">
+                        <button class="edit-rate btn">Edit rate</button>
+                    </c:if>
                 </c:if>
-                <c:if test="${checkUID == true}">
-                    <button class="edit-rate btn">Edit rate</button>
-                </c:if>
-
             </c:if>
 
         </div>
@@ -286,11 +287,11 @@
     <form action="EditRate?uid=${sessionScope.Account.UID}&id_hotel=${hotel_details.id}" class="vote-form" method="post">
         <h2>Edit Rate</h2>
         <div class="close-btn"><i class="fas fa-times"></i></div>
-        <input value="1" type="radio" id="op-e1" name="numofstar" required>
-        <input value="2" type="radio" id="op-e2" name="numofstar" >
-        <input value="3" type="radio" id="op-e3" name="numofstar" >
-        <input value="4" type="radio" id="op-e4" name="numofstar" >
-        <input value="5" type="radio" id="op-e5" name="numofstar" >
+        <input value="1" type="radio" id="op-e1" name="numofstar" ${Rate.stars == 1?"checked":""}>
+        <input value="2" type="radio" id="op-e2" name="numofstar" ${Rate.stars == 2?"checked":""}>
+        <input value="3" type="radio" id="op-e3" name="numofstar" ${Rate.stars == 3?"checked":""}>
+        <input value="4" type="radio" id="op-e4" name="numofstar" ${Rate.stars == 4?"checked":""}>
+        <input value="5" type="radio" id="op-e5" name="numofstar" ${Rate.stars == 5?"checked":""}>
         <label for="op-e1" class="option op-1">
             <span>1<i class="fas fa-star"></i></span>
         </label>

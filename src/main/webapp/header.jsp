@@ -99,13 +99,13 @@
         <div class="row">
             <input type="text" id="search-bar-1" placeholder="search here..." name="hotel" id="id_search_bar">
             <div class="col">
-                <select name="search-by-city">
+                <select name="search-by-city" id="id-search-by-city">
                     <option value="" selected>[Search City]</option>
                     <c:forEach items="${sessionScope.city}" var="ct">
                         <option value="${ct.name}">${ct.name}</option>
                     </c:forEach>
                 </select>
-                <select name="search-by-category">
+                <select name="search-by-category" id="id-search-by-category">
                     <option value="" selected>[Search Category]</option>
                     <c:forEach items="${sessionScope.Category}" var="ca">
                         <option value="${ca.name}">${ca.name}</option>

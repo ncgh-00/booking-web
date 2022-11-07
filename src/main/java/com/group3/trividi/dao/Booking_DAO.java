@@ -25,9 +25,6 @@ public class Booking_DAO {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
-//            System.out.println(query);
-//            int idBooking, String uid, String staffID, String hotelName, String roomName, int numOfRoom, Date dateStart, java.util.Date
-//            dateEnd, int totalCost, boolean confirm
             while (rs.next()) {
                 list.add(new Booking(rs.getInt(4),
                         rs.getString(6),
@@ -53,6 +50,20 @@ public class Booking_DAO {
         return list;
     }
 
+    public boolean checkBook(String UID, String idhotel) {
+        String query = "select * from Manage_Booking where [UID] = '" + UID + "' and [ID_Hotel] = "+idhotel;
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     public List<Booking> getBooks(String idHotel) {
         List<Booking> list = new ArrayList<>();
         String query = "select * from Manage_Booking where ID_Hotel = '" + idHotel + "' order by ID_Booking desc";
@@ -60,9 +71,6 @@ public class Booking_DAO {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
-//            System.out.println(query);
-//            int idBooking, String uid, String staffID, String hotelName, String roomName, int numOfRoom, Date dateStart, java.util.Date
-//            dateEnd, int totalCost, boolean confirm
             while (rs.next()) {
                 list.add(new Booking(rs.getInt(4),
                         rs.getString(6),
@@ -165,9 +173,5 @@ public class Booking_DAO {
         }
     }
 
-//    public static void main(String[] args) {
-//        Booking_DAO b = new Booking_DAO();
-//        b.getBooks("1");
-//    }
 
 }
