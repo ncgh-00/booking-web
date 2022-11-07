@@ -87,6 +87,33 @@ public class Rate_DAO {
         return check;
     }
 
+    public Rate getRateofUser(String id_hotel, String uid) {
+        Rate r =null;
+        String query = "select * from [Rate_View] where ID_Hotel = " + id_hotel + " and UID = '" + uid + "'";
+
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            System.out.println(query);
+//            String fullname, String UID, int ID_Hotel, String comment, int numberOfStars, Date date
+            while (rs.next()) {
+                r = new Rate(rs.getString(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getInt(5),
+                        rs.getDate(6),
+                        rs.getInt(7)
+                );
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return r;
+    }
+
     public void DeleteRate(String id) {
         String query = "DELETE FROM Rate WHERE ID_Rate = " + id + " ";
 

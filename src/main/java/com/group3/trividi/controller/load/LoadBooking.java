@@ -18,6 +18,7 @@ import java.util.List;
 public class LoadBooking extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String id = request.getParameter("id");
         Hotel_DAO dao = new Hotel_DAO();
         Hotel_Details hotel_details = dao.getHotel(id);
@@ -28,8 +29,13 @@ public class LoadBooking extends HttpServlet {
         Account acc = (Account) session.getAttribute("Account");
         boolean checkUID = false;
         if (acc != null) {
-            if (rate.checkUID(id, acc.getUID()))
+            Rate r = rate.getRateofUser(id,acc.getUID());
+            if (rate.checkUID(id, acc.getUID())){
                 checkUID = true;
+                request.setAttribute("Rate", r);
+            }
+
+
         }
         Statistic_DAO s = new Statistic_DAO();
         Statistic_Rate r = s.getRateStatistic(id);

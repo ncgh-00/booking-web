@@ -306,7 +306,7 @@
         <label for="op-e5" class="option op-5">
             <span>5<i class="fas fa-star"></i></span>
         </label>
-        <textarea name="comment" class="input-box" rows="3" placeholder="Comment here..." required></textarea>
+        <textarea name="comment" class="input-box" rows="3" placeholder="Comment here..." required>${Rate.comment}</textarea>
         <input value="Edit" type="submit" class="btn">
     </form>
 </div>
