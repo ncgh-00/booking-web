@@ -13,7 +13,7 @@
 <body>
 <div class="layout">
     <div class="container">
-        <h3 class="heading">Edit Hotel</h3>
+        <h3 class="heading">Edit Room</h3>
 
         <form action="EditRoom" class="form" method="post" enctype="multipart/form-data">
             <input type="hidden" class="input-box" name="idroom" value="${r.id}" >

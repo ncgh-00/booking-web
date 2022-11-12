@@ -129,7 +129,7 @@
     </div>
 </div>
 
-<form action="LoadStatistic" class="form-search">
+<form action="LoadStatistic" class="form-search" method="get">
     <input oninput="checkRequired(this)" type="number" class="search-bar" placeholder="Month" min="1" max="12" name="month">
     <input id="year" type="number" class="search-bar" placeholder="Year" min="2022" name="year">
 

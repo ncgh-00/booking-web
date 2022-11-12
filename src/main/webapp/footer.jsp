@@ -18,7 +18,7 @@
 
         <div class="box">
             <h3>follow us</h3>
-            <a href="https://www.facebook.com/profile.php?id=100074870037080">facebook</a>
+            <a href="https://www.facebook.com/profile.php?id=100086562083551">facebook</a>
             <a href="https://www.instagram.com/nqkhang.28/">instagram</a>
             <a href="https://github.com/ncgh-00/booking-web.git">github</a>
         </div>

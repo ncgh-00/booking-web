@@ -30,12 +30,11 @@ public class Login extends HttpServlet {
         if (acc == null) {
             request.setAttribute("error", "Username or password is not valid!");
             request.getRequestDispatcher("login.jsp").forward(request, response);
-            session.setAttribute("role", 0);
-
+            session.setAttribute("role", 4);
         } else if (!acc.isStatus()) {
             request.setAttribute("error", "Account is blocked! ");
             request.getRequestDispatcher("login.jsp").forward(request, response);
-            session.setAttribute("role", 0);
+            session.setAttribute("role", 4);
         } else {
             Cookie uid = new Cookie("uid", acc.getUID());
             uid.setMaxAge(24*60*60*90);

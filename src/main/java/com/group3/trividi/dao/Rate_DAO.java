@@ -39,7 +39,7 @@ public class Rate_DAO {
         List<Rate> list = new ArrayList<>();
         String query = "select * from [Rate_View]\n" +
                 "where ID_Hotel = \n" + id_hotel +
-                " order by Date\n" +
+                "order by Date desc \n" +
                 "OFFSET " + offset + " ROWS\n" +
                 "FETCH NEXT 3 ROWS ONLY";
 

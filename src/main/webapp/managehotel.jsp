@@ -32,7 +32,6 @@
 <div class="content">
     <div class="nav">
         <button class="btn show-choose-account"><i class="add-icon fa-solid fa-circle-plus"></i>Add</button>
-
             <input type="text" oninput="searchHotel(this)" name="hotelname" class="search__bar" id="search-bar" placeholder="Search here...">
 
     </div>

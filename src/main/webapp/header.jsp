@@ -9,7 +9,7 @@
     <a href="index.jsp" class="logo"><span>T</span>rividi</a>
 
 
-    <c:if test="${sessionScope.Account == null || sessionScope.role == 0}">
+    <c:if test="${sessionScope.Account == null || sessionScope.role == 4}">
         <nav class="navbar">
             <a href="index.jsp">home</a>
             <c:if test="${requestScope.page == 'index.jsp' }">

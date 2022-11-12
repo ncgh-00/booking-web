@@ -22,8 +22,13 @@ public class AddRate extends HttpServlet {
         String cmt = request.getParameter("comment");
         int stars = Integer.parseInt(request.getParameter("numofstar"));
         String uid  = request.getParameter("uid");
+
         System.out.println(id_hotel + " " + cmt +  " " + stars + " " + uid );
         Rate_DAO dao = new Rate_DAO();
+        if(dao.checkUID(id_hotel,uid)){
+            request.getRequestDispatcher("LoadBooking?id="+id_hotel).forward(request,response);
+            return;
+        }
         dao.addRate(uid, id_hotel, "N'"+cmt+"'", stars);
 //        request.setAttribute("id", id_hotel);
         request.getRequestDispatcher("LoadBooking?id="+id_hotel).forward(request,response);

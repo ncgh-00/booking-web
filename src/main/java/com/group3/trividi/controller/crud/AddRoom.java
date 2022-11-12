@@ -26,7 +26,7 @@ public class AddRoom extends HttpServlet {
 
         Part file =   request.getPart("image");
         String imageFileName = file.getSubmittedFileName();
-        String uploadPath = "C:/Lesson Material/SWP/booking-web/src/main/webapp/images/"+imageFileName;
+        String uploadPath = "D:/Documents/1.FPT/FA22/SWP391/Trividi_Project/src/main/webapp/images/"+imageFileName;
 
         try {
 

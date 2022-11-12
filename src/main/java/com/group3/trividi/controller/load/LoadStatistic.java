@@ -38,6 +38,7 @@ public class LoadStatistic extends HttpServlet {
             request.setAttribute("dayProfit",dao.getTotalInDay(id).getTotal());
             request.setAttribute("dayBook", dao.getTotalInDay(id).getNumberBooks());
             request.setAttribute("timeUpdate", LocalDateTime.now().getHour()+":" + LocalDateTime.now().getMinute());
+            request.setAttribute("idhotel",id);
             request.getRequestDispatcher("hotelprofit.jsp").forward(request, response);
         }
        
